@@ -1,3 +1,6 @@
+body{
+    background-color: rgb(204, 223, 235);
+}
 header{
     background-color: lightblue;
     background-image: url(cabecera.jpg);
