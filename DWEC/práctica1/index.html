@@ -5,49 +5,56 @@
         <title>Hotel Mochi</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css1.css">
     </head>
     <body>
         <header>
             <h1 id="tituloprincipal">Hotel Mochi</h1>
             <nav>
-                <!-- TODO: Cambiar lista por botones -->
                 <ul class="listasinpuntos">
-                    <li>Inicio</li>
-                    <li>Acerca del hotel</li>
-                    <li>Ofertas</li>
-                    <li>Reservar ahora</li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#acerca">Acerca del hotel</a></li>
+                <li><a href="#reservar">Reservar</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
                 </ul>
             </nav>
         </header>
+
         <main>
-            <h2>Bienvenido a Hotel Mochi</h2>
-            <p>Disfruta de una estancia inolvidable en nuestro hotel, donde la comodidad y el servicio excepcional son nuestra prioridad.</p>
-            <section>
-                <h3>Nuestras Habitaciones</h3>
-                <p>Contamos con una variedad de habitaciones diseñadas para satisfacer todas tus necesidades, desde suites de lujo hasta habitaciones estándar acogedoras.</p>
-            </section>
-            <section>
+            <section id="reservar">
                 <form>
-                    <name class="nombreform">Reservas</name>
+                    <p class="nombreform">Reservas</p>
+                    
                     <div>
-                        Nombre:
-                        <input type="text" name="Nombre" size="20" max="20">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" maxlength="20">
                     </div>
-                    <div>Número de personas: 
-                        <select name="Numero personas" size = "1"> 
+                    
+                    <div>
+                        <label for="personas">Número de personas:</label>
+                        <select id="personas" name="personas">
                             <option value="1">1</option>
-                            <option value = "2">2</option>
+                            <option value="2">2</option>
                             <option value="3">3</option>
                         </select>    
                     </div>      
+                    
                     <div>
-                        Fecha entrada:
-                        <input type="date">
-                        Fecha salida:
-                        <input type="date">
-                    </div>      
+                        <label for="entrada">Fecha entrada:</label>
+                        <input type="date" id="entrada" name="entrada">
+                    </div>
+                    
+                    <div>
+                        <label for="salida">Fecha salida:</label>
+                        <input type="date" id="salida" name="salida">
+                    </div>
+                    
+                    <div>
+                        <button type="submit">Buscar disponibilidad</button>
+                    </div>
                 </form>
+            </section>
             <section>
                 <h3>Servicios</h3>
                 <ul>
@@ -57,7 +64,7 @@
                     <li>Servicio de habitaciones 24/7</li>
                 </ul>
             </section>
-            <section>
+            <section id="ofertas">
                 <h3>Ofertas Especiales</h3>
                 <p>Aprovecha nuestras ofertas exclusivas para reservas anticipadas y estancias prolongadas. ¡Consulta nuestra página de ofertas para más detalles!</p>
             </section>

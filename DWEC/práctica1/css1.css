@@ -1,12 +1,37 @@
 body{
     background-color: rgb(204, 223, 235);
+    font-family: "Montserrat", sans-serif;
 }
+
+h1, h2, h3{
+   font-family: 'Lora', serif;
+}
+
 header{
-    background-color: lightblue;
+    position: relative;
     background-image: url(cabecera.jpg);
+    background-size: cover;
     background-position: 30% 50%;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
+    color: white;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+}
+
+header h1,
+header nav {
+    position: relative;
+    z-index: 1;
 }
 
 #tituloprincipal {
@@ -15,16 +40,45 @@ header{
 }
 
 nav{
-    list-style-type: square;
     padding: 0;
-    color: rgb(255, 255, 255);
     font-size: 20px;
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
 }
 
-.listasinpuntos {
-    list-style-type: none;
+nav ul.listasinpuntos{
+    list-style: none;
+    margin: 10px 0 0;
     padding: 0;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+
+nav li{
+    margin: 0;
+}
+
+nav a{
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+nav a:hover{
+    background: rgba(255,255,255,0.15);
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 20px auto;
 }
 
 .nombreform {
