@@ -6,6 +6,11 @@ header{
     padding: 20px;
 }
 
+#tituloprincipal {
+    text-align: center;
+    color:rgb(255, 255, 255);
+}
+
 nav{
     list-style-type: square;
     padding: 0;
