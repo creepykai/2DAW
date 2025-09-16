@@ -1,4 +1,6 @@
 body{
+    background-image: url(img/fondo.png);
+    background-attachment: scroll;
     background-color: rgb(201, 226, 241);
     font-family: "Montserrat", sans-serif;
 }
@@ -134,7 +136,7 @@ form div:last-child {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    margin: 40px 0;
+    margin: 40px 0; 
 }
 
 .servicio {
@@ -152,6 +154,19 @@ form div:last-child {
 
 #gimnasio{
     width: 210px;
+}
+
+#Restaurante{
+    width: 210px;
+}
+
+#room{
+    width: 210px;
+}
+
+#ofertas {
+    background: rgba(255, 253, 253);
+    z-index: 0;
 }
 
 footer {
