@@ -182,6 +182,40 @@ h2 {
     margin-bottom: 15px;
 }
 
+#turismo {
+  background: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 900px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#turismo h2 {
+  color: #0B3D91;
+  margin-bottom: 15px;
+}
+
+#turismo p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+#turismo a {
+  color: #0B3D91;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#turismo a:hover {
+  color: #09316f;
+  text-decoration: underline;
+}
+
+
 footer {
     background: #0B3D91;
     color: white;
