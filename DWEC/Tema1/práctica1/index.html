@@ -1,88 +1,89 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Hotel Mochi</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css1.css">
-    </head>
-    <body>
-        <header>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Hotel Mochi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css1.css">
+</head>
+<body>
+    <header>
+        <div class="hero-text">
             <h1 id="tituloprincipal">Hotel Mochi</h1>
-            <nav>
-                <ul class="listasinpuntos">
+            <p class="subtitulo">Lujo y confort</p>
+        </div>
+        <nav>
+            <ul class="listasinpuntos">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#acerca">Acerca del hotel</a></li>
                 <li><a href="#reservar">Reservar</a></li>
                 <li><a href="#ofertas">Ofertas</a></li>
-                </ul>
-            </nav>
-        </header>
+            </ul>
+        </nav>
+    </header>
 
-        <main>
-            <section id="reservar">
-                <form>
-                    <p class="nombreform">Reservas</p>
-                    
-                    <div>
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" maxlength="20">
-                    </div>
-                    
-                    <div>
-                        <label for="personas">Número de personas:</label>
-                        <select id="personas" name="personas">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>    
-                    </div>      
-                    
-                    <div>
-                        <label for="entrada">Fecha entrada:</label>
-                        <input type="date" id="entrada" name="entrada">
-                    </div>
-                    
-                    <div>
-                        <label for="salida">Fecha salida:</label>
-                        <input type="date" id="salida" name="salida">
-                    </div>
-                    
-                    <div>
-                        <button type="submit">Buscar disponibilidad</button>
-                    </div>
-                </form>
-            </section>
-            <section>
-                <h3>Servicios</h3>
-                <div class="servicios">
-                    <div class="servicio">Wi-Fi gratuito 
-                        <div><img id="icono-wifi" src="img/WiFi Icono.png" alt="Icono Wi-Fi"></div>
-                    </div>
-                    <div class="servicio">Piscina y gimnasio
-
-                        <div><img id = "gimnasio" src="img/Gym.jpeg" alt = "Gimnasio y piscina"></div>
-                    </div>
-                    <div class="servicio">Restaurante gourmet
-                        <div><img id = "Restaurante" src="img/restaurante.jpg" alt = "Restaurante"> </div>
-                    </div>
-                    <div class="servicio">Servicio de habitaciones 24/7
-                        <div>
-                            <img id ="room" src="img/room.jpg"  alt = "Room">
-                        </div>
-                    </div>
+    <main>
+        <section id="reservar">
+            <form>
+                <p class="nombreform">Haz tu reserva</p>
+                <div>
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" maxlength="50" required>
                 </div>
-            </section>
+                <div>
+                    <label for="personas">Número de personas</label>
+                    <select id="personas" name="personas" required>
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3">3 personas</option>
+                        <option value="4">4 personas</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="entrada">Fecha de entrada</label>
+                    <input type="date" id="entrada" name="entrada" required>
+                </div>
+                <div>
+                    <label for="salida">Fecha de salida</label>
+                    <input type="date" id="salida" name="salida" required>
+                </div>
+                <div>
+                    <button type="submit">Buscar disponibilidad</button>
+                </div>
+            </form>
+        </section>
 
-            <section id="ofertas">
-                <h3>Ofertas Especiales</h3>
-                <p>Aprovecha nuestras ofertas exclusivas para reservas anticipadas y estancias prolongadas. ¡Consulta nuestra página de ofertas para más detalles!</p>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2025 Hotel Mochi. Todos los derechos reservados.</p>
-        </footer>
-    </body>
+        <section>
+            <h2>Servicios</h2>
+            <div class="servicios">
+                <div class="servicio">
+                    <img src="img/WiFi Icono.png" alt="Wi-Fi gratuito" class="icono">
+                    <p>Wi-Fi gratuito</p>
+                </div>
+                <div class="servicio">
+                    <img src="img/Gym.jpeg" alt="Piscina y gimnasio" class="icono">
+                    <p>Piscina y gimnasio</p>
+                </div>
+                <div class="servicio">
+                    <img src="img/restaurante.jpg" alt="Restaurante gourmet" class="icono">
+                    <p>Restaurante gourmet</p>
+                </div>
+                <div class="servicio">
+                    <img src="img/room.jpg" alt="Servicio de habitaciones 24/7" class="icono">
+                    <p>Servicio 24/7</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ofertas">
+            <h2>Ofertas Especiales</h2>
+            <p>Aprovecha descuentos exclusivos por reservas anticipadas y estancias prolongadas. ¡Descubre todas nuestras promociones!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Hotel Mochi | Todos los derechos reservados</p>
+    </footer>
+</body>
 </html>
