@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Actividad 3 - DIW</title>
+    </head>
+    <body>
+        <h1>Curriculum Vitae</h1>
+        <form>
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <table border = 0>
+                    <tr>
+                        <td>
+                            Nombre: 
+                        </td>
+                        <td>
+                            <input type="text" name="nombre" size="30" maxlength="30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Apellidos: 
+                        </td>
+                        <td>
+                            <input type="text" name="apellidos" size="30" maxlength="30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Correo Electrónico:
+                        </td>
+                        <td>
+                            <input type="email" name="email" size="30" maxlength="30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Teléfono:
+                        </td>
+                        <td>
+                            <input type="tel" name="telefono" size="30" maxlength="30">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Fecha de Nacimiento:
+                        </td>
+                        <td>
+                            <input type="date" name="fechaNacimiento">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Edad
+                        </td>
+                        <td>
+                            <input type="text" name="direccion" size="5" maxlength="3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Color Favorito:
+                        </td>
+                        <td>
+                            <input type="color" name="colorFavorito">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Nacionalidad:
+                        </td>
+                        <td>
+                            <select name="nacionalidad">
+                                <option value="española">Española</option>
+                                <option value="francesa">Francesa</option>
+                                <option value="italiana">Italiana</option>
+                                <option value="portuguesa">Portuguesa</option>
+                                <option value="otra">Otra</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            
+                        </td>
+                        <td>
+                            <input type="radio" name="genero" value="hombre"> Hombre
+                            <input type="radio" name="genero" value="mujer"> Mujer
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Habilidades</legend>
+                <table border = 0>
+                    <tr>
+                        <td>
+                            <input type="range" name="habilidades" value="liderazgo"> Liderazgo
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="range" name="habilidades" value="comunicacion"> Comunicación  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="range" name="habilidades" value="motivacion"> Motivación 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="range" name="habilidades" value="visiondenegocio"> Visión de negocio
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>Idioma</legend>
+                <table border = 0>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="idioma" value="ingles"> Castellano
+                            <input type="checkbox" name="idioma" value="ingles"> Inglés
+                            <input type="checkbox" name="idioma" value="frances"> Francés
+                            <input type="checkbox" name="idioma" value="aleman"> Alemán
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="idioma" value="italiano"> Italiano
+                            <input type="checkbox" name="idioma" value="portugues"> Portugués
+                            <input type="checkbox" name="idioma" value="chino"> Chino
+                            <input type="checkbox" name="idioma" value="japones"> Japonés
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        <button type="submit">Enviar Curriculum</button>
+        <button type="reset">Reset</button>
+    </body>
+</html>
