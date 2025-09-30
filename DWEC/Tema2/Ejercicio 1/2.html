@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 3 - Tema 2</title>
+    </head>
+    <body>
+        <!--2.	Completar las condiciones de los if del siguiente script para que los mensajes de los alert() se muestren siempre de forma correcta:
+            var numero1 = 5;
+            var numero2 = 8;
+            if(...) {
+            alert("numero1 no es mayor que numero2");
+            }
+            if(...) {
+            alert("numero2 es positivo");
+            }
+            if(...) {
+            alert("numero1 es negativo o distinto de cero");
+            }
+            if(...) {
+            alert("Incrementar en 1 unidad el valor de numero1 no lo hace mayor o igual que numero2");
+            }
+            -->
+        <h1>Ejercicio 2 - Tema 2</h1>
+        <script>
+            var numero1 = 5;
+            var numero2 = 8;
+            if(!(numero1 > numero2)) {
+                alert("numero1 no es mayor que numero2");
+            }
+            if(numero2 >= 0) {
+                alert("numero2 es positivo");
+            }
+            if(numero1 !== 0) {
+                alert("numero1 es negativo o distinto de cero");
+            }
+            if((numero1 + 1) < numero2) {
+                alert("Incrementar en 1 unidad el valor de numero1 no lo hace mayor o igual que numero2");
+            }
+        </script>
+    </body>
+</html>

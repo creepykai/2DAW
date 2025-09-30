@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 4.4 - Tema 2</title>
+    </head>
+    <body>
+    <!--4.	Crea un fichero Javascript e incluye las instrucciones necesarias que te permitan ejecutar la siguiente lógica:
+    a.	Pídele su nombre y edad al usuario
+    b.	Determina en qué franja de edad se encuentra, de manera que consideres lo siguiente:
+        i.	Niño: hasta 12 años
+        ii.	Adolescente: de 13 a 17 años
+        iii.	Trabajador: de 18 a 64 años
+        iv.	Jubilado: de 65 años o más
+    c.	El programa debe terminar mostrando este tipo de mensaje en negrita por consola: “Juan tiene 21 años y por tanto es Trabajador”
+    -->
+
+        <h1>Ejercicio 4.4 - Tema 2</h1>
+        <script>
+            var nombre = prompt("Por favor, introduce tu nombre:");
+            var edad = parseInt(prompt("Por favor, introduce tu edad:"));
+            var franjaEdad;
+
+            if (edad <= 12) {
+                franjaEdad = "Niño";
+            } else if (edad >= 13 && edad <= 17) {
+                franjaEdad = "Adolescente";
+            } else if (edad >= 18 && edad <= 64) {
+                franjaEdad = "Trabajador";
+            } else {
+                franjaEdad = "Jubilado";
+            }
+
+            console.log("%c" + nombre + " tiene " + edad + " años y por tanto es " + franjaEdad, "font-weight: bold;");
+        </script>
+    </body>
+    
+</html>

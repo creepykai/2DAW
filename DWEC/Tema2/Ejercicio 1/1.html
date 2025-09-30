@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 1 - Tema 2</title>
+    </head>
+    <body>
+        <!--1.	Escribe un fragmento de código donde se aprecie la diferencia de usar los tipos de variables let, var y const.-->
+        <h1>Ejercicio 1 - Tema 2</h1>
+        <script>
+            // var
+            var x = 10;
+            console.log("Valor inicial de x (var): " + x); // 10
+            if (true) {
+                var x = 20; // La variable x se redeclara y se reasigna
+                console.log("Valor de x dentro del bloque (var): " + x); // 20
+            }
+            console.log("Valor de x fuera del bloque (var): " + x); // 20
+
+            // let
+            let y = 10;
+            console.log("Valor inicial de y (let): " + y); // 10
+            if (true) {
+                let y = 20; // Nueva variable y en el ámbito del bloque
+                console.log("Valor de y dentro del bloque (let): " + y); // 20
+            }
+            console.log("Valor de y fuera del bloque (let): " + y); // 10
+
+            // const
+            const z = 10;
+            console.log("Valor inicial de z (const): " + z); // 10
+            // z = 20; // Esto causará un error porque z es una constante
+            if (true) {
+                const z = 20; // Nueva variable z en el ámbito del bloque
+                console.log("Valor de z dentro del bloque (const): " + z); // 20
+            }
+            console.log("Valor de z fuera del bloque (const): " + z); // 10
+        </script>
+    </body>
+</html>

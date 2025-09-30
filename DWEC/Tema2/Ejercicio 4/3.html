@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 4.3 - Tema 2</title>
+    </head>
+    <body>
+    <!--3.	Crea un programa que genere un listado de horas que vayan desde las 9 hasta las 21 de 5 minutos en 5 minutos. 
+    Utiliza la instrucción document.write(“Mensaje”) que muestra los datos en el propio HTML.-->
+        <h1>Ejercicio 4.3 - Tema 2</h1>
+        <script>
+                const horaInicio = 9 * 60; 
+                const horaFin = 21 * 60; 
+                const intervalo = 5; 
+                
+                for (let minutos = horaInicio; minutos <= horaFin; minutos += intervalo) {
+                    let hora = minutos / 60
+                    document.write(hora + ":" + (minutos - (hora * 60)) + "<br>");
+                }
+        </script>
+    </body>
+</html>
