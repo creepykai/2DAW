@@ -1,5 +1,5 @@
 body {
-    background-color: #f5f7fa;
+    background-color: #ffffff;
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@ header::after {
     z-index: 0;
 }
 
-header .hero-text {
+header .cabecera {
     position: relative;
     z-index: 1;
 }
@@ -48,7 +48,7 @@ nav {
     z-index: 2;
 }
 
-nav ul.listasinpuntos {
+nav ul.menu {
     list-style: none;
     display: flex;
     gap: 24px;
