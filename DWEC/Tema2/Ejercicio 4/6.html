@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 4.6 - Tema 2</title>
+    </head>
+    <body>
+        <!-- 6. Crea un programa en JavaScript para calcular la letra de un DNI que debe introducir el usuario por teclado -->
+
+        <h1>Ejercicio 4.6 - Tema 2</h1>
+        <script>
+            let numeroDNI = prompt("Por favor, introduce tu número de DNI (sin letra):");
+            let letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+            let indice = numeroDNI % 23;
+
+            let letraDNI = letrasDNI[indice];
+
+            document.write("El DNI completo es: " + numeroDNI + letraDNI);
+        </script>
+    </body>
+</html>
