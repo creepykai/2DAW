@@ -6,17 +6,17 @@
         <title>Ejercicio 4.5 - Tema 2</title>
     </head>
     <body>
-        <!--5.	Escribe un conversor de tiempo. El programa pide al usuario una cantidad de días, horas y minutos, y el programa devolverá 
-        la cantidad de segundos que son.-->
+    <!--5.	Escribe un conversor de tiempo. El programa pide al usuario una cantidad de días, horas y minutos, y el programa devolverá la cantidad de segundos que son.-->
+
         <h1>Ejercicio 4.5 - Tema 2</h1>
         <script>
-            var dias = prompt("Introduce los días:");
-            var horas = prompt("Introduce las horas:");
-            var minutos = prompt("Introduce los minutos:");
+            let dias = parseInt(prompt("Por favor, introduce una cantidad de días:"));
+            let horas = parseInt(prompt("Por favor, introduce una cantidad de horas:"));
+            let minutos = parseInt(prompt("Por favor, introduce una cantidad de minutos:"));
 
-            var segundosTotales = (parseInt(dias) * 86400) + (parseInt(horas) * 3600) + (parseInt(minutos) * 60);
+            let totalSegundos = (dias * 86400) + (horas * 3600) + (minutos * 60);
 
-            alert("El total de segundos es: " + segundosTotales);
+            document.write(dias + " días, " + horas + " horas y " + minutos + " minutos son un total de " + totalSegundos + " segundos.");
         </script>
     </body>
 </html>

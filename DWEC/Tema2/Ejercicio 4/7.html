@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4.7 - Tema 2</title>
+</head>
+<body>
+    <!-- 7.	Crea una función que determine si un año es bisiesto o no. Un año es bisiesto si es divisible por 4, pero no por 100, a menos que sea divisible por 400. -->
+
+    <h1>Ejercicio 4.7 - Tema 2</h1>
+    <script>
+        let anio = parseInt(prompt("Por favor, introduce un año:"));
+        if ((anio % 4 === 0 && anio % 100 !== 0) && (anio % 400 === 0)) {
+        document.write(anio + " es un año bisiesto.");
+        } else {
+        document.write(anio + " no es un año bisiesto.");
+        }
+    </script>
+</body>
+</html>

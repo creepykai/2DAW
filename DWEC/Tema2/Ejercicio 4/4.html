@@ -20,7 +20,8 @@
         <script>
             var nombre = prompt("Por favor, introduce tu nombre:");
             var edad = parseInt(prompt("Por favor, introduce tu edad:"));
-            var franjaEdad = "";
+            var franjaEdad;
+
             if (edad <= 12) {
                 franjaEdad = "Niño";
             } else if (edad >= 13 & edad <= 17) {
