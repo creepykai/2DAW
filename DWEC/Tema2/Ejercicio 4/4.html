@@ -20,19 +20,19 @@
         <script>
             var nombre = prompt("Por favor, introduce tu nombre:");
             var edad = parseInt(prompt("Por favor, introduce tu edad:"));
-            var franjaEdad;
-
+            var franjaEdad = "";
             if (edad <= 12) {
                 franjaEdad = "Niño";
-            } else if (edad >= 13 && edad <= 17) {
+            } else if (edad >= 13 & edad <= 17) {
                 franjaEdad = "Adolescente";
-            } else if (edad >= 18 && edad <= 64) {
+            } else if (edad >= 18 & edad <= 64) {
                 franjaEdad = "Trabajador";
             } else {
                 franjaEdad = "Jubilado";
             }
 
             console.log("%c" + nombre + " tiene " + edad + " años y por tanto es " + franjaEdad, "font-weight: bold;");
+
         </script>
     </body>
     
