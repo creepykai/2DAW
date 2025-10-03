@@ -15,8 +15,17 @@
                 const intervalo = 5; 
                 
                 for (let minutos = horaInicio; minutos <= horaFin; minutos += intervalo) {
-                    let hora = minutos / 60
-                    document.write(hora + ":" + (minutos - (hora * 60)) + "<br>");
+                    let hora = parseInt(minutos / 60)
+                    if (minutos % 60 === 0) {
+                        minuto = "00";
+                    }
+                    else if (minutos % 60 < 10) {
+                        minuto = "0" + (minutos - (hora * 60));
+                    }
+                    else {
+                        minuto = minutos - (hora * 60);
+                    }
+                    document.write(hora + ":" + minuto + "<br>");
                 }
         </script>
     </body>
