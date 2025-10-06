@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--4.	Crea un script que pregunte al usuario por el nombre de un mes, y muestre el número de días que tiene el mes. 
+    Además, escribe los meses que tienen los mismos días. Puedes suponer que los nombres de los meses están escritos únicamente en minúsculas.-->
+    <script>
+        let mes = prompt("Escribe el nombre de un mes en minúsculas:");
+
+        switch(mes) {
+            case "enero":
+            case "marzo":
+            case "mayo":
+            case "julio":
+            case "agosto":
+            case "octubre":
+            case "diciembre":
+                document.write(`${mes} tiene 31 días <br>`);
+                document.write(`Meses con 31 días: enero, marzo, mayo, julio agosto, octubre y diciembre`);
+                break;
+
+            case "abril":
+            case "junio":
+            case "septiembre":
+            case "noviembre":
+                document.write(`${mes} tiene 30 días <br>`);
+                document.write(`Meses con 31 días: abril, junio, septiembre, noviembre`);
+                break;
+
+            case "febrero":
+                document.write(`${mes} tiene 28 días (29 en años bisiestos) <br>`);
+                document.write(`Meses con 28 o 29 días: Solo febrero`);
+                break;
+
+            default:
+                document.write("El mes introducido no es válido");
+        }
+    </script>
+</body>
+</html>

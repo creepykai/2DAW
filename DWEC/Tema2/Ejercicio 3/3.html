@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--3.	Escribir una página que genere el juego del PUM hasta 100. Es decir, que escriba los números separados por coma y cada vez que encuentre un número terminado 
+    en 7 o múltiplo de 7 escriba PUM y cambie de línea.-->
+    <script>
+         for (let i = 1; i <= 100; i++) {
+            if (i % 7 === 0 || i % 10 === 7) {
+                document.write("PUM<br>");
+            } else {
+                if (i < 100) {
+                    document.write(i + ", ");
+                } else {
+                    document.write(i); 
+                }
+            }
+        }
+    </script>
+</body>
+</html>

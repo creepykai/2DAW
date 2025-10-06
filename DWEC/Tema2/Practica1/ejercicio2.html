@@ -11,7 +11,11 @@
 
     <script>
         let num = prompt("Escribe un número de 0 a 999");
-        centenas = 
+        let centenas = parseInt(num / 100);
+        let decenas = parseInt((num % 100) / 10);
+        let unidades = num % 10;
+
+        document.write(`${num} tiene ${centenas} centenas, ${decenas} decenas, ${unidades} unidades`)
     </script>
     </body>
 </html>

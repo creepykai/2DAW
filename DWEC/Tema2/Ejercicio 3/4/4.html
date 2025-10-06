@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3.4 Tema 2</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    table {
+        border-collapse: collapse;
+        margin: 20px 0;
+        width: 250px;
+    }
+    th {
+        background-color: #333;
+        color: white;
+        padding: 8px;
+    }
+    td {
+        border: 1px solid #666;
+        padding: 6px;
+        text-align: center;
+    }
+    h2 {
+        margin-top: 40px;
+    }
+    </style>
+</head>
+<body>
+     <!--1. Página Web con HTML, CSS y Javascript donde se muestra la tabla de multiplicar de un número, la de sumar y la de dividir. 
+    Se utilizarán los tres tipos de bucles.-->
+    <h1>Tablas con bucles</h1>
+
+    <script>
+        let numero = parseInt(prompt("Introduce un número:"));
+
+        // TABLA DE MULTIPLICAR (for)
+        document.write("<h2>Tabla de multiplicar (for)</h2>");
+        document.write("<table><tr><th>Operación</th><th>Resultado</th></tr>");
+        for (let i = 1; i <= 10; i++) {
+            document.write("<tr><td>" + numero + " × " + i + "</td><td>" + (numero * i) + "</td></tr>");
+        }
+        document.write("</table>");
+
+        // TABLA DE SUMAR (while)
+        document.write("<h2>Tabla de sumar (while)</h2>");
+        document.write("<table><tr><th>Operación</th><th>Resultado</th></tr>");
+        let j = 1;
+        while (j <= 10) {
+            document.write("<tr><td>" + numero + " + " + j + "</td><td>" + (numero + j) + "</td></tr>");
+            j++;
+        }
+        document.write("</table>");
+
+        // TABLA DE DIVIDIR (do...while)
+        document.write("<h2>Tabla de dividir (do...while)</h2>");
+        document.write("<table><tr><th>Operación</th><th>Resultado</th></tr>");
+        let k = 1;
+        do {
+            document.write("<tr><td>" + numero + " ÷ " + k + "</td><td>" + (numero / k) + "</td></tr>");
+            k++;
+        } while (k <= 10);
+        document.write("</table>");
+    </script>
+</body>
+</html>
