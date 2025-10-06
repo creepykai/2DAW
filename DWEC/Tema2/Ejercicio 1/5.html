@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1.5 Tema 1</title>
+</head>
+<body>
+    <!--5.	Desarrolla un programa con la lógica que desees donde expliques las diferencias de usar los operadores a++, a--, ++a y --a.-->
+    <script>
+        // POST-INCREMENTO (a++)
+        let a = 5;
+        let b = a++;   // primero b = 5, luego a pasa a 6
+        console.log("a++ → b = " + b + ", a = " + a);
+        // Resultado: b = 5, a = 6
+
+        // PRE-INCREMENTO (++a)
+        a = 5;
+        b = ++a;       // primero a pasa a 6, luego b = 6
+        console.log("++a → b = " + b + ", a = " + a);
+        // Resultado: b = 6, a = 6
+
+        // POST-DECREMENTO (a--)
+        a = 5;
+        b = a--;       // primero b = 5, luego a pasa a 4
+        console.log("a-- → b = " + b + ", a = " + a);
+        // Resultado: b = 5, a = 4
+
+        // PRE-DECREMENTO (--a)
+        a = 5;
+        b = --a;       // primero a pasa a 4, luego b = 4
+        console.log("--a → b = " + b + ", a = " + a);
+        // Resultado: b = 4, a = 4
+    </script>
+</body>
+</html>

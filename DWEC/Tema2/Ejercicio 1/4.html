@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--4.	Elabora una calculadora. El programa pedirá al usuario un número, después un símbolo (+,-,*,/,**,%) y después otro número. 
+    El programa debe mostrar por consola el resultado de la operación.-->
+    <script>
+        let num1 = parseFloat(prompt("Introduce el primer número"));
+        let simbol = prompt("Introduce el símbolo (+, -, *, /, **, %)");
+        let num2 = parseFloat(prompt("Introduce el segundo número"));
+
+        let resultado;
+
+        switch (simbol) {
+            case "+":
+                resultado = num1 + num2;
+                break;
+            case "-":
+                resultado = num1 - num2;
+                break;
+            case "*":
+                resultado = num1 * num2;
+                break;
+            case "/":
+                resultado = num1 / num2;
+                break;
+            case "**":
+                resultado = num1 ** num2; // potencia
+                break;
+            case "%":
+                resultado = num1 % num2;  // resto
+                break;
+            default:
+                resultado = "Símbolo no válido";
+        }
+
+        console.log(`Resultado: ${resultado}`);
+        
+    </script>
+</body>
+</html>
