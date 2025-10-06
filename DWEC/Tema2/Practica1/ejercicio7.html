@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 1.7 Tema 2</title>
+</head>
+<body>
+    <!--7.	Realiza un pequeño adivinador, de manera que primero le pida al usuario un número, y después otro usuario (distinto al primero) deberá adivinarlo. 
+    El programa dará pequeñas pistas al usuario que adivina (indicando si el número buscado es más pequeño o más mayor que el introducido).
+El usuario únicamente tendrá 6 intentos para encontrar la solución. En cada intento se debe indicar el número de intentos restantes que le quedan al usuario.
+-->
+    <script>
+        let numero_secreto = parseInt(prompt("Jugador1. introduce el número a adivinar"));
+        let intentos = 6;
+        let adivinado = false;
+
+        while (intentos > 0 && !adivinado){
+            let intento = parseInt(prompt("Jugador2. Introduce un número. Intentos disponibles " + intentos));
+
+            if (intento === numero_secreto){
+                document.write(`Correcto ${numero_secreto} es el número secreto.`);
+                adivinado = true;
+            } else if (intento > numero_secreto){
+                alert("El número es menor");
+            } else {
+                alert("El número es mayor");
+            }
+            intentos--;
+        }
+
+        if (!adivinado){
+            document.write(`Has perdido. Ya no quedan intentos. Número secreto ${numero_secreto}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 1.6 Tema 2</title>
+</head>
+<body>
+    <!--6.	Crea un script que muestre en el documento HTML el resultado de multiplicar todos los números que sean múltiplos de 3 entre el 1 y el 30.-->
+    <script>
+        let resultado = 1;
+        for (let i = 1; i <= 30; i++){
+            if (i % 3 === 0){
+                resultado = resultado * i;
+            }
+        }
+        
+        document.write(`El resultado de multiplicar los múltiplos de tres del 1 al 30 es ${resultado}`)
+    </script>
+</body>
+</html>

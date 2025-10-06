@@ -6,7 +6,9 @@
     <title></title>
 </head>
 <body>
-    <!---->
+    <!--7.	Realiza un pequeño adivinador, de manera que primero le pida al usuario un número, y después otro usuario (distinto al primero) deberá adivinarlo. El programa dará pequeñas pistas al usuario que adivina (indicando si el número buscado es más pequeño o más mayor que el introducido).
+El usuario únicamente tendrá 6 intentos para encontrar la solución. En cada intento se debe indicar el número de intentos restantes que le quedan al usuario.
+-->
     <script>
     
     </script>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 1.5 Tema 2</title>
+</head>
+<body>
+    <!--5.	Crea un script que pregunte constantemente números al usuario y los escriba en la página web separados por un espacio en blanco, hasta que el usuario introduzca el número cero. 
+    El número cero final no debe ser escrito en la página web.-->
+    <script>
+        let num = parseInt(prompt("Introduce un número (0 para terminar)"));
+
+        while (num !== 0){
+            document.write(`${num} `)
+            num = parseInt(prompt("Introduce un número (0 para terminar)"));
+        }
+    </script>
+</body>
+</html>
