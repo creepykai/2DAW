@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2.5 Tema 2</title>
+</head>
+<body>
+    <!--5.	Escribir un programa que calcule la suma de los números pares en un rango específico.-->
+    <script>
+        let inicio = parseInt(prompt("Introduce el número inicial del rango:"));
+        let fin = parseInt(prompt("Introduce el número final del rango:"));
+
+        let suma = 0;
+
+        for (let i = inicio; i <= fin; i++) {
+            if (i % 2 === 0) { 
+                suma += i;
+            }
+        }
+
+        console.log("La suma de los números pares entre " + inicio + " y " + fin + " es: " + suma);
+    </script>
+</body>
+</html>

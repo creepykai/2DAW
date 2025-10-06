@@ -19,7 +19,7 @@
         const aum_5 = 1.05;
         const aum_7 = 1.07;
         const aum_10 = 1.10;
-        var sueldo = 40000;
+        let sueldo = 40000;
 
         if (anios >= 10) {
             sueldo = sueldo * aum_10;
@@ -27,8 +27,8 @@
             sueldo = sueldo * aum_7;
         } else if (anios >= 3) {
             sueldo = sueldo * aum_5;
-        } else (anios < 3) {
-            sueldo = sueldo  * aum_3;
+        } else {
+            sueldo = sueldo  * aum_3
         }
     
         console.log(`Llevas ${anios} años trabajados, tu sueldo es ${sueldo}`);

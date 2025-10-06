@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3.1 Tema 2</title>
+</head>
+<body>
+    <!--1.	Crea una página web que muestre un formulario con dos cajas de texto: nombre del alumno y nota del alumno y un botón de Calificar. 
+    Cuando pulsemos el botón nos mostrará un mensaje si el alumno está aprobado o suspenso.-->
+    <h2>Calificación de alumnos</h2>
+    <form>
+        <label>Nombre del alumno: </label>
+        <input type="text" id="nombre"><br><br>
+
+        <label>Nota del alumno: </label>
+        <input type="number" id="nota"><br><br>
+
+        <button type="button" onclick="
+            let nombre = document.getElementById('nombre').value;
+            let nota = parseFloat(document.getElementById('nota').value);
+            if (nota >= 5) {
+                document.write(nombre + ' está aprobado con un ' + nota);
+            } else {
+                document.write(nombre + ' está suspenso con un ' + nota);
+            } ">
+
+            Calificar
+        </button>
+    </form>
+</body>
+</html>

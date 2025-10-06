@@ -1,5 +1,0 @@
-UT2. Actividad 3
-1.	Crea una página web que muestre un formulario con dos cajas de texto: nombre del alumno y nota del alumno y un botón de Calificar. Cuando pulsemos el botón nos mostrará un mensaje si el alumno está aprobado o suspenso.
-2.	Crea una página HTML que permita al usuario introducir tres números y luego muestra cuál de los números es el mayor. 
-3.	Escribir una página que genere el juego del PUM hasta 100. Es decir, que escriba los números separados por coma y cada vez que encuentre un número terminado en 7 o múltiplo de 7 escriba PUM y cambie de línea.
-4.	Página Web con HTML, CSS y Javascript donde se muestra la tabla de multiplicar de un número, la de sumar y la de dividir. Se utilizarán los tres tipos de bucles.

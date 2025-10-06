@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--4.	Escribe un programa que ponga en práctica la siguiente lógica:
+    •	Mostrará el siguiente menú y el usuario deberá elegir una de las opciones:
+        a)	Área del triángulo (b*h/2)
+        b)	Área del rectángulo (b*h)
+        c)	Área del círculo (PI*r2)
+        d)	Salir
+    •	En función de la opción que elija el usuario, se le pedirán los datos necesarios en cada caso
+    •	El programa calculará el resultado y lo mostrará en la consola
+    •	La lógica anterior se repetirá indefinidamente hasta que el usuario pulse la tecla de Salir.
+    -->
+    <script>
+        do {
+            console.log("Seleccione el número de opción del menú");
+            console.log("a. Área del triángulo (b*h/2)");
+            console.log("b. Area del círculo (PI*r2)")
+            console.log("c. Área del rectángulo (b*h)");
+            console.log("d. Salir");
+            let opcion = prompt("Escribe la opción");
+            
+            switch (opcion) {
+                case "a":
+                    let baseT = parseFloat(prompt("Introduce la base del triángulo"));
+                    let alturaT = parseFloat(prompt("Introduce la altura del triángulo"));
+                    console.log("Área del triángulo: " + (baseT * alturaT / 2));
+                    break;
+
+                case "b":
+                    let radio = parseFloat(prompt("Introduce el radio del círculo"));
+                    console.log("Área del círculo: " + (3.14 * radio * radio));
+                    break;
+
+                case "c":
+                    let baseR = parseFloat(prompt("Introduce la base del rectángulo"));
+                    let alturaR = parseFloat(prompt("Introduce la altura del rectángulo"));
+                    console.log("Área del rectángulo: " + (baseR * alturaR));
+                    break;
+
+                case "d":
+                    console.log("Saliendo del programa...");
+                    break;
+
+                default:
+                    console.log("Opción no válida. Intente de nuevo.");
+            } 
+
+        } while (opcion !== "d");
+        
+    </script>
+</body>
+</html>
