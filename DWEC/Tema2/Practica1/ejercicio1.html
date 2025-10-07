@@ -6,27 +6,34 @@
         <title>Práctica 1.1 - Tema 2</title>
     </head>
     <body>
-    <!--1.	Crea un documento HTML donde se muestre tu nombre, tus apellidos y el curso que estudias, cada elemento en una nueva línea. Después inserta una tabla con bordes donde aparezcan los módulos que tienes en el curso. La impresión de los datos en el documento HTML debe ser realizada desde un script de JavaScript (innerHTML).
-En la página habrá un botón que cuando se pulse te preguntará cuál es tu módulo favorito, y lo mostrará debajo de la tabla de módulos.
--->
+    <!--1.	Crea un documento HTML donde se muestre tu nombre, tus apellidos y el curso que estudias, cada elemento en una nueva línea. 
+    Después inserta una tabla con bordes donde aparezcan los módulos que tienes en el curso. La impresión de los datos en el documento HTML 
+    debe ser realizada desde un script de JavaScript (innerHTML).
+    En la página habrá un botón que cuando se pulse te preguntará cuál es tu módulo favorito, y lo mostrará debajo de la tabla de módulos.
+    -->
         <h1>Practica 1 - Ejercicio 1</h1>
-         <script>
-            document.write("Nombre: Irene<br>");
-            document.write("Apellidos: Diges García<br>");
-            document.write("Curso: 2º DAW<br><br>");
-            document.write("<table border='1'>");
-            document.write("<tr><th>Módulos</th></tr>");
-            document.write("<tr><td>DWEC</td></tr>");
-            document.write("<tr><td>DWES</td></tr>");
-            document.write("<tr><td>DIW</td></tr>");
-            document.write("<tr><td>PIMD</td></tr>");
-            document.write("<tr><td>EIE</td></tr>");
-            document.write("<tr><td>DAW</td></tr>");
-            document.write("</table><br>");
-        </script>
-
-        <button onclick="document.write('Tu módulo favorito es: ' + prompt('¿Cuál es tu módulo favorito?'));">
-            ¿Cuál es tu módulo favorito?
+        <p id = "texto"></p>
+        <p id="resultado"></p>
+        <button onclick="
+        let modulo = prompt('Introduce tu módulo favorito');
+        document.getElementById('resultado').innerHTML = `Tu modulo favorito es ${modulo}`">
+            ¿Cuál es tu módulo favorito? 
         </button>
+        
+         <script>
+            document.getElementById('texto').innerHTML =
+            "Nombre: Irene<br>" +
+            "Apellidos: Diges García<br>" +
+            "Curso: 2º DAW<br><br>" +
+            "<table border='1'>" +
+            "<tr><th>Módulos</th></tr>" +
+            "<tr><td>DWEC</td></tr>" +
+            "<tr><td>DWES</td></tr>" +
+            "<tr><td>DIW</td></tr>" +
+            "<tr><td>PIMD</td></tr>" +
+            "<tr><td>EIE</td></tr>" +
+            "<tr><td>DAW</td></tr>" +
+            "</table><br>"
+        </script>
     </body>
 </html>
