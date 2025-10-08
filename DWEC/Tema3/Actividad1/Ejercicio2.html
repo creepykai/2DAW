@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio1.2</title>
+</head>
+<body>
+    <!--2.	Modifica el script anterior para que nos muestre también un mensaje si hoy es tu cumpleaños-->
+    <script>
+        console.log(Date());
+
+        let fecha = new Date(); 
+
+        let dia_cumple = parseInt(prompt("Introduce el día de tu nacimiento (número):"));
+        let mes_cumple = parseInt(prompt("Introduce el mes de tu nacimiento (número):"));
+        let anio_cumple = parseInt(prompt("Introduce el año de tu nacimiento (número):"));
+
+        let nacimiento = new Date(anio_cumple, mes_cumple - 1, dia_cumple);
+
+        let edad = fecha.getFullYear() - nacimiento.getFullYear();
+
+        let mes_actual = fecha.getMonth();
+        let dia_actual = fecha.getDate();
+
+        if (mes_actual < nacimiento.getMonth() || (mes_actual === nacimiento.getMonth() && dia_actual < nacimiento.getDate())) {
+            edad--;
+        }
+
+        document.write(`Tu edad es: ${edad} años`);
+        
+        if (dia_actual === dia_cumple && mes_actual === (mes_cumple - 1)) {
+        document.write(" ¡Feliz Cumpleaños!");
+        }
+
+    </script>
+</body>
+</html>

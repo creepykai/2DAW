@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio1.4</title>
+</head>
+<body>
+    <!--4.	Realiza el mismo programa que el anterior, pero quitando los fines de semana.-->
+    <script>
+        let fecha = new Date();
+
+        let dia_hoy = fecha.getDate();
+        let mes_hoy = fecha.getMonth(); 
+        let anio_hoy = fecha.getFullYear();
+
+        let dia_fin = 21;
+        let mes_fin = 5;  
+        let anio_fin = anio_hoy;
+
+
+        if (mes_hoy > mes_fin || (mes_hoy == mes_fin && dia_hoy > dia_fin)) {
+            anio_fin = anio_hoy + 1;
+        }
+
+        let fin_curso = new Date(anio_fin, mes_fin, dia_fin);
+
+        let c_dias_lectivos = 0;
+
+        let fecha_aux = new Date(anio_hoy, mes_hoy, dia_hoy);
+
+        while (fecha_aux <= fin_curso) {
+            let dia_semana = fecha_aux.getDay(); 
+            if (dia_semana !== 0 && dia_semana !== 6) {
+                c_dias_lectivos++;
+            }
+            fecha_aux.setDate(fecha_aux.getDate() + 1);
+        }
+
+        document.write(`Quedan ${c_dias_lectivos} días de clase (sin contar fines de semana).`);
+</script>
+
+</body>
+</html>

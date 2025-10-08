@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1.3</title>
+</head>
+<body>
+    <!--3.	Crea un programa que muestre el número de días que quedan desde hoy hasta el fin de curso (por ejemplo, el 21 de junio). 
+    Recuerda que los meses empiezan desde el número cero.-->
+    <script>
+        let fecha = new Date();
+
+        let diaHoy = fecha.getDate();
+        let mesHoy = fecha.getMonth(); 
+        let anioHoy = fecha.getFullYear();
+
+
+        let diaFin = 21;
+        let mesFin = 5;  
+        let anioFin = anioHoy;
+        
+        let diasRestantes = (diaFin - diaHoy) + ((mesFin - mesHoy) * 30);
+
+        if (mesHoy > mesFin || (mesHoy == mesFin && diaHoy > diaFin)) {
+            anioFin = anioHoy + 1;
+            diasRestantes = (diaFin - diaHoy) + ((mesFin + 12 - mesHoy) * 30);
+        }
+
+        document.write(`Quedan ${diasRestantes} días de clase`);
+    </script>
+</body>
+</html>

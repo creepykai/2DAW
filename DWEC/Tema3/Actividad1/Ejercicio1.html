@@ -9,15 +9,25 @@
     <!--Calcular la edad de una persona con objetos Date-->
     <script>
         console.log(Date());
-        let fecha = new Date();
-        let dia_cumple= prompt(parseInt("Introduce el día de tu nacimiento (numero)"));
-        let mes_cumple = prompt(parseInt("Introduce el mes de tu nacimiento (numero)"));
-        let anio_cumple = prompt(parseInt("Introduce el año de tu nacimiento (numero)"));
 
-        let nacimiento = newdate(anio_cumple, mes_cumple, dia_cumple)
+        let fecha = new Date(); 
 
-        let edad = todo
-    
+        let dia_cumple = parseInt(prompt("Introduce el día de tu nacimiento (número):"));
+        let mes_cumple = parseInt(prompt("Introduce el mes de tu nacimiento (número):"));
+        let anio_cumple = parseInt(prompt("Introduce el año de tu nacimiento (número):"));
+
+        let nacimiento = new Date(anio_cumple, mes_cumple - 1, dia_cumple);
+
+        let edad = fecha.getFullYear() - nacimiento.getFullYear();
+
+        let mes_actual = fecha.getMonth();
+        let dia_actual = fecha.getDate();
+
+        if (mes_actual < nacimiento.getMonth() || (mes_actual === nacimiento.getMonth() && dia_actual < nacimiento.getDate())) {
+            edad--;
+        }
+
+        document.write(`Tu edad es: ${edad} años`);
     </script>
 </body>
 </html>

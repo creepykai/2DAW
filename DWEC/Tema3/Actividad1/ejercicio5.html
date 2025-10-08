@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio1.5</title>
+</head>
+<body>
+    <!--5.	Crea un programa que pida por parámetro tu cumpleaños (no hace falta el año) y saque todos los años en que tu cumpleaños va a caer en domingo desde este año hasta el año 2100-->
+    <script>
+        let fecha = new Date();
+        
+        let dia_cumple = parseInt(prompt("Introduce el día de tu cumpleaños (número):"));
+        let mes_cumple = parseInt(prompt("Introduce el mes de tu cumpleaños (número):")) - 1; 
+        
+        let anio_actual = fecha.getFullYear();
+
+        document.write(`Tu cumpleaños caerá en domingo en los siguientes años:<br><br>`);
+
+        for (let anio = anio_actual; anio <= 2100; anio++) {
+            let cumple = new Date(anio, mes_cumple, dia_cumple);
+            let dia_semana = cumple.getDay(); 
+            if (dia_semana === 0) {
+                document.write(`${anio} <br>`);
+            }
+        }
+    </script>
+</body>
+</html>
