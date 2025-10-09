@@ -1,0 +1,23 @@
+.cajas{
+    color: white;
+    margin: 3px;
+    padding: 5px;
+    width: 100px;
+    display: inline-block;
+}
+
+#cajaAzul{
+    background-color: blue;
+} 
+
+#cajaVerde{
+    background-color: green;
+}
+
+#cajaRojo{
+    background-color: red;
+}
+
+#cajaNegro {
+    background-color: black;
+}
