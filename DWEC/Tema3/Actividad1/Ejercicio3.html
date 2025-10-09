@@ -11,23 +11,19 @@
     <script>
         let fecha = new Date();
 
-        let diaHoy = fecha.getDate();
-        let mesHoy = fecha.getMonth(); 
-        let anioHoy = fecha.getFullYear();
+        let dia_hoy = fecha.getDate();
+        let mes_hoy = fecha.getMonth(); 
 
-
-        let diaFin = 21;
-        let mesFin = 5;  
-        let anioFin = anioHoy;
+        let dia_fin = 21;
+        let mes_fin = 5;  
         
-        let diasRestantes = (diaFin - diaHoy) + ((mesFin - mesHoy) * 30);
+        let dias_restantes = (dia_fin - dia_hoy) + ((mes_fin - mes_hoy) * 30);
 
-        if (mesHoy > mesFin || (mesHoy == mesFin && diaHoy > diaFin)) {
-            anioFin = anioHoy + 1;
-            diasRestantes = (diaFin - diaHoy) + ((mesFin + 12 - mesHoy) * 30);
+        if (mes_hoy > mes_fin || (mes_hoy == mes_fin && dia_hoy > dia_fin)) {
+            dias_restantes = (dia_fin - dia_hoy) + ((mes_fin + 12 - mes_hoy) * 30);
         }
 
-        document.write(`Quedan ${diasRestantes} días de clase`);
+        document.write(`Quedan ${dias_restantes} días de clase`);
     </script>
 </body>
 </html>
