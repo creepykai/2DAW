@@ -1,0 +1,18 @@
+.caja{
+    display: inline-block;
+    width: 300px;
+    margin-left: 3px;
+    margin-left: 3px;
+}
+
+#titulo{
+    border-style: dotted;
+    background-color: rgb(73, 30, 113);
+    color: white;
+    margin: 1px;
+}
+
+#info{
+    background-color: rgb(171, 117, 223);
+
+}

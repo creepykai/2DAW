@@ -2,6 +2,11 @@
     width: 300px;
     height: 300px;
     margin: 20px;
-    background-color: blue;
+    border: 20px;
+    border-color: blue;
     padding: 40px;
+}
+
+.foto{
+    align-content: center;
 }
