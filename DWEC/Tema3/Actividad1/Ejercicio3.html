@@ -14,9 +14,12 @@
         let dia_hoy = fecha.getDate();
         let mes_hoy = fecha.getMonth(); 
 
+
+        // Corregir poner las fechas como new date("YYYY/MM/DD") 
+
         let dia_fin = 21;
         let mes_fin = 5;  
-        
+
         let dias_restantes = (dia_fin - dia_hoy) + ((mes_fin - mes_hoy) * 30);
 
         if (mes_hoy > mes_fin || (mes_hoy == mes_fin && dia_hoy > dia_fin)) {
