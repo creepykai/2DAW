@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ejemplo 2 String</title>
+</head>
+<body>
+    <!---->
+    <script>
+    let nombre = "Irene";
+    let apellido = "Diges";
+
+    let saludo = new String("Hola Mundo");
+
+
+    console.log(nombre, apellido);
+
+    //Longitud de la cadena
+    console.log(nombre.length);
+
+    //Devuelve la letra en la posición entre parentesis
+    console.log(nombre.charAt(3));
+    console.log(nombre[3]); //Hace lo mismo
+
+    //Mayúsculas / Minúsculas
+
+    console.log(nombre.toLowerCase());
+    console.log(nombre.toUpperCase());
+
+    //Sacar la posición de la primera y última O
+    console.log(saludo.indexOf("o"));
+    console.log(saludo.lastIndexOf("o"));
+
+    //Empieza o termina por do
+    console.log(saludo.startsWith("do"));
+    console.log(saludo.endsWith("do"));
+
+    //Reemplazar
+    console.log(saludo.replace("mundo", "a todos"));
+
+    //Quitar espacios en blanco
+    console.log(saludo.trim());
+
+    //Sale desde un caracter al otro sin incluir el último, es decir 2 3 y 4
+    console.log(saludo.Slice(2,5));
+    console.log(saludo.slice(-5));
+
+    //Saca ese trozo de cadena de 2 al 4
+    console.log(saludo.substring(2,5));
+
+    //Lo separa por las ,
+    console.log(saludo.split(","));
+
+    //Diferencia de slice y substr: 
+    //substr : no acepta valores negativos, si inicio>fin lo gira, slice lo deja como cadena vacia
+    //Es mejor usar slice
+
+    </script>
+</body>
+</html>

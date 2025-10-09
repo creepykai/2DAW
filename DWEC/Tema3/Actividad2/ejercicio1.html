@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--1.	Escribe un programa que solicite al usuario una cadena de texto y un número y muestre:
+    •	La cadena en mayúsculas
+    •	La cadena en minúsculas
+    •	La longitud de la cadena
+    •	Una subcadena que tenga la longitud especificada por el número.
+    •	Por último, que muestre cada palabra de la cadena por separado.
+    -->
+    <script>
+        let cadena = prompt("Escribe una cadena de texto");
+        let num = parseInt(prompt("Escribe un número"));
+
+        console.log(`Minúscula: ${cadena.toLowerCase()}`);
+        console.log(`Mayúsculas: ${cadena.toUpperCase()}`);
+        console.log(`Longitud: ${cadena.length}`);
+
+        console.log(`Subcadena: ${cadena.slice(0,num)}`);
+        console.log(`Separado: ${cadena.split(" ")}`);
+    
+    </script>
+</body>
+</html>
