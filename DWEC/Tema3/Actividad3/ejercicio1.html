@@ -19,7 +19,36 @@ Si el usuario introduce 3, se le pedirá un decimal por pantalla y se mostrará 
 Si el usuario introduce 4, se le pedirá un ángulo (entre 0 y 360) y se le mostrarán por pantalla los valores trigonométricos del seno, coseno y tangente.
 -->
     <script>
-    
+    let opcion = parseInt(prompt("Elige una opción:\n1. Potencia\n2. Raíz\n3. Redondeo\n4. Trigonometría"));
+
+    if (opcion === 1) {
+        let base = parseFloat(prompt("Introduce la base:"));
+        let exponente = parseFloat(prompt("Introduce el exponente:"));
+        let resultado = Math.pow(base, exponente);
+        document.write(`La potencia de ${base} elevado a ${exponente} es: ${resultado}`);
+
+    } else if (opcion === 2) {
+        let num = parseFloat(prompt("Introduce un número (no negativo):"));
+        let raiz = Math.sqrt(num);
+        document.write(`La raíz de ${num} es: ${raiz}`);
+
+    } else if (opcion === 3) {
+        let decimal = parseFloat(prompt("Introduce un número decimal:"));
+        document.write(`Número original: ${decimal}<br>`);
+        document.write(`Redondeo al entero más próximo: ${Math.round(decimal)}<br>`);
+        document.write(`Redondeo al alza: ${Math.ceil(decimal)}<br>`);
+        document.write(`Redondeo a la baja: ${Math.floor(decimal)}`);
+
+    } else if (opcion === 4) {
+        let angulo = parseFloat(prompt("Introduce un ángulo (0 - 360):"));
+        let radianes = angulo * Math.PI / 180; 
+        document.write(`Seno: ${Math.sin(radianes).toFixed(4)}<br>`);
+        document.write(`Coseno: ${Math.cos(radianes).toFixed(4)}<br>`);
+        document.write(`Tangente: ${Math.tan(radianes).toFixed(4)}`);
+
+    } else {
+        alert("Opción no válida");
+    }
     </script>
 </body>
 </html>

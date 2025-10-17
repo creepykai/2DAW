@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--2.	Crea un programa que pida al usuario el valor del radio y muestre por pantalla:
+    •	El valor del radio.
+    •	El valor del diámetro.
+    •	El valor del perímetro de la circunferencia.
+    •	El valor del área del círculo.
+    •	El valor del área de la esfera.
+    •	El valor del volumen de la esfera.
+    -->
+    <script>
+    let radio = parseFloat(prompt("Introduce el valor del radio en cm:"));
+    let diametro = radio * 2;
+    let perimetro = 2 * Math.PI * radio;
+    let areaCirculo = Math.PI * Math.pow(radio, 2);
+    let areaEsfera = 4 * Math.PI * Math.pow(radio, 2);
+    let volumenEsfera = (4 / 3) * Math.PI * Math.pow(radio, 3);
+
+    document.write(`Radio: ${radio} cm<br>`);
+    document.write(`Diámetro: ${diametro} cm<br>`);
+    document.write(`Perímetro: ${perimetro.toFixed(2)} cm<br>`);
+    document.write(`Área del círculo: ${areaCirculo.toFixed(2)} cm2<br>`);
+    document.write(`Área de la esfera: ${areaEsfera.toFixed(2)} cm2<br>`);
+    document.write(`Volumen de la esfera: ${volumenEsfera.toFixed(2)} cm3`);
+    </script>
+</body>
+</html>

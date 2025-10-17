@@ -1,0 +1,50 @@
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversión manual</title>
+</head>
+<body>
+    <!--3.	Crea un programa que pida al usuario un número entero por pantalla y muestre:
+    •	Su valor exponencial.
+    •	El número con 4 decimales.
+    •	El número en binario.
+    •	El número en octal.
+    •	El número en hexadecimal.
+    -->
+    <script>    
+    let num = parseInt(prompt("Introduce un número entero:"));
+    let original = num;
+
+    let binario = "";
+    let n = num;
+    while (n > 0) {
+        binario = (n % 2) + binario;
+        n = Math.floor(n / 2);
+    }
+
+    n = num;
+    let octal = "";
+    while (n > 0) {
+        octal = (n % 8) + octal;
+        n = Math.floor(n / 8);
+    }
+
+    n = num;
+    let hex = "";
+    const hexChars = "0123456789ABCDEF";
+    while (n > 0) {
+        hex = hexChars[n % 16] + hex;
+        n = Math.floor(n / 16);
+    }
+
+    document.write(`Número original: ${original}<br>`);
+    document.write(`En binario: ${binario}<br>`);
+    document.write(`En octal: ${octal}<br>`);
+    document.write(`En hexadecimal: ${hex}`);
+    </script>
+    </body>
+</html>
