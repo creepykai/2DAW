@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Página 1</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding-top: 50px; }
+    button { margin: 5px; padding: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Estás en la Página 1</h1>
+  <p>Haz clic en el botón para ir a la Página 2</p>
+
+  <button onclick="irPagina2()">Ir a Página 2</button>
+  <button onclick="window.history.forward()">Avanzar</button>
+
+  <script>
+    function irPagina2() {
+      // Redirige a la página 2
+      window.location.href = "history2.html";
+    }
+  </script>
+</body>
+</html>

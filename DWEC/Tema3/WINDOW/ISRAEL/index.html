@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplos con window.open()</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Ejemplos de métodos del objeto window</h1>
+
+  <!-- Botones para abrir y cerrar una ventana secundaria -->
+  <h2>Abrir / cerrar ventana secundaria</h2>
+  <button onclick="abrirVentana()">Abrir ventana</button>
+  <button onclick="cerrarVentana()">Cerrar ventana</button>
+
+  <!-- Botones para manipular la ventana secundaria -->
+  <h2>Manipulación de la ventana secundaria</h2>
+  <button onclick="moverRelativo()">moveBy()</button>
+  <button onclick="moverAbsoluto()">moveTo()</button>
+  <button onclick="redimensionarRelativo()">resizeBy()</button>
+  <button onclick="redimensionarAbsoluto()">resizeTo()</button>
+  <button onclick="quitarFoco()">blur()</button>
+  <button onclick="darFoco()">focus()</button>
+
+  <!-- Botones para manipular la ventana principal -->
+  <h2>Desplazamiento y carga (en esta ventana principal)</h2>
+  <button onclick="scrollRelativo()">scrollBy()</button>
+  <button onclick="scrollAbsoluto()">scrollTo()</button>
+  <button onclick="detenerCarga()">stop()</button>
+  <button onclick="cargarImagen()">Prueba</button>
+
+  <div id="contenedorImagen"></div> 
+  <script>
+    // Variable global para guardar la referencia a la ventana secundaria
+    let nuevaVentana = null;
+
+    // Abre una nueva ventana emergente con ciertas propiedades
+    function abrirVentana() {
+      nuevaVentana = window.open(
+        "", // URL vacía (se genera contenido dinámico)
+        "ventanaSecundaria", // nombre de la ventana
+        "width=400,height=300,resizable=yes,scrollbars=yes" // características
+      );
+
+      // Si la ventana se abre correctamente, se escribe contenido HTML dentro
+      if (nuevaVentana) {
+        nuevaVentana.document.write(`
+          <!DOCTYPE html>
+          <html lang="es">
+          <head>
+            <meta charset="UTF-8">
+            <title>Ventana secundaria</title>
+            <style>
+              body { font-family: Arial; margin: 20px; line-height: 1.6; }
+            </style>
+          </head>
+          <body>
+            <h1>Ventana secundaria</h1>
+          </body>
+          </html>
+        `);
+      } else {
+        // Si el navegador bloquea la ventana emergente, se muestra una alerta
+        alert("El navegador bloqueó la ventana emergente. Actívala para probar.");
+      }
+    }
+
+    // Cierra la ventana secundaria si está abierta
+    function cerrarVentana() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.close();
+      }
+    }
+
+    // Mueve la ventana secundaria 50px a la derecha y abajo desde su posición actual
+    function moverRelativo() {
+      if (nuevaVentana && !nuevaVentana.closed) nuevaVentana.moveBy(50, 50);
+    }
+
+    // Mueve la ventana secundaria a una posición absoluta (200px desde la izquierda, 150px desde arriba)
+    function moverAbsoluto() {
+      if (nuevaVentana && !nuevaVentana.closed) nuevaVentana.moveTo(200, 150);
+    }
+
+    // Aumenta el tamaño de la ventana secundaria en 100px de ancho y alto
+    function redimensionarRelativo() {
+      if (nuevaVentana && !nuevaVentana.closed) nuevaVentana.resizeBy(100, 100);
+    }
+
+    // Establece el tamaño de la ventana secundaria a 600x400 píxeles
+    function redimensionarAbsoluto() {
+      if (nuevaVentana && !nuevaVentana.closed) nuevaVentana.resizeTo(600, 400);
+    }
+
+    // Quita el foco de la ventana secundaria
+    function quitarFoco() {
+      if (nuevaVentana && !nuevaVentana.closed) nuevaVentana.blur();
+    }
+
+    // Da el foco a la ventana secundaria
+    function darFoco() {
+      if (nuevaVentana && !nuevaVentana.closed) nuevaVentana.focus();
+    }
+
+    // Desplaza la ventana principal 200px hacia abajo desde su posición actual
+    function scrollRelativo() {
+      window.scrollBy(0, 200);
+    }
+
+    // Desplaza la ventana principal a la posición (0, 0) — parte superior izquierda
+    function scrollAbsoluto() {
+      window.scrollTo(0, 0);
+    }
+
+    function cargarImagen() {
+      const contenedor = document.getElementById("contenedorImagen");
+      contenedor.innerHTML = ""; // Limpia contenido anterior
+
+      const img = document.createElement("img");
+      img.src = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg"; // Imagen grande (~5MB)
+      img.alt = "Imagen pesada";
+      contenedor.appendChild(img);
+    }
+
+    // Detiene la carga en la ventana principal
+    function detenerCarga() {
+      window.stop();
+    }
+
+  </script>
+</body>
+</html>

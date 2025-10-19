@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo onresize</title>
+</head>
+<body>
+  <h1>Evento onresize</h1>
+  <p id="info"></p>
+  <!-- Muestra en tiempo real la modificacion de tamño de la ventana del navegador. -->
+  <script>
+    const info = document.getElementById('info');
+    function mostrarTamaño() {
+      info.textContent = `Nuevo tamaño - Ancho: ${window.innerWidth}px, Alto: ${window.innerHeight}px`;
+    }
+
+    window.onresize = mostrarTamaño;
+    mostrarTamaño();
+  </script>
+</body>
+</html>

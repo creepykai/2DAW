@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo innerWidth e innerHeight</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    #mensaje {
+      color: darkblue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>innerWidth e innerHeight</h1>
+  <p id="info"></p>
+
+  <script>
+    // Mostramos el ancho y alto actual de la ventana del navegar
+    const info = document.getElementById('info');
+    info.textContent = `Ancho: ${window.innerWidth}px - Alto: ${window.innerHeight}px`;
+
+  </script>
+</body>
+
+</html>

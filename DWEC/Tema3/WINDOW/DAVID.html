@@ -1,0 +1,101 @@
+Js
+
+
+const HTML_BASE = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="utilities.js"></script>
+</head>
+<body>
+<script>
+    function lanzarAlert(){
+    alert("Esto es la funcion alert, salta un pop-up");
+    }
+
+    document.getElementById("ejemplo_blur").blur();
+
+    function lanzarConfirm(){
+        confirm("Devuelve true en aceptar, false en cancelar");
+    }
+
+    document.getElementById("ejemplo_focus").focus();
+
+    function cerrarVentana(){
+        close();
+    }
+
+    function lanzarMoveBy(){
+        nuevaVentana.open();
+        nuevaVentana.document.writeln(HTML_BASE);
+        nuevaVentana.document.writeln("Hola :)<br><hr>");
+        nuevaVentana.document.writeln('<button onclick="cerrarVentana()">Cerrar ventana</button><br><hr>');
+        nuevaVentana.moveTo(200, 150);
+        
+    }
+
+    function lanzarMoveTo(){
+        nuevaVentana.open();
+        nuevaVentana.document.writeln(HTML_BASE);
+        nuevaVentana.document.writeln("Hola :)<br><hr>");
+        nuevaVentana.document.writeln('<button onclick="cerrarVentana()">Cerrar ventana</button><br><hr>');
+        nuevaVentana.moveBy(50, 50);
+    }
+
+    function abrirVentana(){
+        open("https://google.com");
+    }
+
+    function lanzarPrint(){
+        print();
+    }
+
+    function lanzarPrompt(){
+        prompt("Creo que no es necesario explicarlo, verdad?");
+    }
+
+    function lanzarResizeBy(){
+        let nuevaVentana = window.open('', '', 'width=400,height=300');
+        nuevaVentana.document.writeln(HTML_BASE);
+        nuevaVentana.document.writeln("Hola :)<br><hr>");
+        nuevaVentana.document.writeln('<button onclick="cerrarVentana()">Cerrar ventana</button><br><hr>');
+        nuevaVentana.document.writeln('<button onclick="resizeBy(300, 300);">ResizeBy 300x300</button><br><hr>');
+    }
+
+    function lanzarResizeTo(){
+        let nuevaVentana = window.open('', '', 'width=400,height=300');
+        nuevaVentana.document.writeln(HTML_BASE);
+        nuevaVentana.document.writeln("Hola :)<br><hr>");
+        nuevaVentana.document.writeln('<button onclick="cerrarVentana()">Cerrar ventana</button><br><hr>');
+        nuevaVentana.document.writeln('<button onclick="resizeTo(300, 300);">ResizeTo 300x300</button><br><hr>');
+        resizeBy(100, 100);
+    }
+
+    function lanzarScrollBy(){
+        scrollBy(100, 100);
+    }
+
+    function lanzarScrollTo(){
+        scrollTo(100, 100);
+    }
+
+    function lanzarStop(){
+        function iniciarTemporizador(segundos) {
+        let tiempo = segundos;
+        const detener = lanzarStop(() => {
+            document.writeln(`Tiempo restante: ${tiempo--}s`);
+            if (tiempo < 0) detener();
+        });
+        }
+        let nuevaVentana = window.open('', '', 'width=400,height=300');
+        nuevaVentana.document.writeln(HTML_BASE);
+        nuevaVentana.document.writeln("Hola :)<br><hr>");
+        nuevaVentana.document.writeln('<button onclick="stop()">Stopea la pagina</button><br><hr>');
+        iniciarTemporizador(20);
+    }
+</script>
+</body>
+</html>`;
+

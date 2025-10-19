@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo window.navigator</title>
+</head>
+<body>
+  <h1>window.navigator</h1>
+  <ul>
+    <li><strong>Navegador:</strong> <span id="userAgent"></span></li>
+    <li><strong>Idioma:</strong> <span id="language"></span></li>
+  </ul>
+<!-- Contiene información sobre el navegador del usuario y su entorno. -->
+  <script>
+    document.getElementById('userAgent').textContent = window.navigator.userAgent;
+    document.getElementById('language').textContent = window.navigator.language;
+  </script>
+</body>
+</html>

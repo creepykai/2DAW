@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo window.location</title>
+</head>
+<body>
+  <h1>window.location</h1>
+  <p>URL actual: <span id="url"></span></p>
+  <button onclick="redirigir()">Ir a Google</button>
+
+  <script>
+    // Mostramos la URL actual
+    document.getElementById('url').textContent = window.location.href;
+
+    // Nos redirige a la pagina web mediante una función
+    function redirigir() {
+      window.location.href = "https://www.google.com";
+    }
+  </script>
+</body>
+</html>

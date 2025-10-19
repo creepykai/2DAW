@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo onload</title>
+</head>
+
+<body>
+  <h1>Evento onload</h1>
+  <p>Abre la consola para ver el mensaje.</p>
+
+  <script>
+    // Abriendo la consola vemos como ha finalizado la carga de la pagina con el siguiente mensaje
+    window.onload = () => {
+      console.log("✅ La página ha cargado completamente");
+      alert("La página ha cargado completamente");
+    };
+  </script>
+</body>
+
+</html>
