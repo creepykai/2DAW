@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Propiedades del objeto window</title>
+</head>
+<body>
+  <h1>Propiedades del objeto window</h1>
+
+  <h2>window.innerWidth / window.innerHeight</h2>
+  <p id="tamaño"></p>
+
+  <h2>window.location</h2>
+  <p id="url"></p>
+  <button onclick="redirigir()">Ir a Google</button>
+
+  <h2>window.history</h2>
+  <button onclick="window.history.back()">Volver atrás</button>
+  <button onclick="window.history.forward()">Avanzar</button>
+
+  <h2>window.navigator</h2>
+  <p id="navegador"></p>
+
+  <h2>window.screen</h2>
+  <p id="pantalla"></p>
+
+  <script>
+    // innerWidth / innerHeight
+    document.getElementById("tamaño").textContent =
+      `Ancho visible: ${window.innerWidth}px | Alto visible: ${window.innerHeight}px`;
+
+    // location
+    document.getElementById("url").textContent = `URL actual: ${window.location.href}`;
+    function redirigir() {
+      window.location.href = "https://www.google.com";
+    }
+
+    // navigator
+    document.getElementById("navegador").textContent =
+      `Navegador: ${window.navigator.userAgent} | Idioma: ${window.navigator.language}`;
+
+    // screen
+    document.getElementById("pantalla").textContent =
+      `Resolución de pantalla: ${window.screen.width}px x ${window.screen.height}px`;
+  </script>
+</body>
+</html>

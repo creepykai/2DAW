@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Métodos de desplazamiento y carga</title>
+</head>
+<body style="height: 2000px;">
+  <h1>Métodos relacionados con desplazamiento y carga</h1>
+
+  <p>Haz scroll en esta página y usa los botones para probar los métodos.</p>
+
+  <button onclick="scrollRelativo()">scrollBy()</button>
+  <button onclick="scrollAbsoluto()">scrollTo()</button>
+  <button onclick="detenerCarga()">stop()</button>
+
+  <script>
+    // Desplaza la página 200px hacia abajo
+    function scrollRelativo() {
+      window.scrollBy(0, 200);
+    }
+
+    // Vuelve al inicio de la página
+    function scrollAbsoluto() {
+      window.scrollTo(0, 0);
+    }
+
+    // Detiene la carga de la página actual
+    function detenerCarga() {
+      window.stop();
+      alert("Carga detenida.");
+    }
+  </script>
+</body>
+</html>

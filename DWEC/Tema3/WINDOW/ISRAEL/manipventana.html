@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Métodos de manipulación de la ventana</title>
+</head>
+<body>
+  <h1>Métodos de manipulación de la ventana</h1>
+
+  <button onclick="abrirVentana()">Abrir ventana secundaria</button>
+  <button onclick="cerrarVentana()">Cerrar ventana</button>
+  <br><br>
+
+  <button onclick="moverRelativo()">moveBy()</button>
+  <button onclick="moverAbsoluto()">moveTo()</button>
+  <button onclick="redimensionarRelativo()">resizeBy()</button>
+  <button onclick="redimensionarAbsoluto()">resizeTo()</button>
+  <button onclick="quitarFoco()">blur()</button>
+  <button onclick="darFoco()">focus()</button>
+
+  <script>
+    let nuevaVentana = null;
+
+    // Abre una ventana secundaria vacía
+    function abrirVentana() {
+      nuevaVentana = window.open("", "", "width=400,height=300,resizable=yes,scrollbars=yes");
+      if (nuevaVentana) {
+        nuevaVentana.document.write("<h2>Ventana secundaria</h2>");
+        nuevaVentana.document.write("<p>Prueba los botones para mover o redimensionar esta ventana.</p>");
+      } else {
+        alert("El navegador bloqueó la ventana emergente.");
+      }
+    }
+
+    // Cierra la ventana secundaria
+    function cerrarVentana() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.close();
+      } else {
+        alert("No hay ninguna ventana abierta.");
+      }
+    }
+
+    // Mueve la ventana 50px hacia la derecha y abajo
+    function moverRelativo() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.moveBy(50, 50);
+      }
+    }
+
+    // Mueve la ventana a una posición específica
+    function moverAbsoluto() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.moveTo(200, 150);
+      }
+    }
+
+    // Aumenta el tamaño actual en 100x100
+    function redimensionarRelativo() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.resizeBy(100, 100);
+      }
+    }
+
+    // Fija el tamaño de la ventana a 600x400
+    function redimensionarAbsoluto() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.resizeTo(600, 400);
+      }
+    }
+
+    // Quita el foco de la ventana
+    function quitarFoco() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.blur();
+      }
+    }
+
+    // Da el foco a la ventana
+    function darFoco() {
+      if (nuevaVentana && !nuevaVentana.closed) {
+        nuevaVentana.focus();
+      }
+    }
+  </script>
+</body>
+</html>

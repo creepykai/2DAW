@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Métodos de control de ventana</title>
+</head>
+<body>
+  <h1>Ejemplos de control de ventana</h1>
+
+  <button onclick="abrirVentana()">open()</button>
+  <button onclick="cerrarVentana()">close()</button>
+  <button onclick="lanzarPrint()">print()</button>
+
+  <script>
+    function abrirVentana(){
+      open("https://google.com");
+    }
+
+    function cerrarVentana(){
+      close();
+    }
+
+    function lanzarPrint(){
+      print();
+    }
+  </script>
+</body>
+</html>

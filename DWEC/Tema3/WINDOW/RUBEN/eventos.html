@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eventos del objeto window</title>
+  <style>
+    body {
+      height: 2000px; /* para poder probar el scroll */
+    }
+  </style>
+</head>
+<body>
+  <h1>Eventos del objeto window</h1>
+
+  <h2>onload</h2>
+  <p>Se ejecuta cuando la página ha cargado completamente.</p>
+
+  <h2>onresize</h2>
+  <p id="tamaño"></p>
+
+  <h2>onscroll y onbeforeunload</h2>
+  <p>Desplázate o intenta cerrar la pestaña para ver los eventos en acción.</p>
+
+  <script>
+    // onload
+    window.onload = () => {
+      console.log("✅ La página ha cargado completamente");
+      alert("La página ha cargado completamente");
+    };
+
+    // onresize
+    const info = document.getElementById('tamaño');
+    function mostrarTamaño() {
+      info.textContent = `Nuevo tamaño - Ancho: ${window.innerWidth}px, Alto: ${window.innerHeight}px`;
+    }
+    window.onresize = mostrarTamaño;
+    mostrarTamaño();
+
+    // onscroll
+    window.onscroll = () => {
+      console.log("📜 Se está haciendo scroll. Posición Y:", window.scrollY);
+    };
+
+    // onbeforeunload
+    window.onbeforeunload = (event) => {
+      event.preventDefault();
+      event.returnValue = "¿Estás seguro de que quieres salir de la página?";
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplos de alert, confirm y prompt</title>
+</head>
+<body>
+  <h1>Ejemplos de métodos del objeto window</h1>
+
+  <button onclick="lanzarAlert()">alert()</button>
+  <button onclick="lanzarConfirm()">confirm()</button>
+  <button onclick="lanzarPrompt()">prompt()</button>
+
+  <script>
+    function lanzarAlert(){
+      alert("Esto es la funcion alert, salta un pop-up");
+    }
+
+    function lanzarConfirm(){
+      confirm("Devuelve true en aceptar, false en cancelar");
+    }
+
+    function lanzarPrompt(){
+      prompt();
+    }
+  </script>
+</body>
+</html>
