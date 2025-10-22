@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tarea 5 – figuras</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .contenedor {
+            width: 760px;
+            margin: 24px auto;
+            text-align: center;
+        }
+
+        .contenedor > div {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin: 12px;
+            vertical-align: top;
+        }
+
+        .figura1 {
+            background-color: rgb(59, 1, 72);
+            border: 16px solid rgb(8, 107, 8);
+        }
+
+        .figura2 {
+            background-color: rgb(88, 211, 80);
+            border: 10px dotted rgb(128, 39, 128);
+            border-radius: 22px;
+        }
+
+        /* Círculo con bisel simulado solo con bordes (sin gradientes) */
+        .figura3 {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: rgb(207, 106, 18); /* centro naranja */
+        border: 15px solid; /* borde más ancho */
+        border-color:rgb(5, 60, 63) rgb(5, 60, 63) rgb(14, 154, 163) rgb(14, 154, 163);
+        transform: rotate(90deg); /* crea la inclinación suave */
+        }
+
+        .figura4 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(210, 22, 18); /* rojo del centro */
+            border: 14px solid; /* borde grueso */
+            border-top-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            box-sizing: border-box;
+            border-color: rgb(0, 0, 0) rgb(10, 138, 10) rgb(10, 138, 10) rgb(0, 0, 0);
+            border-image: linear-gradient(135deg, 
+            rgb(0, 0, 0) 50%, 
+            rgb(10, 138, 10) 50%) 1;
+        }
+
+
+
+        .figura5 {
+            background-color: rgb(58, 50, 123);
+            border: 10px solid rgb(209, 27, 158);
+            outline: 10px solid rgb(122, 10, 115);
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            border-bottom-left-radius: 70px;
+            border-bottom-right-radius: 22px;
+        }
+
+        .figura6 {
+            background-color: rgb(107, 177, 122);
+            border: 12px solid rgb(209, 27, 27);
+            border-top-left-radius: 120px 80px;
+            border-bottom-right-radius: 120px 80px;
+        }
+
+        .figura7 {
+            background-color: rgb(113, 138, 153);
+            border: 14px solid rgb(154, 160, 26);
+            outline: 12px solid rgb(202, 209, 58);
+            border-bottom-width: 8px;
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+        }
+
+        .figura8 {
+            background-color: rgb(230, 197, 228);
+            border: 12px solid rgb(10, 161, 10);
+            border-radius: 70% 70% 58% 58% / 70% 70% 40% 40%;
+        }
+
+        .figura9 {
+            background-color: rgb(196, 146, 140);
+            border: 8px solid rgb(130, 91, 127);
+            outline: 8px solid rgb(187, 124, 174);
+            border-radius: 26px;
+        }
+
+        .figura10 {
+            background-color: rgb(233, 178, 111);
+            border: 16px solid rgb(0, 39, 184);
+            border-top-left-radius: 120px 80px;
+            border-bottom-right-radius: 120px 80px;
+            border-top-right-radius: 34px 12px;
+            border-bottom-left-radius: 34px 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="figura1"></div>
+        <div class="figura2"></div>
+        <div class="figura3"></div>
+        <div class="figura4"></div>
+        <div class="figura5"></div>
+
+        <div class="figura6"></div>
+        <div class="figura7"></div>
+        <div class="figura8"></div>
+        <div class="figura9"></div>
+        <div class="figura10"></div>
+    </div>
+
+</body>
+</html>
