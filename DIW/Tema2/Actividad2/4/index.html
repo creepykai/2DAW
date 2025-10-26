@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .contenedor-exterior {
+            background-color: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .caja {
+            width: 250px;
+            height: 150px;
+            margin: 50px;
+            background-color: rgb(5, 5, 211);
+            color: rgb(255, 255, 255);
+            border: 3px dotted rgb(255, 0, 0);
+
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .caja h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .caja p {
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        #caja-html {
+            overflow: visible;
+        }
+
+        #caja-js {
+            overflow: scroll;
+        }
+
+        #caja-backend {
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-exterior">
+        
+        <div class="caja" id="caja-html">
+            <h4>HTML</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Este texto extra hará que se desborde por abajo.</p>
+        </div>
+        
+        <div class="caja">
+            <h4>CSS</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <div class="caja" id="caja-js">
+            <h4>JavaScript</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+
+        <div class="caja" id="caja-backend">
+            <h4>Backend</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

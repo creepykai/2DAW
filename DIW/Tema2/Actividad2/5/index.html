@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 4 - Tarjeta de Presentación</title>
+    
+    <style>
+        body {
+            background-color: #333;
+            display: grid;
+            place-items: center;
+            margin: 0;
+        }
+
+        .tarjeta-presentacion {
+            width: 350px;
+            height: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+
+            background-image: url(fondo.jpg);
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: cover;
+
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            font-family: serif;
+            font-weight: 300;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 14px;
+        }
+
+        .tarjeta-presentacion h2 {
+            font-family: serif;
+            font-weight: 700;
+            font-size: 26px;
+            color: #ffffff;
+            margin: 0 0 5px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .tarjeta-presentacion .profesion {
+            font-family: serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #c4c4c4;
+            margin: 0 0 20px 0;
+            border-bottom: 1px solid #616161;
+            padding-bottom: 10px;
+        }
+        
+        .tarjeta-presentacion p {
+            margin: 8px 0;
+        }
+        
+        .tarjeta-presentacion .contacto {
+            font-style: italic;
+            font-size: 13px;
+        }
+        
+        .tarjeta-presentacion .descripcion {
+             font-size: 13px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="tarjeta-presentacion">
+        
+        <h2>Irene Diges García</h2>
+        
+        <p class="profesion">Desarrolladora Web</p>
+        
+        <p class="contacto">Contacto: idigesg02@gmail.com</p>
+        
+        <p class="descripcion">Especialista en back-end.</p>
+
+    </div>
+
+</body>
+</html>
