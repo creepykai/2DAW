@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #121220;
+    background-color: #1a1a2e;
     color: #e0e0e0;
     display: flex;
     justify-content: center;
@@ -54,44 +54,4 @@ body {
 
 .botones button:active {
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.numero {
-    background-color: #3e3e5a;
-}
-.numero:hover {
-    background-color: #4e4e6a;
-}
-
-.operador {
-    background-color: #6a3d9a;
-    color: white;
-}
-.operador:hover {
-    background-color: #7b4eab;
-}
-
-.funcion {
-    background-color: #5a3a8a;
-    color: white;
-    font-size: 1.3em;
-}
-.funcion:hover {
-    background-color: #6b4a9a;
-}
-
-.borrar {
-    background-color: #e74c3c;
-    color: white;
-}
-.borrar:hover {
-    background-color: #c0392b;
-}
-
-.igual {
-    background-color: #9b59b6;
-    color: white;
-}
-.igual:hover {
-    background-color: #8e44ad;
 }
