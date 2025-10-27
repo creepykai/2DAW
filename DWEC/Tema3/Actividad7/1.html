@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad7. Ejercicio 1</title>
+</head>
+<body>
+    <input type="text" id="element-text" placeholder="Escribe un texto"/> 
+    <button id="add-element-text" onclick="agregarElemento()">Agregar Elemento</button> 
+
+    <ul id="element-container">
+    </div>
+
+    <script>
+        let ul = document.getElementById("element-container"); 
+
+        function agregarElemento(){
+            let text = document.getElementById("element-text").value; 
+            const nuevoElemento = document.createElement("li"); 
+            nuevoElemento.textContent = text; 
+            nuevoElemento.classList.add("clsElemento"); 
+            container.appendChild(nuevoElemento);
+        }
+
+    </script>
+</body>
+</html>

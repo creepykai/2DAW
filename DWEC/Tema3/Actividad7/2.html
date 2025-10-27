@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 7. Ejercicio 2</title>
+</head>
+<body>
+    <button id="adding" onclick = "imagen()">Agregar</button>
+    <div id="div"></div>
+    <script>
+        let div = document.getElementById("div");
+
+        function imagen(){
+            const img = document.createElement("img");
+            img.src = "kuromi.jpg";
+            div.appendChild(img);
+        }
+    </script>
+</body>
+</html>
