@@ -3,11 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <title>Calculadora Científica</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="handle_function('sin')" class="function">sin</button>
+            <button onclick="handle_function('cos')" class="function">cos</button>
+            <button onclick="handle_function('tan')" class_name="function">tan</button>
+            <button onclick="clear_display()" class="clear">C</button>
+            
+            <button onclick="handle_function('log')" class_name="function">log</button>
+            <button onclick="handle_function('sqrt')" class_name="function">√</button>
+            <button onclick="append('**')" class="operator">x^y</button>
+            <button onclick="handle_function('exp')" class_name="function">e^x</button>
+            
+            <button onclick="append('7')" class="number">7</button>
+            <button onclick="append('8')" class="number">8</button>
+            <button onclick="append('9')" class="number">9</button>
+            <button onclick="append('/')" class="operator">/</button>
+            
+            <button onclick="append('4')" class="number">4</button>
+            <button onclick="append('5')" class="number">5</button>
+            <button onclick="append('6')" class="number">6</button>
+            <button onclick="append('*')" class="operator">*</button>
+            
+            <button onclick="append('1')" class="number">1</button>
+            <button onclick="append('2')" class="number">2</button>
+            <button onclick="append('3')" class="number">3</button>
+            <button onclick="append('-')" class="operator">-</button>
+            
+            <button onclick="append('0')" class="number">0</button>
+            <button onclick="append('.')" class="number">.</button>
+            <button onclick="calculate()" class="equals">=</button>
+            <button onclick="append('+')" class="operator">+</button>
+        </div>
+    </div>
+
     <script>
-    
+        var display_element = document.getElementById('display'); 
+
+        function append(value) {
+            display_element.value += value;
+        }
+
+        function clear_display() {
+            display_element.value = '';
+        }
+
+        function handle_function(func) {
+            var current_value = parseFloat(display_element.value);
+            var result;
+
+            if (func === 'sin') {
+                result = Math.sin(current_value); 
+            } else if (func === 'cos') {
+                result = Math.cos(current_value); 
+            } else if (func === 'tan') {
+                result = Math.tan(current_value); 
+            } else if (func === 'log') {
+                if (current_value <= 0) {
+                    result = 'Error';
+                } else {
+                    result = Math.log10(current_value); 
+                }
+            } else if (func === 'sqrt') {
+                if (current_value < 0) {
+                    result = 'Error';
+                } else {
+                    result = Math.sqrt(current_value); 
+                }
+            } else if (func === 'exp') {
+                result = Math.exp(current_value); 
+            }
+
+            display_element.value = result;
+        }
+
+        function calculate() {
+            var expression = display_element.value;
+            
+            var result_function = new Function('return ' + expression);
+            var result = result_function();
+
+            var fixed_result = result.toFixed(10);
+            display_element.value = parseFloat(fixed_result);
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,109 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e; /* Fondo principal muy oscuro */
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal de la calculadora */
+.calculator {
+    width: 340px;
+    background-color: #2c2c3e; /* Fondo de la calculadora */
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #9b59b6;
+}
+
+/* Pantalla de visualización */
+#display {
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    background-color: #1a1a2e; /* Fondo de la pantalla */
+    border: 1px solid #4a4a6a;
+    border-radius: 8px;
+    font-size: 2.5em;
+    text-align: right;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+    outline: none;
+}
+
+/* Contenedor de los botones (Grid) */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+    gap: 12px; /* Espacio entre botones */
+}
+
+/* Estilo base de los botones */
+button {
+    font-size: 1.6em;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #4a4a6a; /* Color base de botón (oscuro) */
+    color: #e0e0e0;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    background-color: #5a5a7a; /* Color al pasar el ratón */
+}
+
+button:active {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3); /* Efecto al presionar */
+}
+
+/* Colores específicos para tipos de botones */
+
+/* Números (0-9, .) */
+.number {
+    background-color: #3e3e5a;
+}
+.number:hover {
+    background-color: #4e4e6a;
+}
+
+/* Operadores (+, -, *, /, x^y) */
+.operator {
+    background-color: #6a3d9a; /* Morado para operadores */
+    color: white;
+}
+.operator:hover {
+    background-color: #7b4eab;
+}
+
+/* Funciones (sin, cos, log...) */
+.function {
+    background-color: #5a3a8a; /* Morado más oscuro para funciones */
+    color: white;
+    font-size: 1.3em; /* Letra más pequeña para que quepa "sin", "cos" */
+}
+.function:hover {
+    background-color: #6b4a9a;
+}
+
+/* Botón de Limpiar (C) */
+.clear {
+    background-color: #e74c3c; /* Rojo/Naranja para 'Limpiar' */
+    color: white;
+}
+.clear:hover {
+    background-color: #c0392b;
+}
+
+/* Botón de Igual (=) */
+.equals {
+    background-color: #9b59b6; /* Morado brillante para 'Igual' */
+    color: white;
+}
+.equals:hover {
+    background-color: #8e44ad;
+}
