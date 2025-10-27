@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .contenedor {
+            width: 760px;
+            margin: 24px auto;
+            text-align: left;
+        }
+
+        .contenedor > div {
+            display: inline-block;
+            margin: 12px;
+            vertical-align: top;
+        }
+
+        .figura1 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(59, 1, 72);
+            border: 16px solid rgb(8, 107, 8);
+        }
+
+        .figura2 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(88, 211, 80);
+            border: 10px dotted rgb(128, 39, 128);
+            border-radius: 22px;
+        }
+
+        .figura3 {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: rgb(207, 106, 18);
+            border: 15px solid;
+            border-color: rgb(5, 60, 63) rgb(5, 60, 63) rgb(14, 154, 163) rgb(14, 154, 163);
+            transform: rotate(90deg);
+        }
+
+        .figura4 {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(210, 22, 18);
+            border-radius: 70px 0 70px 0px;
+            box-sizing: border-box;
+        }
+
+        .figura4::before {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            border: 10px solid;
+            border-color: rgb(10, 138, 10) rgb(10, 138, 10) rgb(0, 0, 0) rgb(0, 0, 0);
+            border-radius: 80px 0 80px 0px;
+            box-sizing: border-box;
+        }
+
+        .figura4::after {
+            content: "";
+            position: absolute;
+            inset: -20px;
+            border: 10px solid;
+            border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgb(10, 138, 10) rgb(10, 138, 10);
+            border-radius: 90px 0 90px 0px;
+            box-sizing: border-box;
+        }
+
+        .figura5 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(58, 50, 123);
+            border: 10px double rgb(209, 27, 158);
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            border-bottom-left-radius: 70px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .figura6 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(158, 207, 170);
+            border: 10px dashed rgb(189, 1, 1);
+            border-top-left-radius: 0px;
+            border-top-right-radius: 120px;
+            border-bottom-left-radius: 120px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .figura7 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(113, 138, 153);
+            border-top: 14px solid rgb(154, 160, 26);
+            border-right: 14px solid rgb(202, 209, 58);
+            border-bottom: 14px solid rgb(202, 209, 58);
+            border-left: 14px solid rgb(154, 160, 26);
+            border-radius: 70px 70px 0 0;
+        }
+
+        .figura8 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(233, 201, 208);
+            border: 14px solid rgb(82, 189, 82);
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 70px;
+            transform: rotate(135deg);
+        }
+
+        .figura9 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(197, 169, 175);
+            border: 10px double rgb(136, 61, 143);
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 70px;
+        }
+
+        .figura10 {
+            width: 120px;
+            height: 120px;
+            background-color: rgb(212, 168, 131);
+            border: 14px solid;
+            border-top-left-radius: 120px;
+            border-bottom-right-radius: 120px;
+            box-sizing: border-box;
+            border-color: rgb(0, 0, 0) rgb(17, 0, 255) rgb(17, 0, 255) rgb(0, 0, 0);
+        }
+
+        .figura11 {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            background: linear-gradient(to right, rgb(81, 190, 38) 50%, rgb(210, 50, 30) 50%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+        }
+
+        .figura12 {
+            width: 0;
+            height: 0;
+            border-top: 100px solid rgb(16, 167, 140);
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-radius: 50%;
+        }
+
+        .figura13 {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(rgb(200, 38, 32) 0deg 280deg, transparent 280deg 360deg);
+            transform: rotate(130deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="figura1"></div>
+        <div class="figura2"></div>
+        <div class="figura3"></div>
+        <div class="figura4"></div>
+        <div class="figura5"></div>
+
+        <div class="figura6"></div>
+        <div class="figura7"></div>
+        <div class="figura8"></div>
+        <div class="figura9"></div>
+        <div class="figura10"></div>
+
+        <div class="figura11"></div>
+        <div class="figura12"></div>
+        <div class="figura13"></div>
+    </div>
+</body>
+</html>
