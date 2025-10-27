@@ -1,7 +1,6 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #1a1a2e; /* Fondo principal muy oscuro */
+    background-color: #121220;
     color: #e0e0e0;
     display: flex;
     justify-content: center;
@@ -10,20 +9,18 @@ body {
     margin: 0;
 }
 
-/* Contenedor principal de la calculadora */
-.calculator {
+.calculadora {
     width: 340px;
-    background-color: #2c2c3e; /* Fondo de la calculadora */
+    background-color: #2c2c3e;
     border-radius: 12px;
     padding: 20px;
     border: 1px solid #9b59b6;
 }
 
-/* Pantalla de visualización */
-#display {
+#pantalla {
     width: 100%;
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
-    background-color: #1a1a2e; /* Fondo de la pantalla */
+    box-sizing: border-box;
+    background-color: #1a1a2e;
     border: 1px solid #4a4a6a;
     border-radius: 8px;
     font-size: 2.5em;
@@ -34,76 +31,67 @@ body {
     outline: none;
 }
 
-/* Contenedor de los botones (Grid) */
-.buttons {
+.botones {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
-    gap: 12px; /* Espacio entre botones */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
 }
 
-/* Estilo base de los botones */
-button {
+.botones button {
     font-size: 1.6em;
     padding: 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #4a4a6a; /* Color base de botón (oscuro) */
+    background-color: #4a4a6a;
     color: #e0e0e0;
     transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-button:hover {
-    background-color: #5a5a7a; /* Color al pasar el ratón */
+.botones button:hover {
+    background-color: #5a5a7a;
 }
 
-button:active {
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3); /* Efecto al presionar */
+.botones button:active {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Colores específicos para tipos de botones */
-
-/* Números (0-9, .) */
-.number {
+.numero {
     background-color: #3e3e5a;
 }
-.number:hover {
+.numero:hover {
     background-color: #4e4e6a;
 }
 
-/* Operadores (+, -, *, /, x^y) */
-.operator {
-    background-color: #6a3d9a; /* Morado para operadores */
+.operador {
+    background-color: #6a3d9a;
     color: white;
 }
-.operator:hover {
+.operador:hover {
     background-color: #7b4eab;
 }
 
-/* Funciones (sin, cos, log...) */
-.function {
-    background-color: #5a3a8a; /* Morado más oscuro para funciones */
+.funcion {
+    background-color: #5a3a8a;
     color: white;
-    font-size: 1.3em; /* Letra más pequeña para que quepa "sin", "cos" */
+    font-size: 1.3em;
 }
-.function:hover {
+.funcion:hover {
     background-color: #6b4a9a;
 }
 
-/* Botón de Limpiar (C) */
-.clear {
-    background-color: #e74c3c; /* Rojo/Naranja para 'Limpiar' */
+.borrar {
+    background-color: #e74c3c;
     color: white;
 }
-.clear:hover {
+.borrar:hover {
     background-color: #c0392b;
 }
 
-/* Botón de Igual (=) */
-.equals {
-    background-color: #9b59b6; /* Morado brillante para 'Igual' */
+.igual {
+    background-color: #9b59b6;
     color: white;
 }
-.equals:hover {
+.igual:hover {
     background-color: #8e44ad;
 }

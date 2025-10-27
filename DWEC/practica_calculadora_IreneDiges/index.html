@@ -1,96 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora Científica</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Hoja de estilos para la presentación de la calculadora -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- Contenedor principal de la calculadora -->
+    <div class="calculadora">
+        <!-- Pantalla de resultados (solo lectura, se escribe desde JS) -->
+        <input type="text" id="pantalla" readonly />
 
-    <div class="calculator">
-        <input type="text" id="display" readonly>
-        <div class="buttons">
-            <button onclick="handle_function('sin')" class="function">sin</button>
-            <button onclick="handle_function('cos')" class="function">cos</button>
-            <button onclick="handle_function('tan')" class_name="function">tan</button>
-            <button onclick="clear_display()" class="clear">C</button>
-            
-            <button onclick="handle_function('log')" class_name="function">log</button>
-            <button onclick="handle_function('sqrt')" class_name="function">√</button>
-            <button onclick="append('**')" class="operator">x^y</button>
-            <button onclick="handle_function('exp')" class_name="function">e^x</button>
-            
-            <button onclick="append('7')" class="number">7</button>
-            <button onclick="append('8')" class="number">8</button>
-            <button onclick="append('9')" class="number">9</button>
-            <button onclick="append('/')" class="operator">/</button>
-            
-            <button onclick="append('4')" class="number">4</button>
-            <button onclick="append('5')" class="number">5</button>
-            <button onclick="append('6')" class="number">6</button>
-            <button onclick="append('*')" class="operator">*</button>
-            
-            <button onclick="append('1')" class="number">1</button>
-            <button onclick="append('2')" class="number">2</button>
-            <button onclick="append('3')" class="number">3</button>
-            <button onclick="append('-')" class="operator">-</button>
-            
-            <button onclick="append('0')" class="number">0</button>
-            <button onclick="append('.')" class="number">.</button>
-            <button onclick="calculate()" class="equals">=</button>
-            <button onclick="append('+')" class="operator">+</button>
+        <!-- Zona de botones dispuestos en grid -->
+        <div class="botones">
+            <!-- Se crean los botones que llaman a la función que realizará la acción -->
+            <!-- fila 1 -->
+            <button onclick="aplicar_funcion('sin')" class="funcion">sin</button>
+            <button onclick="aplicar_funcion('cos')" class="funcion">cos</button>
+            <button onclick="aplicar_funcion('tan')" class="funcion">tan</button>
+            <button onclick="limpiar_pantalla()" class="borrar">C</button>
+
+            <!-- fila 2 -->
+            <button onclick="aplicar_funcion('log')" class="funcion">log</button>
+            <button onclick="aplicar_funcion('sqrt')" class="funcion">√</button>
+            <button onclick="manejar_operador('pow')" class="operador">x^y</button>
+            <button onclick="aplicar_funcion('exp')" class="funcion">e^x</button>
+
+            <!-- fila 3 -->
+            <button onclick="agregar_a_pantalla('7')" class="numero">7</button>
+            <button onclick="agregar_a_pantalla('8')" class="numero">8</button>
+            <button onclick="agregar_a_pantalla('9')" class="numero">9</button>
+            <button onclick="manejar_operador('/')" class="operador">/</button>
+
+            <!-- fila 4 -->
+            <button onclick="agregar_a_pantalla('4')" class="numero">4</button>
+            <button onclick="agregar_a_pantalla('5')" class="numero">5</button>
+            <button onclick="agregar_a_pantalla('6')" class="numero">6</button>
+            <button onclick="manejar_operador('*')" class="operador">*</button>
+
+            <!-- fila 5 -->
+            <button onclick="agregar_a_pantalla('1')" class="numero">1</button>
+            <button onclick="agregar_a_pantalla('2')" class="numero">2</button>
+            <button onclick="agregar_a_pantalla('3')" class="numero">3</button>
+            <button onclick="manejar_operador('-')" class="operador">-</button>
+
+            <!-- fila 6 -->
+            <button onclick="agregar_a_pantalla('0')" class="numero">0</button>
+            <button onclick="agregar_a_pantalla('.')" class="numero">.</button>
+            <button onclick="calcular_resultado()" class="igual">=</button>
+            <button onclick="manejar_operador('+')" class="operador">+</button>
+
         </div>
     </div>
 
     <script>
-        var display_element = document.getElementById('display'); 
+        // Referencia a la pantalla (input) donde mostramos números y resultados
+        const elemento_pantalla = document.getElementById('pantalla');
 
-        function append(value) {
-            display_element.value += value;
+        // Estado simple de la calculadora:
+        // - valor_guardado: almacena el primer operando
+        // - operador_actual: operador pendiente (+, -, *, /, pow)
+        // - reiniciar_pantalla: indica si el siguiente dígito debe empezar desde vacío
+        let valor_guardado = null;
+        let operador_actual = null;
+        let reiniciar_pantalla = false;
+
+        // Agrega dígitos o el punto a la pantalla respetando el estado
+        function agregar_a_pantalla(valor) {
+            // Si venimos de mostrar un resultado o de un error, limpiamos para empezar número nuevo
+            if (reiniciar_pantalla || elemento_pantalla.value === 'Error') {
+                elemento_pantalla.value = '';
+                reiniciar_pantalla = false;
+            }
+            // Evitar más de un punto decimal seguido en el mismo número
+            if (valor === '.') {
+                const texto = elemento_pantalla.value;
+                if (texto.indexOf('.') !== -1 && (operador_actual === null || reiniciar_pantalla === false)) {
+                    return;
+                }
+            }
+            // Concatenar el carácter en pantalla
+            elemento_pantalla.value += valor;
         }
 
-        function clear_display() {
-            display_element.value = '';
+        // Limpia todo el estado y vacía la pantalla
+        function limpiar_pantalla() {
+            elemento_pantalla.value = '';
+            valor_guardado = null;
+            operador_actual = null;
+            reiniciar_pantalla = false;
         }
 
-        function handle_function(func) {
-            var current_value = parseFloat(display_element.value);
-            var result;
-
-            if (func === 'sin') {
-                result = Math.sin(current_value); 
-            } else if (func === 'cos') {
-                result = Math.cos(current_value); 
-            } else if (func === 'tan') {
-                result = Math.tan(current_value); 
-            } else if (func === 'log') {
-                if (current_value <= 0) {
-                    result = 'Error';
-                } else {
-                    result = Math.log10(current_value); 
-                }
-            } else if (func === 'sqrt') {
-                if (current_value < 0) {
-                    result = 'Error';
-                } else {
-                    result = Math.sqrt(current_value); 
-                }
-            } else if (func === 'exp') {
-                result = Math.exp(current_value); 
+        // Gestiona cuándo se pulsa un operador: guarda el valor y el operador elegido
+        function manejar_operador(op) {
+            // Convertimos lo que haya en pantalla a número
+            const numero_actual = parseFloat(elemento_pantalla.value);
+            // Si no hay número válido no hacemos nada
+            if (isNaN(numero_actual)) {
+                return;
             }
 
-            display_element.value = result;
+            // Primera vez: guardamos el número actual
+            if (valor_guardado === null) {
+                valor_guardado = numero_actual;
+            // Si ya había un operador pendiente y no hemos reiniciado, resolvemos primero
+            } else if (operador_actual !== null && !reiniciar_pantalla) {
+                valor_guardado = operar(valor_guardado, numero_actual, operador_actual);
+                elemento_pantalla.value = formatear_resultado(valor_guardado);
+            }
+
+            // Actualizamos el operador y marcamos que el siguiente número empieza nuevo
+            operador_actual = op;
+            reiniciar_pantalla = true;
         }
 
-        function calculate() {
-            var expression = display_element.value;
-            
-            var result_function = new Function('return ' + expression);
-            var result = result_function();
+        // Calcula el resultado de la operación pendiente (si hay) con el número actual
+        function calcular_resultado() {
+            const numero_actual = parseFloat(elemento_pantalla.value);
 
-            var fixed_result = result.toFixed(10);
-            display_element.value = parseFloat(fixed_result);
+            // Si no hay número válido, no calculamos
+            if (isNaN(numero_actual)) {
+                return;
+            }
+            // Si no hay operación pendiente, solo formateamos el número actual
+            if (operador_actual === null || valor_guardado === null) {
+                elemento_pantalla.value = formatear_resultado(numero_actual);
+                return;
+            }
+
+            // Resolvemos con el operador pendiente
+            const resultado = operar(valor_guardado, numero_actual, operador_actual);
+
+            // Mostramos Error en divisiones entre 0 u otros casos controlados
+            if (resultado === 'Error') {
+                elemento_pantalla.value = 'Error';
+            } else {
+                elemento_pantalla.value = formatear_resultado(resultado);
+            }
+
+            // Reset del estado tras calcular
+            valor_guardado = null;
+            operador_actual = null;
+            reiniciar_pantalla = true;
+        }
+
+        // Aplica la operación aritmética según el operador elegido
+        function operar(a, b, operador) {
+            let resultado;
+            if (operador === '+') {
+                resultado = a + b;
+            } else if (operador === '-') {
+                resultado = a - b;
+            } else if (operador === '*') {
+                resultado = a * b;
+            } else if (operador === '/') {
+                // Control de división entre cero
+                if (b === 0) { return 'Error'; }
+                resultado = a / b;
+            } else if (operador === 'pow') {
+                // Potencia a^b usando Math.pow
+                resultado = Math.pow(a, b);
+            }
+            return resultado;
+        }
+
+        // Aplica una función científica sobre el valor actual de la pantalla
+        function aplicar_funcion(funcion) {
+            // Tomamos el número en pantalla
+            const x = parseFloat(elemento_pantalla.value);
+            // Si no es un número válido, no hacemos nada
+            if (isNaN(x)) { return; }
+
+            let resultado;
+            // Trigonometría usando grados → convertimos a radianes antes de usar Math.*
+            if (funcion === 'sin') {
+                resultado = Math.sin(a_radianes(x));
+            } else if (funcion === 'cos') {
+                resultado = Math.cos(a_radianes(x));
+            } else if (funcion === 'tan') {
+                resultado = Math.tan(a_radianes(x));
+            // Logaritmo en base 10: log10(x) = ln(x) / ln(10) (solo válido para x > 0)
+            } else if (funcion === 'log') {
+                if (x <= 0) { resultado = 'Error'; }
+                else {
+                    // Si existe Math.log10 se usa; si no, se calcula con log natural
+                    if (typeof Math.log10 === 'function') {
+                        resultado = Math.log10(x);
+                    } else {
+                        resultado = Math.log(x) / Math.LN10;
+                    }
+                }
+            // Raíz cuadrada (solo para x >= 0)
+            } else if (funcion === 'sqrt') {
+                if (x < 0) { resultado = 'Error'; }
+                else { resultado = Math.sqrt(x); }
+            // Exponencial e^x
+            } else if (funcion === 'exp') {
+                resultado = Math.exp(x);
+            }
+
+            // Mostramos el resultado o error según corresponda
+            if (resultado === 'Error') {
+                elemento_pantalla.value = 'Error';
+            } else {
+                elemento_pantalla.value = formatear_resultado(resultado);
+            }
+
+            // Tras aplicar una función, el siguiente número empieza desde cero
+            reiniciar_pantalla = true;
+            operador_actual = null;
+            valor_guardado = null;
+        }
+
+        // Conversión de grados a radianes para las funciones trigonométricas
+        function a_radianes(grados) {
+            return grados * (Math.PI / 180);
+        }
+
+        // Formatea el número para evitar demasiados decimales y ceros innecesarios
+        function formatear_resultado(numero) {
+            const fijo = Number(numero).toFixed(10);
+            return parseFloat(fijo).toString();
         }
     </script>
 </body>
