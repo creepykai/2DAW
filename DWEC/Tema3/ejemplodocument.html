@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <button onclick="abrirVentana()">Abrir ventana</button>
+    <script>
+        let nuevaVentana;
+        function abrirVentana(){
+            nuevaVentana = window.open("ventanaPeq.html", "ventanaPequeña", "width=500px, height=500px");
+        }
+
+        function cerrarVentana(){
+            nuevaVentana.close();
+        }
+
+
+        window.mivar= "Valor compartido por variables globales";
+        localStorage.setItem("nombre","valor compartido en localStorage: Irene");
+
+        sessionStorage.apellido ="Diges";
+    </script>
+</body>
+</html>
