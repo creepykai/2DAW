@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta</title>
+    <style>
+        .clsTarjeta {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            border: 3px dotted plum;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .clsTarjeta img {
+            width: 100%;
+        }
+        .clsBoton{
+            background-color: rgb(166, 99, 228);
+            font-style: italic;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        
+        #formulario {
+            background-color: #f4f4f4;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        #formulario div {
+            margin-bottom: 10px;
+        }
+        #formulario label {
+            display: inline-block;
+            width: 100px;
+        }
+        #formulario input {
+            width: 250px;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="formulario">
+        <h3>Personaliza tu tarjeta</h3>
+        <div>
+            <label for="inputTitulo">Título:</label>
+            <input type="text" id="inputTitulo" value="Conejo">
+        </div>
+        <div>
+            <label for="inputDesc">Descripción:</label>
+            <input type="text" id="inputDesc" value="Conejo belier mini loop holandes">
+        </div>
+        <div>
+            <label for="inputImg">URL Imagen:</label>
+            <input type="text" id="inputImg" value="mochi.jpg">
+        </div>
+        <button id="adding" onclick="agregarTarjeta()">Agregar tarjeta</button>
+    </div>
+
+    <div id="div"></div>
+
+    <script>
+        let div = document.getElementById("div");
+
+        function agregarTarjeta() {
+            
+            let valorTitulo = document.getElementById("inputTitulo").value;
+            let valorDesc = document.getElementById("inputDesc").value;
+            let valorImg = document.getElementById("inputImg").value;
+
+            let tarjeta = document.createElement("div");
+            tarjeta.classList.add("clsTarjeta");
+
+            const img = document.createElement("img");
+            img.src = valorImg;
+            tarjeta.appendChild(img);
+
+            const titulo = document.createElement("h3");
+            titulo.textContent = valorTitulo; 
+            tarjeta.appendChild(titulo);
+
+            const descripcion = document.createElement("p");
+            descripcion.textContent = valorDesc;
+            tarjeta.appendChild(descripcion);
+
+            let btnEliminar = document.createElement("button");
+            btnEliminar.textContent = "Eliminar";
+            btnEliminar.classList.add("clsBoton");
+            
+            btnEliminar.onclick = function(){
+                tarjeta.remove();
+            }
+            tarjeta.appendChild(btnEliminar);
+            
+            div.appendChild(tarjeta);
+        }
+    </script>
+</body>
+</html>

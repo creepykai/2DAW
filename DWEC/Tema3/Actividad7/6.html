@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Dinámica</title>
+    <style>
+        body { 
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: 10px; 
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 5px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        button {
+            background-color: rgb(166, 99, 228);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #tabla-container {
+            margin-top: 10px;
+        }
+        #formulario-tabla div {
+            margin-bottom: 5px;
+        }
+        #formulario-tabla label {
+            display: inline-block;
+            width: 80px;
+        }
+        #formulario-tabla input {
+            width: 100px;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Generar una tabla</h3>
+
+    <div id="formulario-tabla">
+        <div>
+            <label for="inputFilas">Filas:</label>
+            <input type="number" id="inputFilas" value="3">
+        </div>
+        <div>
+            <label for="inputColumnas">Columnas:</label>
+            <input type="number" id="inputColumnas" value="4">
+        </div>
+        <button id="btnGenerar" onclick="crearTabla()">Generar Tabla</button>
+    </div>
+    
+    <div id="tabla-container"></div>
+
+    <script>
+        let container = document.getElementById("tabla-container");
+        let inputFilas = document.getElementById("inputFilas");
+        let inputColumnas = document.getElementById("inputColumnas");
+
+        function crearTabla() {
+            container.innerHTML = "";
+
+            let numFilas = parseInt(inputFilas.value);
+            let numCols = parseInt(inputColumnas.value);
+
+            if (numFilas <= 0 || numCols <= 0) {
+                return;
+            }
+
+            let tabla = document.createElement("table");
+            let thead = document.createElement("thead");
+            let tbody = document.createElement("tbody");
+            
+            let cabeceraRow = document.createElement("tr");
+            for (let i = 1; i <= numCols; i++) {
+                let th = document.createElement("th");
+                th.textContent = "Columna " + i;
+                cabeceraRow.appendChild(th);
+            }
+            thead.appendChild(cabeceraRow);
+
+            for (let i = 1; i <= numFilas; i++) {
+                let tr = document.createElement("tr");
+                for (let j = 1; j <= numCols; j++) {
+                    let td = document.createElement("td");
+                    td.textContent = "Celda";
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            }
+            
+            tabla.appendChild(thead);
+            tabla.appendChild(tbody);
+            container.appendChild(tabla);
+        }
+    </script>
+</body>
+</html>

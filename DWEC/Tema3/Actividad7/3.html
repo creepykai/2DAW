@@ -3,12 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Tarjeta</title>
+    <style>
+        .clsTarjeta {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            border: 3px dotted plum;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+        .clsBoton{
+            background-color: rgb(166, 99, 228);
+            font-style: italic;
+            color: white;
+            border: None;
+        }
+    </style>
 </head>
 <body>
-    <!---->
+    <button id="adding" onclick="agregarTarjeta()">Agregar tarjeta</button>
+    <div id="div"></div>
     <script>
-    
+        let div = document.getElementById("div");
+
+        function agregarTarjeta() {
+            let tarjeta = document.createElement("div");
+            tarjeta.classList.add("clsTarjeta");
+
+            const img = document.createElement("img");
+            img.src = "kuromi.jpg";
+            tarjeta.appendChild(img);
+
+            let minombre = "Irene";
+            const titulo = document.createElement("h3");
+            titulo.textContent = minombre; 
+            tarjeta.appendChild(titulo);
+            const descripcion = document.createElement("p");
+            descripcion.textContent = "Esta es una descripción de la tarjeta.";
+            tarjeta.appendChild(descripcion);
+
+            let btnEliminar = document.createElement("button");
+            btnEliminar.textContent = "Eliminar";
+            btnEliminar.classList.add("clsBoton");
+            
+            btnEliminar.onclick = function(){
+            tarjeta.remove();
+            }
+            tarjeta.appendChild(btnEliminar);
+            
+            div.appendChild(tarjeta);
+        }
     </script>
 </body>
 </html>

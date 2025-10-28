@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1</title>
+</head>
+
+<body>
+    <h2>AGREGAR ELEMENTOS DESDE JS</h2>
+    <input type="text" id="element-text" placeholder="Escribe un texto" /> <!--para introducir texto-->
+    <button id="add-element-text" onclick="agregarElemento()">Agregar Elemento</button>
+    <!--Botón que provoca la acción-->
+
+    <div id="element-container">
+        <!-- AQUÍ SE AÑADIRÁN LOS ELEMENTOS CREADOS DINÁMICAMENTE -->
+    </div>
+
+    <script>
+        let container = document.getElementById("element-container"); // este contenedor añade los elementos dentro del div de arriba
+
+        function agregarElemento() {
+
+            let caja = document.createElement("div");
+
+            let texto = document.getElementById("element-text").value; // aquí recogemos el valor
+            const nuevoElemento = document.createElement("p"); // creamos un parrafo
+            nuevoElemento.textContent = texto; // le vamos introduciento a nuevoElemento, el contenido de la variable texto
+            nuevoElemento.classList.add("clsElemento"); //esto es para añadirla clase y esta clase aplica el style también.
+            caja.appendChild(nuevoElemento);
+
+            let btnEliminar = document.createElement("button");
+            btnEliminar.textContent = "Eliminar";
+            btnEliminar.onclick = function(){
+                container.removeChild(caja);
+            }
+
+
+
+            caja.appendChild(btnEliminar);
+            container.appendChild(caja);
+        }
+
+    </script>
+</body>
+
+</html>

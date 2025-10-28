@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        #formulario-tarea {
+            margin-bottom: 15px;
+        }
+        .tarea-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .tarea-item.completada span {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .btn-accion {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!--5.	Crear una lista de tareas pendientes donde puedan agregar tareas, marcarlas como completadas, y eliminarlas usando JavaScript (usar .addEventListener)-->
+    <div id="app-container">
+        <h3>Mi Lista de Tareas</h3>
+        
+        <div id="formulario-tarea">
+            <input type="text" id="inputTarea" placeholder="Escribe una nueva tarea...">
+            <button id="btnAgregar">Agregar</button>
+        </div>
+
+        <div id="lista-container">
+            </div>
+    </div>
+    <script>
+        const btnAgregar = document.getElementById("btnAgregar");
+        const inputTarea = document.getElementById("inputTarea");
+        const listaContainer = document.getElementById("lista-container");
+
+        function agregarNuevaTarea() {
+            let textoTarea = inputTarea.value;
+
+            if (textoTarea.trim() === "") {
+                return;
+            }
+
+            let tareaItem = document.createElement("div");
+            tareaItem.classList.add("tarea-item");
+
+            const textoSpan = document.createElement("span");
+            textoSpan.textContent = textoTarea;
+            tareaItem.appendChild(textoSpan);
+
+            let btnCompletar = document.createElement("button");
+            btnCompletar.textContent = "Completar";
+            btnCompletar.classList.add("btn-accion");
+
+            btnCompletar.addEventListener("click", function() {
+                tareaItem.classList.toggle("completada");
+            });
+
+            let btnEliminar = document.createElement("button");
+            btnEliminar.textContent = "Eliminar";
+            btnEliminar.classList.add("btn-accion");
+
+            btnEliminar.addEventListener("click", function() {
+                tareaItem.remove();
+            });
+
+            tareaItem.appendChild(btnCompletar);
+            tareaItem.appendChild(btnEliminar);
+
+            listaContainer.appendChild(tareaItem);
+            inputTarea.value = "";
+        }
+
+        btnAgregar.addEventListener("click", agregarNuevaTarea);
+
+        inputTarea.addEventListener("keypress", function(evento) {
+            if (evento.key === "Enter") {
+                agregarNuevaTarea();
+            }
+        });
+
+    </script>
+</body>
+</html>
