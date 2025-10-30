@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+</head>
+<body>
+    <!---->
+    <h2> Cookies </h2>
+    <button onclick="guardarCookie()">Recoger Cookie</button>
+    <p id="mensaje"></p>
+
+    <script>
+        function guardarCookie(){
+            const cookies = document.cookie.split(';');
+            let mensajeSalida = "Mensaje no encontrado";
+            
+            for (const cookie of cookie){
+                const [nombre, valor] = cookie.split("=");
+                if (nombre === "mensaje") {
+                    mensajeSalida = valor;
+                    break;
+                }
+        }
+        document.getElementById("mensaje").textContent = mensajeSalida;
+    }
+    </script>
+</body>
+</html>
