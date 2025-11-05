@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Temporizadores - setTimeout y setInterval</title>
+</head>
+<body>
+  <h1 id="mensaje">Esperando...</h1>
+
+<script>
+  // ==========================================
+  // ⏱️ setTimeout(función, retraso)
+  // ==========================================
+  // Ejecuta una función una sola vez después de un cierto tiempo (en milisegundos).
+  // Ejemplo: muestra un mensaje después de 3 segundos (3000 ms)
+
+  setTimeout(function() {
+    document.getElementById("mensaje").textContent = "¡Han pasado 3 segundos!";
+  }, 3000);
+
+
+  // ==========================================
+  // 🔁 setInterval(función, intervalo)
+  // ==========================================
+  // Ejecuta una función repetidamente cada cierto tiempo (en milisegundos).
+  // Ejemplo: muestra un contador que aumenta cada segundo.
+
+  let contador = 0;
+
+  let intervalo = setInterval(function() {
+    contador++;
+    console.log("Segundos transcurridos:", contador);
+
+    // Detener el intervalo después de 5 segundos
+    if (contador === 5) {
+      clearInterval(intervalo); // Detiene el bucle
+      console.log("Intervalo detenido.");
+    }
+  }, 1000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Generar elementos HTML</title>
+</head>
+<body>
+<h2>Zona de prueba</h2>
+<div id="zona"></div>
+
+<script>
+  // Crear un nuevo párrafo
+  let nuevo = document.createElement("p");
+  nuevo.textContent = "Este texto fue creado con createElement()";
+
+  // Insertarlo en la zona
+  document.getElementById("zona").appendChild(nuevo);
+
+  // Crear y añadir un botón
+  let boton = document.createElement("button");
+  boton.textContent = "Eliminar párrafo";
+  document.body.appendChild(boton);
+
+  // Al pulsar el botón, eliminar el párrafo
+  boton.addEventListener("click", () => {
+    document.getElementById("zona").removeChild(nuevo);
+  });
+</script>
+</body>
+</html>

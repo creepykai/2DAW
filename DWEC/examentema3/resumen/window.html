@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto window - Métodos del temario</title>
+</head>
+<body>
+<script>
+  // El objeto window representa la ventana del navegador.
+  // Todos los objetos y variables globales de JavaScript pertenecen a window.
+
+  console.log("=== MÉTODOS DEL OBJETO WINDOW ===");
+
+  // ----------------------------------------------------------
+  // alert() → muestra una ventana con un mensaje y un botón "Aceptar"
+  alert("Este es un mensaje de alerta");
+
+  // ----------------------------------------------------------
+  // confirm() → muestra un mensaje con botones "Aceptar" y "Cancelar"
+  // Devuelve true si el usuario pulsa Aceptar, false si pulsa Cancelar.
+  let respuesta = confirm("¿Quieres continuar?");
+  console.log("Respuesta del usuario:", respuesta);
+
+  // ----------------------------------------------------------
+  // prompt() → muestra un cuadro de diálogo con un campo de texto
+  // Devuelve el valor introducido o null si se pulsa Cancelar.
+  let nombre = prompt("Introduce tu nombre:");
+  console.log("Nombre introducido:", nombre);
+
+  // ----------------------------------------------------------
+  // open() → abre una nueva ventana o pestaña con una URL
+  // Parámetros: (URL, nombreVentana, características)
+  // Ejemplo: abre una ventana pequeña de 300x200 píxeles
+  let nuevaVentana = window.open("", "ventanaEjemplo", "width=300,height=200");
+  nuevaVentana.document.write("<h3>Ventana nueva abierta con window.open()</h3>");
+
+  // ----------------------------------------------------------
+  // close() → cierra una ventana abierta con window.open()
+  // (no se puede cerrar la ventana principal del navegador)
+  // nuevaVentana.close();
+
+  // ----------------------------------------------------------
+  // moveBy(x, y) → mueve la ventana la cantidad indicada desde su posición actual
+  // moveTo(x, y) → mueve la ventana a una posición concreta
+  // Ejemplo (solo funciona en ventanas abiertas por script):
+  // nuevaVentana.moveBy(50, 50);
+  // nuevaVentana.moveTo(100, 100);
+
+  // ----------------------------------------------------------
+  // resizeBy(x, y) → cambia el tamaño de la ventana en píxeles (respecto a su tamaño actual)
+  // resizeTo(x, y) → cambia el tamaño de la ventana a unas dimensiones concretas
+  // Ejemplo:
+  // nuevaVentana.resizeBy(50, 50);
+  // nuevaVentana.resizeTo(400, 300);
+
+  // ----------------------------------------------------------
+  // print() → abre el cuadro de diálogo de impresión del navegador
+  // window.print();
+
+  // ----------------------------------------------------------
+  // scrollBy(x, y) → desplaza el contenido de la ventana una cantidad de píxeles
+  // scrollTo(x, y) → desplaza el contenido hasta una posición concreta
+  // Ejemplo:
+  // window.scrollBy(0, 100);  // baja 100 píxeles
+  // window.scrollTo(0, 0);    // vuelve al inicio de la página
+
+  // ----------------------------------------------------------
+  // stop() → cancela la carga de la página (similar al botón "detener" del navegador)
+  // window.stop();
+
+  // ----------------------------------------------------------
+  // focus() y blur() → asignan o retiran el foco a una ventana
+  // focus() → activa la ventana
+  // blur() → la desactiva (por ejemplo, cuando abres otra pestaña)
+  // nuevaVentana.focus();
+  // nuevaVentana.blur();
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto Number - Métodos y Propiedades del temario</title>
+</head>
+<body>
+<script>
+  // --- CREACIÓN DE NÚMEROS ---
+  var num = new Number(1234.5678);
+  console.log("Número base:", num);
+
+  // ===========================
+  //     PROPIEDADES
+  // ===========================
+
+  console.log("=== PROPIEDADES ===");
+
+  // MAX_VALUE → número más alto posible en JavaScript
+  console.log("Number.MAX_VALUE:", Number.MAX_VALUE);
+
+  // MIN_VALUE → número más pequeño posible en JavaScript
+  console.log("Number.MIN_VALUE:", Number.MIN_VALUE);
+
+  // NEGATIVE_INFINITY → representa infinito negativo
+  console.log("Number.NEGATIVE_INFINITY:", Number.NEGATIVE_INFINITY);
+
+  // POSITIVE_INFINITY → representa infinito positivo
+  console.log("Number.POSITIVE_INFINITY:", Number.POSITIVE_INFINITY);
+
+  // constructor → muestra la función que creó el objeto
+  console.log("num.constructor:", num.constructor);
+
+  // prototype → permite añadir propiedades o métodos (solo info general)
+  console.log("Number.prototype:", Number.prototype);
+
+
+  // ===========================
+  //     MÉTODOS
+  // ===========================
+
+  console.log("\n=== MÉTODOS ===");
+
+  // toExponential(x) → convierte un número a notación científica
+  console.log("toExponential(2):", num.toExponential(2)); // "1.23e+3"
+
+  // toFixed(x) → formatea un número con x decimales
+  console.log("toFixed(2):", num.toFixed(2)); // "1234.57"
+
+  // toPrecision(x) → formatea el número con x cifras significativas
+  console.log("toPrecision(4):", num.toPrecision(4)); // "1235"
+
+  // toString() → convierte el número a cadena de texto
+  console.log("toString():", num.toString()); // "1234.5678"
+
+  // Ejemplo con bases: 2 = binario, 8 = octal, 16 = hexadecimal
+  console.log("toString(2):", (50).toString(2));  // binario
+  console.log("toString(8):", (50).toString(8));  // octal
+  console.log("toString(16):", (50).toString(16)); // hexadecimal
+
+  // valueOf() → devuelve el valor numérico del objeto Number
+  console.log("valueOf():", num.valueOf()); // 1234.5678
+
+</script>
+</body>
+</html>

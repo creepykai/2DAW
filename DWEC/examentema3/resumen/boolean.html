@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto Boolean - Propiedades y Métodos del temario</title>
+</head>
+<body>
+<script>
+  // El objeto Boolean convierte un valor cualquiera (numérico, texto, etc.)
+  // en un valor booleano: true o false.
+
+  // Ejemplos de creación
+  var x = new Boolean(true);
+  var y = new Boolean(0); // 0 se considera false
+  var z = new Boolean("Hola"); // cualquier texto no vacío → true
+
+  console.log("x:", x, "→", x.valueOf());
+  console.log("y:", y, "→", y.valueOf());
+  console.log("z:", z, "→", z.valueOf());
+
+  // ===========================
+  //     PROPIEDADES
+  // ===========================
+  console.log("=== PROPIEDADES ===");
+
+  // constructor → función que creó el objeto Boolean
+  console.log("x.constructor:", x.constructor);
+
+  // prototype → permite añadir propiedades o métodos (solo informativo)
+  console.log("Boolean.prototype:", Boolean.prototype);
+
+
+  // ===========================
+  //     MÉTODOS
+  // ===========================
+  console.log("\n=== MÉTODOS ===");
+
+  // toString() → convierte el valor booleano en texto ("true" o "false")
+  console.log("x.toString():", x.toString());
+  console.log("y.toString():", y.toString());
+
+  // valueOf() → devuelve el valor booleano real (true o false)
+  console.log("x.valueOf():", x.valueOf());
+  console.log("y.valueOf():", y.valueOf());
+
+</script>
+</body>
+</html>

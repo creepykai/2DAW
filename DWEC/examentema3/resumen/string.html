@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Métodos del objeto String</title>
+</head>
+<body>
+<script>
+  // Crear cadenas
+  let texto1 = "Hola Mundo";
+  let texto2 = new String("Hola Mundo"); // otra forma (menos usada)
+  console.log("Cadena base:", texto1);
+
+  console.log("=== PROPIEDADES ===");
+  // length → devuelve la longitud de la cadena
+  console.log("length:", texto1.length);
+
+  console.log("\n=== MÉTODOS DE ACCESO ===");
+  // charAt(posición) → devuelve el carácter en la posición indicada (empieza en 0)
+  console.log("charAt(1):", texto1.charAt(1)); // o → segundo carácter
+
+  // charCodeAt(posición) → devuelve el código Unicode del carácter
+  console.log("charCodeAt(1):", texto1.charCodeAt(1)); // 111 (código de 'o')
+
+  console.log("\n=== CONVERSIÓN DE MAYÚSCULAS Y MINÚSCULAS ===");
+  console.log("toUpperCase():", texto1.toUpperCase()); // "HOLA MUNDO"
+  console.log("toLowerCase():", texto1.toLowerCase()); // "hola mundo"
+
+  console.log("\n=== BÚSQUEDA DE TEXTO ===");
+  // indexOf(texto) → primera posición donde aparece el texto
+  console.log("indexOf('o'):", texto1.indexOf("o")); // 1
+
+  // lastIndexOf(texto) → última posición donde aparece el texto
+  console.log("lastIndexOf('o'):", texto1.lastIndexOf("o")); // 7
+
+  // startsWith(texto) → ¿empieza con...?
+  console.log("startsWith('Hola'):", texto1.startsWith("Hola")); // true
+
+  // endsWith(texto) → ¿termina con...?
+  console.log("endsWith('Mundo'):", texto1.endsWith("Mundo")); // true
+
+  console.log("\n=== REEMPLAZAR Y RECORTAR ===");
+  // replace(txtAnt, txtNuevo) → reemplaza la primera coincidencia
+  console.log("replace('Mundo','Irene'):", texto1.replace("Mundo", "Irene")); // "Hola Irene"
+
+  // trim() → elimina espacios al inicio y al final
+  let conEspacios = "   Hola Irene   ";
+  console.log("Original con espacios: [" + conEspacios + "]");
+  console.log("trim(): [" + conEspacios.trim() + "]");
+
+  console.log("\n=== EXTRAER SUBCADENAS ===");
+  // slice(inicio, fin) → devuelve parte del texto (sin incluir fin)
+  console.log("slice(0,4):", texto1.slice(0, 4)); // "Hola"
+
+  // substr(inicio, n) → devuelve n caracteres desde inicio
+  console.log("substr(5, 3):", texto1.substr(5, 3)); // "Mun"
+
+  console.log("\n=== DIVIDIR CADENAS ===");
+  // split(delimitador) → separa el texto en partes y devuelve un array
+  console.log("split(' '):", texto1.split(" ")); // ["Hola", "Mundo"]
+
+  console.log("\n=== MÉTODOS VARIADOS ===");
+  // includes(texto) → comprueba si un texto está dentro de otro
+  console.log("includes('Mun'):", texto1.includes("Mun")); // true
+
+  // repeat(n) → repite la cadena n veces
+  console.log("repeat(3):", "JS ".repeat(3)); // "JS JS JS "
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto navigator - Propiedades del temario</title>
+</head>
+<body>
+<script>
+  // El objeto navigator proporciona información sobre el navegador del usuario.
+  // Se usa para detectar idioma, estado online, cookies, plugins, etc.
+
+  console.log("=== PROPIEDADES DEL OBJETO NAVIGATOR ===");
+
+  // ----------------------------------------------------------
+  // clipboard → permite acceder al portapapeles (copiar/pegar texto)
+  console.log("navigator.clipboard:", navigator.clipboard);
+
+  // ----------------------------------------------------------
+  // cookieEnabled → indica si las cookies están activadas (true/false)
+  console.log("navigator.cookieEnabled:", navigator.cookieEnabled);
+
+  // ----------------------------------------------------------
+  // geolocation → permite acceder a la localización del usuario (GPS)
+  console.log("navigator.geolocation:", navigator.geolocation);
+  // Ejemplo (pedirá permiso al usuario):
+  // navigator.geolocation.getCurrentPosition(pos => {
+  //   console.log("Latitud:", pos.coords.latitude, "Longitud:", pos.coords.longitude);
+  // });
+
+  // ----------------------------------------------------------
+  // language → devuelve el idioma del navegador
+  console.log("navigator.language:", navigator.language);
+
+  // ----------------------------------------------------------
+  // onLine → true si el navegador tiene conexión a internet
+  console.log("navigator.onLine:", navigator.onLine);
+
+  // ----------------------------------------------------------
+  // plugins → devuelve la lista de plugins instalados en el navegador
+  console.log("navigator.plugins:", navigator.plugins);
+
+  // ----------------------------------------------------------
+  // storage → acceso a almacenamiento persistente (localStorage/sessionStorage)
+  console.log("navigator.storage:", navigator.storage);
+
+  // ----------------------------------------------------------
+  // userAgent → devuelve información sobre el navegador y sistema operativo
+  console.log("navigator.userAgent:", navigator.userAgent);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1</title>
+</head>
+<body>
+<script>
+  let hoy = new Date();
+
+  let dia = parseInt(prompt("Introduce tu día de nacimiento (DD)"));
+  let mes = parseInt(prompt("Introduce tu mes de nacimiento (MM)"));
+  let anyo = parseInt(prompt("Introduce tu año de nacimiento (AAAA)"));
+
+  let edad = hoy.getFullYear() - anyo;
+
+  // Si aún no ha cumplido años este año
+  if (mes > (hoy.getMonth() + 1) || (mes === (hoy.getMonth() + 1) && dia > hoy.getDate())) {
+    edad = edad - 1;
+  }
+
+  document.write("Tu edad actual es: " + edad + "<br>");
+
+  if (mes === (hoy.getMonth() + 1) && dia === hoy.getDate()) {
+    document.write("¡Hoy es tu cumpleaños!");
+  } else {
+    document.write("Hoy no es tu cumpleaños.");
+  }
+</script>
+</body>
+</html>

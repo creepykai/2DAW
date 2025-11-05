@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto screen - Propiedades del temario</title>
+</head>
+<body>
+<script>
+  // El objeto screen proporciona información sobre la pantalla del dispositivo del usuario.
+  // Se usa para conocer tamaño, resolución y orientación de la pantalla.
+
+  console.log("=== PROPIEDADES DEL OBJETO SCREEN ===");
+
+  // ----------------------------------------------------------
+  // availHeight → altura disponible de la pantalla (en píxeles)
+  // Excluye la barra de tareas o elementos del sistema.
+  console.log("screen.availHeight:", screen.availHeight);
+
+  // ----------------------------------------------------------
+  // availWidth → anchura disponible de la pantalla (en píxeles)
+  // También excluye la barra de tareas o similares.
+  console.log("screen.availWidth:", screen.availWidth);
+
+  // ----------------------------------------------------------
+  // colorDepth → profundidad de color (bits por píxel)
+  console.log("screen.colorDepth:", screen.colorDepth);
+
+  // ----------------------------------------------------------
+  // height → altura total de la pantalla (en píxeles)
+  console.log("screen.height:", screen.height);
+
+  // ----------------------------------------------------------
+  // width → anchura total de la pantalla (en píxeles)
+  console.log("screen.width:", screen.width);
+
+  // ----------------------------------------------------------
+  // pixelDepth → cantidad de bits por píxel (igual que colorDepth)
+  console.log("screen.pixelDepth:", screen.pixelDepth);
+
+  // ----------------------------------------------------------
+  // orientation → devuelve la orientación actual de la pantalla (portrait o landscape)
+  console.log("screen.orientation:", screen.orientation);
+  console.log("Tipo de orientación:", screen.orientation.type);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Métodos del objeto Date</title>
+</head>
+<body>
+<script>
+  // Creamos un objeto Date con la fecha y hora actuales
+  const fecha = new Date();
+
+  console.log("=== MÉTODOS GET ===");
+
+  // Devuelve el día del mes (entre 1 y 31)
+  console.log("getDate():", fecha.getDate());
+
+  // Devuelve el día de la semana (0 = domingo, 1 = lunes, ..., 6 = sábado)
+  console.log("getDay():", fecha.getDay());
+
+  // Devuelve el año completo (por ejemplo, 2025)
+  console.log("getFullYear():", fecha.getFullYear());
+
+  // Devuelve la hora actual (de 0 a 23)
+  console.log("getHours():", fecha.getHours());
+
+  // Devuelve los milisegundos de la hora actual (de 0 a 999)
+  console.log("getMilliseconds():", fecha.getMilliseconds());
+
+  // Devuelve los minutos (de 0 a 59)
+  console.log("getMinutes():", fecha.getMinutes());
+
+  // Devuelve el mes actual (0 = enero, 11 = diciembre)
+  console.log("getMonth():", fecha.getMonth(), "👉 recuerda sumar 1 si quieres verlo normal (1-12)");
+
+  // Devuelve los segundos (de 0 a 59)
+  console.log("getSeconds():", fecha.getSeconds());
+
+  // Devuelve los milisegundos totales desde el 1 de enero de 1970
+  console.log("getTime():", fecha.getTime());
+
+
+  console.log("\n=== MÉTODOS SET (para cambiar valores) ===");
+
+  // Creamos una copia de la fecha actual para modificarla
+  let f2 = new Date(fecha);
+
+  // Cambia el día del mes
+  f2.setDate(10);
+
+  // Cambia el año
+  f2.setFullYear(2030);
+
+  // Cambia la hora (0–23)
+  f2.setHours(12);
+
+  // Cambia los milisegundos
+  f2.setMilliseconds(500);
+
+  // Cambia los minutos
+  f2.setMinutes(45);
+
+  // Cambia el mes (0=enero → 6=julio)
+  f2.setMonth(6);
+
+  // Cambia los segundos
+  f2.setSeconds(30);
+
+  console.log("Fecha modificada con set*():", f2);
+
+
+  console.log("\n=== FORMATEO DE FECHA (mostrarla en texto) ===");
+
+  // Muestra solo la fecha con palabras (ejemplo: "Wed Nov 05 2025")
+  console.log("toDateString():", fecha.toDateString());
+
+  // Muestra fecha y hora con formato local (según configuración regional)
+  console.log("toLocaleString():", fecha.toLocaleString());
+
+  // Muestra solo la fecha (sin la hora)
+  console.log("toLocaleDateString():", fecha.toLocaleDateString());
+
+  // Muestra solo la hora (sin la fecha)
+  console.log("toTimeString():", fecha.toTimeString());
+
+  // Muestra la fecha en formato completo de JavaScript
+  console.log("toString():", fecha.toString());
+
+  // Convierte la fecha en texto con formato JSON (ISO estándar)
+  console.log("toJSON():", fecha.toJSON());
+
+
+  console.log("\n=== MÉTODOS ESTÁTICOS (se usan con Date directamente, no con un objeto) ===");
+
+  // Date.now() → devuelve el número de milisegundos actuales desde 1970
+  console.log("Date.now():", Date.now());
+
+  // Date.parse() → convierte una fecha en texto a milisegundos desde 1970
+  console.log("Date.parse('2025-11-05'):", Date.parse("2025-11-05"));
+
+  // Date.UTC() → crea una fecha en formato UTC (coordenadas exactas de año, mes, día, etc.)
+  // Recuerda que el mes empieza en 0 (por eso 10 es noviembre)
+  console.log("Date.UTC(2025, 10, 5):", Date.UTC(2025, 10, 5));
+</script>
+</body>
+</html>

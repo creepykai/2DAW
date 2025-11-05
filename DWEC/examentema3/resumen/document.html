@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto document - Propiedades y métodos del temario</title>
+</head>
+<body>
+  <h1 id="titulo">Hola Irene</h1>
+  <p class="texto">Esto es un párrafo.</p>
+  <p class="texto">Otro párrafo con la misma clase.</p>
+  <div id="contenedor"></div>
+
+<script>
+  // ==========================================
+  //  ACCESO A ELEMENTOS HTML
+  // ==========================================
+
+  console.log("=== ACCESO A ELEMENTOS HTML ===");
+
+  // 1. getElementById(id) → selecciona un elemento por su id
+  let titulo = document.getElementById("titulo");
+  console.log("getElementById:", titulo);
+
+  // 2. getElementsByClassName(className) → devuelve todos los elementos con esa clase (HTMLCollection)
+  let parrafos = document.getElementsByClassName("texto");
+  console.log("getElementsByClassName:", parrafos);
+
+  // 3. getElementsByTagName(tagName) → devuelve todos los elementos con esa etiqueta (por ejemplo, "p" o "div")
+  let etiquetasP = document.getElementsByTagName("p");
+  console.log("getElementsByTagName:", etiquetasP);
+
+  // 4. querySelector(selector) → devuelve el primer elemento que coincida con el selector CSS indicado
+  let primerParrafo = document.querySelector(".texto");
+  console.log("querySelector:", primerParrafo);
+
+  // 5. querySelectorAll(selector) → devuelve todos los elementos que coincidan con el selector (NodeList)
+  let todosParrafos = document.querySelectorAll(".texto");
+  console.log("querySelectorAll:", todosParrafos);
+
+  // ==========================================
+  //  MANIPULACIÓN DEL CONTENIDO
+  // ==========================================
+
+  console.log("\n=== MANIPULACIÓN DEL CONTENIDO ===");
+
+  // 1. document.write(text) → escribe directamente en el documento (se usa solo al cargar la página)
+  // document.write("<h2>Contenido escrito con document.write()</h2>");
+
+  // 2. document.createTextNode(text) → crea un nodo de texto
+  let nuevoTexto = document.createTextNode("Texto creado desde JavaScript.");
+  document.getElementById("contenedor").appendChild(nuevoTexto);
+
+  // 3. element.innerHTML → permite cambiar o leer el contenido HTML de un elemento
+  titulo.innerHTML = "Título modificado con innerHTML";
+
+  // 4. element.textContent → igual que innerHTML, pero solo texto (sin etiquetas)
+  document.getElementById("contenedor").textContent = "Contenido cambiado con textContent";
+
+</script>
+</body>
+</html>

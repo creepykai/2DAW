@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Métodos del objeto Math</title>
+</head>
+<body>
+<script>
+  // El objeto Math NO necesita crearse (no se usa new Math()).
+  // Se llama directamente: Math.metodo() o Math.CONSTANTE
+
+  console.log("=== CONSTANTES MATEMÁTICAS ===");
+  console.log("Math.E:", Math.E, "→ Constante de Euler (≈2.718)");
+  console.log("Math.LN10:", Math.LN10, "→ Logaritmo natural de 10 (≈2.303)");
+  console.log("Math.LN2:", Math.LN2, "→ Logaritmo natural de 2 (≈0.693)");
+  console.log("Math.LOG10E:", Math.LOG10E, "→ Logaritmo de E en base 10 (≈0.434)");
+  console.log("Math.LOG2E:", Math.LOG2E, "→ Logaritmo de E en base 2 (≈1.443)");
+  console.log("Math.PI:", Math.PI, "→ Valor de π (≈3.14159)");
+  console.log("Math.SQRT1_2:", Math.SQRT1_2, "→ Raíz cuadrada de ½ (≈0.707)");
+  console.log("Math.SQRT2:", Math.SQRT2, "→ Raíz cuadrada de 2 (≈1.414)");
+
+
+  console.log("\n=== MÉTODOS BÁSICOS ===");
+  // Valor absoluto (número siempre positivo)
+  console.log("Math.abs(-7):", Math.abs(-7)); // 7
+
+  // Redondear hacia arriba
+  console.log("Math.ceil(4.2):", Math.ceil(4.2)); // 5
+
+  // Redondear hacia abajo
+  console.log("Math.floor(4.8):", Math.floor(4.8)); // 4
+
+  // Redondear al entero más cercano
+  console.log("Math.round(4.5):", Math.round(4.5)); // 5
+  console.log("Math.round(4.4):", Math.round(4.4)); // 4
+
+  // Quitar decimales (sin redondear)
+  console.log("Math.trunc(4.9):", Math.trunc(4.9)); // 4
+
+  // Potencias y raíces
+  console.log("Math.pow(2, 3):", Math.pow(2, 3), "→ 2³ = 8");
+  console.log("Math.sqrt(16):", Math.sqrt(16), "→ raíz cuadrada = 4");
+
+  // Número aleatorio entre 0 y 1
+  console.log("Math.random():", Math.random());
+
+  // Aleatorio entre 1 y 10 (ejemplo práctico)
+  let aleatorio = Math.floor(Math.random() * 10) + 1;
+  console.log("Aleatorio entre 1 y 10:", aleatorio);
+
+  // Mínimo y máximo entre varios valores
+  console.log("Math.min(2, 7, -1, 9):", Math.min(2, 7, -1, 9)); // -1
+  console.log("Math.max(2, 7, -1, 9):", Math.max(2, 7, -1, 9)); // 9
+
+
+  console.log("\n=== MÉTODOS TRIGONOMÉTRICOS ===");
+  // Los ángulos se expresan en radianes, no en grados
+  // Para convertir grados a radianes: grados * Math.PI / 180
+
+  let grados = 90;
+  let radianes = grados * Math.PI / 180;
+  console.log("90 grados =", radianes, "radianes");
+
+  console.log("Math.sin(90°):", Math.sin(radianes)); // 1
+  console.log("Math.cos(90°):", Math.cos(radianes)); // ≈0
+  console.log("Math.tan(45°):", Math.tan(45 * Math.PI / 180)); // ≈1
+
+  // Inversos (arcos)
+  console.log("Math.asin(1):", Math.asin(1));   // devuelve π/2 radianes
+  console.log("Math.acos(0):", Math.acos(0));   // devuelve π/2 radianes
+  console.log("Math.atan(1):", Math.atan(1));   // devuelve π/4 radianes
+
+
+  console.log("\n=== OTROS MÉTODOS ===");
+  // Logaritmos
+  console.log("Math.log(10):", Math.log(10), "→ logaritmo natural (base e)");
+  console.log("Math.exp(1):", Math.exp(1), "→ e elevado a 1 =", Math.E);
+
+</script>
+</body>
+</html>
+ 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto location - Propiedades del temario</title>
+</head>
+<body>
+<script>
+  // El objeto location permite acceder y manipular la URL actual del navegador.
+  // Puede usarse como window.location o document.location (ambos son lo mismo).
+
+  console.log("=== PROPIEDADES DEL OBJETO LOCATION ===");
+
+  // ----------------------------------------------------------
+  // href → devuelve la URL completa del sitio actual
+  console.log("location.href:", location.href);
+
+  // ----------------------------------------------------------
+  // host → devuelve el nombre de host y el puerto (si hay)
+  console.log("location.host:", location.host);
+
+  // ----------------------------------------------------------
+  // hostname → devuelve solo el dominio
+  console.log("location.hostname:", location.hostname);
+
+  // ----------------------------------------------------------
+  // port → devuelve el número de puerto (si hay)
+  console.log("location.port:", location.port);
+
+  // ----------------------------------------------------------
+  // protocol → devuelve el protocolo de la URL (http, https, etc.)
+  console.log("location.protocol:", location.protocol);
+
+  // ----------------------------------------------------------
+  // pathname → devuelve la ruta dentro del dominio
+  console.log("location.pathname:", location.pathname);
+
+  // ----------------------------------------------------------
+  // search → devuelve la cadena de búsqueda (lo que va tras el ? en la URL)
+  console.log("location.search:", location.search);
+  // Ejemplo: si la URL es "https://paraninfo.es/buscar?autor=Gonzalez&keyword=js"
+  // location.search devolvería "?autor=Gonzalez&keyword=js"
+
+  // ----------------------------------------------------------
+  // hash → devuelve el fragmento que va tras el símbolo # (si hay)
+  console.log("location.hash:", location.hash);
+  // Ejemplo: "https://.../pagina.html#seccion" → "#seccion"
+
+  // ----------------------------------------------------------
+  // origin → devuelve la parte principal de la URL (protocolo + host + puerto)
+  console.log("location.origin:", location.origin);
+
+  // ----------------------------------------------------------
+  // username y password → devuelven los datos de acceso si están incluidos en la URL
+  console.log("location.username:", location.username);
+  console.log("location.password:", location.password);
+
+  // ----------------------------------------------------------
+  // Ejemplo práctico: redirigir a otra página
+  // location.href = "https://www.google.com";
+</script>
+</body>
+</html>
