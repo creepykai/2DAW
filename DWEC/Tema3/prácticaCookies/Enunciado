@@ -1,0 +1,22 @@
+Crear una aplicación web que utilice tanto cookies como localStorage para almacenar y recuperar datos del usuario. Utiliza HTML, CSS y JavaScript para crear la aplicación web.
+
+La aplicación debe tener un formulario que permite a los usuarios introducir los siguientes datos:
+
+Nombre de usuario
+Edad
+Nacionalidad
+Teléfono
+Correo electrónico
+
+La aplicación debe permitir a los usuarios guardar sus datos de dos formas:
+•	Utilizando cookies: Cuando un usuario agrega su nombre de usuario, este debe almacenarse en una cookie en el navegador del usuario. 
+•	Utilizando localStorage: El resto de datos deben almacenarse en localStorage. 
+
+Cuando un usuario visita la página nuevamente, sus datos almacenados en cookies y localStorage deben cargarse y mostrarse en el formulario
+
+Debes de proporcionar dos opciones de borrado. Uno para borrar todos los datos almacenados en las cookies y otro para borrar los datos almacenados en localStorage
+
+También la aplicación debe permitir a los usuarios eliminar un dato almacenado en localStorage específico. 
+
+
+Para gestionar las cookies, puedes utilizar las funciones para establecer y obtener cookies vistas en clase y para interactuar con localStorage, utiliza los métodos localStorage.setItem(), localStorage.getItem(), localStorage.removeItem(), y localStorage.clear().

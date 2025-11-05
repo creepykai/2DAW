@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h2> Ventana pequeña</h2>
+    <h3>Recoger datos mediante variables globales</h3>
+    <button onclick="recogerVar()">Recoger Variable</button>
+
+    <h3>Recoger datos mediante local y session storage</h3>
+    <button onclick = "recogerLocalSession()">Recoger local y session</button>
+    
+    <script>
+        function recogerVar(){
+            alert(window.opener.mivar);
+        }
+
+        function recogerLocalSession(){
+            alert("localStorage nombre: " + localStorage.getItem("nombre"))
+            alert("sessionStorage apellido: " + sessionStorage.getItem("apellido"));
+        }
+    
+    </script>
+</body>
+</html>

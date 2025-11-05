@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!---->
+    <h1>Almacenar y recuperar datos</h1>
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad"><br><br>
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" id="nacionalidad" name="nacionalidad"><br><br>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+    </form>
+    <button onclick="guardarCookie()"> Guardar cookie </button>
+    <button onclick="guardarLocalStorage()"> Guardar con localStorage </button><br>
+    <button onclick="borrarCookie()">Borrar cookie</button>
+    <button onclick="borrarlocalStorage()">Borrar localStorage</button>
+
+    <script>
+        //Cargar datos 
+        function cargarDatos(){
+            let cookie = document.cookie; 
+            if (cookie) {
+                let partes = cookie.split("="); 
+                let valor = partes[1]; 
+                document.getElementById("nombre").value = valor;
+            }
+            if (localStorage.getItem('edad')) {
+                document.getElementById('edad').value = localStorage.getItem('edad');
+            }
+            if (localStorage.getItem('nacionalidad')) {
+                document.getElementById('nacionalidad').value = localStorage.getItem('nacionalidad');
+            }
+            if (localStorage.getItem('telefono')) {
+                document.getElementById('telefono').value = localStorage.getItem('telefono');
+            }
+            if (localStorage.getItem('email')) {
+                document.getElementById('email').value = localStorage.getItem('email');
+            }
+        };
+
+       window.onload = cargarDatos();
+
+        // Guardar cookie
+        function guardarCookie(){
+            const nombre = document.getElementById("nombre").value;
+            document.cookie = `nombre=${nombre}; expires=01 Jan 2099; path=/`;
+        }
+
+        // Guardar con localStorage
+        function guardarLocalStorage(){
+            const edad = document.getElementById("edad").value;
+            localStorage.setItem("edad", edad);
+            const nacionalidad = document.getElementById("nacionalidad").value;
+            localStorage.setItem("nacionalidad", nacionalidad);
+            const telefono = document.getElementById("telefono").value;
+            localStorage.setItem("telefono", telefono);
+            const email = document.getElementById("email").value;
+            localStorage.setItem("email", email);
+        }
+
+        // Borrar cookie
+        function borrarCookie(){
+            // Se borra poniendo fecha pasada y misma path
+            document.cookie = "nombre=; expires=01 Jan 1970; path=/";
+        }
+
+        // Borrar localStorage (menú simple)
+        function borrarlocalStorage(){
+            const opciones = "1. Borrar todo el localStorage\n2. Borrar edad\n3. Borrar nacionalidad\n4. Borrar teléfono\n5. Borrar email";
+            alert(opciones);
+
+            const opcion = parseInt(prompt("Selecciona una opción (1-5)"), 10);
+
+            switch(opcion){
+                case 1:
+                    localStorage.clear();
+                    break;
+                case 2:
+                    localStorage.removeItem("edad");
+                    break;
+                case 3:
+                    localStorage.removeItem("nacionalidad");
+                    break;
+                case 4:
+                    localStorage.removeItem("telefono");
+                    break;
+                case 5:
+                    localStorage.removeItem("email");
+                    break;
+                default:
+                    alert("Opción no válida");
+            }
+        }
+    </script>
+</body>
+</html>
