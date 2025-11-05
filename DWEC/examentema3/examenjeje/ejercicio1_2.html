@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 – Días laborables y festivos (versión prompt)</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 24px;
+        }
+
+        h1 {
+            color: rgb(59, 1, 72);
+        }
+
+        button {
+            margin-right: 6px;
+            margin-top: 6px;
+            padding: 6px 10px;
+        }
+
+        #resultados {
+            margin-top: 16px;
+            border: 1px solid #ccc;
+            padding: 12px;
+            display: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td {
+            border: 1px solid #333;
+            padding: 6px 10px;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- =========================
+        EJERCICIO 1 – VERSIÓN CON PROMPT
+        - Pide la fecha con prompt() en formato AAAA-MM-DD.
+        - Calcula días laborables y festivos (incluidos).
+        - Muestra lista y tabla con los resultados.
+        - Guarda la última fecha en localStorage.
+        - Mensaje de error si la fecha no es válida o es anterior a hoy.
+        - Muestra aviso verde si hay más de 100 días festivos.
+    ========================== -->
+
+    <h1>Cálculo de días laborables y festivos</h1>
+
+    <button onclick="pedirFecha()">Introducir fecha</button>
+    <button onclick="borrarFechaGuardada()">Borrar fecha guardada</button>
+
+    <div id="resultados">
+        <div id="mensaje"></div>
+        <div id="salida"></div><br>
+        <button onclick="cerrarResultados()">Cerrar resultados</button>
+    </div>
+
+    <script>
+        // Mostrar la última fecha guardada (si existe)
+        window.onload = function(){
+            let fechaGuardada = localStorage.getItem("fecha_guardada");
+            if (fechaGuardada) {
+                alert("Última fecha guardada: " + fechaGuardada);
+            }
+        };
+
+        // Función principal: pedir la fecha y calcular
+        function pedirFecha(){
+            let mensaje = document.getElementById("mensaje");
+            let salida = document.getElementById("salida");
+            let panel = document.getElementById("resultados");
+
+            mensaje.innerHTML = "";
+            salida.innerHTML = "";
+            panel.style.display = "block";
+
+            // Pedir la fecha al usuario
+            let valorFecha = prompt("Introduce una fecha en formato AAAA-MM-DD:");
+
+            // Validar si canceló o dejó vacío
+            if (valorFecha === null || valorFecha === "") {
+                mensaje.innerHTML = "<p style='color:red'>No se ha introducido ninguna fecha.</p>";
+                return;
+            }
+
+            // Guardar la fecha en localStorage
+            localStorage.setItem("fecha_guardada", valorFecha);
+
+            // Crear las fechas (actual e introducida)
+            let fechaHoy = new Date();
+            let fechaInicio = new Date(fechaHoy.getFullYear(), fechaHoy.getMonth(), fechaHoy.getDate());
+            let fechaFinal = new Date(valorFecha);
+
+            // Validar si la fecha existe (por ejemplo, 2024-02-31 sería inválida)
+            if (isNaN(fechaFinal.getTime())) {
+                mensaje.innerHTML = "<p style='color:red'>La fecha introducida no es válida.</p>";
+                return;
+            }
+
+            // Comprobar si es anterior a hoy
+            if (fechaFinal < fechaInicio) {
+                mensaje.innerHTML = "<p style='color:red'>La fecha debe ser igual o posterior a hoy.</p>";
+                return;
+            }
+
+            // Variables para contar los días
+            let diasLaborables = 0;
+            let diasFestivos = 0;
+
+            // Copia de la fecha actual para recorrer
+            let fechaActual = new Date(fechaInicio.getTime());
+
+            // Bucle: avanzar día a día hasta la fecha final (incluida)
+            while (fechaActual <= fechaFinal) {
+                let diaSemana = fechaActual.getDay(); // 0=domingo, 6=sábado
+                if (diaSemana === 0 || diaSemana === 6) {
+                    diasFestivos++;
+                } else {
+                    diasLaborables++;
+                }
+                fechaActual.setDate(fechaActual.getDate() + 1);
+            }
+
+            // Crear la salida en formato lista + tabla
+            let textoHTML = "";
+            textoHTML += "<ul>";
+            textoHTML += "<li>Fecha de inicio: " + fechaInicio.toLocaleDateString() + "</li>";
+            textoHTML += "<li>Fecha de fin: " + fechaFinal.toLocaleDateString() + "</li>";
+            textoHTML += "</ul>";
+
+            textoHTML += "<table>";
+            textoHTML += "<tr><td>Días laborables</td><td>" + diasLaborables + "</td></tr>";
+            textoHTML += "<tr><td>Días festivos</td><td>" + diasFestivos + "</td></tr>";
+            textoHTML += "</table>";
+
+            // Aviso si hay más de 100 festivos
+            if (diasFestivos > 100) {
+                textoHTML += "<p style='color:green'>Hay más de 100 días festivos.</p>";
+            }
+
+            // Mostrar en pantalla
+            salida.innerHTML = textoHTML;
+        }
+
+        // Oculta el panel de resultados
+
+        function cerrarResultados(){
+            document.getElementById("resultados").style.display = "none";
+        }
+
+        // Borrar la fecha guardada en localStorage
+        function borrarFechaGuardada(){
+            localStorage.removeItem("fecha_guardada");
+            alert("La fecha guardada ha sido eliminada de localStorage.");
+        }
+    </script>
+</body>
+</html>

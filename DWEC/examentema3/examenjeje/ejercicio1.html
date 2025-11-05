@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 – Días laborables y festivos</title>
+
+    <style>
+        /* ======== ESTILOS GENERALES ======== */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 24px;
+        }
+
+        h1 {
+            color: rgb(59, 1, 72);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            margin-top: 6px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            margin-right: 6px;
+            margin-top: 6px;
+            padding: 6px 10px;
+        }
+
+        /* Contenedor de los resultados */
+        #resultados {
+            margin-top: 16px;
+            border: 1px solid #ccc;
+            padding: 12px;
+            display: none;
+        }
+
+        /* Tabla */
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td {
+            border: 1px solid #333;
+            padding: 6px 10px;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- =========================
+        EJERCICIO 1
+        Cálculo de días laborables y festivos (incluidos)
+        - Usa localStorage para guardar la última fecha.
+        - Muestra lista y tabla con los resultados.
+        - Mensaje de error si la fecha es inválida o anterior a hoy.
+        - Mensaje verde si hay más de 100 días festivos.
+        - Botón para cerrar resultados.
+    ========================== -->
+
+    <h1>Cálculo de días laborables y festivos</h1>
+
+    <!-- Formulario para introducir la fecha -->
+    <form>
+        <label for="fecha">Fecha (AAAA-MM-DD):</label><br>
+        <input type="date" id="fecha" name="fecha"><br>
+    </form>
+
+    <!-- Botones de acciones -->
+    <button onclick="calcularDias()">Calcular</button>
+    <button onclick="borrarFechaGuardada()">Borrar fecha guardada</button>
+
+    <!-- Zona donde se mostrarán los resultados -->
+    <div id="resultados">
+        <div id="mensaje"></div>
+        <div id="salida"></div><br>
+        <button onclick="cerrarResultados()">Cerrar resultados</button>
+    </div>
+
+    <script>
+        // ======================================
+        // Al cargar la página, recuperar la fecha guardada (si existe)
+        // ======================================
+        function cargarFechaGuardada(){
+            let fechaGuardada = localStorage.getItem('fecha_guardada');
+            if (fechaGuardada) {
+                document.getElementById('fecha').value = fechaGuardada;
+            }
+        }
+
+        // Ejecutar la función al cargar la página
+        window.onload = cargarFechaGuardada();
+
+        // ======================================
+        // FUNCIÓN PRINCIPAL: Calcular los días
+        // ======================================
+        function calcularDias(){
+            // Variables de referencia a los elementos HTML
+            let campoFecha = document.getElementById('fecha');
+            let mensaje = document.getElementById('mensaje');
+            let salida = document.getElementById('salida');
+            let panelResultados = document.getElementById('resultados');
+
+            // Limpiar mensajes y mostrar el panel
+            mensaje.innerHTML = "";
+            salida.innerHTML = "";
+            panelResultados.style.display = "block";
+
+            // Obtener el valor del campo fecha
+            let valorFecha = campoFecha.value;
+
+            // Validar que el campo no esté vacío
+            if (valorFecha === "") {
+                mensaje.innerHTML = "<p style='color:red'>Por favor, introduce una fecha válida.</p>";
+                return;
+            }
+
+            // Guardar la fecha introducida en localStorage
+            localStorage.setItem('fecha_guardada', valorFecha);
+
+            // Crear fechas tipo Date (solo con día, mes y año)
+            let fechaHoy = new Date();
+            let fechaInicio = new Date(fechaHoy.getFullYear(), fechaHoy.getMonth(), fechaHoy.getDate());
+            let fechaFinal = new Date(valorFecha);
+
+            // Comprobar si la fecha es válida (isNaN devuelve true si no es un número válido)
+            if (isNaN(fechaFinal.getTime())) {
+                mensaje.innerHTML = "<p style='color:red'>La fecha introducida no es válida.</p>";
+                return;
+            }
+
+            // Si la fecha es anterior a hoy, mostrar error
+            if (fechaFinal < fechaInicio) {
+                mensaje.innerHTML = "<p style='color:red'>La fecha debe ser igual o posterior a hoy.</p>";
+                return;
+            }
+
+            // Contadores de días
+            let diasLaborables = 0;
+            let diasFestivos = 0;
+
+            // Variable para recorrer día a día
+            let fechaActual = new Date(fechaInicio.getTime());
+
+            // Bucle para contar los días desde hoy hasta la fecha final (ambos incluidos)
+            while (fechaActual <= fechaFinal) {
+                let diaSemana = fechaActual.getDay(); // Devuelve 0 (domingo) a 6 (sábado)
+
+                // Si el día es sábado o domingo → festivo, si no → laborable
+                if (diaSemana === 0 || diaSemana === 6) {
+                    diasFestivos++;
+                } else {
+                    diasLaborables++;
+                }
+
+                // Sumar un día al contador (setDate cambia el día del mes)
+                fechaActual.setDate(fechaActual.getDate() + 1);
+            }
+
+            // Crear el texto con los resultados en formato lista y tabla
+            let textoHTML = "";
+
+            textoHTML += "<ul>";
+            textoHTML += "<li>Fecha de inicio: " + fechaInicio.toLocaleDateString() + "</li>";
+            textoHTML += "<li>Fecha de fin: " + fechaFinal.toLocaleDateString() + "</li>";
+            textoHTML += "</ul>";
+
+            textoHTML += "<table>";
+            textoHTML += "<tr><td>Días laborables</td><td>" + diasLaborables + "</td></tr>";
+            textoHTML += "<tr><td>Días festivos</td><td>" + diasFestivos + "</td></tr>";
+            textoHTML += "</table>";
+
+            // Si hay más de 100 festivos, mostrar aviso verde
+            if (diasFestivos > 100) {
+                textoHTML += "<p style='color:green'>Hay más de 100 días festivos.</p>";
+            }
+
+            // Insertar el contenido en el div de salida
+            salida.innerHTML = textoHTML;
+        }
+
+        // ======================================
+        // Ocultar el panel de resultados
+        // ======================================
+        function cerrarResultados(){
+            document.getElementById('resultados').style.display = "none";
+        }
+
+        // ======================================
+        // Borrar la fecha guardada en localStorage
+        // ======================================
+        function borrarFechaGuardada(){
+            localStorage.removeItem('fecha_guardada');
+            alert("La fecha guardada ha sido eliminada de localStorage.");
+        }
+    </script>
+</body>
+</html>
