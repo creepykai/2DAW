@@ -25,12 +25,12 @@
 <div id="info"></div>
 
 <script>
-  // ===== Variables del juego =====
+  // Variables del juego
   let idTemporizador;      // guarda el temporizador
   let señalActiva = false; // indica si ya cambió el fondo
   let inicio;              // momento en que cambia el color
 
-  // ===== Botón 1: activar tiempo aleatorio =====
+  //  Botón 1: activar tiempo aleatorio 
   function activarTiempo(){
       document.body.style.backgroundColor = "white"; // reinicio fondo
       document.getElementById("info").innerHTML = "";
@@ -45,7 +45,7 @@
       idTemporizador = setTimeout(mostrarSeñal, espera);
   }
 
-  // ===== Cambiar color del fondo y activar la medición =====
+  //  Cambiar color del fondo y activar la medición 
   function mostrarSeñal(){
       document.body.style.backgroundColor = "rgba(231, 6, 213, 0.541)";
       document.getElementById("info").innerHTML = "¡Pulsa 'Medir ahora' lo más rápido posible!";
@@ -53,7 +53,7 @@
       señalActiva = true;       // ya se puede medir
   }
 
-  // ===== Botón 2: medir el tiempo de reacción =====
+  //Botón 2: medir el tiempo de reacción 
   function medir(){
       let info = document.getElementById("info");
 
@@ -77,7 +77,7 @@
       señalActiva = false;
   }
 
-  // ===== Botón 3: reiniciar el juego =====
+  // Botón 3: reiniciar el juego 
   function reiniciar(){
       clearTimeout(idTemporizador); // cancela el temporizador si existía
       document.body.style.backgroundColor = "white";

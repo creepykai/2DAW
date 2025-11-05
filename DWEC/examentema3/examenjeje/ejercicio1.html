@@ -6,7 +6,6 @@
     <title>Ejercicio 1 – Días laborables y festivos</title>
 
     <style>
-        /* ======== ESTILOS GENERALES ======== */
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 24px;
@@ -86,9 +85,7 @@
     </div>
 
     <script>
-        // ======================================
         // Al cargar la página, recuperar la fecha guardada (si existe)
-        // ======================================
         function cargarFechaGuardada(){
             let fechaGuardada = localStorage.getItem('fecha_guardada');
             if (fechaGuardada) {
@@ -99,9 +96,7 @@
         // Ejecutar la función al cargar la página
         window.onload = cargarFechaGuardada();
 
-        // ======================================
         // FUNCIÓN PRINCIPAL: Calcular los días
-        // ======================================
         function calcularDias(){
             // Variables de referencia a los elementos HTML
             let campoFecha = document.getElementById('fecha');
@@ -187,16 +182,13 @@
             salida.innerHTML = textoHTML;
         }
 
-        // ======================================
         // Ocultar el panel de resultados
-        // ======================================
         function cerrarResultados(){
             document.getElementById('resultados').style.display = "none";
         }
 
-        // ======================================
+        
         // Borrar la fecha guardada en localStorage
-        // ======================================
         function borrarFechaGuardada(){
             localStorage.removeItem('fecha_guardada');
             alert("La fecha guardada ha sido eliminada de localStorage.");
