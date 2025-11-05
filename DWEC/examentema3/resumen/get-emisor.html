@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>GET - Emisor</title></head>
+<body>
+<h2>Enviar por GET</h2>
+<input id="campo" value="nombre">
+<input id="valor" value="Irene">
+<button onclick="enviar()">Abrir con parámetros</button>
+
+<script>
+function enviar(){
+  var campo = document.getElementById("campo").value;
+  var valor = document.getElementById("valor").value;
+  // encodeURIComponent no es obligatorio; si prefieres, puedes no usarlo
+  window.open("get-receptor.html?"+campo+"="+valor, "VentanaGET", "width=520,height=380,scrollbars=1");
+}
+</script>
+</body>
+</html>

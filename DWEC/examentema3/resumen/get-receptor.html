@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>GET - Receptor</title></head>
+<body>
+<h2>Parámetros recibidos</h2>
+<p id="url"></p>
+<pre id="out"></pre>
+
+<script>
+document.getElementById("url").textContent = "URL: " + location.href;
+
+// location.search → "?nombre=Irene&edad=22"
+var q = location.search;           // cadena completa
+var sinInterrogacion = q.substring(1); // "nombre=Irene&edad=22"
+var pares = sinInterrogacion.split("&"); // ["nombre=Irene","edad=22"]
+var texto = "";
+
+for (var i = 0; i < pares.length; i++){
+  var partes = pares[i].split("=");    // ["nombre","Irene"]
+  var clave = partes[0];
+  var valor = partes[1];
+  texto += clave + " = " + valor + "\n";
+}
+
+document.getElementById("out").textContent = texto;
+</script>
+</body>
+</html>

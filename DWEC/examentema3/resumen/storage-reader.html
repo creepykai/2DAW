@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Lector Storage</title></head>
+<body>
+<h2>Lectura</h2>
+<pre id="out"></pre>
+<button onclick="borrarLocal()">Borrar Nombre (localStorage)</button>
+<button onclick="borrarSession()">Borrar Nombre (sessionStorage)</button>
+
+<script>
+function pintar(){
+  var texto = "";
+  texto += "localStorage.Nombre: " + localStorage.getItem("Nombre") + "\n";
+  texto += "localStorage.Color: " + localStorage.Color + "\n";
+  texto += "sessionStorage.Nombre: " + sessionStorage.getItem("Nombre") + "\n";
+  texto += "sessionStorage.Color: " + sessionStorage.Color + "\n";
+  document.getElementById("out").textContent = texto;
+}
+function borrarLocal(){ localStorage.removeItem("Nombre"); pintar(); }
+function borrarSession(){ sessionStorage.removeItem("Nombre"); pintar(); }
+pintar();
+</script>
+</body>
+</html>

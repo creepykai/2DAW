@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Gestión de ventanas (temario)</title></head>
+<body>
+<h2>Gestión de ventanas</h2>
+
+<button onclick="abrir()">Abrir ventana 500x400</button>
+<button onclick="cerrar()">Cerrar</button>
+<button onclick="moverBy()">Mover +50,+50</button>
+<button onclick="moverTo()">Mover a 100,100</button>
+<button onclick="resizeBy()">Aumentar +100,+50</button>
+<button onclick="resizeTo()">Ajustar 600x400</button>
+<button onclick="cambiarURL()">Cambiar URL</button>
+
+<script>
+var pop = null; // referencia global
+
+function abrir(){
+  pop = window.open("popup.html", "MiVentana", "width=500,height=400");
+}
+
+function cerrar(){
+  if (pop && !pop.closed) { pop.close(); }
+}
+
+function moverBy(){
+  if (pop && !pop.closed) { pop.moveBy(50, 50); }
+}
+
+function moverTo(){
+  if (pop && !pop.closed) { pop.moveTo(100, 100); }
+}
+
+function resizeBy(){
+  if (pop && !pop.closed) { pop.resizeBy(100, 50); }
+}
+
+function resizeTo(){
+  if (pop && !pop.closed) { pop.resizeTo(600, 400); }
+}
+
+function cambiarURL(){
+  if (pop && !pop.closed) { pop.location.href = "https://www.example.com"; }
+}
+</script>
+</body>
+</html>

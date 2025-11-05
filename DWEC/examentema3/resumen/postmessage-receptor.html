@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>postMessage - Receptor</title></head>
+<body>
+<h2>Receptor</h2>
+<pre id="log"></pre>
+
+<script>
+window.addEventListener("message", function(event){
+  document.getElementById("log").textContent += "Recibido: " + event.data + "\n";
+  if (window.opener) {
+    window.opener.postMessage("OK recibido en el receptor", "*");
+  }
+});
+</script>
+</body>
+</html>

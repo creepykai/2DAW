@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Storage (temario)</title></head>
+<body>
+<h2>Guardar datos</h2>
+<input id="nombre" placeholder="Nombre">
+<input id="color" placeholder="Color">
+<button onclick="guardarLocal()">Guardar en localStorage</button>
+<button onclick="guardarSession()">Guardar en sessionStorage</button>
+<button onclick="abrir()">Abrir lector</button>
+
+<script>
+function guardarLocal(){
+  var n = document.getElementById("nombre").value;
+  var c = document.getElementById("color").value;
+  // dos formas del temario
+  localStorage.setItem("Nombre", n);
+  localStorage.Color = c;
+  alert("Guardado en localStorage");
+}
+
+function guardarSession(){
+  var n = document.getElementById("nombre").value;
+  var c = document.getElementById("color").value;
+  sessionStorage.setItem("Nombre", n);
+  sessionStorage.Color = c;
+  alert("Guardado en sessionStorage (se borra al cerrar la pestaña)");
+}
+
+function abrir(){
+  window.open("storage-reader.html", "Lector", "width=520,height=380");
+}
+</script>
+</body>
+</html>

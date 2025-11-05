@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>postMessage - Emisor</title></head>
+<body>
+<h2>Emisor</h2>
+<button onclick="abrir()">Abrir receptor</button>
+<button onclick="enviar()">Enviar mensaje</button>
+<pre id="log"></pre>
+
+<script>
+var rec = null;
+
+function abrir(){
+  rec = window.open("postmessage-receptor.html", "Receptor", "width=520,height=380");
+  document.getElementById("log").textContent += "Receptor abierto.\n";
+}
+
+function enviar(){
+  if (rec && !rec.closed) {
+    rec.postMessage("Hola desde la ventana emisora", "*"); // como en la diapositiva
+    document.getElementById("log").textContent += "Mensaje enviado.\n";
+  }
+}
+
+// escuchar respuesta (diapositiva usa addEventListener)
+window.addEventListener("message", function(event){
+  document.getElementById("log").textContent += "Respuesta: " + event.data + "\n";
+});
+</script>
+</body>
+</html>
