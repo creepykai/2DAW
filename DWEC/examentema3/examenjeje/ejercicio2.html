@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio 2 – Juego de reacción (fondo completo)</title>
+<style>
+  body{
+    font-family:Arial,Helvetica,sans-serif;
+    margin:24px;
+    background-color:white; /* color inicial */
+  }
+  h1{color:rgb(59,1,72)}
+  button{margin:6px 6px 0 0;padding:6px 10px}
+  #info{margin-top:10px}
+</style>
+</head>
+<body>
+<h1>Juego de reacción</h1>
+
+<!-- Botones del juego -->
+<button onclick="activarTiempo()">Activar tiempo aleatorio</button>
+<button onclick="medir()">Medir ahora</button>
+<button onclick="reiniciar()">Volver a empezar</button>
+
+<div id="info"></div>
+
+<script>
+  // ===== Variables del juego =====
+  let idTemporizador;      // guarda el temporizador
+  let señalActiva = false; // indica si ya cambió el fondo
+  let inicio;              // momento en que cambia el color
+
+  // ===== Botón 1: activar tiempo aleatorio =====
+  function activarTiempo(){
+      document.body.style.backgroundColor = "white"; // reinicio fondo
+      document.getElementById("info").innerHTML = "";
+      señalActiva = false;
+
+      // Generar tiempo aleatorio entre 2 y 5 segundos
+      let espera = Math.floor(Math.random() * 3000) + 2000;
+
+      alert("Prepárate, el fondo cambiará en un tiempo aleatorio.");
+
+      // Activar el temporizador
+      idTemporizador = setTimeout(mostrarSeñal, espera);
+  }
+
+  // ===== Cambiar color del fondo y activar la medición =====
+  function mostrarSeñal(){
+      document.body.style.backgroundColor = "rgba(231, 6, 213, 0.541)";
+      document.getElementById("info").innerHTML = "¡Pulsa 'Medir ahora' lo más rápido posible!";
+      inicio = new Date();      // guardamos el instante exacto
+      señalActiva = true;       // ya se puede medir
+  }
+
+  // ===== Botón 2: medir el tiempo de reacción =====
+  function medir(){
+      let info = document.getElementById("info");
+
+      // Si hace clic antes de que cambie el color
+      if (!señalActiva){
+          info.innerHTML = "<span style='color:red'>Te has adelantado. Pulsa 'Volver a empezar'.</span>";
+          return;
+      }
+
+      // Calcular tiempo transcurrido
+      let fin = new Date();
+      let tiempo = fin - inicio; // diferencia en milisegundos
+
+      // Mostrar resultado
+      info.innerHTML = "Has tardado <strong>" + tiempo + " milisegundos</strong>.";
+      alert("Has tardado " + tiempo + " ms.");
+
+      // Mensaje final
+      document.body.style.backgroundColor = "white";
+      document.getElementById("info").innerHTML += "<br>Pulsa 'Volver a empezar' para jugar otra vez.";
+      señalActiva = false;
+  }
+
+  // ===== Botón 3: reiniciar el juego =====
+  function reiniciar(){
+      clearTimeout(idTemporizador); // cancela el temporizador si existía
+      document.body.style.backgroundColor = "white";
+      document.getElementById("info").innerHTML = "Listo para volver a jugar.";
+      señalActiva = false;
+  }
+</script>
+</body>
+</html>
