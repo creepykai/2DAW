@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 1 - Bloque CSS</title>
+    <style>
+        .caja_externa {
+            width: 500px;
+            margin: 100px auto;
+            border: 15px solid black;
+            padding: 15px;
+            background-color: white;
+        }
+
+        .caja_interna {
+            border: 2px dashed black;
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            font-family: "Times New Roman", serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .caja_externa:hover {
+            border-color: #008CBA;
+            background-color: #008CBA;
+        }
+
+        .caja_externa:hover .caja_interna {
+            background-color: black;
+            color: white;
+            border-style: solid;
+            border-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="caja_externa">
+        <div class="caja_interna">
+            Diseño Interfaces Web
+        </div>
+    </div>
+    
+</body>
+</html>

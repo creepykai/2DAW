@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5 - Selectores (Mejorado)</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #dddddd;
+            padding: 20px;
+        }
+
+        .contenedor_principal {
+            width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #titulo_principal {
+            color: black;
+            border-bottom: 3px solid #BC4077;
+            padding-bottom: 10px;
+        }
+
+        .contenedor_principal > p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        blockquote {
+            background-color: white;
+            border-left: 5px solid #BC4077;
+            margin-left: 20px;
+            padding: 10px;
+        }
+
+        blockquote p {
+            color: grey;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="contenedor_principal">
+        
+        <h1 id="titulo_principal">Demostración de Selectores</h1>
+
+        <p>Este párrafo (hijo directo) SÍ es seleccionado.</p>
+
+        <p>Este también (hijo directo) SÍ es seleccionado.</p>
+
+        <blockquote>
+            <p>Este párrafo (nieto) NO es seleccionado por el selector de hijos.</p>
+        </blockquote>
+
+        <p>Este último párrafo (hijo directo) SÍ es seleccionado de nuevo.</p>
+
+    </div>
+
+</body>
+</html>
