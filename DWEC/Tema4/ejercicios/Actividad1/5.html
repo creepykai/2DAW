@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <!--5.	Crea una función autoejecutable que muestre el mensaje “Comenzando…” y tres segundos después escriba “Finalizado”-->
+    <script>
+        (function(){
+            mensaje = "Comenzando...";
+            console.log(mensaje);
+            setTimeout(function() {
+                mensaje = "Finalizado";
+                console.log(mensaje);}, 3000);
+        })();
+    
+    </script>
+</body>
+</html>

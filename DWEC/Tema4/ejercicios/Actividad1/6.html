@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--Crea una función que reciba un número variable de parámetros numéricos (al menos cuatro) y devuelva su suma, su media aritmética, 
+    la multiplicación del primero con el último y la división del segundo con el penúltimo.-->
+    <script>
+        function operaciones(...numeros) {
+            let suma = 0;
+            for (const num of numeros) {
+                suma += num;
+            }
+
+            let media = suma / numeros.length;
+            let multiplicacion = numeros[0] * numeros[numeros.length - 1];
+            let division = numeros[1] / numeros[numeros.length - 2];
+
+            return {
+                suma: suma,
+                media: media,
+                multiplicacion: multiplicacion,
+                division: division
+            };
+        }
+
+        let resultados = operaciones(10, 20, 30, 40, 50);
+        console.log(`Suma: ${resultados.suma}`);
+        console.log(`Media: ${resultados.media}`);
+        console.log(`Multiplicación del primero con el último: ${resultados.multiplicacion}`);
+        console.log(`División del segundo con el penúltimo: ${resultados.division}`);
+    </script>
+</body>
+</html>

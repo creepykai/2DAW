@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--7.	Adivina la palabra. Escribe una función que, a partir de una palabra establecida por el programador, reciba como parámetros un 
+    número variable de letras y muestre en pantalla solo las coincidencias entre la palabra secreta y las palabras proporcionadas. 
+    Por ejemplo, si la palabra secreta es “sargento” y se ha invocado a la función como adivina(‘a’,’e’,’i’,’o’,’u’,’d’,’n’) la salida del 
+    programa será -a--en-o
+    -->
+    <script>
+        function adivina(...letras) {
+            const palabraSecreta = "sargento";
+            let resultado = "";
+
+            for (const caracterSecreto of palabraSecreta) {
+                
+                let encontrada = false; 
+
+                for (const letraAdivinada of letras) {
+                    
+                    if (caracterSecreto === letraAdivinada) {
+                        encontrada = true;
+                        break; 
+                    }
+                }
+
+                if (encontrada === true) {
+                    resultado += caracterSecreto;
+                } else {
+                    resultado += "-";
+                }
+            }
+
+            console.log(resultado);
+        }
+
+        adivina('a', 'e', 'i', 'o', 'u', 'd', 'n');
+    
+    </script>
+</body>
+</html>
