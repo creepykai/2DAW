@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 6 - Layout Flexbox</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .contenedor_flex {
+            display: flex;
+            height: 100vh;
+        }
+
+        .div_izquierda {
+            flex-basis: 30%;
+            background-color: #f08080;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+        }
+
+        .div_derecha {
+            flex-basis: 70%;
+            background-color: #90ee90;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="contenedor_flex">
+        <div class="div_izquierda">
+            Div de la izquierda (30%)
+        </div>
+        <div class="div_derecha">
+            Div de la derecha (70%)
+        </div>
+    </div>
+    
+</body>
+</html>

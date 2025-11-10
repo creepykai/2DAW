@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 2 - Tabla de Precios (Hover)</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: sans-serif;
+        }
+
+        .tabla_precios {
+            margin: 50px auto;
+            width: 80%;
+            text-align: center;
+            border-spacing: 0;
+        }
+
+        .tabla_precios th,
+        .tabla_precios td {
+            padding: 12px 15px;
+        }
+
+        thead th {
+            background-color: darkseagreen;
+            color: white;
+            font-weight: bold;
+        }
+        
+        thead th:first-child {
+            background-color: transparent;
+        }
+
+        tbody th {
+            background-color: darkseagreen;
+            color: white;
+            text-align: left;
+        }
+
+        tbody td {
+            background-color: lightgrey;
+            color: grey;
+        }
+
+        tbody td:hover {
+            background-color: white;
+            color: darkseagreen;
+            font-weight: bold;
+        }
+
+        tfoot th,
+        tfoot td {
+            background-color: white;
+            padding-top: 20px;
+        }
+
+        tfoot th {
+            text-align: left;
+            color: grey;
+            font-weight: bold;
+        }
+
+        tfoot td {
+            color: darkseagreen;
+            font-weight: bold;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+
+    <table class="tabla_precios">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Smart Starter</th>
+                <th>Smart Medium</th>
+                <th>Smart Business</th>
+                <th>Smart Deluxe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Almacenamiento</th>
+                <td>512 MB</td>
+                <td>1 GB</td>
+                <td>2 GB</td>
+                <td>4 GB</td>
+            </tr>
+            <tr>
+                <th>Ancho de banda</th>
+                <td>50 GB</td>
+                <td>100 GB</td>
+                <td>150 GB</td>
+                <td>Unlimited</td>
+            </tr>
+            <tr>
+                <th>MySQL Databases</th>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+            </tr>
+            <tr>
+                <th>Setup</th>
+                <td>19.90 €</td>
+                <td>12.90 €</td>
+                <td>Gratis</td>
+                <td>Gratis</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Precio</th>
+                <td>2.90 €</td>
+                <td>5.90 €</td>
+                <td>9.90 €</td>
+                <td>14.90 €</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>
