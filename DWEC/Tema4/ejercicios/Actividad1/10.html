@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+    <!--10.	Mayor cadena. Escribe una función flecha que reciba dos cadenas de caracteres e informe por consola de aquella que 
+    contiene más vocales.-->
+    <script>
+        let cadena1 = "Cadena 1 para contar vocales";
+        let cadena2 = "Esta es la cadena dos para contar vocales";
+        const contarVocales = (cadena) => {
+            let contador = 0;
+            let vocales = 'aeiouAEIOUáéíóúÁÉÍÓÚ';
+            for (caracter of cadena) {
+                if (vocales.includes(caracter)) {
+                    contador++;
+                }
+            }
+            return contador;
+        }
+        let vocalesCadena1 = contarVocales(cadena1);
+        let vocalesCadena2 = contarVocales(cadena2);
+        if (vocalesCadena1 > vocalesCadena2) {
+            console.log(`La primera cadena tiene más vocales (${vocalesCadena1}) que la segunda (${vocalesCadena2})`);
+        } else if (vocalesCadena2 > vocalesCadena1) {
+            console.log(`La segunda cadena tiene más vocales (${vocalesCadena2}) que la primera (${vocalesCadena1})`);
+        } else {
+            console.log(`Ambas cadenas tienen el mismo número de vocales (${vocalesCadena1})`);
+        }
+    </script>
+</body>
+</html>

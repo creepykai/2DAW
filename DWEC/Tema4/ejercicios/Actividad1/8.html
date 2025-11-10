@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--8.	Cadenas invertidas. Crea una función anónima vinculada a una variable llamada invertida que reciba una cadena de texto 
+    y la devuelva invertida (transformada de derecha a izquierda)-->
+    <script>
+        let invertida = (cadena) => {
+            let resultado = '';
+            for (let index = cadena.lenght - 1 ; index >= 0; index--) {
+                resultado += cadena[index];
+            }
+            console.log(cadena + ' y la cadena invertida es: ' + resultado);
+        }
+        invertida('olaH');
+    </script>
+</body>
+</html>

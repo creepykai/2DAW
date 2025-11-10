@@ -15,11 +15,8 @@
         function adivina(...letras) {
             const palabraSecreta = "sargento";
             let resultado = "";
-
             for (const caracterSecreto of palabraSecreta) {
-                
                 let encontrada = false; 
-
                 for (const letraAdivinada of letras) {
                     
                     if (caracterSecreto === letraAdivinada) {
@@ -27,7 +24,6 @@
                         break; 
                     }
                 }
-
                 if (encontrada === true) {
                     resultado += caracterSecreto;
                 } else {
