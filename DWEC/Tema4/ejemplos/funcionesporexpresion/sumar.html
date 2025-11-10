@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!---->
+    <script>
+        //FUncion por expresión sumar
+        const sumar = function suma(a,b){
+            return a+b;
+        }
+
+        sumar(3,4);
+
+        //FUncion por expresión sin nombre - sumar
+
+        const sumar2 = function (a,b){
+            returna+b;
+        }
+        sumar(3,4);
+
+        //Usando función por exp3resión usando flecha
+
+        const sumar3 = (a,b) => {
+            return a+b;
+        }
+
+        //Usando función por expresión usando flecha en un sola línea
+
+        const sumar4 = (a,b) => a+b;
+
+        //Función anónima como callback con settimeuot
+
+        setTimeout(sumar4 => {console.log("seejecuta después")}, 2000);
+
+        //Función anónima como callback con setTimeout con function
+        setTimeout(function() {console.log("seejecuta después")}, 2000);
+
+    
+    </script>
+</body>
+</html>
