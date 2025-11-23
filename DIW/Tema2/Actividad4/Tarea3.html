@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 3 - Kuromi Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(30, 30, 30);
+        }
+
+        .barraLateral {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: rgb(0, 0, 0);
+            border-right: 3px solid rgb(148, 87, 235);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cabeceraLateral {
+            background-color: rgb(20, 20, 20);
+            color: rgb(255, 105, 180);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgb(50, 50, 50);
+            margin-bottom: 20px;
+        }
+
+        .barraLateral a {
+            display: flex; 
+            align-items: center; 
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 20px 30px;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .barraLateral a i {
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+            color: rgb(148, 87, 235);
+        }
+
+        .barraLateral a:hover {
+            background-color: rgb(255, 105, 180);
+            color: rgb(0, 0, 0);
+        }
+        
+        .barraLateral a:hover i {
+            color: rgb(0, 0, 0);
+        }
+
+        .contenidoPrincipal {
+            margin-left: 250px;
+        }
+
+        .seccionPagina {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgb(50, 50, 50);
+        }
+
+        h1 {
+            font-size: 4em;
+            color: rgb(221, 160, 221);
+            text-transform: uppercase;
+            text-shadow: 4px 4px 0px rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="barraLateral">
+        <div class="cabeceraLateral">Tarea 3</div>
+        <a href="#seccionInicio">
+            <i class="fa-solid fa-heart"></i> Inicio
+        </a>
+        <a href="#seccionPerfil">
+            <i class="fa-solid fa-user"></i> Perfil
+        </a>
+        <a href="#seccionGaleria">
+            <i class="fa-solid fa-image"></i> Galería
+        </a>
+        <a href="#seccionContacto">
+            <i class="fa-solid fa-envelope"></i> Contacto
+        </a>
+    </div>
+
+    <div class="contenidoPrincipal">
+        <div id="seccionInicio" class="seccionPagina">
+            <h1>Inicio</h1>
+        </div>
+        <div id="seccionPerfil" class="seccionPagina">
+            <h1>Mi Perfil</h1>
+        </div>
+        <div id="seccionGaleria" class="seccionPagina">
+            <h1>Galería</h1>
+        </div>
+        <div id="seccionContacto" class="seccionPagina">
+            <h1>Contacto</h1>
+        </div>
+    </div>
+
+</body>
+</html>

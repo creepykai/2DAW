@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox: Catálogo de imágenes y texto</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .cabeceraTitulo {
+            background-color: rgb(51, 51, 51);
+            color: rgb(255, 255, 255);
+            padding: 20px 40px;
+            margin-bottom: 20px;
+        }
+
+        .cabeceraTitulo h1 {
+            margin: 0;
+            font-weight: normal;
+            font-size: 2.5em;
+        }
+
+        .contenedorFlex {
+            display: flex;
+            flex-direction: row;
+            
+            /* CAMBIO: Alineación a la izquierda */
+            justify-content: flex-start; 
+            
+            align-items: flex-start;
+            padding: 0 20px;
+            
+            /* Espacio entre las tarjetas */
+            gap: 15px; 
+            
+            /* Permite que bajen a la siguiente línea si no caben (opcional, pero útil) */
+            flex-wrap: wrap; 
+        }
+
+        .tarjetaEdificio {
+            /* CAMBIO: Quitamos 'flex: 1' y ponemos un ancho fijo para que sean rectángulos verticales */
+            width: 200px; 
+            
+            /* Aseguramos que no se encojan */
+            flex-shrink: 0; 
+            
+            border: 2px solid rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            
+            /* Altura mínima para que se vean uniformes */
+            min-height: 400px; 
+        }
+
+        .tarjetaEdificio img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid rgb(0, 0, 0);
+        }
+
+        .tituloEdificio {
+            background-color: rgb(220, 220, 220);
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 10px 0;
+            border-bottom: 2px solid rgb(0, 0, 0);
+            color: rgb(0, 0, 0);
+        }
+
+        .textoEdificio {
+            padding: 10px;
+            font-size: 0.95em;
+            text-align: justify;
+            line-height: 1.2;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabeceraTitulo">
+        <h1>Flexbox: Catálogo de imágenes y texto</h1>
+    </header>
+
+    <div class="contenedorFlex">
+        
+        <div class="tarjetaEdificio">
+            <img src="https://picsum.photos/id/10/300/200" alt="Building 1">
+            <div class="tituloEdificio">Building 1</div>
+            <div class="textoEdificio">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, quam quibusdam. Dolorum, modi tempore. Necessitatibus eligendi perspiciatis excepturi in sequi, neque corrupti quos unde voluptates mollitia sint? Cumque, voluptatem. Delectus.
+            </div>
+        </div>
+
+        <div class="tarjetaEdificio">
+            <img src="https://picsum.photos/id/54/300/200" alt="Building 2">
+            <div class="tituloEdificio">Building 2</div>
+            <div class="textoEdificio">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, quam quibusdam. Dolorum, modi tempore. Necessitatibus eligendi perspiciatis excepturi in sequi, neque corrupti quos unde voluptates mollitia sint? Cumque, voluptatem. Delectus.
+            </div>
+        </div>
+
+        <div class="tarjetaEdificio">
+            <img src="https://picsum.photos/id/101/300/200" alt="Building 3">
+            <div class="tituloEdificio">Building 3</div>
+            <div class="textoEdificio">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, quam quibusdam. Dolorum, modi tempore. Necessitatibus eligendi perspiciatis excepturi in sequi, neque corrupti quos unde voluptates mollitia sint? Cumque, voluptatem. Delectus.
+            </div>
+        </div>
+
+        <div class="tarjetaEdificio">
+            <img src="https://picsum.photos/id/58/300/200" alt="Building 4">
+            <div class="tituloEdificio">Building 4</div>
+            <div class="textoEdificio">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, quam quibusdam. Dolorum, modi tempore. Necessitatibus eligendi perspiciatis excepturi in sequi, neque corrupti quos unde voluptates mollitia sint? Cumque, voluptatem. Delectus.
+            </div>
+        </div>
+
+        <div class="tarjetaEdificio">
+            <img src="https://picsum.photos/id/102/300/200" alt="Building 5">
+            <div class="tituloEdificio">Building 5</div>
+            <div class="textoEdificio">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, quam quibusdam. Dolorum, modi tempore. Necessitatibus eligendi perspiciatis excepturi in sequi, neque corrupti quos unde voluptates mollitia sint? Cumque, voluptatem. Delectus.
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
