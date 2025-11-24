@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 5 - Matriz Diagonal</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Crea un programa que genere una matriz donde los números se distribuyan en espiral. Tendrás que realizar los siguientes pasos:
+1. Pide al usuario dos números: uno para las filas y otro para las columnas. Y un botón para ejecutar la función que genera la matriz.
+2. Genera la matriz de tamaño filas x columnas 
+3. Rellena la matriz con los números del 1 a (filas x columnas). Los números se irán rellenando en espiral
+4. Muestra la matriz por pantalla
+-->
+    <h1>Generador de Matriz Diagonal</h1>
+    <label for="filas">Filas:</label>
+    <input type="number" id="filas" min="1" value="5" />
+    <label for="columnas">Columnas:</label>
+    <input type="number" id="columnas" min="1" value="5" />
+    <button onclick="generarMatriz()">Generar Matriz</button>
+    <br /><br />
+    <div id="resultado"></div>
+
+    <script>
+        function generarMatriz() {
+            // 1. Obtener los valores de filas y columnas
+            let filas = parseInt(document.getElementById("filas").value);
+            let columnas = parseInt(document.getElementById("columnas").value);
+            let resultadoDiv = document.getElementById("resultado");
+
+            // Validar que sean números positivos
+            if (isNaN(filas) || isNaN(columnas) || filas < 1 || columnas < 1) {
+                resultadoDiv.innerHTML = "Por favor, introduce números válidos.";
+                return;
+            }
+
+            // 2. Crear la matriz vacía
+            let matriz = [];
+            for (let i = 0; i < filas; i++) {
+                matriz[i] = new Array(columnas);
+            }
+
+            // 3. Rellenar la matriz (Diagonal principal)
+            let contador = 1;
+            for (let i = 0; i < filas; i++) {
+                for (let j = 0; j < columnas; j++) {
+                    if (i === j) {
+                        matriz[i][j] = contador++;
+                    } else {
+                        matriz[i][j] = "-";
+                    }
+                }
+            }
+
+            // 4. Mostrar la matriz por pantalla (creando una tabla HTML)
+            let html = "<table>";
+            for (let i = 0; i < filas; i++) {
+                html += "<tr>";
+                for (let j = 0; j < columnas; j++) {
+                    html += "<td>" + matriz[i][j] + "</td>";
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+
+            resultadoDiv.innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>

@@ -8,7 +8,7 @@
         body {
             font-family: 'Georgia', serif;
             margin: 0;
-            padding-bottom: 800px; /* Espacio extra para probar el scroll */
+            padding-bottom: 800px; 
         }
 
         h1 {
@@ -16,22 +16,17 @@
             font-size: 2.5em;
         }
 
-        /* Clase principal del menú */
         .barraNavegacion {
-            /* Concepto Sticky: se pega al llegar a top: 0 */
             position: sticky;
             top: 0;
             
-            /* Concepto Flexbox: alinea los elementos en fila */
             display: flex;
             align-items: center;
             flex-direction: row;
 
-            background-color: rgb(241, 241, 241); /* Gris claro */
+            background-color: rgb(241, 241, 241); 
             z-index: 1000;
         }
-
-        /* Estilos para los enlaces dentro de la barra */
         .barraNavegacion a {
             display: block;
             color: rgb(0, 0, 0);
@@ -41,26 +36,19 @@
             font-size: 1.2em;
         }
 
-        /* Hover general para los enlaces */
         .barraNavegacion a:hover {
             background-color: rgb(221, 221, 221);
         }
-
-        /* Clase para el botón derecho (About) */
         .botonDerecha {
-            /* Truco Flexbox: empuja el elemento al final del contenedor */
             margin-left: auto;
             
-            background-color: rgb(34, 139, 34); /* Verde */
-            color: rgb(255, 255, 255) !important; /* Texto blanco */
+            background-color: rgb(34, 139, 34); 
+            color: rgb(255, 255, 255) !important; 
         }
 
-        /* Hover específico para el botón derecho */
         .botonDerecha:hover {
-            background-color: rgb(0, 100, 0); /* Verde oscuro */
+            background-color: rgb(0, 100, 0); 
         }
-
-        /* Contenedor para el texto de relleno */
         .contenidoRelleno {
             padding: 20px;
             font-size: 1.2em;

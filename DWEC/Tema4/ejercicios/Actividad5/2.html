@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 5.2 - Matriz Abecedario</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Generador de Tabla Abecedario</h1>
+    <label for="nFilas">Filas:</label>
+    <input type="text" id="nFilas" value="5" />
+    <label for="nColumnas">Columnas:</label>
+    <input type="text" id="nColumnas" value="6" />
+    <button id="btnRellenar" onclick="generarTabla()">Rellenar Tabla</button>
+    <br /><br />
+    <div id="resultado"></div>
+
+    <script>
+        function generarTabla() {
+            // 1. Obtener los valores de filas y columnas
+            let filas = parseInt(document.getElementById("nFilas").value);
+            let columnas = parseInt(document.getElementById("nColumnas").value);
+            let resultadoDiv = document.getElementById("resultado");
+
+            // Validar que sean números positivos
+            if (isNaN(filas) || isNaN(columnas) || filas < 1 || columnas < 1) {
+                resultadoDiv.innerHTML = "Por favor, introduce números válidos.";
+                return;
+            }
+
+            // 2. Definir el abecedario
+            const abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+            let contador = 0;
+
+            // 3. Generar la tabla HTML
+            let html = "<table>";
+
+            for (let i = 0; i < filas; i++) {
+                html += "<tr>";
+                for (let j = 0; j < columnas; j++) {
+                    let contenido = "-";
+
+                    // Si aún quedan letras en el abecedario, las usamos
+                    if (contador < abecedario.length) {
+                        contenido = abecedario[contador];
+                        contador++;
+                    }
+
+                    html += "<td>" + contenido + "</td>";
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+
+            // 4. Mostrar la nueva tabla (esto reemplaza la anterior automáticamente)
+            resultadoDiv.innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>

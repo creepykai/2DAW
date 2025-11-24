@@ -12,7 +12,6 @@
             background-color: rgb(255, 255, 255);
         }
 
-        /* --- CABECERA --- */
         .cabeceraTitulo {
             background-color: rgb(51, 51, 51);
             color: rgb(255, 255, 255);
@@ -26,58 +25,50 @@
             font-size: 2.5em;
         }
 
-        /* --- CONTENEDOR PRINCIPAL --- */
         .contenedorFlex {
             display: flex;
-            flex-direction: row; /* Tarjetas en fila */
-            justify-content: center; /* Centradas en la pantalla */
-            align-items: stretch; /* Todas las tarjetas de la misma altura */
+            flex-direction: row; 
+            justify-content: center; 
+            align-items: stretch; 
             padding: 0 20px;
-            gap: 15px; /* Espacio entre tarjetas */
-            flex-wrap: wrap; /* Para que bajen si no caben en pantalla */
+            gap: 15px;
+            flex-wrap: wrap; 
         }
 
-        /* --- LA TARJETA (Caja Individual) --- */
         .tarjetaHorizontal {
-            /* Estructura Interna: Foto a la izq, Texto a la der */
             display: flex; 
             flex-direction: row; 
-            
-            width: 300px; /* Ancho fijo por tarjeta */
-            border: 2px solid rgb(0, 0, 0); /* Borde negro grueso */
+            width: 300px; 
+            border: 2px solid rgb(0, 0, 0); 
             background-color: rgb(255, 255, 255);
         }
 
-        /* --- IMAGEN (Izquierda) --- */
         .fotoIzquierda {
-            width: 40%; /* La foto ocupa el 40% del ancho de la tarjeta */
-            object-fit: cover; /* Recorte para llenar el espacio */
-            border-right: 2px solid rgb(0, 0, 0); /* Línea divisoria vertical */
+            width: 40%; 
+            object-fit: cover; 
+            border-right: 2px solid rgb(0, 0, 0); 
             display: block;
         }
 
-        /* --- COLUMNA DE CONTENIDO (Derecha) --- */
         .contenidoDerecha {
-            width: 60%; /* El texto ocupa el resto (60%) */
+            width: 60%; 
             display: flex;
-            flex-direction: column; /* Título arriba, texto abajo */
+            flex-direction: column; 
         }
 
-        /* --- TÍTULO --- */
         .tituloEdificio {
-            background-color: rgb(220, 220, 220); /* Fondo gris claro */
+            background-color: rgb(220, 220, 220); 
             text-align: center;
             font-weight: bold;
             font-size: 1.1em;
             padding: 10px 5px;
-            border-bottom: 2px solid rgb(0, 0, 0); /* Línea separadora horizontal */
+            border-bottom: 2px solid rgb(0, 0, 0); 
             color: rgb(0, 0, 0);
         }
 
-        /* --- TEXTO --- */
         .textoEdificio {
             padding: 10px;
-            font-size: 0.85em; /* Letra un poco más pequeña para que quepa */
+            font-size: 0.85em; 
             text-align: justify;
             line-height: 1.2;
             color: rgb(0, 0, 0);
@@ -92,7 +83,6 @@
 
     <div class="contenedorFlex">
         
-        <!-- Tarjeta 1 -->
         <div class="tarjetaHorizontal">
             <img src="https://picsum.photos/id/10/200/300" alt="Building 1" class="fotoIzquierda">
             <div class="contenidoDerecha">
@@ -103,7 +93,6 @@
             </div>
         </div>
 
-        <!-- Tarjeta 2 -->
         <div class="tarjetaHorizontal">
             <img src="https://picsum.photos/id/54/200/300" alt="Building 2" class="fotoIzquierda">
             <div class="contenidoDerecha">
@@ -114,7 +103,6 @@
             </div>
         </div>
 
-        <!-- Tarjeta 3 -->
         <div class="tarjetaHorizontal">
             <img src="https://picsum.photos/id/58/200/300" alt="Building 3" class="fotoIzquierda">
             <div class="contenidoDerecha">
@@ -125,7 +113,6 @@
             </div>
         </div>
 
-        <!-- Tarjeta 4 -->
         <div class="tarjetaHorizontal">
             <img src="https://picsum.photos/id/101/200/300" alt="Building 4" class="fotoIzquierda">
             <div class="contenidoDerecha">

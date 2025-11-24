@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3 - Matriz Traspuesta</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            display: inline-block;
+            margin-right: 50px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cálculo de Matriz Traspuesta</h1>
+
+    <button onclick="generarYTrasponer()">Generar y Trasponer</button>
+    <br><br>
+    <div id="resultado"></div>
+
+    <script>
+        function generarYTrasponer() {
+            let resultadoDiv = document.getElementById("resultado");
+            let html = "";
+
+            let matrizA = [];
+            for (let i = 0; i < 3; i++) {
+                matrizA[i] = [];
+                for (let j = 0; j < 3; j++) {
+                    matrizA[i][j] = Math.floor(Math.random() * 20) + 1;
+                }
+            }
+
+            let matrizT = [];
+            for (let j = 0; j < 3; j++) {
+                matrizT[j] = [];
+                for (let i = 0; i < 3; i++) {
+                    matrizT[j][i] = matrizA[i][j];
+                }
+            }
+
+            html += "<h3>Matriz A</h3>";
+            html += "<table>";
+            for (let i = 0; i < 3; i++) {
+                html += "<tr>";
+                for (let j = 0; j < 3; j++) {
+                    html += "<td>" + matrizA[i][j] + "</td>";
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+
+            html += "<h3>Matriz Traspuesta</h3>";
+            html += "<table>";
+            for (let i = 0; i < 3; i++) {
+                html += "<tr>";
+                for (let j = 0; j < 3; j++) {
+                    html += "<td>" + matrizT[i][j] + "</td>";
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+
+            resultadoDiv.innerHTML = html;
+        }
+
+        generarYTrasponer();
+    </script>
+</body>
+
+</html>
