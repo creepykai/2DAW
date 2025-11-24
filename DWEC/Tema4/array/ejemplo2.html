@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!---->
+    <div id = tabla></div>
+    <script>
+     const matriz = [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ];
+
+    //Acceder aa un elemento de la matriz
+    let elemento = matriz[1][2]; //Fila 1 columa 2 --> 6
+
+    //Iterar sobre la matriz
+    for (let i = 0; i < matriz.length; i++){
+        for (let j = 0; j < matriz[i].length; j++){
+            document.write(matriz[i][j]);
+        }
+        
+        document.write("<br>");
+    }
+
+    //Añadir una fila
+    matriz.push([10,11,12]);
+
+    matriz.forEach(fila =>{
+        fila.forEach(col=> {
+            document.write(col);
+        });
+        document.write("<br>");
+    });
+
+    //Mostrar una matriz en una tabla
+
+    let tablaHTML = "<table>"
+    for (let i = 0; i < matriz.length; i++){
+        document.write("<td>")
+        for (let j = 0; j < matriz[i].length; j++){
+            document.write("<tr>")
+            document.write(matriz[i][j]);
+            document.write("</tr>")
+        }
+        document.write("</td>");
+    }
+    tablaHTML += "</table>";
+    document.getElementById("divTabla").innerHTML = tablaHTML;
+
+    console.table(matriz);
+
+    // Obtener columna completa
+    let columna = [];
+    for(let i = 0; i < matriz.length;i++) {
+        columna.push(matriz[i][2]);
+    }
+    document.write("<br>" + columna);
+
+    //otra forma de obtener la columna
+    let columna2 = matriz.map(file => fila[2]);
+    document.write("<br>" + columna2);
+
+    ///Matriz Identidad
+    let array_length = parseInt(prompt('Introduce la longuitud de la matriz identidad'));
+    const matriz_identidad = [];
+    for (let row = 0; row < array_length; row++) {
+        matriz_identidad.push([])
+        for (let col = 0; col < array_length; col++) {
+            if (row == col){
+                matriz_identidad[row].push(1)
+            } else {
+                matriz_identidad[row].push(0)
+            }
+        }
+    }
+    // console.log(matriz_identidad)
+    
+    let tabla = '<table class="bonita">';
+    for (let filas = 0; filas < matriz_identidad.length; filas++) {
+        tabla += '<tr>';
+        for (let columnas = 0; columnas < matriz_identidad[filas].length; columnas++) {
+            tabla += '<td>' + matriz_identidad[filas][columnas] + '</td>';
+        }
+        tabla += '</tr>';
+    }
+    tabla += '</table>';
+
+    document.getElementById('resultado').innerHTML = tabla;
+    
+    //crear matriz de identidad 4x4
+    let identidad = []
+    let filas = []
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--1.	Realiza las siguientes operaciones:
+        a.	Crear un array estilos con los items “Jazz” y “Blues”.
+        b.	Agregar “Rock-n-Roll” al final.
+        c.	Reemplazar el valor en el medio por “Classics”. Tu código para encontrar el valor medio debe funcionar con cualquier array de longitud impar.
+        d.	Quitar el primer valor del array y mostrarlo.
+        e.	Anteponer Rap y Reggae al array.
+        -->
+    <script>
+        const estilos =  new Array("Jazz", "Blues");
+        estilos.push("Rock n Roll");
+
+        estilos[Math.floor(estilos.length / 2)] = "Classics";   
+
+        console.log(estilos.shift());
+        estilos.unshift("Rap", "Reggae");
+        console.log(estilos);
+    
+    </script>
+</body>
+</html>

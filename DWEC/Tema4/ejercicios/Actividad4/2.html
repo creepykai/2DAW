@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--1.	Escribe una función que dado un array de enteros positivos los ordene, pero además sitúe a los pares al principio del array. Ambos grupos deben estar también ordenados.-->
+    <script>
+        const numeros = new Array(1,2,3,4,5,6,7,8,3,2,1,5,6,7,9,0,3);
+
+        let pares = numeros.filter(num => num % 2 === 0).sort((a, b) => a - b);
+        let impares = numeros.filter(num => num % 2 !== 0).sort((a, b) => a - b);
+        const resultado = [...pares, ...impares];
+
+        console.log(resultado);
+    </script>
+</body>
+</html>

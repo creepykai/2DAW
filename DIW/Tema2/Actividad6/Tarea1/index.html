@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        p.instruction {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: minmax(500px, auto);
+            background-image: url('https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=2070&auto=format&fit=crop');
+            /* Blue wall and table similar to reference */
+            background-size: cover;
+            background-position: center;
+            align-items: center;
+            /* Vertically align content */
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .content {
+            grid-column: 2 / span 5;
+            /* Position in the left part */
+            color: #333;
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .content p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: #444;
+            max-width: 400px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #333;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+                text-align: center;
+                background-position: left center;
+            }
+
+            .content {
+                grid-column: 1 / -1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Tarea 1</h1>
+    <p class="instruction">Crear el siguiente bloque utilizando grid:</p>
+
+    <div class="container">
+        <div class="content">
+            <h2>State of the Art</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque impedit, dolore blanditiis illo qui.</p>
+            <a href="#" class="btn">Take a Look</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

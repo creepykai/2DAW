@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--5.	Tienes un array de transacciones que representan los movimientos de dinero de una cuenta bancaria. Algunas transacciones son ingresos (positivos) y otras son gastos (negativos). Necesitas calcular el saldo final de la cuenta después de aplicar todas las transacciones.-->
+    <script>
+        const transacciones = [100, -20, 50, -10, -5, 200];
+        const saldoFinal = transacciones.reduce((acc, mov) => acc + mov, 0);
+        console.log(saldoFinal);
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--3.	Tienes un array de las calificaciones de los alumnos de clase. Verifica si al menos hay un alumno aprobado e imprime el resultado. También verifica si todas las calificaciones son mayores a 3 e imprime el resultado.-->
+    <script>
+        const calificaciones = [4, 6, 3.5, 8, 9, 2];
+
+        const hayAprobado = calificaciones.some(nota => nota >= 5);
+        console.log(hayAprobado);
+
+        const todosMayorQueTres = calificaciones.every(nota => nota > 3);
+        console.log(todosMayorQueTres);
+    </script>
+</body>
+</html>

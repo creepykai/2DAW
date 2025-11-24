@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--4.	Crear un programa que indique cuál es el elemento más repetido de un array unidimensional y cuántas veces aparece.-->
+    <script>
+        console.log("Ejercicio 4:");
+        let array4 = ["a", "b", "a", "a", "b", "c", "a", "b"];
+
+        let elementoMasRepetido = null;
+        let contador = 0;
+
+        for (let letra in array4) {
+            let repeticiones = array4.filter(valor => valor === array4[letra]).length;
+
+            if (repeticiones > contador) {
+                contador = repeticiones;
+                elementoMasRepetido = array4[letra];
+            }
+        }
+        console.log("El elemento mas repetido es: " + elementoMasRepetido + " y se repite " + contador + " veces");
+        //TODO
+    </script>
+</body>
+</html>

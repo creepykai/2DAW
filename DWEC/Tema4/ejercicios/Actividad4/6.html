@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--6.	Calcular la media ponderada de un array de notas con sus pesos. 
+
+    Tienes un array de notas de un alumno y un array de pesos. Cada nota tiene un peso asociado que indica la importancia de esa calificación en el cálculo final. Debes calcular la media ponderada de las notas. La media ponderada se calcula como la suma de cada nota multiplicada por su peso, dividido entre la suma de los pesos.
+
+    const notas = [8, 7, 9, 6,10]; // Las notas obtenidas por los estudiantes 
+    const pesos = [1, 2, 3, 1,2 ]; // Los pesos asociados a cada calificación
+
+    Media ponderada: 8,33
+    -->
+    <script>
+        const notas = [8, 7, 9, 6, 10];
+        const pesos = [1, 2, 3, 1, 2];
+
+        const sumaPonderada = notas.reduce((acc, nota, i) => acc + (nota * pesos[i]), 0);
+        const sumaPesos = pesos.reduce((acc, peso) => acc + peso, 0);
+        const mediaPonderada = sumaPonderada / sumaPesos;
+
+        console.log(mediaPonderada.toFixed(2));
+    
+    </script>
+</body>
+</html>

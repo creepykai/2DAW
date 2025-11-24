@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--2.	Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, por ejemlo: mi_funcion([1, 4, 5]) devolverá [1, 16, 25].-->
+    <script>
+        function elevarAlCuadrado(array) {
+            return array.map(num => num * num);
+        }
+
+        const numeros = [1, 4, 5];
+        const resultado = elevarAlCuadrado(numeros);
+        console.log(resultado); 
+        // Salida: [1, 16, 25]
+    
+    </script>
+</body>
+</html>

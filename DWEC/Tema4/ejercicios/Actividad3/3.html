@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--3.	Escribe una función sumInput() que:
+        a.	Pida al usuario valores usando prompt y los almacene en el array.
+        b.	Termine de pedirlos cuando el usuario introduzca un valor no numérico, una cadena vacía, o presione “Escape”.
+        c.	Calcule y devuelva la suma de los items del array.
+        -->
+    <script>
+        function sumInput() {
+            let numeros = [];
+            while (true) {
+                let value = prompt("Introduce un número", "");
+                if (value === null || value === "" || isNaN(value)) break;
+                numeros.push(+value);
+            }
+            let sum = 0;
+            for (let numero of numeros) {
+                sum += numero;
+            }
+            return sum;
+        }
+
+        const total = sumInput();
+        console.log("La suma de los números introducidos es: " + total);
+
+        //Reduce : Va sumando uno tars otro a través de acumulador 
+        //FIXME
+    </script>
+</body>
+</html>

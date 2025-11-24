@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--1.	Tenemos un array de strings que representan nombres completos, y queremos ordenarlos alfabéticamente por apellidos. Crea un programa que lo resuelva.-->
+    <script>
+        //TODO
+        const nombrescompletos = new Array("David Ramos", "Irene Diges", "Almudena Valle", "Alejandro Trujillo");
+        nombres.sort((a, b) => {
+            let apellidoA = a.split(" ")[1];
+            let apellidoB = b.split(" ")[1];
+            return apellidoA.localeCompare(apellidoB);
+        });
+
+        console.log(nombres);
+    </script>
+</body>
+</html>
