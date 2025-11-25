@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 3</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif; 
+            background-color: rgb(230, 230, 230);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contenedorTarjetas {
+            display: flex;
+            flex-direction: row; 
+            gap: 20px; 
+            max-width: 1200px;
+            width: 100%;
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+
+        .tarjeta {
+            background-color: rgb(255, 255, 255); 
+            border: 1px solid rgb(150, 150, 150); 
+            padding: 15px; 
+            width: 300px; 
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .tarjeta img {
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+            display: block;
+            margin-bottom: 15px;
+        }
+        .tituloPrincipal {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: rgb(0, 0, 0);
+        }
+
+        .subtitulo {
+            text-align: left;
+            color: rgb(128, 128, 128); 
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .textoContenido {
+            text-align: justify;
+            font-size: 0.95em;
+            line-height: 1.4;
+            color: rgb(51, 51, 51);
+            margin-bottom: 20px;
+            flex-grow: 1; 
+        }
+
+        .botonNegro {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px 0;
+            width: 100%; 
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .botonNegro:hover {
+            background-color: rgb(50, 50, 50);
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="contenedorTarjetas">
+        
+        <div class="tarjeta">
+            <img src="https://picsum.photos/id/211/400/300" alt="Barco">
+            
+            <div class="tituloPrincipal">Tempora</div>
+            <div class="subtitulo">Tempora</div>
+            
+            <div class="textoContenido">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, dolorem! Quae ut dolores quis, ex amet, reprehenderit consequatur aperiamLorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, dolorem! Quae ut dolores quis, ex amet, reprehenderit consequatur aperiam numquam, soluta modi earum laborum illum quod? Eum at eligendi sit!
+            </div>
+            
+            <a href="#" class="botonNegro">More</a>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://picsum.photos/id/1056/400/300" alt="Globo">
+            
+            <div class="tituloPrincipal">Consequatur</div>
+            <div class="subtitulo">Consequatur</div>
+            
+            <div class="textoContenido">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, dolorem! Quae ut dolores quis, ex amet, reprehenderit consequatur aperiam numquam, soluta modi earum laborum illum quod? Eum at eligendi sit!
+            </div>
+            
+            <a href="#" class="botonNegro">More</a>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://picsum.photos/id/338/400/300" alt="Bosque">
+            
+            <div class="tituloPrincipal">Nnumquam</div>
+            <div class="subtitulo">Nnumquam</div>
+            
+            <div class="textoContenido">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, dolorem! Quae ut dolores quis, ex amet, reprehenderit consequatur aperiam numquam, soluta modi earum laborum illum quod? Eum at eligendi sit!
+            </div>
+            
+            <a href="#" class="botonNegro">More</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 1</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .contenedorGrid {
+            height: 100vh; 
+            width: 100%;
+            background-image: url('fondo.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            display: grid;
+            grid-template-columns: 1fr minmax(300px, 500px) 2fr;
+            grid-template-rows: 1fr auto 1.5fr;
+            align-items: center;
+        }
+
+        .contenidoBloque {
+            grid-column: 2 / 3; 
+            grid-row: 2 / 3;
+            
+            padding: 20px;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 2em; 
+            letter-spacing: 5px; 
+            text-transform: uppercase; 
+            margin-bottom: 20px;
+            color: #000000; 
+            font-weight: 900; 
+        }
+
+        p {
+            font-size: 0.95em;
+            line-height: 1.6; 
+            color: #222222; 
+            margin-bottom: 30px;
+            max-width: 400px; 
+        }
+
+        .botonNegro {
+            display: inline-block;
+            background-color: #000000; 
+            color: #ffffff; 
+            text-decoration: none; 
+            padding: 15px 35px; 
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.3s; 
+        }
+
+        .botonNegro:hover {
+            background-color: #333333; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="contenedorGrid">
+        <div class="contenidoBloque">
+            <h2>State of the Art</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque impedit, dolore blanditiis illo qui.</p>
+            <a href="#" class="botonNegro">Take a Look</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

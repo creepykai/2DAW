@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 8</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(0, 128, 128); 
+            color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .contenedorFormulario {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+            background-color: transparent; 
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .filaForm {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .filaMensaje {
+            align-items: flex-start; 
+        }
+
+        .etiquetaCampo {
+            flex: 0 0 150px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1em;
+            color: rgb(255, 255, 255);
+            font-family: 'Times New Roman', Times, serif; 
+        }
+
+        .inputCampo {
+            flex: 1; 
+            padding: 15px;
+            border: none;
+            border-radius: 2px;
+            font-size: 1em;
+            color: rgb(85, 85, 85);
+            background-color: rgb(255, 255, 255);
+            font-family: sans-serif;
+        }
+
+        .inputCampo::placeholder {
+            color: rgb(136, 136, 136);
+        }
+
+        .inputCampo:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        textarea.inputCampo {
+            height: 120px;
+            resize: vertical;
+            font-family: monospace;
+        }
+
+        .filaEdad {
+            margin-top: 10px;
+        }
+
+        .opcionesEdad {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-left: 0;
+        }
+
+        .opcionRadio {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input[type="radio"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: rgb(255, 255, 255);
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 16px;
+            height: 16px;
+            border: 1px solid rgb(255, 255, 255);
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+        }
+
+        input[type="radio"]::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em rgb(0, 128, 128); 
+            background-color: rgb(0, 128, 128);
+        }
+
+        input[type="radio"]:checked::before {
+            transform: scale(1);
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <form class="contenedorFormulario">
+        
+        <div class="filaForm">
+            <label class="etiquetaCampo">First Name</label>
+            <input type="text" class="inputCampo" placeholder="Enter your first name here">
+        </div>
+
+        <div class="filaForm">
+            <label class="etiquetaCampo">Last Name</label>
+            <input type="text" class="inputCampo" placeholder="Enter your last name here">
+        </div>
+        <div class="filaForm">
+            <label class="etiquetaCampo">Email</label>
+            <input type="email" class="inputCampo" placeholder="Enter your email here">
+        </div>
+        <div class="filaForm">
+            <label class="etiquetaCampo">Phone</label>
+            <input type="tel" class="inputCampo" placeholder="Enter your phone here">
+        </div>
+        <div class="filaForm filaMensaje">
+            <label class="etiquetaCampo">Message</label>
+            <textarea class="inputCampo" placeholder="Enter your message here"></textarea>
+        </div>
+        <div class="filaForm filaEdad">
+            <label class="etiquetaCampo">Age</label>
+            <div class="opcionesEdad">
+                <label class="opcionRadio">
+                    <input type="radio" name="edad" value="20-29"> 20-29
+                </label>
+                <label class="opcionRadio">
+                    <input type="radio" name="edad" value="30-39"> 30-39
+                </label>
+                <label class="opcionRadio">
+                    <input type="radio" name="edad" value="40-49"> 40-49
+                </label>
+                <label class="opcionRadio">
+                    <input type="radio" name="edad" value="50-59"> 50-59
+                </label>
+                <label class="opcionRadio">
+                    <input type="radio" name="edad" value="60+"> >60
+                </label>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>

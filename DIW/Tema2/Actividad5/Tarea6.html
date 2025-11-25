@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 6</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(255, 255, 255);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        .tablaGaleria {
+            display: flex;
+            flex-direction: row;
+            padding: 0 30px; 
+        }
+
+        .columnaFlex {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            margin: 0 10px; 
+        }
+
+        .columnaFlex img {
+            width: 100%; 
+            height: auto;
+            display: block; 
+            object-fit: cover; 
+            border-radius: 0; 
+            margin-bottom: 20px; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Portfolio</h1>
+
+    <div class="tablaGaleria">
+        <div class="columnaFlex">
+            <img src="https://picsum.photos/id/10/500/600" alt="Bosque">
+            <img src="https://picsum.photos/id/11/500/300" alt="Lago">
+            <img src="https://picsum.photos/id/12/500/500" alt="Playa">
+            <img src="https://picsum.photos/id/13/500/400" alt="Arena">
+        </div>
+
+        <div class="columnaFlex">
+            <img src="https://picsum.photos/id/14/500/300" alt="Rocas">
+            <img src="https://picsum.photos/id/15/500/700" alt="Cascada">
+            <img src="https://picsum.photos/id/16/500/400" alt="Mar">
+            <img src="https://picsum.photos/id/17/500/300" alt="Camino">
+        </div>
+
+        <div class="columnaFlex">
+            <img src="https://picsum.photos/id/18/500/400" alt="Hierba">
+            <img src="https://picsum.photos/id/19/500/300" alt="Montaña">
+            <img src="https://picsum.photos/id/20/500/600" alt="Escritorio">
+            <img src="https://picsum.photos/id/21/500/300" alt="Zapatos">
+            <img src="https://picsum.photos/id/22/500/200" alt="Caminante">
+        </div>
+
+        <div class="columnaFlex">
+            <img src="https://picsum.photos/id/23/500/800" alt="Cubiertos">
+            <img src="https://picsum.photos/id/24/500/300" alt="Libro">
+            <img src="https://picsum.photos/id/25/500/400" alt="Árbol">
+            <img src="https://picsum.photos/id/26/500/300" alt="Objetos">
+        </div>
+
+    </div>
+
+</body>
+</html>
