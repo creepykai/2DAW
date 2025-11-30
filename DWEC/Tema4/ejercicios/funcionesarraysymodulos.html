@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--numeroMasAlto(array): Devuelve el valor más alto contenido en el array.
+
+numeroImpares(array): Devuelve el número de números impares contenidos en el array.
+
+mediaAritmetica(array): Devuelve la media aritmética de los números contenidos en el array.
+
+moda(array): Devuelve el valor de la moda, es decir, el valor que más veces se repite dentro del array.
+
+numeroPrimos(array): Devuelve el número de números primos contenidos en el array.-->
+    <script>
+        array = new Array(1,2,3,4,5,6,7,8,2,3,4,5,1,23,4,5,6,42,123,22,22,34,34,2,2,343,233,2356,98);
+        function numeroMasAlto(array){
+            let max = array[0];
+            for (let i = 1; i < array.length; i++) {
+                if (array[i] > max) {
+                    max = array[i];
+                }
+            }
+            return max;
+        }
+        document.write("El numero mas alto es: " + numeroMasAlto(array) + "<br>");
+
+        function numeroImpares(array){
+            let count = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] % 2 != 0) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        document.write("El numero de impares es: " + numeroImpares(array) + "<br>");
+
+        function mediaAritmetica(array){
+            let suma = reduce(array);
+
+            
+        }
+    </script>
+</body>
+</html>
