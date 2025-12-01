@@ -1,0 +1,7 @@
+Crea una matriz de 5x5 llena de ceros.
+
+Coloca 5 bombas (representadas con el número 9) en posiciones aleatorias.
+
+EL RETO: Recorre la matriz. Si la casilla está vacía (0), cuenta cuántas bombas (9) tiene alrededor (sus 8 vecinos) y guarda ese número en la casilla.
+
+Píntala (Bombas en rojo, números en negro).

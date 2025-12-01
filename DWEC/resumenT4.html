@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen TOTAL DWEC</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.5; }
+        h1, h2 { color: #333; border-bottom: 2px solid #333; }
+        .caja { border: 2px solid navy; padding: 15px; margin: 20px 0; background-color: #f0f8ff; }
+        button { padding: 5px 10px; cursor: pointer; font-weight: bold; }
+        input { padding: 5px; }
+        strong { color: #d35400; }
+    </style>
+</head>
+<body>
+    <h1>Chuleta Práctica JS (Abre F12 -> Consola)</h1>
+    <p>Este archivo contiene: <strong>DOM, Math, Strings, Fechas, Funciones y Arrays</strong>.</p>
+
+    <div class="caja">
+        <h2>1. PRUEBAS DOM (HTML <-> JS)</h2>
+        <p>Escribe un número para probar lectura, conversión y escritura:</p>
+        <input type="text" id="miInput" value="50" placeholder="Escribe un número">
+        <button onclick="probarDOM()">Probar Lógica DOM</button>
+        <div id="miResultado" style="margin-top: 10px; font-weight: bold; color: gray;">
+            Aquí saldrá el resultado...
+        </div>
+    </div>
+
+    <script>
+        // ======================================================
+        // 1. HERRAMIENTAS GENERALES (DOM, MATH, STRINGS, DATE)
+        // ======================================================
+
+        function probarDOM() {
+            console.log("\n--- 1. DOM Y CONVERSIÓN ---");
+
+            // 1. LEER DATOS (.value para inputs)
+            let texto = document.getElementById("miInput").value;
+            console.log("Leído del input (es texto):", texto);
+
+            // 2. CONVERSIÓN DE TIPOS (Vital para sumas)
+            let numero = parseInt(texto); // Convertir a Entero
+            // let decimal = parseFloat(texto); // Para decimales
+
+            // 3. VALIDACIÓN (¿Es un número?)
+            if (isNaN(numero)) {
+                alert("¡Error! No has escrito un número válido.");
+                return;
+            }
+
+            // 4. ESCRIBIR DATOS (.innerHTML para divs, p, tablas...)
+            let cajaSalida = document.getElementById("miResultado");
+            cajaSalida.innerHTML = "Dato procesado: " + (numero * 2) + " (El doble)";
+
+            // 5. CAMBIAR ESTILOS (CSS)
+            if (numero > 100) {
+                cajaSalida.style.color = "red";      
+                cajaSalida.style.backgroundColor = "#ffcccc"; 
+                cajaSalida.innerHTML += " ¡Es mayor que 100!";
+            } else {
+                cajaSalida.style.color = "green";
+                cajaSalida.style.backgroundColor = "#ccffcc";
+            }
+        }
+
+        console.log("\n--- 2. MATEMÁTICAS (MATH) ---");
+        
+        let aleatorio = Math.random(); // 0.1234...
+        console.log("Random básico:", aleatorio);
+
+        let redondeoBajo = Math.floor(5.9); // 5 (Quita decimales, vital para arrays)
+        console.log("Math.floor(5.9):", redondeoBajo);
+
+        // FÓRMULA SAGRADA: Aleatorio entre 1 y 100
+        let azar100 = Math.floor(Math.random() * 100) + 1;
+        console.log("Aleatorio 1-100:", azar100);
+
+        // Máximo y Mínimo de un array
+        let notasClase = [5, 9, 2, 10];
+        console.log("Nota Máxima (...):", Math.max(...notasClase)); // 10
+        console.log("Nota Mínima (...):", Math.min(...notasClase)); // 2
+
+
+        console.log("\n--- 3. STRINGS (MANEJO DE TEXTO) ---");
+
+        let frase = "  Hola Mundo JS  ";
+        
+        // Limpiar espacios (Trim)
+        console.log("Original:", frase);
+        console.log("Trim:", frase.trim()); 
+        
+        // Mayúsculas (Para comparar)
+        console.log("UpperCase:", frase.trim().toUpperCase());
+        
+        // Trocear (String -> Array)
+        let palabras = frase.trim().split(" "); 
+        console.log("Split (' '):", palabras); // ["Hola", "Mundo", "JS"]
+
+
+        // --- ¡NUEVO! ---
+        console.log("\n--- 4. FECHAS (DATE) ---");
+
+        console.log("Fecha actual:", hoy);
+
+        // Fecha específica (Formato Inglés: AAAA-MM-DD)
+        let fechaHoy = new Date();
+        let finDeCurso = new Date("2024-06-30"); 
+        console.log("Fin de curso:", finDeCurso);
+
+        // Sacar datos sueltos
+        console.log("Año:", hoy.getFullYear());
+        console.log("Mes (0-11):", hoy.getMonth()); // ¡OJO! Enero=0, Diciembre=11
+        console.log("Día del mes:", hoy.getDate());
+        console.log("Día semana (0-6):", hoy.getDay()); // ¡OJO! Domingo=0, Lunes=1
+
+        // Formato bonito (para imprimir en HTML)
+        console.log("Fecha Local:", hoy.toLocaleDateString()); // "14/11/2023"
+
+        // CÁLCULO DE DIFERENCIA (Restar fechas)
+        let diferenciaMs = finDeCurso - fechaHoy; // Da milisegundos
+        // Fórmula para pasar a días: 1000ms * 60s * 60m * 24h
+        let diasRestantes = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
+        console.log("Días que faltan:", diasRestantes);
+
+
+        // ======================================================
+        // 2. FUNCIONES (LO ORIGINAL)
+        // ======================================================
+        console.log("\n--- 5. FUNCIONES ---");
+
+        // Operador Rest (...): suma todos los números que le pasemos
+        function suma(...numeros) {
+            return numeros.reduce((acumulador, numero) => acumulador + numero, 0); 
+        }
+        console.log("Rest:", suma(1, 2, 3, 4, 5));
+
+        // Objeto arguments: array con todos los argumentos (forma antigua)
+        function suma2() {
+            return Array.from(arguments).reduce((acumulador, numero) => acumulador + numero, 0);
+        }
+        console.log("Arguments:", suma2(1, 2, 3, 4, 5));
+
+        // Función por declaración (Tiene hoisting)
+        function suma3(a,b) {
+            return a + b;
+        }
+        console.log("Declaración:", suma3(1, 2));
+
+        // Función por expresión
+        const suma4 = function(a,b) {
+            return a + b;
+        }
+        console.log("Expresión:", suma4(1, 2));
+
+        // Funciones como objetos
+        const saludar = new Function("return 'Hola desde objeto';");
+        console.log(saludar());
+
+        // Funciones anónimas
+        const suma5 = function(a,b) {
+            return a + b;
+        }
+        console.log("Anónima:", suma5(1, 2));
+
+        // Temporizadores
+        setTimeout(() => {
+            console.log("(Async) Hola tras 1 segundo");
+        }, 1000);
+
+        // Funciones callback
+        function operacionAsincronica(x, y, callback) {
+            setTimeout(() => {
+                // Simulamos operación
+                console.log("(Async) Operación terminada");
+                callback();
+            }, 500);
+        }
+
+        function mostrarResultado() {
+            console.log("(Async) Callback ejecutado");
+        }
+
+        operacionAsincronica(5, 3, mostrarResultado);
+
+        // Funciones flecha
+        const suma6 = (a,b) => a + b;
+        console.log("Flecha:", suma6(1, 2));
+
+        // Funciones autoejecutables
+        (function() {
+            console.log("Soy una función Autoejecutable (IIFE)");
+        })();
+
+
+        // ======================================================
+        // 3. ARRAYS (LO ORIGINAL)
+        // ======================================================
+        console.log("\n--- 6. ARRAYS ---");
+
+        let nombres = ["Juan", "Maria", "Pedro", "Ana", "Luis"];
+        let nombres2 = new Array("Juan", "Maria", "Pedro", "Ana", "Luis");
+
+        // Copiar un array sin funciones (Spread)
+        let nombres3 = [...nombres];
+
+        // Concatenar arrays sin funciones (Spread)
+        let nombres4 = [...nombres, ...nombres2];
+
+        // isArray(): comprueba si es un array
+        console.log("isArray:", Array.isArray(nombres));
+
+        // forEach(): recorre el array
+        console.log("--- forEach output: ---");
+        nombres.forEach((nombre) => console.log(nombre)); 
+
+        // map(): crea un nuevo array con los resultados de la función
+        let nombres5 = nombres.map((nombre) => nombre.toUpperCase()); 
+        console.log("Map (Upper):", nombres5);
+      
+        // filter(): crea un nuevo array con los elementos que cumplen
+        let nombres6 = nombres.filter((nombre) => nombre.length > 4); 
+        console.log("Filter (>4 letras):", nombres6);
+
+        // some(): comprueba si AL MENOS UN elemento cumple (Boolean)
+        let nombres7 = nombres.some((nombre) => nombre.length > 4); 
+        console.log("Some (>4 letras):", nombres7);
+
+        // every(): comprueba si TODOS los elementos cumplen (Boolean)
+        let nombres8 = nombres.every((nombre) => nombre.length > 4); 
+        console.log("Every (>4 letras):", nombres8);
+
+        // reduce(): reduce el array a un único valor
+        let numeros = [1, 2, 3, 4, 5];
+        let sumaTotal = numeros.reduce((acumulador, numero) => acumulador + numero, 0); 
+        console.log("Reduce (Suma):", sumaTotal); 
+
+        // includes(): comprueba si el array contiene un elemento
+        let nombres9 = nombres.includes("Juan"); 
+        console.log("Includes 'Juan':", nombres9);
+
+        // find(): encuentra el PRIMER elemento que cumpla
+        let nombres10 = nombres.find((nombre) => nombre.length > 4); 
+        console.log("Find (>4 letras):", nombres10);
+
+        // findIndex(): encuentra el ÍNDICE del primer elemento que cumpla
+        let nombres11 = nombres.findIndex((nombre) => nombre.length > 4); 
+        console.log("FindIndex (>4 letras):", nombres11);
+
+        // findLast(): encuentra el ÚLTIMO elemento que cumpla
+        let nombres12 = nombres.findLast((nombre) => nombre.length > 4); 
+        console.log("FindLast (>4 letras):", nombres12);
+
+        // findLastIndex(): encuentra el ÍNDICE del último elemento que cumpla
+        let nombres13 = nombres.findLastIndex((nombre) => nombre.length > 4); 
+        console.log("FindLastIndex (>4 letras):", nombres13);
+
+        // from(): crea un array a partir de un iterable (String)
+        let nombreString = "Juan";
+        let letras = Array.from(nombreString); 
+        console.log("Array.from:", letras); 
+
+        // concat(): concatena dos arrays (Método clásico)
+        let nombres14 = nombres.concat(nombres2); 
+        console.log("Concat:", nombres14); 
+
+        // reverse(): invierte el orden del array (MUTABLE)
+        // Usamos spread [...] para no romper el original en la prueba
+        let nombres15 = [...nombres].reverse(); 
+        console.log("Reverse:", nombres15); 
+
+        // entries(): devuelve un iterador de pares clave/valor
+        let nombres16 = nombres.entries(); 
+        console.log("Entries:", [...nombres16]); 
+
+        // join(): une los elementos del array en una cadena
+        let nombres17 = nombres.join(" - "); 
+        console.log("Join:", nombres17); 
+
+        // toString(): convierte el array en una cadena
+        let nombres18 = nombres.toString(); 
+        console.log("ToString:", nombres18); 
+
+        // fill(): llena el array con un valor (MUTABLE)
+        // Usamos copia para no romper 'nombres'
+        let copiaNombresFill = [...nombres];
+        let nombres19 = copiaNombresFill.fill("-", 2, 4); 
+        console.log("Fill:", nombres19); 
+
+        // indexOf(): encuentra el índice de un elemento exacto
+        let nombres20 = nombres.indexOf("Pedro"); 
+        console.log("IndexOf 'Pedro':", nombres20); 
+
+        // shift(): elimina el PRIMER elemento
+        let pila = ["Juan", "Maria", "Luis"];
+        let borrado1 = pila.shift(); 
+        console.log("Shift (borrado):", borrado1, "Array:", pila); 
+
+        // unshift(): agrega al INICIO
+        pila.unshift("Nuevo"); 
+        console.log("Unshift:", pila); 
+
+        // pop(): elimina el ÚLTIMO elemento
+        let borrado2 = pila.pop(); 
+        console.log("Pop (borrado):", borrado2, "Array:", pila); 
+
+        // push(): agrega al FINAL
+        pila.push("Final"); 
+        console.log("Push:", pila); 
+
+        // sort(): ordena el array (Texto por defecto)
+        let nombres25 = [...nombres].sort(); 
+        console.log("Sort Texto:", nombres25); 
+
+        // sort() con NÚMEROS (Importante: función de comparación)
+        let numeros2 = [1, 2, 30, 4, 5];
+        let numeros3 = [...numeros2].sort((a, b) => b - a); // Descendente
+        console.log("Sort Números (Desc):", numeros3); 
+
+        // slice(): extrae una porción (NO Mutable)
+        // slice(inicio, fin_no_incluido)
+        let nombres26 = nombres.slice(1, 3); 
+        console.log("Slice (1,3):", nombres26); 
+
+        // splice(): elimina o reemplaza (MUTABLE)
+        // splice(inicio, cantidad_borrar, insertar...)
+        let numerosParaSplice = [1, 2, 3, 4, 5];
+        let eliminadosSplice = numerosParaSplice.splice(1, 2, 6, 7); 
+        console.log("Splice (Eliminados):", eliminadosSplice); // [2, 3]
+        console.log("Splice (Array Final):", numerosParaSplice); // [1, 6, 7, 4, 5]
+
+    </script>
+</body>
+</html>

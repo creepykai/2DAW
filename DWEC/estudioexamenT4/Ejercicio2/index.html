@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 2 - Funciones</title>
+    </head>
+    <body>
+        <h1> Buscaminas Modular </h1>
+        <button onclick="iniciarJuego()">Generar Bombas</button>
+        <div id="contenedorTablero"></div>
+        
+        <script>
+            function crearMatrizVacia(n){
+                let matriz = [];
+                for (let i = 0; i < n; i++){
+                    matriz[i] = new Array(n).fill(0); 
+                }
+                return matriz; 
+            }
+
+            function ponerBombas(tablero, cantidad){
+                let tamaño = tablero.length;
+                let cont = 0;
+
+                while (cont < cantidad) {
+                    let fila = Math.floor(Math.random() * tamaño);
+                    let col = Math.floor(Math.random() * tamaño);
+
+                    if (tablero[fila][col] === 0) {
+                        tablero[fila][col] = 9;
+                        cont++;
+                    }
+                }
+                return tablero; 
+            }
+
+            function contarVecinos(tablero){ 
+                let n = tablero.length; // Tamaño del tablero (5)
+
+                for(let i = 0; i < n; i++){
+                    for(let j = 0; j < n; j++){
+                        
+                        // Si soy bomba, paso
+                        if (tablero[i][j] === 9) continue;
+
+                        let bombasCercanas = 0;
+
+                        // 'f' recorre las FILAS vecinas: desde la de arriba (i-1) hasta la de abajo (i+1)
+                        for (let f = i - 1; f <= i + 1; f++) {
+                            // 'c' recorre las COLUMNAS vecinas: desde la izquierda (j-1) hasta la derecha (j+1)
+                            for (let c = j - 1; c <= j + 1; c++) {
+                                
+                                // 1. VALIDACIÓN: ¿La fila 'f' y la columna 'c' existen dentro del mapa?
+                                // f >= 0 (no me salgo por arriba) && f < n (no me salgo por abajo)
+                                // c >= 0 (no me salgo por la izq) && c < n (no me salgo por la der)
+                                if (f >= 0 && f < n && c >= 0 && c < n) {
+                                    
+                                    // 2. ¿En esa fila 'f' y columna 'c' hay una bomba?
+                                    if (tablero[f][c] === 9) {
+                                        bombasCercanas++;
+                                    }
+                                }
+                            }
+                        }
+                        tablero[i][j] = bombasCercanas;
+                        }
+                        return tablero; 
+                    }
+            }
+                
+                
+
+            function iniciarJuego(){
+                let miTablero = crearMatrizVacia(5);
+                miTablero = ponerBombas(miTablero, 5);
+                miTablero = contarVecinos(miTablero);
+                let html =  "<table border = 1>";
+                for (let i = 0; i < 5 ; i++){
+                    html += "<tr>";
+                    for (let j = 0; j < 5 ; j++){
+                        html += "<td>";
+                        html += miTablero[i][j];
+                        html += "</td>"
+                    }
+                    html += "</tr>";
+                }
+                html += "</table>";
+
+                document.getElementById("contenedorTablero").innerHTML = html
+            }
+        </script>
+    </body>
+</html>

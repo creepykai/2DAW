@@ -1,0 +1,19 @@
+Crea una aplicación web que pida al usuario un número entero N (entre 3 y 10). Al pulsar un botón "Generar Sala", se debe dibujar una tabla HTML de N x N que represente una sala de butacas.
+
+Debes rellenar la tabla con números aleatorios del 1 al 100 siguiendo estas REGLAS ESTRICTAS:
+
+Unicidad: No puede haber ningún número repetido en toda la tabla. (Como no puedes usar Set, deberás usar un array auxiliar y .includes()). 
+
+Regla del "Vecino Antipático": Un número no puede colocarse si su valor es consecutivo al número que tiene arriba o a su izquierda.
+
+Ejemplo: Si en la casilla de arriba hay un 50, en la actual NO puedes poner ni 49 ni 51.
+
+Nota: Ten cuidado al validar la fila 0 (no tiene arriba) y la columna 0 (no tiene izquierda) para que el código no falle.
+
+Contador de Fallos: Si generas un número aleatorio y no cumple las reglas, cuenta ese intento como "fallido" y genera otro. Repite hasta encontrar uno válido.
+
+Se debe mostrar:
+
+La tabla generada en el HTML.
+
+Un mensaje debajo indicando: "Se generó la tabla con X intentos fallidos".

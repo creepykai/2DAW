@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale= 1.0">
+        <title>Ejercicio 1</title>
+    </head>
+    <body>
+        <h1>Ejercicio 1</h1>
+        <label>Ingresa un número del 3 al 10</label>
+        <input type="number" id="tamaño" min = "3" max = "10" value= "5">
+        <button onclick="generar_tabla()">Generar Sala</button>
+        <div id ="contenedorTabla"></div>
+        <script>
+            function generar_tabla(){
+                let n = parseInt(document.getElementById("tamaño").value);
+                
+                // Validación inicial
+                if (n > 10 || n < 3){
+                    alert("Número incorrecto. Debe ser entre 3 y 10");
+                    return;
+                } else {
+                    let matriz = [];
+                    // Crear matriz vacía
+                    for (let i = 0 ; i < n ; i++){
+                        matriz[i] = new Array(n).fill(0);
+                    }
+                    
+                    let usados = [];
+                    
+                    // Bucles principales
+                    for(let i = 0 ; i < n ; i++){
+                        for(let j = 0 ; j < n ; j++){
+                            
+                            let num;
+                            let esValido;
+                            
+                            do {
+                                num = Math.trunc(Math.random() * 100) + 1;
+                                esValido = true; // Empezamos confiando
+                                // 1. Chequeo de REPETIDOS
+                                if(usados.includes(num)){
+                                    esValido = false;
+                                }
+                                // 2. Chequeo VECINO ARRIBA (i-1)
+                                // Solo entramos si es válido hasta ahora Y si no estamos en la fila 0
+                                if (esValido && i > 0){
+                                    let vecinoArriba = matriz[i - 1][j];
+                                    if (vecinoArriba == num - 1 || vecinoArriba == num + 1){
+                                        esValido = false;
+                                    }
+                                }
+                                // 3. Chequeo VECINO IZQUIERDA (j-1)
+                                // Solo entramos si es válido hasta ahora Y si no estamos en columna 0
+                                if (esValido && j > 0){
+                                    let vecinoIzquierda = matriz[i][j - 1];
+                                    if (vecinoIzquierda == num - 1 || vecinoIzquierda == num + 1){
+                                        esValido = false;
+                                    }
+                                }
+                            } while (!esValido); // Repetimos si algo ha fallado
+                            
+                            // 4. IMPORTANTE: ¡Guardar el número válido! (Te faltaba esto)
+                            matriz[i][j] = num;
+                            usados.push(num);
+                        }  
+                    }
+                    console.log(matriz); // Ver en consola
+                    let html = "<table border = '1'>";
+                    for (let i = 0; i < n ; i ++){
+                        html += "<tr>";
+                        for (let j = 0; j < n ; j ++){
+                            html += "<td>";
+                            html += matriz[i][j];
+                            html += "</td>"
+                        }
+                        html += "</tr>";
+                    }
+                    html += "</table>"
+                    document.getElementById("contenedorTabla").innerHTML = html;
+                }  
+            }
+        </script>
+    </body>
+</html>
