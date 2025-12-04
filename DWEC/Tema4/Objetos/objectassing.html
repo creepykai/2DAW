@@ -7,98 +7,38 @@
     </head>
     <body>
         <script>
-            // // Crear un objeto
-            // let miObjeto = {}
+            //Ejemplo de crear objeto con Object.assign()
+            //Explicacion: Se crea un objeto base con las propiedades que se van a repetir en todos los objetos
+            //Luego se crean los objetos con Object.assign() que heredan las propiedades del objeto base
+            //Y se le añaden las propiedades que son diferentes
+            //
+
+            const productoBase = {
+                codigo: 0,
+                nombre: "",
+                precio: 0,
+                stock: 0,  
+            }
+
+            const producto1 = Object.assign({}, productoBase, {
+                codigo: 101,
+                nombre: "Manzana",
+                precio: 1.5,
+                stock: 10
+            });
+
+            const producto2 = Object.assign({}, productoBase, {
+                codigo: 102,
+                nombre: "Plátano",
+                precio: 2,
+                stock: 5
+            });
 
 
-            // // Crear un objeto con propiedades y métodos
-            // let persona = {
-            //     nombre: "David",
-            //     edad: 20,
-            //     esEstudiante: true,
-            //     saludar: function() {
-            //         console.log("¡Buenos días!");
-            //     }
-            // }
 
-            // console.log(persona);
-            // console.log(persona.nombre);
-
-            // // Modificar propiedades
-            // persona.nombre = 25;
-            // console.log(persona);
-
-            // // Llamar método
-            // persona.saludar();
-
-
-            // console.log(Object.keys(persona));
-            // console.log(Object.values(persona));
-            // console.log(Object.entries(persona));
-
-
-            // // Instanciar un objeto con Objeto.create
-            // const productoBase = {
-            //     codigo: 0,
-            //     nombre: "",
-            //     imprimeDatos: function() {
-            //         console.log(`Código: ${this.codigo}`);
-            //         console.log(`Nombre: ${this.nombre}`);
-            //     }
-            // }
-
-            // //Crear las instancias
-            // const producto1 = Object.create(productoBase);
-            // producto1.codigo = 101;
-            // producto1.nombre = "Manzana";
-            // const producto2 = Object.create(productoBase);
-            // producto2.codigo = 102;
-            // producto2.nombre = "Plátano";
-
-            // producto1.imprimeDatos();
-            // producto2.imprimeDatos();
-
-
-            // // Crear las instancias con Object.assign()
-            // const producto3 = Object.assign({}, productoBase, {
-            //     codigo: 103,
-            //     nombre: "Naranja"
-            // });
-
-            // producto3.imprimeDatos();
-
-
-            // Ejercicio
-            let personas = [
-                {nombre: "Juan", ciudad: "Madrid", edad: 25},
-                {nombre: "María", ciudad: "Barcelona", edad: 30},
-                {nombre: "Pedro", ciudad: "Sevilla", edad: 22},
-                {nombre: "Ana", ciudad: "Madrid", edad: 28},
-                {nombre: "Luis", ciudad: "Bilbao", edad: 35},
-            ];
-            console.log(personas);
+            console.log(producto1);
+            console.log(producto2);
             
-            // Añadir un nuevo elemento
-            personas.push({nombre: "Laura", ciudad: "Zaragoza", edad: 29});
-            console.log(personas);
-
-            // Funcion para buscar personas por ciudad
-            function buscarPorCiudad(personas, ciudad) {
-                return personas.filter((persona) => persona.ciudad == ciudad);
-            }
-            console.log(buscarPorCiudad(personas, "Madrid"));
-
-            // Media de edad de las personas
-            function mediaEdad(personas) {
-                return personas.reduce((acumulador, persona) => acumulador + persona.edad, 0) / personas.length;
-            }
-            console.log(mediaEdad(personas));
-            
-            // Edad máxima
-            function edadMaxima(personas) {
-                return personas.reduce((acumulador, persona) => persona.edad > acumulador ? persona.edad : acumulador, 0)
-            }
-            console.log(edadMaxima(personas));
         </script>
     </body>
 </html>
