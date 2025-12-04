@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--Crea un array llamado alumnis que contenga tres objetos, cada uno con las propiedades: nombre(cadena), edad(número),
+    nota(número).
+    Añade un método al objeto para imprimir un mensaje con el nombre y la nota del alumno. Recorre el array y llama al método de
+    cada objeto -->
+    <script>
+        const Alumnos = {
+            nombre : "",
+            edad : "",
+            nota : "",
+
+            imprimirDatos: function(){
+                document.write("Nombre: " + this.nombre + "<br>");
+                document.write("Edad: " + this.edad + "<br>");
+                document.write("Nota: " + this.nota + "<br><br>");
+            }
+        }
+
+        let alumnis = [];
+        
+        alumnis.push(Object.create(Alumnos));
+        alumnis.push(Object.create(Alumnos));
+        alumnis.push(Object.create(Alumnos));
+
+        alumnis[0].nombre = "David";
+        alumnis[0].edad = 20;
+        alumnis[0].nota = 3;
+
+        alumnis[1].nombre = "Irene";
+        alumnis[1].edad = 22;
+        alumnis[1].nota = 10;
+
+        alumnis[2].nombre = "Alejandro";
+        alumnis[2].edad = 30;
+        alumnis[2].nota = 5;
+
+        for (let i = 0; i < alumnis.length; i++) {
+            alumnis[i].imprimirDatos();
+        }
+    </script>
+</body>
+</html>

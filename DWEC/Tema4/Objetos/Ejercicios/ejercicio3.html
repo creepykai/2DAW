@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--Define un objeto llamado calculadora con:
+    - Dos propiedades numéricas: numero1 y numero2
+    -Tres métodos:
+        - sumar: retorna la suma de numero1 y numero2
+        - restar: retorna la resta de numero1 y numero2
+        - multiplicar: retorna el producto de numero1 y numero2
+    Usa los métodos del objeto e imprime los resultados-->   
+    <script>
+        const calculadora = {
+            numero1: 0,
+            numero2: 0,
+
+            sumar: function(){
+                return this.numero1 + this.numero2;
+            },
+            restar: function(){
+                return this.numero1 - this.numero2;
+            },
+            multiplicar: function(){
+                return this.numero1 * this.numero2;
+            }
+        }
+
+        calculadora.numero1 = 13;
+        calculadora.numero2 = 8;
+
+        document.write("Suma: " + calculadora.sumar() + "<br>");
+        document.write("Resta: " + calculadora.restar() + "<br>");
+        document.write("Multiplicación: " + calculadora.multiplicar() + "<br>");
+    </script>
+</body>
+</html>
