@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <!--Cree un script que defina un objeto llamado Producto_alimenticio. Este objeto debe presentar las propiedades código, nombre y precio, además del método imprimeDatos,
+    el cual escribe por pantalla los valores de sus propiedades.
+    
+    Después crea tres instancias de este objeto y guárdalas en un array.
+    
+    Posteriormente, utilice el  método imprimeDatos para mostrar por pantalla los valores de los tres objetos instanciados.
+    Añade un método para modificar el precio de un producto y otro que permita aplicar un descuento al precio del producto indicado-->
+    <script>
+        const Producto_alimenticio = {
+            codigo: "",
+            nombre: "",
+            precio: "",
+
+            imprimeDatos: function(){
+                document.write("Código: " + this.codigo + "<br>");
+                document.write("Nombre: " + this.nombre + "<br>");
+                document.write("Precio: " + this.precio + "<br><br>");
+            },
+
+            modificarPrecio: function(){
+                this.precio = nuevo_preccio;
+            },
+
+            aplicarDescuento: function(){
+                this.precio *= (1-(descuento / 100));
+            }
+        }
+
+        let nuevo_precio = parseFloat(prompt("Introduce el nuevo precio"));
+        let descuento = 20;
+
+        const producto1 = Object.create(Producto_alimenticio);
+        const producto2 = Object.create(Producto_alimenticio);
+        const producto3 = Object.create(Producto_alimenticio);
+
+        producto1.codigo = "1";
+        producto1.nombre = "Weikis";
+        producto1.precio = "1";
+
+        producto2.codigo = "2";
+        producto2.nombre = "Aguacate";
+        producto2.precio = "0.55";
+
+        producto3.codigo = "3";
+        producto3.nombre = "Mochis";
+        producto3.precio = "2.55";
+
+        const productos = [producto1, producto2, producto3];
+
+        for (let i = 0; i < productos.length; i++) {
+            productos[i].imprimeDatos();
+        }
+    </script>
+</body>
+</html>
