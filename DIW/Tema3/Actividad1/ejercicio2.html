@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <style>
+        .contenedor {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+        }
+        
+        #uno {
+            width: 100px;
+            height: 100px;
+            border-radius: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: blue;
+            animation: animacion1 2s infinite;
+            color: white;
+        }
+
+        @keyframes animacion1 {
+            0% {
+                transform: translateX(0px);
+            }
+            50% {
+                transform: translateX(50px);
+            }
+            100% {
+                transform: translateX(0px);
+            }
+        }
+
+        #dos {
+            margin: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 10%;
+            background-color: green;
+            animation: animacion2 2s infinite;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes animacion2 {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        #tres {
+            width: 100px;
+            height: 100px;
+            border-radius: 10%;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: red;
+            animation: animacion3 2s infinite;
+        }
+
+        @keyframes animacion3 {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!--Realiza una página con las siguientes animaciones infinitas.-->
+    <div class="contenedor">
+        <div id="uno">1</div>
+        <div id="dos">2</div>
+        <div id="tres">3</div>
+    </div>
+</body>
+</html>
