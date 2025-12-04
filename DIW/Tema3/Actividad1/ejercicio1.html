@@ -3,71 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1</title>
+    <title></title>
     <style>
-        h1 {
-            text-align: center;
-        }
         .contenedor {
             display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #translate {
-            margin: 20px;
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            background-color: rgb(125, 125, 202);
-            transition: transform 0.5s ease;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #scale {
-            margin: 20px;
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            background-color: rgb(125, 125, 202);
-            transition: transform 0.5s ease;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #rotate {
-            margin: 20px;
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            background-color: rgb(125, 125, 202);
-            transition: transform 0.5s ease;
-            color: white;
-            display: flex;
-            justify-content: center;
+            flex-direction: row;
             align-items: center;
         }
 
-        #translate:hover {
-            transform: translate(50px, 50px);
+        #imagen1 {
+            background-image: url('conejo.jpg'); 
+            background-size: cover;
+            background-position: center;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px;
+            
+            border: 15px solid rgba(1, 117, 1, 0.3); 
+            background-clip: border-box;
+            background-origin: border-box;
+            overflow: hidden;
+            position: relative; 
+            cursor: pointer;
         }
-        #scale:hover {
-            transform: scale(2);
+
+        .capa-hover {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 117, 1, 0.3); 
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
-        #rotate:hover {
-            transform: rotate(45deg);
+
+        #imagen1:hover .capa-hover {
+            opacity: 1; 
         }
+
+        .capa-hover h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;       
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .capa-hover hr {
+            width: 50%; 
+            border: none;
+            border-top: 1px solid white;
+            margin: 10px 0;
+        }
+
+        .capa-hover p {
+            color: white;
+            font-size: 0.8rem;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .capa-hover hr, .capa-hover p {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        #imagen1:hover h3 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        #imagen1:hover hr, #imagen1:hover p {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.2s; 
+        }
+
+        #imagen2 {
+            background-image: url(nutria1.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px;
+            border: 15px solid rgba(34, 129, 173, 0.3); 
+            background-clip: border-box;
+            background-origin: border-box;
+            overflow: hidden;
+        }
+    
+
+        #imagen3 {
+            background-image: url(pinguino.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px;
+            border: 15px solid rgba(157, 221, 218, 0.3); 
+            background-clip: border-box;
+            background-origin: border-box;
+            overflow: hidden;
+        }
+
     </style>
 </head>
 <body>
-    <!--Realiza la siguiente página, donde al hacer hover en cada uno de los rectángulos se aplique la transformación correspondiente.-->
-    <h1>Transformaciones CSS al hacer hover</h1>
     <div class="contenedor">
-        <div id="translate"> Translate</div>
-        <div id="scale"> Scale</div>
-        <div id="rotate"> Rotate</div>
-    </div>    
+        <div id="imagen1">
+            <div class="capa-hover">
+                <h3>Lorem ipsum</h3>
+                <hr>
+                <p>By Irene Diges</p>
+            </div>
+        </div>
+        <div id="imagen2"></div>
+        <div id="imagen3"></div>
+    </div>
 </body>
 </html>
