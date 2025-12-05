@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3</title>
+    <style>
+        .contenedor {
+            width: 400px;
+            height: 100px;
+            font-size: 2rem;
+            font-family: Arial;
+            font-weight: bold;
+            display: flex;
+            margin: 200px;
+            justify-content: center;
+            align-items: center;
+            animation: animacion 2s ease-in-out infinite;
+            border: 0px solid black;
+        }
+
+        @keyframes animacion {
+            0% { border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;}
+            5% { border-top-width: 2px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;}
+            50% { border-top-width: 2px; border-right-width: 2px; border-bottom-width: 0px; border-left-width: 0px;}
+            75% { border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 0px;}
+            95% { border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px;}  
+            100% { border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; }          
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor"> Lorem ipsum </div>
+
+</body>
+</html>
+
