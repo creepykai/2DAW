@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .contenedor {
+            position: relative;
+            margin: auto;
+            width: 500px;
+            height: 600px;
+            display: flex;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('conejo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            overflow: hidden; 
+            padding: 40px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            transition: transform 0.5s ease;
+        }
+
+        hr {
+            width: 50 px;
+            border: 2px solid rgb(163, 51, 238);
+            margin: 20px auto;
+            transition: transform 0.5s ease;
+        }
+        h2 {
+            font-style: italic;
+            font-weight: normal;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        p {
+            font-family: Arial;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+        }
+
+        .contenedor:hover h1, 
+        .contenedor:hover hr, 
+        .contenedor:hover h2 {
+            transform: translateY(-20px);
+        }
+
+        
+        .contenedor:hover p {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s; 
+        }
+
+        .contenedor:hover button {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s; 
+        }
+
+
+        button:hover {
+            background-color: #000000;
+            color: #ffffff;
+            animation: animacionBtn 1.5s infinite;
+        }
+
+        @keyframes animacionBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1> 10 mountains </h1>
+        <hr>
+        <h2> Inspiration </h2>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, quod.</p>
+        <button>Read article</button>
+    </div>
+    
+</body>
+</html>
