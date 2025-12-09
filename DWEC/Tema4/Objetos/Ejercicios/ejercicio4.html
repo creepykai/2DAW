@@ -29,6 +29,14 @@ const productosJSON = `[
         for (let i = 0; i < productosOferta.length; i++) {
             document.write(productosOferta[i].nombre + "<br>");
         }
+
+        //Se podría usar foreach
+
+        productos.forEach(producto => {
+            if (producto.oferta) {
+                document.write(producto.nombre + "<br>");
+            }
+        });
     
     </script>
 </body>

@@ -18,7 +18,22 @@
             {"id": 3, "nombre": "Irene", "departamento": "Ventas", "salario": 2200},
             {"id": 4, "nombre": "Ana", "departamento": "Marketing", "salario": 2700}
         ]`;
-    
+
+        const empleados = JSON.parse(empleadosJSON);
+
+        empleados.forEach(empleado => {
+            document.write(empleado.nombre + "<br>");
+        });
+
+        const empleadosVentas = empleados.filter(empleado => empleado.departamento === "Ventas");
+        document.write("<br>");
+        empleadosVentas.forEach(empleado => {
+            document.write(empleado.nombre + "<br>");
+        });
+
+        const salarioTotal = empleados.reduce((total, empleado) => total + empleado.salario, 0);
+        document.write("<br>");
+        document.write(salarioTotal);
     </script>
 </body>
 </html>

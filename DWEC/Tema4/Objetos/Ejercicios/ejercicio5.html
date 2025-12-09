@@ -16,8 +16,21 @@
             notificaciones: true
         };
 
-        
-    
+        const configuracionesJSON = JSON.stringify(configuraciones);
+        localStorage.setItem("configuraciones", configuracionesJSON);
+
+        const configuracionesCargadasJSON = localStorage.getItem("configuraciones");
+        const configuracionesCargadas = JSON.parse(configuracionesCargadasJSON);
+
+        console.log(configuracionesCargadas);
+
+        configuracionesCargadas.tema = "claro";
+        localStorage.setItem("configuraciones", JSON.stringify(configuracionesCargadas));
+
+        const configuracionesCargadas2JSON = localStorage.getItem("configuraciones");
+        const configuracionesCargadas2 = JSON.parse(configuracionesCargadas2JSON);
+
+        console.log(configuracionesCargadas2);
     </script>
 </body>
 </html>
