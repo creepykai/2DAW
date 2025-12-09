@@ -10,27 +10,33 @@
     incluyen el tema de la interfaz, el idioma preferido y si las notificaciones están habilitadas o no. El objetivo es simular el 
     proceso de almacenar y cargar estas configuraciones, modificarlas y guardar los cambios.-->
     <script>
-        const configuraciones = {
-            tema: "oscuro",
-            idioma: "español",
-            notificaciones: true
-        };
+            let configuraciones = {
+                tema: "oscuro",        
+                idioma: "es",          
+                notificaciones: true   
+            };
 
-        const configuracionesJSON = JSON.stringify(configuraciones);
-        localStorage.setItem("configuraciones", configuracionesJSON);
+            console.log("Configuraciones iniciales:", configuraciones);
 
-        const configuracionesCargadasJSON = localStorage.getItem("configuraciones");
-        const configuracionesCargadas = JSON.parse(configuracionesCargadasJSON);
 
-        console.log(configuracionesCargadas);
+            // Convertir objeto a JSON 
+            let jsonConfig = JSON.stringify(configuraciones);
+            console.log("Guardado en JSON:", jsonConfig);
 
-        configuracionesCargadas.tema = "claro";
-        localStorage.setItem("configuraciones", JSON.stringify(configuracionesCargadas));
+            // Cargar desde almacenamiento
+            let cargado = JSON.parse(jsonConfig);
+            console.log("Configuraciones cargadas:", cargado);
 
-        const configuracionesCargadas2JSON = localStorage.getItem("configuraciones");
-        const configuracionesCargadas2 = JSON.parse(configuracionesCargadas2JSON);
+            // Cambiar tema e idioma
+            cargado.tema = "claro";
+            cargado.idioma = "en";
+            cargado.notificaciones = false;
 
-        console.log(configuracionesCargadas2);
+            console.log("Configuraciones modificadas:", cargado);
+
+            // Guardar cambios en JSON
+            jsonConfig = JSON.stringify(cargado);
+            console.log("JSON actualizado:", jsonConfig);
     </script>
 </body>
 </html>
