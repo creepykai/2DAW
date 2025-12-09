@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!---->
+    <script>
+        let zoo={
+        nombre:"Zoo de Guadalajara",
+        ubicacion:"Guadalajara",
+        animales:["Oso", "Lobo", "Nutria"]
+    };
+
+        //Asignación: Lo que cambia en la copia se refleja en el original se hace con la asignación
+        const copia1 = zoo;
+        copia1.animales[0] = "Tigre";
+        console.log(zoo);
+        console.log(copia1);
+
+
+        //Clonación superficial: Lo que cambia en la copia no se refleja en el original, se hace con el operador spread (...)
+        const copia2 = {...zoo};
+        copia2.nombre = "Zoo de azuqueca";
+        console.log(zoo);
+        console.log(copia2);
+
+        //Clonación profunda: Lo que cambia en la copia no se refleja en el original, se hace con la función structuredClone()
+        const copia3 = structuredClone(zoo);
+        copia3.nombre = "Zoo de azuqueca";
+        console.log(zoo);
+        console.log(copia3);
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!---->
+    <script>
+        //JSON: Es un formato de intercambio de datos que se caracteriza por ser simple y legible
+        //Creamos un JSON
+        const json = `{
+            "nombre":"Irene",
+            "edad":22
+        }`;
+    
+        const persona = JSON.parse(json); //Lo convertimos en un objeto de JavaScript
+        console.log(persona);
+        console.log(persona.nombre);
+
+        //Convertimos un objeto de JavaScript en un JSON
+        let json2 = JSON.stringify(persona);
+        console.log(json2);
+
+        
+    </script>
+</body>
+</html>

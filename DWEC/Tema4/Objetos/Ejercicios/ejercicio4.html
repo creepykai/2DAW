@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--4.	Una empresa almacena sus productos en formato JSON. Necesitas cargar los datos, procesarlos y devolver solo los productos en oferta
+
+const productosJSON = `[
+  {"id": 1, "nombre": "Teclado", "precio": 20, "oferta": false},
+  {"id": 2, "nombre": "Ratón", "precio": 10, "oferta": true},
+  {"id": 3, "nombre": "Monitor", "precio": 150, "oferta": true},
+  {"id": 4, "nombre": "Altavoces", "precio": 50, "oferta": false}
+]`;
+-->
+    <script>
+        const productosJSON = `[
+            {"id": 1, "nombre": "Teclado", "precio": 20, "oferta": false},
+            {"id": 2, "nombre": "Ratón", "precio": 10, "oferta": true},
+            {"id": 3, "nombre": "Monitor", "precio": 150, "oferta": true},
+            {"id": 4, "nombre": "Altavoces", "precio": 50, "oferta": false}
+        ]`;
+
+        const productos = JSON.parse(productosJSON);
+        const productosOferta = productos.filter(producto => producto.oferta);
+
+        for (let i = 0; i < productosOferta.length; i++) {
+            document.write(productosOferta[i].nombre + "<br>");
+        }
+    
+    </script>
+</body>
+</html>
