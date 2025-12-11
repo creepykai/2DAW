@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--3.	El objetivo de este ejercicio es desarrollar una aplicación en JavaScript para gestionar edificios y los propietarios de cada piso (el número de piso y el número de puerta deben indicarse utilizando números enteros), requiriéndose la implementación de las clases Edificio y Propietario (cada clase en un archivo independiente).
+•	Cada clase debe implementarse utilizando propiedades privadas y módulos.
+•	Clase Propietarios:
+o	Propósito: Representa una lista con los propietarios de un piso.
+o	Propiedades:
+	#propietarios: (privada) Almacena una lista de propietarios.
+o	Constructores:
+	constructor(propietarios = []): Inicializa los propietarios de un piso. Debe comprobar que el valor pasado es una lista. Debe inicializar los valores utilizando los setters.
+o	Métodos get/set:
+	get propietarios(): Devuelve los nombres de los propietarios.
+	set propietarios(listaNombres): Asigna una lista de propietarios. Debe incluir validación para asegurarse de que son cadenas de texto, sin valores numéricos. Si no lo son, debe lanzar un error.
+o	Métodos adicionales:
+	toString(): Devuelve una cadena con la información de los propietarios, separando los nombres por comas.
+•	Clase Edificio:
+o	Propósito: Representar un edificio, almacenando información sobre su ubicación y los pisos que lo componen.
+o	Propiedades:
+	#calle: (privada) Almacena el nombre de la calle donde se ubica el edificio.
+	#numero: (privada) Almacena el número de la calle del edificio.
+	#localidad: (privada) Almacena la localidad del edificio.
+	#codigoPostal: (privada) Almacena el código postal del edificio.
+	#numPisos: (privada) Almacena el número total de pisos en el edificio.
+	#numPuertasPorPiso: (privada) Almacena el número de puertas por piso.
+	#pisos: (privada) Un array que asocia un identificador de piso (número y puerta) con un objeto de tipo Propietarios. Se debe inicializar en el constructor.
+o	Constructores:
+	constructor(calle, numero, localidad, codigoPostal, numPisos, numPuertasPorPiso): Debe inicializar los valores utilizando los setters. También debe inicializar el array de pisos.
+o	Métodos get/set:
+	get calle(): Devuelve el nombre de la calle del edificio.
+	set calle(nombreCalle): Asigna el nombre de la calle del edificio. Debe incluir validación.
+	get numero(): Devuelve el número de la calle del edificio.
+	set numero(numCalle): Asigna el número de la calle del edificio. Debe incluir validación.
+	get localidad(): Devuelve la localidad del edificio.
+	set localidad(nuevaLocalidad): Asigna la localidad del edificio. Debe incluir validación.
+	get codigoPostal(): Devuelve el código postal del edificio.
+	set codigoPostal(codigo): Asigna el código postal del edificio. Debe incluir validación.
+	get numPisos(): Devuelve el número de pisos del edificio.
+	setnumPisos(): Asigna el número de pisos del edificio.
+	get numPuertasPorPiso(): Devuelve el número de puertas por piso en el edificio.
+	set numPuertasPorPiso(): Asigna el número de puertas por piso en el edificio.
+o	Métodos de gestión de propietarios:
+	getPropietariosPiso(planta, puerta): Devuelve el propietario del piso especificado.
+	cambiarPropietarios(planta, puerta, nombres): Asigna una lista de nombres como propietarios de un piso. Debe validar que el piso y la puerta estén en el rango establecido por numPisos y numPuertasPorPiso, y que los nombres proporcionados sean cadenas de texto.
+o	Métodos adicionales:
+	actualizarDireccion(calle, numero, localidad, codigoPostal): Actualiza la dirección utilizando los setters correspondientes.
+	toString(): Devuelve una cadena con la información general del edificio (ubicación y número de pisos).
+Consideraciones Adicionales:
+•	Propiedades Privadas: En la clase Edificio, utiliza propiedades privadas para los atributos internos como calle, número, código postal y pisos para asegurar la encapsulación.
+•	Validación: Asegúrate de que los valores asignados mediante los setters son válidos. Si no lo fueran, debe lanzarse un error.
+-->
+    <script>
+        class Propietario{
+            #propietarios
+
+            constructor(propietarios = []){
+                this.propietarios = propietarios;
+            }
+
+            getPropietarios(){
+                return this.propietarios;
+            }
+
+            setPropietarios(propietarios){
+                this.propietarios = propietarios;
+            }
+
+            toString(){
+                return this.propietarios.join(", ");
+            }
+        }
+
+        class Edificio{
+            #calle
+            #numero
+            #localidad
+            #codigoPostal
+            #numPisos
+            #numPuertasPorPiso
+            #pisos
+
+            constructor(calle, numero, localidad, codigoPostal, numPisos, numPuertasPorPiso){
+                this.calle = calle;
+                this.numero = numero;
+                this.localidad = localidad;
+                this.codigoPostal = codigoPostal;
+                this.numPisos = numPisos;
+                this.numPuertasPorPiso = numPuertasPorPiso;
+                this.pisos = [];
+            }
+
+            getCalle(){
+                return this.calle;
+            }
+
+            setCalle(nombreCalle){
+                this.calle = calle;
+            }
+
+            getNumero(){
+                return this.numero;
+            }
+
+            setNumero(numCalle){
+                this.numero = numCalle;
+            }
+
+            getLocalidad(){
+                return this.localidad;
+            }
+
+            setLocalidad(nuevaLocalidad){
+                this.localidad = nuevaLocalidad;
+            }
+
+            getCodigoPostal(){
+                return this.codigoPostal;
+            }
+
+            setCodigoPostal(codigo){
+                this.codigoPostal = codigo;
+            }
+
+            getNumPisos(){
+                return this.numPisos;
+            }
+
+            setNumPisos(numPisos){
+                this.numPisos = numPisos;
+            }
+
+            getNumPuertasPorPiso(){
+                return this.numPuertasPorPiso;
+            }
+
+            setNumPuertasPorPiso(numPuertasPorPiso){
+                this.numPuertasPorPiso = numPuertasPorPiso;
+            }
+
+            getPropietariosPiso(planta, puerta){
+                return this.pisos[planta][puerta];
+            }
+
+            cambiarPropietarios(planta, puerta, nombres){
+                if(planta < 1 || planta > this.numPisos || puerta < 1 || puerta > this.numPuertasPorPiso){
+                    console.log("Planta o puerta no valida");
+                }
+                if(!Array.isArray(nombres)){
+                    console.log("Nombres no valido");
+                }
+                this.pisos[planta][puerta] = nombres;
+            }
+
+            actualizarDireccion(calle, numero, localidad, codigoPostal){
+                this.calle = calle;
+                this.numero = numero;
+                this.localidad = localidad;
+                this.codigoPostal = codigoPostal;
+            }
+
+            toString(){
+                return "Ubicación:" + this.calle + " " + this.numero + " " + this.localidad + " " + this.codigoPostal + "\n" + "Numero de pisos:" + this.numPisos + "\n" + "Numero de puertas por piso:" + this.numPuertasPorPiso;
+            }
+        }
+    
+        const edificio = new Edificio("Calle 1", 1, "Localidad 1", "Codigo postal 1", 10, 2);
+        console.log(edificio.toString());
+        edificio.actualizarDireccion("Calle actualizada", 1, "Localidad Actualizada", "Codigo Postal Actualizado", 11, 3);  
+        console.log(edificio.toString());         
+    </script>
+</body>
+</html>
