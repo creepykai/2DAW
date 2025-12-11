@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <!--1.	Crea una clase Vehículo con propiedades básicas como marca y velocidad. Luego crea una clase Auto y otra Moto que hereden de 
+    Vehículo, pero cada una con un método propio adicional.-->
+    <script>
+        class Vehiculo{
+            constructor(marca, velocidad){
+                this.marca = marca;
+                this.velocidad = velocidad;
+            }
+        }
+
+        class Auto extends Vehiculo{
+            constructor(marca, velocidad){
+                super(marca, velocidad);
+            }
+
+            numeroPuertas(){
+                console.log("El auto tiene 5 puertas");
+            }
+
+        }
+
+        class Moto extends Vehiculo{
+            constructor(marca, velocidad){
+                super(marca, velocidad);
+            }
+
+            hacerCaballito(){
+                console.log("La moto hace caballito");
+            }
+        }
+
+        const auto = new Auto("Mazda RX8", 120);
+        const moto = new Moto("Husqvarna", 200);
+
+        auto.numeroPuertas();
+        moto.hacerCaballito();
+    </script>
+</body>
+</html>

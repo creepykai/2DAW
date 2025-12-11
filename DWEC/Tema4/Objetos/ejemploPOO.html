@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO</title>
+</head>
+<body>
+    <script>
+        class Animal{
+            constructor(nombre, edad){
+                this.nombre = nombre;
+                this.edad = edad;
+            }
+            
+            sonar(){
+                console.log("Hago sonidos");
+            }
+
+            saludar(){
+                console.log("Hola, me llamo " + this.nombre);
+            }
+        }
+
+        class Perro extends Animal{
+            constructor(nombre, edad, raza){
+                super(nombre, edad);
+                this.raza = null;
+            }
+
+            //Con get accedemos a la propiedad raza como si fuera una propiedad normal
+            getLeeRaza(){
+                return this.raza;
+            }
+
+            //Con set escribimos la propiedad raza como si fuera una propiedad normal
+            setEscribeRaza(raza){
+                this.raza = raza;
+            }
+
+            //este sonar es polimorfismo, es decir, que el metodo se comporta de manera diferente en cada clase
+
+            sonar(){
+                console.log("Soy un perro y mi sonido es guau guau");
+            }
+
+            //ladrar es una funcion propia de la clase perro
+            ladrar(){
+                console.log("Guau guau");
+            }
+
+            //queEres es una funcion propia de la clase perro, static se refiere a que no necesita un objeto para ser ejecutado
+            static queEres(){
+                console.log("Soy un perro, animal mamifero");
+            }
+        }
+
+        class Conejo extends Animal{
+            constructor(nombre, edad, color){
+                super(nombre, edad);
+                this.color = color;
+            }
+
+            sonar(){
+                console.log("Soy un conejo y mi sonido es brr brr");
+            }
+
+            saltar(){
+                console.log("Soy un conejo y mi movimiento es saltar");
+            }
+
+            static queEres(){
+                console.log("Soy un conejo, animal mamifero");
+            }
+        }
+
+        const coco = new Animal("Coco", 5);
+        coco.saludar();
+        coco.sonar();
+
+        const firulais = new Perro("Firulais", 5, "Pastor Aleman");
+        firulais.saludar();
+        firulais.sonar();
+        firulais.setEscribeRaza("Pastor Aleman");
+        console.log(firulais.getLeeRaza());
+        firulais.ladrar();
+        Perro.queEres();
+
+        const Mochi = new Conejo("Mochi", 2, "Manchado");
+        Mochi.saludar();
+        Mochi.sonar();
+        Mochi.saltar();
+        Conejo.queEres();
+    </script>
+</body>
+</html>

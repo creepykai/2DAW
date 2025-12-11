@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--2.	Crea un sistema básico de gestión de una biblioteca usando POO con herencia, polimorfismo y métodos estáticos.
+        1.	Define una clase base Recurso que tenga:
+        o	titulo
+        o	anioPublicacion
+        o	método descripcion() (devuelve un texto con los datos del recurso)
+        2.	Crea dos clases que hereden de Recurso:
+        o	Libro
+        	atributo extra: autor
+        	sobrescribe descripcion()
+        o	Revista
+        	atributo extra: numeroEdicion
+        	sobrescribe descripcion()
+        3.	Crea una clase Biblioteca que:
+        o	tenga un array estático que almacene todos los recursos registrados
+        o	tenga un método estático registrarRecurso(recurso)
+        o	tenga un método estático listarDescripciones() que recorra todos los recursos y muestre su descripción usando polimorfismo
+        4.	Crea varios libros y revistas, regístralos en la biblioteca y muestra las descripciones usando el método estático.
+-->
+    <script>
+        class Recurso{
+            constructor(titulo, anioPublicacion){
+                this.titulo = titulo;
+                this.anioPublicacion = anioPublicacion;
+            }
+
+            descripcion(){
+                return "Titulo: " + this.titulo + "\n" + "Año de publicacion: " + this.anioPublicacion;
+            }
+        }
+
+        class Libro extends Recurso{
+            constructor(titulo, anioPublicacion, autor){
+                super(titulo, anioPublicacion);
+                this.autor = autor;
+            }
+
+            descripcion(){
+                return "Titulo: " + this.titulo + "\n" + "Año de publicacion: " + this.anioPublicacion + "\n" + "Autor: " + this.autor;
+            }
+        }
+
+        class Revista extends Recurso{
+            constructor(titulo, anioPublicacion, numeroEdicion){
+                super(titulo, anioPublicacion);
+                this.numeroEdicion = numeroEdicion;
+            }
+
+            descripcion(){
+                return "Titulo: " + this.titulo + "\n" + "Año de publicacion: " + this.anioPublicacion + "\n" + "Numero de edicion: " + this.numeroEdicion;
+            }
+        }
+
+        class Biblioteca{
+            constructor(){
+                this.recursosRegistrados = [];
+            }
+
+            registrarRecurso(recurso){
+                this.recursosRegistrados.push(recurso);
+            }
+
+            listarDescripciones(){
+                for(let i = 0; i < this.recursosRegistrados.length; i++){
+                    console.log(this.recursosRegistrados[i].descripcion());
+                }
+            }
+        }
+
+        const biblioteca = new Biblioteca();
+        const hp1 = new Libro("Harry Potter y la piedra filosofal", 2001, "J.K. Rowling");
+        const revista1 = new Revista("El mundo", 2024, 1);
+        biblioteca.registrarRecurso(hp1);
+        biblioteca.registrarRecurso(revista1);
+        biblioteca.listarDescripciones();
+    </script>
+</body>
+</html>
