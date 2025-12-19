@@ -1,18 +1,135 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 4</title>
+    <title>Actividad 4 - Oferta Deportiva</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #f5cf8a, #e65c00, #ff4800);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .contenedor {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            align-items: flex-start;
+        }
+
+        .tarjeta {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 220px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .tarjeta img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .info-tarjeta {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .info-tarjeta h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .descripcion {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0;
+        }
+
+        .tarjeta:hover .descripcion {
+            height: 70px;
+            opacity: 1;
+            margin-top: 15px;
+        }
+    </style>
 </head>
+
 <body>
+
     <h1>Nuestra oferta deportiva</h1>
+
     <div class="contenedor">
-        <div id="imagen1"></div>
-        <div id="imagen2"></div>
-        <div id="imagen3"></div>
-        <div id="imagen4"></div>
+
+        <div class="tarjeta">
+            <img src="https://picsum.photos/id/433/220/150" alt="Natación">
+            <div class="info-tarjeta">
+                <h3>Natación</h3>
+                <p class="descripcion">¡Una oportunidad fantástica! Acércate a pedir más información y da comienzo a tu
+                    aventura.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://picsum.photos/id/1060/220/150" alt="Esgrima">
+            <div class="info-tarjeta">
+                <h3>Esgrima</h3>
+                <p class="descripcion">Desarrolla tu agilidad y reflejos. Clases para todos los niveles, desde
+                    principiantes hasta avanzados.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://picsum.photos/id/1062/220/150" alt="Karate">
+            <div class="info-tarjeta">
+                <h3>Karate</h3>
+                <p class="descripcion">Disciplina, fuerza y control mental. Aprende el arte marcial tradicional con
+                    nuestros expertos.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="https://picsum.photos/id/338/220/150" alt="Pilates">
+            <div class="info-tarjeta">
+                <h3>Pilates</h3>
+                <p class="descripcion">Mejora tu postura y flexibilidad. Ejercicios controlados para fortalecer el
+                    cuerpo y la mente.</p>
+            </div>
+        </div>
+
     </div>
-    
+
 </body>
+
 </html>
