@@ -168,10 +168,17 @@ Consideraciones Adicionales:
             }
         }
     
+        const propietario1 = new Propietario(["David", "Maria"]);
+        const propietario2 = new Propietario(["Irene", "Ana"]);
         const edificio = new Edificio("Calle 1", 1, "Localidad 1", "Codigo postal 1", 10, 2);
         console.log(edificio.toString());
         edificio.actualizarDireccion("Calle actualizada", 1, "Localidad Actualizada", "Codigo Postal Actualizado", 11, 3);  
-        console.log(edificio.toString());         
+        console.log(edificio.toString());  
+
+        edificio.cambiarPropietarios(1, 1, propietario1.getPropietarios());
+        console.log(edificio.getPropietariosPiso(1, 1));
+        edificio.cambiarPropietarios(1, 2, propietario2.getPropietarios());
+        console.log(edificio.getPropietariosPiso(1, 2));
     </script>
 </body>
 </html>

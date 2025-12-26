@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pruebas - eventos</title>
+        <link rel="web icon" href="../among_us_player_light_blue_icon_156934.ico" />
+        <style>
+            .eventos-flujo div {
+                padding: 3rem;
+                font-size: 2rem;
+                text-align: center;
+            }
+            .uno { background-color: teal; }
+            .dos { background-color: pink; }
+            .tres { background-color: yellow; }
+        </style>
+    </head>
+    <body>
+        <h2>EVENTOS</h2>
+        <button id="boton1" onclick="funcion1()">Evento con atributo HTML</button>
+        <button id="boton2">Evento con manejador semántico</button>
+        <button id="boton3">Evento con addEventListener</button>
+        <button id="boton4">Evento con opciones</button>
+
+        <h3>Flujo de eventos</h3>
+        <section class="eventos-flujo">
+            <div class="uno">
+                1
+                <div class="dos">
+                    2
+                    <div class="tres">
+                        3
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Evento con atributo HTML
+            function funcion1() {
+                alert("Evento con atributo HTML");
+            }
+
+            // Evento con manejador semántico
+            const boton2 = document.getElementById("boton2");
+            boton2.onclick = function(evento) {
+                alert("Evento con manejador semántico");
+                console.log(evento);
+            }
+
+            // Evento con addEventListener
+            const boton3 = document.getElementById("boton3");
+            boton3.addEventListener("click", (evento) => {
+                alert("Evento con addEventListener");
+                console.log(evento);
+            });
+
+            boton3.addEventListener("click", () => {
+                funcion1();
+                funcion2();
+            });
+
+            // Evento con opciones
+            const opciones = {
+                once:true,  // Se eliminará después de la primera vez
+                capture:true,  // Fase de propagación
+                passive:false  // No previene el comportamiento por defecto
+            }
+
+            const boton4 = document.getElementById("boton4");
+            boton4.addEventListener("click", funcion1, opciones);
+
+            // Fase de captura y burbujeo
+            const divsEventos = document.querySelectorAll(".eventos-flujo div");
+
+            function flujoEventos(e) {
+                console.log(`Te saludo ${this.className}. El click lo originó ${e.target.className}`);
+            }
+
+            divsEventos.forEach((div) => {
+                div.addEventListener("click", flujoEventos, false);  // Fase de burbuja
+                // div.addEventListener("click", flujoEventos, true);  // Fase de captura
+            })
+        </script>
+    </body>
+</html>
