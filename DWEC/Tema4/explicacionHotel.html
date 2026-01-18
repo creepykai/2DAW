@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TongTiew Hotel Manager</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="portada">
+        <header class="cabecera">
+            <div class="logo">
+                <i class="fas fa-globe-europe"></i> Hotel Mochi
+            </div>
+            <nav class="menu">
+                <a href="#">Inicio</a>
+                <a href="#">Habitaciones</a>
+                <a href="#">Servicios</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </header>
+
+        <div class="titulos">
+            <h2>EXPLORA GUADALAJARA</h2>
+            <p>Guadalajara, España</p>
+        </div>
+
+        <div class="cajaBusqueda">
+            <div class="pestanas">
+                <button class="activo"><i class="fas fa-hotel"></i> Hotel</button>
+                <button><i class="fas fa-utensils"></i> Restaurante</button>
+                <button><i class="fas fa-spa"></i> Spa</button>
+            </div>
+            <div class="formulario">
+                <div class="campo">
+                    <label>Fecha de Reserva</label>
+                    <input type="date" id="fecha" class="input">
+                </div>
+                <div class="campo">
+                    <label>Tipo de Habitación</label>
+                    <select id="tipo" class="input">
+                        <option value="todas">Todos los tipos</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>&nbsp;</label>
+                    <button id="btnBuscarDisp" class="btnBuscar">BUSCAR DISPONIBILIDAD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panelDatos">
+        <div class="contenedor" id="datos">
+        </div>
+    </div>
+
+    <div class="contenedor principal">
+
+        <section class="habitaciones">
+            <div class="tituloSeccion">
+                <h3>Nuestras Mejores Ofertas</h3>
+                <p>Descubre las habitaciones mejor valoradas</p>
+            </div>
+            <div id="listaHab" class="grid">
+            </div>
+        </section>
+
+        <section class="empleados">
+            <div class="tituloSeccion">
+                <h3>Directorio de Empleados</h3>
+                <p>Gestión eficiente del personal del hotel</p>
+            </div>
+
+            <div class="acciones">
+                <div class="buscar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="inputBuscar" placeholder="Buscar empleado...">
+                </div>
+            </div>
+
+            <div class="tablaBox">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Puesto</th>
+                            <th>Salario</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaEmp">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <footer class="pie">
+        <div class="infoPie">
+            <div class="logoPie" style="margin-bottom: 0.5rem;"><i class="fas fa-globe-europe"></i> Hotel Mochi
+            </div>
+            <p>Guadalajara, España</p>
+            <p>Tel: +34 949 00 00 00 | Email: info@hotelmochi.es</p>
+        </div>
+        <div class="derechos">
+            <p>&copy; 2024 Hotel Mochi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* 
+         * =============================================
+         * SECCIÓN 1: DEFINICIÓN DE CLASES (MODELOS)
+         * =============================================
+         * Una "Clase" es como una receta o plantilla.
+         * Nos sirve para crear muchos objetos iguales (como habitaciones o empleados)
+         * sin tener que escribir el código una y otra vez.
+         */
+
+        // Clase Habitacion: La plantilla para crear habitaciones
+        class Habitacion {
+            // PROPIEDADES PRIVADAS (#)
+            // Son variables secretas que solo funcionan DENTRO de esta clase.
+            // Tienen un '#' delante para que nadie las toque desde fuera por error.
+            #id;        // El número identificador de la habitación
+            #tipo;      // Si es Suite, Doble, etc.
+            #precio;    // Cuánto cuesta la noche
+            #imagen;    // La foto de la habitación
+            #reservas;  // Una lista con las fechas en las que está ocupada
+
+            // CONSTRUCTOR: El "constructor" es la función que se ejecuta al fabricar la habitación.
+            // Recibe los datos iniciales y los guarda en las propiedades privadas.
+            constructor({ id, tipo, precio, imagen }) {
+                this.#id = id;
+                this.#tipo = tipo;
+                this.#precio = precio;
+                this.#imagen = imagen;
+                this.#reservas = []; // Al principio, la lista de reservas está vacía
+            }
+
+            // GETTERS: Son puertas para LEER la información privada desde fuera.
+            // Solo dejan ver el dato, no cambiarlo.
+            get id() { return this.#id; }
+            get tipo() { return this.#tipo; }
+            get precio() { return this.#precio; }
+            get imagen() { return this.#imagen; }
+            get reservas() { return this.#reservas; }
+
+            // MÉTODOS: Son las "cosas que sabe hacer" una habitación.
+
+            // Método 1: Preguntar si está reservada en una fecha concreta
+            estaReservada(fechaConsultada) {
+                // .includes() busca si la 'fechaConsultada' está dentro de la lista '#reservas'
+                return this.#reservas.includes(fechaConsultada);
+            }
+
+            // Método 2: Reservar la habitación
+            reservar(fechaParaReservar) {
+                // Primero comprobamos si NO (!) está reservada ya
+                if (!this.estaReservada(fechaParaReservar)) {
+                    // Si está libre, añadimos (.push) la fecha a la lista de reservas
+                    this.#reservas.push(fechaParaReservar);
+                }
+            }
+
+            // Método 3: Cancelar una reserva
+            cancelarReserva(fechaParaCancelar) {
+                // Para borrar, usamos .filter().
+                // Creamos una NUEVA lista quedándonos solo con las fechas que sean DISTINTAS (!==) a la que queremos borrar.
+                this.#reservas = this.#reservas.filter(function (fechaEnLista) {
+                    return fechaEnLista !== fechaParaCancelar;
+                });
+            }
+        }
+
+        // Clase Empleado: La plantilla para crear empleados
+        class Empleado {
+            #id;
+            #nombre;
+            #puesto;
+            #salario;
+
+            constructor({ id, nombre, puesto, salario }) {
+                this.#id = id;
+                this.#nombre = nombre;
+                this.#puesto = puesto;
+                this.#salario = salario;
+            }
+
+            get id() { return this.#id; }
+            get nombre() { return this.#nombre; }
+            get puesto() { return this.#puesto; }
+            get salario() { return this.#salario; }
+        }
+
+        /* 
+         * =============================================
+         * SECCIÓN 2: DATOS SIMULADOS
+         * =============================================
+         * Estos datos fingen venir de un servidor de internet.
+         * Están en formato texto JSON (un texto largo con formato especial).
+         */
+        const textoDatosJson = '{"habitaciones":[{"id":101,"tipo":"Suite de Lujo","precio":150,"imagen":"https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"},{"id":102,"tipo":"Doble Estándar","precio":80,"imagen":"https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80"},{"id":103,"tipo":"Individual Confort","precio":60,"imagen":"https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"},{"id":104,"tipo":"Suite Presidencial","precio":250,"imagen":"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80"},{"id":105,"tipo":"Doble Superior","precio":100,"imagen":"https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=800&q=80"},{"id":106,"tipo":"Individual Económica","precio":45,"imagen":"https://images.unsplash.com/photo-1505693416388-b0346ef41741?auto=format&fit=crop&w=800&q=80"},{"id":107,"tipo":"Suite de Lujo","precio":150,"imagen":"https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80"},{"id":108,"tipo":"Doble Estándar","precio":80,"imagen":"https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80"}],"empleados":[{"id":1,"nombre":"Ana García","puesto":"Recepcionista","salario":1500},{"id":2,"nombre":"Carlos López","puesto":"Gerente","salario":2800},{"id":3,"nombre":"Lucía Méndez","puesto":"Limpieza","salario":1200},{"id":4,"nombre":"Marcos Ruiz","puesto":"Mantenimiento","salario":1400},{"id":5,"nombre":"Elena Torres","puesto":"Chef","salario":2000}]}';
+
+        /* 
+         * =============================================
+         * SECCIÓN 3: VARIABLES GLOBALES (ESTADO)
+         * =============================================
+         * Aquí guardamos cómo está la página en este momento.
+         * Son variables que podemos usar en cualquier parte del código.
+         */
+
+        let listaHabitaciones = []; // Aquí guardaremos los objetos Habitacion
+        let listaEmpleados = [];    // Aquí guardaremos los objetos Empleado
+
+        // Filtros: Guardamos lo que el usuario ha elegido en la pantalla
+        let fechaSeleccionada = new Date().toISOString().split('T')[0]; // La fecha de hoy automáticamente
+        let tipoSeleccionado = 'todas';        // El tipo de habitación elegido en el desplegable
+        let buscandoSoloDisponibles = false;   // ¿Está activo el botón de "Solo Disponibles"?
+        let textoBusquedaEmpleado = '';        // Lo que el usuario escribe en el buscador de empleados
+
+        /* 
+         * =============================================
+         * SECCIÓN 4: FUNCIONES (ACCIONES)
+         * =============================================
+         */
+
+        // Función 1: Cargar los datos iniciales
+        // Transforma el texto JSON en objetos de verdad que podamos usar.
+        function cargarDatosIniciales() {
+            // 1. Convertimos el texto JSON a un objeto básico de JavaScript con JSON.parse()
+            const datosCrudos = JSON.parse(textoDatosJson);
+
+            // 2. Transformamos los datos "crudos" en objetos inteligentes de nuestra clase Habitacion
+            // .map() recorre la lista y transforma cada elemento
+            listaHabitaciones = datosCrudos.habitaciones.map(function (datosHabitacion) {
+                // Creamos una 'new Habitacion' pasándole sus datos
+                return new Habitacion({ ...datosHabitacion });
+            });
+
+            // Hacemos lo mismo con los empleados
+            listaEmpleados = datosCrudos.empleados.map(function (datosEmpleado) {
+                return new Empleado({ ...datosEmpleado });
+            });
+        }
+
+        // Función 2: Calcular y mostrar los totales (Ingresos, Nóminas...)
+        function pintarEstadisticas() {
+            // Calculamos el dinero total de las reservas
+            // .reduce() recorre la lista y va sumando en una "hucha" (totalAcumulado)
+            const totalIngresos = listaHabitaciones.reduce(function (totalAcumulado, habitacionActual) {
+                // Sumamos: las reservas que tiene esa habitación * su precio
+                const dineroDeEstaHabitacion = habitacionActual.reservas.length * habitacionActual.precio;
+                return totalAcumulado + dineroDeEstaHabitacion;
+            }, 0); // La hucha empieza en 0 euros
+
+            // Calculamos lo que hay que pagar en sueldos
+            const totalNominas = listaEmpleados.reduce(function (totalAcumulado, empleadoActual) {
+                return totalAcumulado + empleadoActual.salario;
+            }, 0);
+
+            // Contamos cuántas habitaciones están ocupadas HOY
+            const numeroOcupadas = listaHabitaciones.filter(function (habitacionActual) {
+                // Nos quedamos solo con las que están reservadas en la fecha seleccionada
+                return habitacionActual.estaReservada(fechaSeleccionada);
+            }).length; // .length nos dice cuántas pasaron el filtro
+
+            // Ahora vamos a poner estos datos e la pantalla
+            const contenedorDatos = document.getElementById('datos');
+            contenedorDatos.innerHTML = ''; // Borramos lo que hubiera antes
+
+            // --- CREACIÓN MANUAL DE HTML (Imperativa) ---
+
+            // Dato 1: Ingresos
+            const divIngresos = document.createElement('div'); // 1. Creamos la caja <div>
+            divIngresos.classList.add('dato');                 // 2. Le ponemos la clase CSS
+            divIngresos.textContent = 'Ingresos Totales (Reservas): '; // 3. Le ponemos el texto
+
+            const spanValorIngresos = document.createElement('span'); // 4. Creamos el <span> para el número
+            spanValorIngresos.classList.add('valor');
+            spanValorIngresos.textContent = totalIngresos + '€';
+
+            divIngresos.appendChild(spanValorIngresos); // 5. Metemos el <span> DENTRO del <div>
+            contenedorDatos.appendChild(divIngresos);   // 6. Metemos el <div> DENTRO de la página
+
+            // Dato 2: Nómina (Hacemos lo mismo)
+            const divNomina = document.createElement('div');
+            divNomina.classList.add('dato');
+            divNomina.textContent = 'Nómina Total: ';
+
+            const spanValorNomina = document.createElement('span');
+            spanValorNomina.classList.add('valor');
+            spanValorNomina.textContent = totalNominas + '€';
+
+            divNomina.appendChild(spanValorNomina);
+            contenedorDatos.appendChild(divNomina);
+
+            // Dato 3: Ocupación
+            const divOcupacion = document.createElement('div');
+            divOcupacion.classList.add('dato');
+            divOcupacion.textContent = 'Ocupación (' + fechaSeleccionada + '): ';
+
+            const spanValorOcupacion = document.createElement('span');
+            spanValorOcupacion.classList.add('valor');
+            spanValorOcupacion.textContent = numeroOcupadas + '/' + listaHabitaciones.length;
+
+            divOcupacion.appendChild(spanValorOcupacion);
+            contenedorDatos.appendChild(divOcupacion);
+        }
+
+        // Función 3: Rellenar el menú desplegable (Select) con los tipos de habitación
+        function pintarSelectorTipos() {
+            const selectorTipos = document.getElementById('tipo');
+            selectorTipos.innerHTML = ''; // Limpiamos
+
+            // Creamos la opción "Todos"
+            const opcionTodas = document.createElement('option');
+            opcionTodas.value = 'todas';
+            opcionTodas.textContent = 'Todos los tipos';
+            selectorTipos.appendChild(opcionTodas);
+
+            // Vamos a buscar qué tipos existen (para no repetir 'Doble Estándar' 20 veces)
+            const listaTiposUnicos = [];
+
+            listaHabitaciones.forEach(function (habitacionActual) {
+                // Si el tipo de esta habitación NO (!) está ya en nuestra lista...
+                if (!listaTiposUnicos.includes(habitacionActual.tipo)) {
+                    listaTiposUnicos.push(habitacionActual.tipo); // ...lo añadimos.
+                }
+            });
+
+            // Por cada tipo único que hemos encontrado, creamos una <option>
+            listaTiposUnicos.forEach(function (nombreTipo) {
+                const opcionNueva = document.createElement('option');
+                opcionNueva.value = nombreTipo;      // El valor interno
+                opcionNueva.textContent = nombreTipo; // Lo que ve el usuario
+                selectorTipos.appendChild(opcionNueva);
+            });
+
+            // Volvemos a seleccionar lo que el usuario tenía elegido
+            selectorTipos.value = tipoSeleccionado;
+        }
+
+        // Función 4 (PRINCIPAL): Pintar las tarjetas de las habitaciones
+        function pintarHabitaciones() {
+            const contenedorLista = document.getElementById('listaHab');
+            contenedorLista.innerHTML = ''; // Borramos todo para pintar de cero
+
+            // PASO 1: FILTRAR (Decidir qué habitaciones mostramos)
+            const habitacionesFiltradas = listaHabitaciones.filter(function (habitacionActual) {
+                // ¿Coincide el tipo? (o el usuario ha elegido 'todas')
+                const coincideTipo = (tipoSeleccionado === 'todas') || (habitacionActual.tipo === tipoSeleccionado);
+
+                // ¿Está reservada hoy?
+                const estaReservadaHoy = habitacionActual.estaReservada(fechaSeleccionada);
+
+                // ¿Coincide con "Solo Disponibles"? (Si buscamos solo disponibles, descartamos las reservadas)
+                const coincideDisponibilidad = (!buscandoSoloDisponibles) || (!estaReservadaHoy);
+
+                // La habitación pasa el filtro si cumple AMBAS condiciones
+                return coincideTipo && coincideDisponibilidad;
+            });
+
+            // Si no hay habitaciones que mostrar, avisamos al usuario
+            if (habitacionesFiltradas.length === 0) {
+                const parrafoAviso = document.createElement('p');
+                parrafoAviso.style.gridColumn = '1/-1'; // Que ocupe todo el ancho
+                parrafoAviso.style.textAlign = 'center';
+                parrafoAviso.textContent = 'No hay habitaciones disponibles con estos filtros.';
+                contenedorLista.appendChild(parrafoAviso);
+                return; // Terminamos aquí
+            }
+
+            // PASO 2: CREAR EL HTML (Tarjeta a tarjeta)
+            habitacionesFiltradas.forEach(function (habitacionActual) {
+                // Comprobamos el estado para saber si pintar rojo o verde
+                const estaOcupada = habitacionActual.estaReservada(fechaSeleccionada);
+
+                // Preparamos los textos y colores según el estado
+                const claseCSS = estaOcupada ? 'estadoOcupada' : 'estadoLibre';
+                const textoEstado = estaOcupada ? 'OCUPADA' : 'DISPONIBLE';
+                const textoBoton = estaOcupada ? 'Cancelar Reserva' : 'Reservar';
+                const colorBoton = estaOcupada ? '#e74c3c' : '#8e44ad'; // Rojo o Morado
+
+                // Esta variable 'accion' es la que usaremos luego para saber qué hacer
+                const accionBoton = estaOcupada ? 'cancelar' : 'reservar';
+
+                // --- CONSTRUCCIÓN DE LA TARJETA (DOM Imperativo) ---
+
+                // 1. Creamos la caja principal <article class="tarjeta">
+                const articuloTarjeta = document.createElement('article');
+                articuloTarjeta.classList.add('tarjeta');
+
+                // 2. Creamos la parte de la foto <div class="foto">
+                const contenedorFoto = document.createElement('div');
+                contenedorFoto.classList.add('foto');
+
+                const imagenElemento = document.createElement('img');
+                imagenElemento.src = habitacionActual.imagen;
+                imagenElemento.alt = habitacionActual.tipo;
+
+                const etiquetaEstado = document.createElement('span');
+                etiquetaEstado.classList.add('etiqueta', claseCSS);
+                etiquetaEstado.textContent = textoEstado;
+
+                // Metemos la imagen y la etiqueta en la caja de la foto
+                contenedorFoto.appendChild(imagenElemento);
+                contenedorFoto.appendChild(etiquetaEstado);
+
+                // 3. Creamos la parte de la información <div class="info">
+                const contenedorInfo = document.createElement('div');
+                contenedorInfo.classList.add('info');
+
+                const tituloNombre = document.createElement('h3');
+                tituloNombre.classList.add('nombre');
+                tituloNombre.textContent = habitacionActual.tipo;
+
+                const parrafoPrecio = document.createElement('p');
+                parrafoPrecio.classList.add('precio');
+                // Usamos innerHTML solo aquí para poder meter el <small> dentro del precio
+                parrafoPrecio.innerHTML = habitacionActual.precio + '€ <small>/ noche</small>';
+
+                const parrafoDetalle = document.createElement('p');
+                parrafoDetalle.style.fontSize = '0.85rem';
+                parrafoDetalle.style.color = '#64748b';
+                parrafoDetalle.innerHTML = 'Habitación #' + habitacionActual.id + ' <br> <small>' + fechaSeleccionada + '</small>';
+
+                // 4. El Botón
+                const botonAccion = document.createElement('button');
+                botonAccion.classList.add('btnReservar');
+                botonAccion.style.backgroundColor = colorBoton;
+                botonAccion.textContent = textoBoton;
+
+                // ¡IMPORTANTE! Guardamos los datos en el botón usando atributos estándar
+                botonAccion.value = habitacionActual.id; // Guardamos el ID de la habitación en 'value'
+                botonAccion.name = accionBoton;          // Guardamos qué acción hacer en 'name'
+
+                // Metemos todo en la caja de información
+                contenedorInfo.appendChild(tituloNombre);
+                contenedorInfo.appendChild(parrafoPrecio);
+                contenedorInfo.appendChild(parrafoDetalle);
+                contenedorInfo.appendChild(botonAccion);
+
+                // Juntamos foto e info en la tarjeta
+                articuloTarjeta.appendChild(contenedorFoto);
+                articuloTarjeta.appendChild(contenedorInfo);
+
+                // Y finalmente, ponemos la tarjeta en la página
+                contenedorLista.appendChild(articuloTarjeta);
+            });
+        }
+
+        // Función 5: Pintar la lista de empleados
+        function pintarListaEmpleados() {
+            const contenedorEmpleados = document.getElementById('listaEmp');
+            contenedorEmpleados.innerHTML = '';
+
+            const textoBuscado = textoBusquedaEmpleado.toLowerCase(); // Convertimos a minúsculas para buscar mejor
+
+            // Filtramos los empleados
+            const empleadosFiltrados = listaEmpleados.filter(function (empleadoActual) {
+                const coincideNombre = empleadoActual.nombre.toLowerCase().includes(textoBuscado);
+                const coincidePuesto = empleadoActual.puesto.toLowerCase().includes(textoBuscado);
+                return coincideNombre || coincidePuesto;
+            });
+
+            if (empleadosFiltrados.length === 0) {
+                const filaVacia = document.createElement('tr');
+                filaVacia.innerHTML = '<td colspan="5" style="text-align:center; padding:2rem">Sin resultados</td>';
+                contenedorEmpleados.appendChild(filaVacia);
+                return;
+            }
+
+            // Creamos las filas (tr) de la tabla
+            empleadosFiltrados.forEach(function (empleadoActual) {
+                const filaTabla = document.createElement('tr');
+
+                // Celda ID
+                const celdaId = document.createElement('td');
+                celdaId.textContent = '#' + empleadoActual.id;
+                filaTabla.appendChild(celdaId);
+
+                // Celda Nombre
+                const celdaNombre = document.createElement('td');
+                const textoNegrita = document.createElement('strong');
+                textoNegrita.textContent = empleadoActual.nombre;
+                celdaNombre.appendChild(textoNegrita);
+                filaTabla.appendChild(celdaNombre);
+
+                // Celda Puesto
+                const celdaPuesto = document.createElement('td');
+                const etiquetaPuesto = document.createElement('span');
+                etiquetaPuesto.style.background = '#e0f2fe';
+                etiquetaPuesto.style.color = '#0369a1';
+                etiquetaPuesto.style.padding = '2px 8px';
+                etiquetaPuesto.style.borderRadius = '4px';
+                etiquetaPuesto.textContent = empleadoActual.puesto;
+                celdaPuesto.appendChild(etiquetaPuesto);
+                filaTabla.appendChild(celdaPuesto);
+
+                // Celda Salario
+                const celdaSalario = document.createElement('td');
+                celdaSalario.textContent = empleadoActual.salario + '€';
+                filaTabla.appendChild(celdaSalario);
+
+                // Celda Estado
+                const celdaEstado = document.createElement('td');
+                celdaEstado.innerHTML = '<span style="color:#10b981">● Activo</span>';
+                filaTabla.appendChild(celdaEstado);
+
+                contenedorEmpleados.appendChild(filaTabla);
+            });
+        }
+
+        // Función Auxiliar: Refrescar toda la pantalla
+        // Se llama cuando cambiamos algo (filtros, reservas...) para que todo se actualice
+        function refrescarPantalla() {
+            pintarEstadisticas();
+            pintarHabitaciones();
+            pintarListaEmpleados();
+        }
+
+        // CONTROLADOR: La función que ejecuta las reservas y cancelaciones
+        function procesarAccionUsuario(idHabitacionRecibido, accionRecibida) {
+            // 1. Buscamos en nuestra lista qué habitación tiene ese ID
+            const habitacionEncontrada = listaHabitaciones.find(function (habitacionActual) {
+                return habitacionActual.id === parseInt(idHabitacionRecibido);
+            });
+
+            // 2. Si la encontramos, ejecutamos la acción
+            if (habitacionEncontrada) {
+                if (accionRecibida === 'reservar') {
+                    habitacionEncontrada.reservar(fechaSeleccionada);
+                } else {
+                    habitacionEncontrada.cancelarReserva(fechaSeleccionada);
+                }
+                // 3. Actualizamos la pantalla para ver el cambio
+                refrescarPantalla();
+            }
+        }
+
+        /*
+         * =============================================
+         * SECCIÓN 5: EVENTOS (CONFIGURACIÓN INICIAL)
+         * =============================================
+         * DOMContentLoaded = "Cuando la página termine de cargarse por completo..."
+         */
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // 1. Lo primero es cargar los datos y pintar la pantalla inicial
+            cargarDatosIniciales();
+
+            // Ponemos la fecha de hoy en el input del calendario
+            const inputFecha = document.getElementById('fecha');
+            inputFecha.value = fechaSeleccionada;
+
+            pintarSelectorTipos(); // Llenamos el desplegable
+            refrescarPantalla();   // Mostramos todo
+
+            // 2. CONFIGURAR LOS INPUTS (Qué pasa cuando el usuario toca cosas)
+
+            // Si cambian la fecha en el calendario...
+            inputFecha.addEventListener('change', function (evento) {
+                fechaSeleccionada = evento.target.value; // Actualizamos nuestra variable fecha
+                refrescarPantalla(); // Redibujamos
+            });
+
+            // Si cambian el tipo de habitación...
+            document.getElementById('tipo').addEventListener('change', function (evento) {
+                tipoSeleccionado = evento.target.value;
+                refrescarPantalla();
+            });
+
+            // Si escriben en el buscador de empleados...
+            document.getElementById('inputBuscar').addEventListener('input', function (evento) {
+                textoBusquedaEmpleado = evento.target.value;
+                pintarListaEmpleados();
+            });
+
+            // Si pulsan el botón de "Ver Disponibles"...
+            const botonVerDisponibles = document.getElementById('btnBuscarDisp');
+            botonVerDisponibles.addEventListener('click', function () {
+                buscandoSoloDisponibles = !buscandoSoloDisponibles; // Invertimos el valor (true <-> false)
+
+                // Cambiamos el aspecto del botón (azul o normal)
+                if (buscandoSoloDisponibles) {
+                    botonVerDisponibles.textContent = 'Ver Todas';
+                    botonVerDisponibles.classList.add('activo');
+                } else {
+                    botonVerDisponibles.textContent = 'BUSCAR DISPONIBILIDAD';
+                    botonVerDisponibles.classList.remove('activo');
+                }
+                pintarHabitaciones(); // Filtramos las habitaciones
+            });
+
+            // 3. DETECTAR CLICKS EN LOS BOTONES DE RESERVA
+            // Como los botones se crean y destruyen dinámicamente, escuchamos en el padre ('listaHab')
+            const contenedorHabitaciones = document.getElementById('listaHab');
+
+            contenedorHabitaciones.addEventListener('click', function (evento) {
+                // 'evento.target' es el elemento exacto que se pulsó.
+
+                // Si lo que se pulsó tiene la clase 'btnReservar'...
+                if (evento.target.classList.contains('btnReservar')) {
+                    // ...entonces es un botón de nuestros.
+
+                    // Recuperamos la información que guardamos en sus atributos
+                    const idParaAccion = evento.target.value;
+                    const nombreAccion = evento.target.name; // 'reservar' o 'cancelar'
+
+                    // Mandamos ejecutar la orden
+                    procesarAccionUsuario(idParaAccion, nombreAccion);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
