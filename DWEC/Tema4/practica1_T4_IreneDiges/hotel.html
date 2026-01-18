@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mochi Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="portada">
+        <header class="cabecera">
+            <div class="logo">
+                Hotel Mochi
+            </div>
+            <nav class="menu">
+                <a href="#">Inicio</a>
+                <a href="#">Habitaciones</a>
+                <a href="#">Servicios</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </header>
+
+        <div class="titulos">
+            <h2>EXPLORA GUADALAJARA</h2>
+            <p>Guadalajara, España</p>
+        </div>
+
+        <div class="cajaBusqueda">
+            <div class="pestanas">
+                <button class="activo">Hotel</button>
+                <button>Restaurante</button>
+                <button>Spa</button>
+            </div>
+            <div class="formulario">
+                <div class="campo">
+                    <label>Fecha de Reserva</label>
+                    <input type="date" id="fecha" class="input">
+                </div>
+                <div class="campo">
+                    <label>Tipo de Habitación</label>
+                    <select id="tipo" class="input">
+                        <option value="todas">Todos los tipos</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>&nbsp;</label>
+                    <button id="btnBuscarDisp" class="btnBuscar">BUSCAR DISPONIBILIDAD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panelDatos">
+        <div class="contenedor" id="datos">
+        </div>
+    </div>
+
+    <div class="contenedor principal">
+
+        <section class="habitaciones">
+            <div class="tituloSeccion">
+                <h3>Nuestras Mejores Ofertas</h3>
+                <p>Descubre las habitaciones mejor valoradas</p>
+            </div>
+            <div id="listaHab" class="grid">
+            </div>
+        </section>
+
+        <section class="empleados">
+            <div class="tituloSeccion">
+                <h3>Directorio de Empleados</h3>
+            </div>
+
+            <div class="acciones">
+                <div class="buscar">
+                    <input type="text" id="inputBuscar" placeholder="Buscar empleado...">
+                </div>
+            </div>
+
+            <div class="tablaBox">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Puesto</th>
+                            <th>Salario</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaEmp">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <footer class="pie">
+        <div class="infoPie">
+            <div class="logoPie" style="margin-bottom: 0.5rem;">Hotel Mochi
+            </div>
+            <p>Guadalajara, España</p>
+            <p>Tel: +34 949 00 00 00 | Email: info@hotelmochi.es</p>
+        </div>
+        <div class="derechos">
+            <p>&copy; 2024 Hotel Mochi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Definir la clase Habitacion
+        class Habitacion {
+            #id;        // El número identificador de la habitación
+            #tipo;      // Si es suite, doble, etc.
+            #precio;    // Cuanto cuesta la noche
+            #imagen;    // La foto de la habitación
+            #reservas;  // Una lista con las fechas en las que está ocupada
+
+            constructor({ id, tipo, precio, imagen, reservas = [] }) {
+                this.#id = id;
+                this.#tipo = tipo;
+                this.#precio = precio;
+                this.#imagen = imagen;
+                this.#reservas = reservas;
+            }
+
+            // Metodo para que JSON.stringify sepa que guardar
+            toJSON() {
+                return {
+                    id: this.#id,
+                    tipo: this.#tipo,
+                    precio: this.#precio,
+                    imagen: this.#imagen,
+                    reservas: this.#reservas
+                };
+            }
+
+            //Con los getter obtenemos los valores de las propiedades privadas
+            get id() { return this.#id; }
+            get tipo() { return this.#tipo; }
+            get precio() { return this.#precio; }
+            get imagen() { return this.#imagen; }
+            get reservas() { return this.#reservas; }
+
+
+            //Preguntar si esta reservada en una fecha concreta
+            estaReservada(fechaConsultada) {
+                // includes busca si la fecha consultada está dentro de la lista de reservas
+                return this.#reservas.includes(fechaConsultada);
+            }
+
+            //Reservar la habitación
+            reservar(fechaParaReservar) {
+                // Primero comprobamos si no esta reservada
+                if (!this.estaReservada(fechaParaReservar)) {
+                    // Si está libre, añadimos con push la fecha a la lista de reservas
+                    this.#reservas.push(fechaParaReservar);
+                }
+            }
+
+            //Cancelar una reserva
+            cancelarReserva(fechaParaCancelar) {
+                // Para borrar, usamos filter
+                // Creamos una nueva lista quedandonos solo con las fechas que sean distintas a la que queremos borrar.
+                this.#reservas = this.#reservas.filter(function (fechaEnLista) {
+                    return fechaEnLista !== fechaParaCancelar;
+                });
+            }
+        }
+
+        // Definir la clase Empleado
+        class Empleado {
+            #id;
+            #nombre;
+            #puesto;
+            #salario;
+
+            constructor({ id, nombre, puesto, salario }) {
+                this.#id = id;
+                this.#nombre = nombre;
+                this.#puesto = puesto;
+                this.#salario = salario;
+            }
+
+            get id() { return this.#id; }
+            get nombre() { return this.#nombre; }
+            get puesto() { return this.#puesto; }
+            get salario() { return this.#salario; }
+        }
+
+        //Creamos una constante con datos JSON para simular una base de datos
+        const textoDatosJson = `
+        {
+            "habitaciones": [
+                {
+                    "id": 101,
+                    "tipo": "Suite de Lujo",
+                    "precio": 150,
+                    "imagen": "https://assets.micontenthub.com/traveloffers/travel-tips/the-st-regis-istanbul-s-bentley-suite_dBfZV5TZ5.jpg"
+                },
+                {
+                    "id": 102,
+                    "tipo": "Doble Estándar",
+                    "precio": 80,
+                    "imagen": "data:image/jpeg;base64,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"
+                },
+                {
+                    "id": 103,
+                    "tipo": "Individual Confort",
+                    "precio": 60,
+                    "imagen": "https://www.florishotel.it/v1/wp-content/uploads/2023/12/foto2.jpeg"
+                },
+                {
+                    "id": 104,
+                    "tipo": "Suite Presidencial",
+                    "precio": 250,
+                    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqSu0Iq5YjAMo377SoeY5B693kjE3Zry8BUw&s"
+                },
+                {
+                    "id": 105,
+                    "tipo": "Doble Superior",
+                    "precio": 100,
+                    "imagen": "https://hotelfarolopesancollection.com/wp-content/uploads/doble-superior-01-1024x640.jpg"
+                },
+                {
+                    "id": 106,
+                    "tipo": "Individual Económica",
+                    "precio": 45,
+                    "imagen": "https://images.mirai.com/INFOROOMS/10733683/YV1DKeEL4DJs7X8RGHO2/YV1DKeEL4DJs7X8RGHO2_original.jpg"
+                },
+                {
+                    "id": 107,
+                    "tipo": "Suite de Lujo",
+                    "precio": 150,
+                    "imagen": "https://www.hotelalcaladeljucar.com/wp-content/uploads/2019/12/suite-cheque-regalo-1024x683.jpg"
+                },
+                {
+                    "id": 108,
+                    "tipo": "Doble Estándar",
+                    "precio": 80,
+                    "imagen": "https://pensua.com/wp-content/uploads/Doble_estandar2camas.jpg"
+                }
+            ],
+            "empleados": [
+                { "id": 1, "nombre": "Ana García", "puesto": "Recepcionista", "salario": 1500 },
+                { "id": 2, "nombre": "Alonso Pulgar", "puesto": "Gerente", "salario": 2800 },
+                { "id": 3, "nombre": "Lucía Méndez", "puesto": "Limpieza", "salario": 1200 },
+                { "id": 4, "nombre": "Marcos Ruiz", "puesto": "Mantenimiento", "salario": 1400 },
+                { "id": 5, "nombre": "Elena Torres", "puesto": "Chef", "salario": 2000 }
+            ]
+        }
+        `;
+
+        //definimos variables globales para guardar los datos
+        let listaHabitaciones = []; // Aquí guardaremos los objetos Habitacion
+        let listaEmpleados = [];    // Aquí guardaremos los objetos Empleado
+
+        //Aqui se guardan los filtros
+        let fechaSeleccionada = new Date().toISOString().split('T')[0]; // La fecha de hoy automáticamente
+        let tipoSeleccionado = 'todas';        // El tipo de habitación elegido en el desplegable
+        let buscandoSoloDisponibles = false;   // Si esta activo el boton de solo disponibles
+        let textoBusquedaEmpleado = '';        // Lo que el usuario escribe en el buscador de empleados
+
+
+        // Guardar las habitaciones en LocalStorage
+        function guardarDatosLocalStorage() {
+            localStorage.setItem('datosHabitaciones', JSON.stringify(listaHabitaciones));
+        }
+
+        // Cargar datos iniciales y transformarlos en objetos
+        function cargarDatosIniciales() {
+            //Convertimos el texto JSON a un objeto básico de JavaScript con JSON.parse
+            const datosCrudos = JSON.parse(textoDatosJson);
+
+            // Intentamos leer del LocalStorage
+            const habitacionesGuardadas = localStorage.getItem('datosHabitaciones');
+
+            if (habitacionesGuardadas) {
+                // Si hay datos guardados, los usamos
+                const listaGuardada = JSON.parse(habitacionesGuardadas);
+                listaHabitaciones = listaGuardada.map(function (datosHabitacion) {
+                    return new Habitacion(datosHabitacion);
+                });
+            } else {
+                // Si no, cargamos del JSON inicial
+                listaHabitaciones = datosCrudos.habitaciones.map(function (datosHabitacion) {
+                    return new Habitacion({ ...datosHabitacion });
+                });
+            }
+
+            // Hacemos lo mismo con los empleados (estos SIEMPRE del JSON, no se guardan)
+            listaEmpleados = datosCrudos.empleados.map(function (datosEmpleado) {
+                return new Empleado({ ...datosEmpleado });
+            });
+        }
+
+        // Calcular y mostrar los totales (Ingresos, Nóminas...)
+        function pintarEstadisticas() {
+            // Calculamos el dinero total de las reservas con reduce, recorre la lista y va sumando (totalAcumulado)
+            const totalIngresos = listaHabitaciones.reduce(function (totalAcumulado, habitacionActual) {
+                // Sumamos: las reservas que tiene esa habitación * su precio
+                const dineroDeEstaHabitacion = habitacionActual.reservas.length * habitacionActual.precio;
+                return totalAcumulado + dineroDeEstaHabitacion;
+            }, 0); // la cuenta empieza en 0
+
+            // Calculamos lo que hay que pagar en sueldos
+            const totalNominas = listaEmpleados.reduce(function (totalAcumulado, empleadoActual) {
+                return totalAcumulado + empleadoActual.salario;
+            }, 0);
+
+            // Contamos cuantas habitaciones están ocupadas hoy
+            const numeroOcupadas = listaHabitaciones.filter(function (habitacionActual) {
+                // Nos quedamos solo con las que están reservadas en la fecha seleccionada
+                return habitacionActual.estaReservada(fechaSeleccionada);
+            }).length; // length nos dice cuántas pasaron el filtro
+
+            // Ahora vamos a poner estos datos e la pantalla
+            const contenedorDatos = document.getElementById('datos');
+            contenedorDatos.innerHTML = ''; // borramos lo que hubiera antes
+
+            // Creamos el HTML manualmente
+            //Ingresos
+            const divIngresos = document.createElement('div'); // Creamos la caja <div>
+            divIngresos.classList.add('dato');                 // Le ponemos la clase CSS
+            divIngresos.textContent = 'Ingresos Totales (Reservas): '; // Le ponemos el texto
+
+            const spanValorIngresos = document.createElement('span'); // Creamos el <span> para el número
+            spanValorIngresos.classList.add('valor');
+            spanValorIngresos.textContent = totalIngresos + '€';
+
+            divIngresos.appendChild(spanValorIngresos); // Metemos el <span> dentro del <div>
+            contenedorDatos.appendChild(divIngresos);   // Metemos el <div> dentro de la página
+
+            // Nomina
+            const divNomina = document.createElement('div');
+            divNomina.classList.add('dato');
+            divNomina.textContent = 'Nómina Total: ';
+
+            const spanValorNomina = document.createElement('span');
+            spanValorNomina.classList.add('valor');
+            spanValorNomina.textContent = totalNominas + '€';
+
+            divNomina.appendChild(spanValorNomina);
+            contenedorDatos.appendChild(divNomina);
+
+            // Ocupación
+            const divOcupacion = document.createElement('div');
+            divOcupacion.classList.add('dato');
+            divOcupacion.textContent = 'Ocupación (' + fechaSeleccionada + '): ';
+
+            const spanValorOcupacion = document.createElement('span');
+            spanValorOcupacion.classList.add('valor');
+            spanValorOcupacion.textContent = numeroOcupadas + '/' + listaHabitaciones.length;
+
+            divOcupacion.appendChild(spanValorOcupacion);
+            contenedorDatos.appendChild(divOcupacion);
+        }
+
+        // Con esto rellenamos el select de tipos de habitación
+        function pintarSelectorTipos() {
+            const selectorTipos = document.getElementById('tipo');
+            selectorTipos.innerHTML = ''; // Limpiamos 
+
+            // Creamos la opción "Todos"
+            const opcionTodas = document.createElement('option');
+            opcionTodas.value = 'todas';
+            opcionTodas.textContent = 'Todos los tipos';
+            selectorTipos.appendChild(opcionTodas);
+
+            // Vamos a buscar qué tipos existen para no repetirlos
+            const listaTiposUnicos = [];
+
+            listaHabitaciones.forEach(function (habitacionActual) {
+                // Si el tipo de esta habitación no está ya en nuestra lista lo añadimos    
+                if (!listaTiposUnicos.includes(habitacionActual.tipo)) {
+                    listaTiposUnicos.push(habitacionActual.tipo);
+                }
+            });
+
+            // Por cada tipo creamos una <option>
+            listaTiposUnicos.forEach(function (nombreTipo) {
+                const opcionNueva = document.createElement('option');
+                opcionNueva.value = nombreTipo;      // El valor interno
+                opcionNueva.textContent = nombreTipo; // Lo que ve el usuario
+                selectorTipos.appendChild(opcionNueva);
+            });
+
+            // Volvemos a seleccionar lo que el usuario tenia elegido
+            selectorTipos.value = tipoSeleccionado;
+        }
+
+        //Pintar las tarjetas de las habitaciones
+        function pintarHabitaciones() {
+            const contenedorLista = document.getElementById('listaHab');
+            contenedorLista.innerHTML = ''; //borramos todo para pintar de cero
+
+            //hacemos el filtro de las habitaciones
+            const habitacionesFiltradas = listaHabitaciones.filter(function (habitacionActual) {
+                // Define si coincide el tipo
+                const coincideTipo = (tipoSeleccionado === 'todas') || (habitacionActual.tipo === tipoSeleccionado);
+
+                // Define si coincide la disponibilidad
+                const estaReservadaHoy = habitacionActual.estaReservada(fechaSeleccionada);
+
+                // Define si coincide con las habitaciones disponibles
+                const coincideDisponibilidad = (!buscandoSoloDisponibles) || (!estaReservadaHoy);
+
+                // La habitación pasa el filtro si cumple ambas condiciones
+                return coincideTipo && coincideDisponibilidad;
+            });
+
+            // Si no hay habitaciones que mostrar, avisamos al usuario
+            if (habitacionesFiltradas.length === 0) {
+                const parrafoAviso = document.createElement('p');
+                parrafoAviso.style.gridColumn = '1/-1'; // Que ocupe todo el ancho
+                parrafoAviso.style.textAlign = 'center';
+                parrafoAviso.textContent = 'No hay habitaciones disponibles con estos filtros.';
+                contenedorLista.appendChild(parrafoAviso);
+                return;
+            }
+
+            // Creamos una tarjeta para cada habitación
+            habitacionesFiltradas.forEach(function (habitacionActual) {
+                // Comprobamos el estado para saber si pintar rojo o verde
+                const estaOcupada = habitacionActual.estaReservada(fechaSeleccionada);
+
+                // Preparamos los textos y colores según el estado
+                const claseCSS = estaOcupada ? 'estadoOcupada' : 'estadoLibre';
+                const textoEstado = estaOcupada ? 'OCUPADA' : 'DISPONIBLE';
+                const textoBoton = estaOcupada ? 'Cancelar Reserva' : 'Reservar';
+                const colorBoton = estaOcupada ? '#e74c3c' : '#8e44ad'; // Rojo o Morado
+
+                // Esta variable es la que usaremos luego para saber que hacer
+                const accionBoton = estaOcupada ? 'cancelar' : 'reservar';
+
+
+                // Creamos la caja principal 
+                const articuloTarjeta = document.createElement('article');
+                articuloTarjeta.classList.add('tarjeta');
+
+                // Creamos la parte de la foto 
+                const contenedorFoto = document.createElement('div');
+                contenedorFoto.classList.add('foto');
+
+                const imagenElemento = document.createElement('img');
+                imagenElemento.src = habitacionActual.imagen;
+                imagenElemento.alt = habitacionActual.tipo;
+
+                const etiquetaEstado = document.createElement('span');
+                etiquetaEstado.classList.add('etiqueta', claseCSS);
+                etiquetaEstado.textContent = textoEstado;
+
+                // Metemos la imagen y la etiqueta en la caja de la foto
+                contenedorFoto.appendChild(imagenElemento);
+                contenedorFoto.appendChild(etiquetaEstado);
+
+                // Creamos la parte de la información 
+                const contenedorInfo = document.createElement('div');
+                contenedorInfo.classList.add('info');
+
+                const tituloNombre = document.createElement('h3');
+                tituloNombre.classList.add('nombre');
+                tituloNombre.textContent = habitacionActual.tipo;
+
+                const parrafoPrecio = document.createElement('p');
+                parrafoPrecio.classList.add('precio');
+                // Usamos innerHTML solo aquí para poder meter el <small> dentro del precio
+                parrafoPrecio.innerHTML = habitacionActual.precio + '€ <small>/ noche</small>';
+
+                const parrafoDetalle = document.createElement('p');
+                parrafoDetalle.style.fontSize = '0.85rem';
+                parrafoDetalle.style.color = '#64748b';
+                parrafoDetalle.innerHTML = '<small>' + fechaSeleccionada + '</small>';
+
+                // El Botón
+                const botonAccion = document.createElement('button');
+                botonAccion.classList.add('btnReservar');
+                botonAccion.style.backgroundColor = colorBoton;
+                botonAccion.textContent = textoBoton;
+
+                // Guardamos los datos en el botón
+                botonAccion.value = habitacionActual.id;
+                botonAccion.name = accionBoton;
+
+                // Metemos todo en la caja de información
+                contenedorInfo.appendChild(tituloNombre);
+                contenedorInfo.appendChild(parrafoPrecio);
+                contenedorInfo.appendChild(parrafoDetalle);
+                contenedorInfo.appendChild(botonAccion);
+
+                // Juntamos foto e info en la tarjeta
+                articuloTarjeta.appendChild(contenedorFoto);
+                articuloTarjeta.appendChild(contenedorInfo);
+
+                //ponemos la tarjeta en la página
+                contenedorLista.appendChild(articuloTarjeta);
+            });
+        }
+
+        // Pintar la lista de empleados
+        function pintarListaEmpleados() {
+            const contenedorEmpleados = document.getElementById('listaEmp');
+            contenedorEmpleados.innerHTML = '';
+
+            const textoBuscado = textoBusquedaEmpleado.toLowerCase();
+
+            // Filtramos los empleados
+            const empleadosFiltrados = listaEmpleados.filter(function (empleadoActual) {
+                const coincideNombre = empleadoActual.nombre.toLowerCase().includes(textoBuscado);
+                const coincidePuesto = empleadoActual.puesto.toLowerCase().includes(textoBuscado);
+                return coincideNombre || coincidePuesto;
+            });
+
+            if (empleadosFiltrados.length === 0) {
+                const filaVacia = document.createElement('tr');
+                filaVacia.innerHTML = '<td colspan="5" style="text-align:center; padding:2rem">Sin resultados</td>';
+                contenedorEmpleados.appendChild(filaVacia);
+                return;
+            }
+
+            // Creamos las filas de la tabla
+            empleadosFiltrados.forEach(function (empleadoActual) {
+                const filaTabla = document.createElement('tr');
+
+                const celdaId = document.createElement('td');
+                celdaId.textContent = '#' + empleadoActual.id;
+                filaTabla.appendChild(celdaId);
+
+                const celdaNombre = document.createElement('td');
+                const textoNegrita = document.createElement('strong');
+                textoNegrita.textContent = empleadoActual.nombre;
+                celdaNombre.appendChild(textoNegrita);
+                filaTabla.appendChild(celdaNombre);
+
+                const celdaPuesto = document.createElement('td');
+                const etiquetaPuesto = document.createElement('span');
+                etiquetaPuesto.style.background = '#e0f2fe';
+                etiquetaPuesto.style.color = '#0369a1';
+                etiquetaPuesto.style.padding = '2px 8px';
+                etiquetaPuesto.style.borderRadius = '4px';
+                etiquetaPuesto.textContent = empleadoActual.puesto;
+                celdaPuesto.appendChild(etiquetaPuesto);
+                filaTabla.appendChild(celdaPuesto);
+
+                const celdaSalario = document.createElement('td');
+                celdaSalario.textContent = empleadoActual.salario + '€';
+                filaTabla.appendChild(celdaSalario);
+
+                const celdaEstado = document.createElement('td');
+                celdaEstado.innerHTML = '<span style="color:#10b981">● Activo</span>';
+                filaTabla.appendChild(celdaEstado);
+
+                contenedorEmpleados.appendChild(filaTabla);
+            });
+        }
+
+        // Función auxiliar que refresca toda la pantalla que se llama cuando cambiamos algo (filtros, reservas, etc.) para que todo se actualice
+        function refrescarPantalla() {
+            pintarEstadisticas();
+            pintarHabitaciones();
+            pintarListaEmpleados();
+        }
+
+        // Función que ejecuta las reservas y cancelaciones
+        function procesarAccionUsuario(idHabitacionRecibido, accionRecibida) {
+            // Buscamos en nuestra lista qué habitación tiene ese ID
+            const habitacionEncontrada = listaHabitaciones.find(function (habitacionActual) {
+                return habitacionActual.id === parseInt(idHabitacionRecibido);
+            });
+
+            // Si la encontramos, ejecutamos la acción
+            if (habitacionEncontrada) {
+                if (accionRecibida === 'reservar') {
+                    habitacionEncontrada.reservar(fechaSeleccionada);
+                } else {
+                    habitacionEncontrada.cancelarReserva(fechaSeleccionada);
+                }
+                // Actualizamos la pantalla para ver el cambio
+                refrescarPantalla();
+                guardarDatosLocalStorage();
+            }
+        }
+
+        // Evento que se ejecuta cuando la página se carga  
+        document.addEventListener('DOMContentLoaded', function () {
+
+            //Lo primero es cargar los datos y pintar la pantalla inicial
+            cargarDatosIniciales();
+
+            // Ponemos la fecha de hoy en el input del calendario
+            const inputFecha = document.getElementById('fecha');
+            inputFecha.value = fechaSeleccionada;
+
+            pintarSelectorTipos(); // Llenamos el desplegable
+            refrescarPantalla();   // Mostramos todo
+
+            // Si cambian la fecha en el calendario
+            inputFecha.addEventListener('change', function (evento) {
+                fechaSeleccionada = evento.target.value; // Actualizamos nuestra variable fecha
+                refrescarPantalla(); // Redibujamos
+            });
+
+            // Si cambian el tipo de habitación
+            document.getElementById('tipo').addEventListener('change', function (evento) {
+                tipoSeleccionado = evento.target.value;
+                refrescarPantalla();
+            });
+
+            // Si escriben en el buscador de empleados
+            document.getElementById('inputBuscar').addEventListener('input', function (evento) {
+                textoBusquedaEmpleado = evento.target.value;
+                pintarListaEmpleados();
+            });
+
+            // Si pulsan el botón para ver disponibles
+            const botonVerDisponibles = document.getElementById('btnBuscarDisp');
+            botonVerDisponibles.addEventListener('click', function () {
+                buscandoSoloDisponibles = !buscandoSoloDisponibles; // Invertimos el valor 
+
+                // Cambiamos el aspecto del botón (azul o normal)
+                if (buscandoSoloDisponibles) {
+                    botonVerDisponibles.textContent = 'Ver Todas';
+                    botonVerDisponibles.classList.add('activo');
+                } else {
+                    botonVerDisponibles.textContent = 'BUSCAR DISPONIBILIDAD';
+                    botonVerDisponibles.classList.remove('activo');
+                }
+                pintarHabitaciones(); // Filtramos las habitaciones
+            });
+
+            // Detectar clicks en los botones de reservar
+            const contenedorHabitaciones = document.getElementById('listaHab');
+
+            contenedorHabitaciones.addEventListener('click', function (evento) {
+                if (evento.target.classList.contains('btnReservar')) {
+                    const idParaAccion = evento.target.value;
+                    const nombreAccion = evento.target.name; // 'reservar' o 'cancelar'
+                    procesarAccionUsuario(idParaAccion, nombreAccion);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
