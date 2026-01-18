@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <!--4.	Crea una galería de 8 imágenes de animales. Al pasar el ratón por encima de una miniatura de imagen usando mousedown, 
+    se mostrará la imagen correspondiente en un área más grande abajo de las miniaturas.-->
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+    <div>
+        <img src="" alt="">
+    </div>
+
+    <script>
+        const imagenes = document.querySelectorAll("img");
+        const imagenGrande = document.getElementById("imagenGrande");
+        imagenes.forEach(imagen => {
+            imagen.addEventListener("mousedown", () => {
+                imagenGrande.src = imagen.src;
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

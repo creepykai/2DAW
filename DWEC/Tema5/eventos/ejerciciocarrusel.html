@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex;"  id="carrusel">
+        <button id="anterior">&lt;</button>
+        <img id="imagen" src="https://picsum.photos/600/400?random=1" alt="Imagen del carrusel" width="600" height="400">
+        <button id="siguiente">&gt;</button>
+    </div>
+
+    <script>
+        let indiceImagen = 1;
+        const imagen = document.getElementById("imagen");
+        const totalImagenes = 10; // Numero total de imagenes disponibles
+
+        document.getElementById("siguiente").addEventListener("click", function() {
+            indiceImagen++;
+            if (indiceImagen > totalImagenes) {
+                indiceImagen = 1;
+            }
+            imagen.src = `https://picsum.photos/600/400?random=${indiceImagen}`;
+        });
+
+        document.getElementById("anterior").addEventListener("click", function() {
+            indiceImagen--;
+            if (indiceImagen < 1) {
+                indiceImagen = totalImagenes;
+            }
+            imagen.src = `https://picsum.photos/600/400?random=${indiceImagen}`;
+        });
+
+    </script>
+</body>
+</html>

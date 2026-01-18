@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--5.	Arrastrar y soltar imágenes: Crea una galería de imágenes. Se podrá arrastrar una imagen al recuadro más 
+    grande que se encuentra debajo. -->
+    <div id="gallery">
+        <img src="" alt="">
+    </div>
+    <div id="dropzone">
+        <img src="" alt="">
+    </div>
+    <script>
+        function dragStart(event) {
+            event.dataTransfer.setData("text/plain", event.target.id);
+        }
+        function dragOver(event) {
+            event.preventDefault();
+        }
+        function drop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text/plain");
+            event.target.appendChild(document.getElementById(data));
+        }
+
+    </script>
+</body>
+</html>

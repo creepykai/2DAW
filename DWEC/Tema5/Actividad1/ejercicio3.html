@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #green{
+            background-color: greenyellow;
+            width: 10px;
+            height: 10px;
+        }
+        #red{
+            background-color: red;
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!--3.	Juego de teclas. Escribe un programa para simular la velocidad de pulsación de dos teclas. En pantalla aparecerán dos cajas, 
+    una verde y otra roja, una debajo de otra. El alto de cada caja será de 40px y el ancho inicial de 10 px cada una. La primera caja 
+    incrementará su ancho 5 px cada vez que se pulse la tecla ”a”. La segunda caja hará lo mismo cuando se pulse la tecla “ñ”. El juego 
+    termina cuando una de las cajas llega a 500px de ancho. En ese momento deben desactivarse los eventos de ambas teclas y mostrarse un 
+    mensaje bajo las cajas que ponga “GANA VERDE” o “GANA ROJO”. Se trata de calcular con qué mano eres capaz de realizar más pulsaciones.-->
+    
+    <p id="green"></p>
+    <p id="red"></p>
+    <p id="resultado"></p>
+
+    <script>
+        const green = document.getElementById("green");
+        const red = document.getElementById("red");
+        const resultado = document.getElementById("resultado");
+        let wid_green = 0;
+        let wid_red = 0;
+
+        window.addEventListener('keydown', function(event){
+            if(green.style.width == '750px' || red.style.width == '750px'){
+                if (green.style.width == '750px'){
+                    resultado.innerHTML = "VERDE GANA"
+                } else {
+                    resultado.innerHTML = "ROJO GANA"
+                }
+            } else {
+                if (event.key == 'a' || event.key == 'A'){
+                    wid_green += 10
+                    green.style.width = wid_green + 'px';
+                    console.log(event)
+                    console.log(green.style)
+                } else if (event.key == 'ñ' || event.key == 'Ñ'){
+                    wid_red += 10
+                    red.style.width = wid_red + 'px';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!---->
+    <p>Arrastra los elementos a la categoria correcta</p>
+    <div class="item" draggable="true" data-categoria="entrada">
+        Ratón
+    </div>
+    <div class="item" draggable="true" data-categoria="salida">
+        Monitor
+    </div>
+    <div class="item" draggable="true" data-categoria="salida">
+        Teclado
+    </div>
+    <div class="item" draggable="true" data-categoria="salida">
+        Cámara web
+    </div>
+    <div class="item" draggable="true" data-categoria="salida">
+        Auriculares
+    </div>
+
+    <div class="categorias">
+        <div class="categoria" data-categoria="entrada">
+            <h2>Perifericos de entrada</h2>
+        </div>
+        <div class="categoria" data-categoria="salida">
+            <h2>Perifericos de salida</h2>
+        </div>
+    </div>
+    <script>
+        const items = document.querySelectorAll(".item");
+        const categorias = document.querySelectorAll(".categoria");
+    </script>
+</body>
+</html>
