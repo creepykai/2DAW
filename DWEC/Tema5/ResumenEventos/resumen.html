@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tablas de Eventos - Resumen Examen</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .hoja {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #e67e22;
+            border-left: 5px solid #e67e22;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #c0392b;
+        }
+
+        .prop {
+            font-weight: bold;
+            color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hoja">
+        <h1>📊 Diccionario de Eventos y Acciones UT5</h1>
+
+        <h2>1. Eventos de Ratón (Mouse Events)</h2>
+        <table>
+            <tr>
+                <th>Evento</th>
+                <th>Acción / Momento</th>
+                <th>Uso común</th>
+            </tr>
+            <tr>
+                <td><code>click</code></td>
+                <td>Pulsar y soltar el botón izquierdo.</td>
+                <td>Botones, enlaces.</td>
+            </tr>
+            <tr>
+                <td><code>dblclick</code></td>
+                <td>Doble clic rápido.</td>
+                <td>Abrir archivos, zooms.</td>
+            </tr>
+            <tr>
+                <td><code>mouseenter</code> / <code>mouseover</code></td>
+                <td>El ratón entra en el elemento.</td>
+                <td>Menús desplegables, efectos hover.</td>
+            </tr>
+            <tr>
+                <td><code>mouseleave</code> / <code>mouseout</code></td>
+                <td>El ratón sale del elemento.</td>
+                <td>Quitar efectos visuales.</td>
+            </tr>
+            <tr>
+                <td><code>mousemove</code></td>
+                <td>El ratón se mueve dentro del elemento.</td>
+                <td>Juegos, coordenadas (e.clientX).</td>
+            </tr>
+            <tr>
+                <td><code>contextmenu</code></td>
+                <td>Clic derecho.</td>
+                <td>Menús personalizados (usar <code>preventDefault</code>).</td>
+            </tr>
+        </table>
+
+        <h2>2. Eventos de Teclado (Keyboard Events)</h2>
+        <table>
+            <tr>
+                <th>Evento</th>
+                <th>Acción</th>
+                <th>Propiedad clave</th>
+            </tr>
+            <tr>
+                <td><code>keydown</code></td>
+                <td>Al pulsar cualquier tecla (se repite si dejas pulsado).</td>
+                <td rowspan="2"><code>e.key</code> (ej: "Enter", "a", "ArrowUp")</td>
+            </tr>
+            <tr>
+                <td><code>keyup</code></td>
+                <td>Al soltar la tecla.</td>
+            </tr>
+        </table>
+
+        <h2>3. Eventos de Formulario</h2>
+        <table>
+            <tr>
+                <th>Evento</th>
+                <th>Se aplica a...</th>
+                <th>¿Cuándo ocurre?</th>
+            </tr>
+            <tr>
+                <td><code>submit</code></td>
+                <td><code>&lt;form&gt;</code></td>
+                <td>Al intentar enviar el formulario.</td>
+            </tr>
+            <tr>
+                <td><code>focus</code></td>
+                <td><code>&lt;input&gt;</code>, <code>&lt;select&gt;</code></td>
+                <td>Al entrar o hacer clic en el campo.</td>
+            </tr>
+            <tr>
+                <td><code>blur</code></td>
+                <td><code>&lt;input&gt;</code>, <code>&lt;select&gt;</code></td>
+                <td>Al salir del campo (perder el foco).</td>
+            </tr>
+            <tr>
+                <td><code>input</code></td>
+                <td><code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code></td>
+                <td>Cada vez que cambia el valor (letra a letra).</td>
+            </tr>
+            <tr>
+                <td><code>change</code></td>
+                <td><code>&lt;select&gt;</code>, <code>&lt;checkbox&gt;</code></td>
+                <td>Al confirmar un cambio y salir del campo.</td>
+            </tr>
+        </table>
+
+        <h2>4. Acciones y Propiedades de Datos</h2>
+        <table>
+            <tr>
+                <th>Acción / Propiedad</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td><span class="prop">.value</span></td>
+                <td>Obtiene el texto escrito en un input o textarea.</td>
+            </tr>
+            <tr>
+                <td><span class="prop">.checked</span></td>
+                <td>Devuelve <code>true</code> o <code>false</code> (para Checkbox y Radio).</td>
+            </tr>
+            <tr>
+                <td><span class="prop">e.preventDefault()</span></td>
+                <td>Cancela la acción por defecto (ej: no enviar el form si hay error).</td>
+            </tr>
+            <tr>
+                <td><span class="prop">e.target</span></td>
+                <td>Referencia al objeto que ha recibido el evento.</td>
+            </tr>
+            <tr>
+                <td><span class="prop">e.clientX / e.clientY</span></td>
+                <td>Coordenadas del ratón respecto a la ventana.</td>
+            </tr>
+        </table>
+
+        <h2 style="color: #27ae60; border-color: #27ae60;">5. Chuleta Drag & Drop</h2>
+        <table>
+            <tr>
+                <th>Etapa</th>
+                <th>Evento</th>
+                <th>Acción Obligatoria</th>
+            </tr>
+            <tr>
+                <td>Inicio</td>
+                <td><code>dragstart</code></td>
+                <td><code>e.dataTransfer.setData("text", id)</code></td>
+            </tr>
+            <tr>
+                <td>En vuelo</td>
+                <td><code>dragover</code></td>
+                <td><code>e.preventDefault()</code> (Para dejar soltar)</td>
+            </tr>
+            <tr>
+                <td>Final</td>
+                <td><code>drop</code></td>
+                <td><code>e.dataTransfer.getData("text")</code></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
