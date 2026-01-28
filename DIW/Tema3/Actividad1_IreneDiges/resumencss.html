@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuleta CSS Interactiva (Code on Hover)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #8b5cf6;
+            --highlight: #38bdf8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --text: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        h1 { color: var(--accent); margin-bottom: 5px; text-transform: uppercase; }
+        p.subtitle { color: #94a3b8; margin-top: 0; margin-bottom: 30px; }
+        
+        .container { width: 100%; max-width: 1000px; display: flex; flex-direction: column; gap: 30px; }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: 12px; padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-top: 0; }
+
+        /* --- SISTEMA DE TOOLTIPS (EL CÓDIGO FLOTANTE) --- */
+        .interactive-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        /* Contenedor de cada demo */
+        .demo-wrapper {
+            position: relative; /* Para posicionar el tooltip */
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* El Tooltip con el código */
+        .code-tooltip {
+            position: absolute;
+            bottom: 105%; /* Aparece encima */
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: #000;
+            border: 1px solid var(--highlight);
+            color: #d4d4d4;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+            white-space: pre; /* Respeta saltos de línea */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 10;
+            pointer-events: none; /* El ratón lo atraviesa */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            text-align: left;
+        }
+        
+        /* Colores de sintaxis en el tooltip */
+        .prop { color: #9cdcfe; }
+        .val { color: #ce9178; }
+        .num { color: #b5cea8; }
+
+        /* Mostrar al hover */
+        .demo-wrapper:hover .code-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* --- OBJETOS ANIMADOS --- */
+        .box {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            border-radius: 6px;
+            transition: transform 0.4s;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: bold;
+        }
+
+        /* Estilos específicos Transform */
+        .t-translate:hover .box { transform: translate(20px, -10px); }
+        .t-rotate:hover .box { transform: rotate(45deg); }
+        .t-scale:hover .box { transform: scale(1.5); }
+        .t-skew:hover .box { transform: skew(-20deg); }
+        .t-origin .box { transform-origin: bottom center; transition: transform 0.5s; }
+        .t-origin:hover .box { transform: rotate(30deg); }
+
+        /* Estilos Animación */
+        .a-spin .box { background: var(--success); animation: spin 2s infinite linear; }
+        .a-bounce .box { background: var(--warning); animation: bounce 1s infinite alternate; }
+        .a-steps .box { background: var(--error); animation: spin 4s infinite steps(8); }
+        
+        /* Pausa al hover */
+        .a-spin:hover .box, .a-bounce:hover .box, .a-steps:hover .box {
+            animation-play-state: paused;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+
+        /* Tabla Estática */
+        .mini-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px; }
+        .mini-table td { padding: 5px; border-bottom: 1px solid #333; color: #aaa; }
+        .mini-table strong { color: var(--highlight); }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CSS Cheat Sheet Interactiva</h1>
+        <p class="subtitle">Pasa el ratón por los cubos para ver el código</p>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2>1. Transformaciones (La forma)</h2>
+            <div class="interactive-grid">
+                
+                <div class="demo-wrapper t-translate">
+                    <div class="code-tooltip"><span class="prop">transform</span>: <span class="val">translate</span>(<span class="num">20px</span>, <span class="num">-10px</span>);</div>
+                    <div class="box">Move</div>
+                    <small style="margin-top:5px; color:#aaa">Translate</small>
+                </div>
+
+                <div class="demo-wrapper t-rotate">
+                    <div class="code-tooltip"><span class="prop">transform</span>: <span class="val">rotate</span>(<span class="num">45deg</span>);</div>
+                    <div class="box">Rot</div>
+                    <small style="margin-top:5px; color:#aaa">Rotate</small>
+                </div>
+
+                <div class="demo-wrapper t-scale">
+                    <div class="code-tooltip"><span class="prop">transform</span>: <span class="val">scale</span>(<span class="num">1.5</span>);
+<span class="prop">/* 1.5 = 150% */</span></div>
+                    <div class="box">Scl</div>
+                    <small style="margin-top:5px; color:#aaa">Scale</small>
+                </div>
+
+                <div class="demo-wrapper t-skew">
+                    <div class="code-tooltip"><span class="prop">transform</span>: <span class="val">skew</span>(<span class="num">-20deg</span>);</div>
+                    <div class="box">Skw</div>
+                    <small style="margin-top:5px; color:#aaa">Skew</small>
+                </div>
+
+                <div class="demo-wrapper t-origin">
+                    <div class="code-tooltip"><span class="prop">transform-origin</span>: <span class="val">bottom center</span>;
+<span class="prop">transform</span>: <span class="val">rotate</span>(<span class="num">30deg</span>);</div>
+                    <div class="box" style="height:60px; width:10px;"></div>
+                    <small style="margin-top:5px; color:#aaa">Origin</small>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Animaciones (Movimiento automático)</h2>
+            <p style="font-size:0.9rem; color:#aaa; text-align:center;">💡 Pasa el ratón para <strong>PAUSAR</strong> y ver el código.</p>
+            
+            <div class="interactive-grid">
+
+                <div class="demo-wrapper a-spin">
+                    <div class="code-tooltip"><span class="prop">animation</span>: <span class="val">spin</span> <span class="num">2s</span> <span class="val">linear</span> <span class="val">infinite</span>;
+<span class="prop">animation-play-state</span>: <span class="val">paused</span>;</div>
+                    <div class="box">Spin</div>
+                    <small style="margin-top:5px; color:#aaa">Linear</small>
+                </div>
+
+                <div class="demo-wrapper a-bounce">
+                    <div class="code-tooltip"><span class="prop">animation</span>: <span class="val">bounce</span> <span class="num">1s</span> <span class="val">infinite</span> <span class="val">alternate</span>;
+<span class="prop">/* alternate: va y vuelve */</span></div>
+                    <div class="box">Pong</div>
+                    <small style="margin-top:5px; color:#aaa">Alternate</small>
+                </div>
+
+                <div class="demo-wrapper a-steps">
+                    <div class="code-tooltip"><span class="prop">animation-timing-function</span>: <span class="val">steps</span>(<span class="num">8</span>);
+<span class="prop">/* A saltos */</span></div>
+                    <div class="box">Step</div>
+                    <small style="margin-top:5px; color:#aaa">Steps(8)</small>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Transiciones</h2>
+            <div class="interactive-grid">
+                
+                <div class="demo-wrapper" style="width:200px;">
+                    <div class="code-tooltip"><span class="prop">transition</span>: <span class="val">all</span> <span class="num">0.5s</span> <span class="val">ease</span>;</div>
+                    <div class="box" style="width:100px; transition: all 0.5s ease;" onmouseover="this.style.width='180px'" onmouseout="this.style.width='100px'">HOVER ME</div>
+                </div>
+
+                <div class="demo-wrapper" style="width:200px;">
+                    <div class="code-tooltip"><span class="prop">/* Tiempos distintos */</span>
+<span class="prop">transition</span>: <span class="val">width</span> <span class="num">0.2s</span>, <span class="val">background</span> <span class="num">2s</span>;</div>
+                    <div class="box" style="width:100px; transition: width 0.2s, background 2s;" onmouseover="this.style.width='180px'; this.style.background='red'" onmouseout="this.style.width='100px'; this.style.background='linear-gradient(135deg, #8b5cf6, #38bdf8)'">MULTIPLE</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Chuleta de Valores (Referencia)</h2>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                
+                <div>
+                    <h3 style="color:var(--warning)">Timing Function (Velocidad)</h3>
+                    <table class="mini-table">
+                        <tr><td><strong>ease</strong></td><td>Por defecto. Suave inicio/fin.</td></tr>
+                        <tr><td><strong>linear</strong></td><td>Velocidad constante.</td></tr>
+                        <tr><td><strong>ease-in</strong></td><td>Empieza lento (acelera).</td></tr>
+                        <tr><td><strong>ease-out</strong></td><td>Termina lento (frena).</td></tr>
+                        <tr><td><strong>steps(n)</strong></td><td>Va a saltos (fotogramas).</td></tr>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 style="color:var(--warning)">Animation Fill Mode</h3>
+                    <table class="mini-table">
+                        <tr><td><strong>none</strong></td><td>Vuelve al inicio al acabar.</td></tr>
+                        <tr><td><strong>forwards</strong></td><td>Se queda "congelada" al final.</td></tr>
+                        <tr><td><strong>backwards</strong></td><td>Aplica el estilo inicial durante el delay.</td></tr>
+                        <tr><td><strong>both</strong></td><td>Aplica forwards y backwards.</td></tr>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

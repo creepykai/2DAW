@@ -8,43 +8,27 @@
 </head>
 
 <body>
-    <!--4.	Crea una galería de 8 imágenes de animales. Al pasar el ratón por encima de una miniatura de imagen usando mousedown, 
-    se mostrará la imagen correspondiente en un área más grande abajo de las miniaturas.-->
-    <div>
-        <img src="" alt="">
+    <div id="galeria">
+        <img src="https://picsum.photos/id/237/100/100" alt="Perro">
+        <img src="https://picsum.photos/id/1025/100/100" alt="Pug">
+        <img src="https://picsum.photos/id/1020/100/100" alt="Oso">
     </div>
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        <img src="" alt="">
-    </div>
+    
+    <p>Visor:</p>
+    <img id="visor" src="https://via.placeholder.com/400" width="400" height="400" style="border: 2px solid black;">
 
     <script>
-        const imagenes = document.querySelectorAll("img");
-        const imagenGrande = document.getElementById("imagenGrande");
-        imagenes.forEach(imagen => {
-            imagen.addEventListener("mousedown", () => {
-                imagenGrande.src = imagen.src;
-            });
-        });
+        const galeria = document.querySelector("#galeria");
+        const visor = document.querySelector("#visor");
 
+        function hacerGrande(evento){
+            // Importante: tagName en MAYÚSCULAS
+            if(evento.target.tagName == "IMG"){
+                visor.src = evento.target.src;
+            }
+        }
 
+        galeria.addEventListener("mouseover", hacerGrande);
     </script>
 </body>
 

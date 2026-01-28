@@ -2,31 +2,50 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Ejercicio 5 - Drag and Drop</title>
 </head>
 <body>
-    <!--5.	Arrastrar y soltar imágenes: Crea una galería de imágenes. Se podrá arrastrar una imagen al recuadro más 
-    grande que se encuentra debajo. -->
     <div id="gallery">
-        <img src="" alt="">
+        <img src="conejo.jpg" id="img1" draggable="true" width="100">
+        <img src="nutria1.jpg" id="img2" draggable="true" width="100">
     </div>
-    <div id="dropzone">
-        <img src="" alt="">
-    </div>
+
+    <img id="visor" src="placeholder.jpg" width="400" height="400" style="border: 2px dashed gray;">
+
     <script>
-        function dragStart(event) {
-            event.dataTransfer.setData("text/plain", event.target.id);
-        }
-        function dragOver(event) {
-            event.preventDefault();
-        }
-        function drop(event) {
-            event.preventDefault();
-            const data = event.dataTransfer.getData("text/plain");
-            event.target.appendChild(document.getElementById(data));
+        // 1. SELECCIÓN DE ELEMENTOS
+        const visor = document.querySelector("#visor");
+        const imagenes = document.querySelectorAll("#gallery img");
+
+        // 2. FUNCIONES
+        function guardarFoto(evento) {
+            // Guardamos el SRC de la imagen en el objeto dataTransfer
+            evento.dataTransfer.setData("text", evento.target.src);
         }
 
+        function cancelarCarga(evento) {
+            // Obligatorio: Prevenir el comportamiento por defecto para permitir el "drop"
+            evento.preventDefault();
+        }
+
+        function soltarFoto(evento) {
+            evento.preventDefault();
+            // Recuperamos los datos guardados
+            const datos = evento.dataTransfer.getData("text");
+            // Asignamos la nueva fuente (src) al visor
+            evento.target.src = datos;
+        }
+
+        // 3. ASIGNACIÓN DE EVENTOS (Separada de las funciones)
+        
+        // Usamos un bucle para asignar el evento a todas las miniaturas
+        imagenes.forEach(img => {
+            img.addEventListener("dragstart", guardarFoto);
+        });
+
+        // El visor necesita escuchar dos momentos: cuando el objeto vuela sobre él y cuando se suelta
+        visor.addEventListener("dragover", cancelarCarga);
+        visor.addEventListener("drop", soltarFoto);
     </script>
 </body>
 </html>

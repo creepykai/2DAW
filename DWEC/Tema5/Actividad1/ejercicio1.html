@@ -6,11 +6,18 @@
     <title>Ejercicio 1</title>
 </head>
 <body>
-    <!--1.	Tras la pista del ratón: escribe un programa que permita conocer la posición que ocupa el ratón en la pantalla cada vez que se hace clic.-->
+    <p> Haz click y saldrán las coordenadas del ratón</p>
+    <div id="coordenadas"></div>
+
     <script>
-        document.addEventListener("click", function(e){
-            document.write("X: " + e.clientX + " Y: " + e.clientY + "<br>");
-        });
+        function recogercoordenadas(evento){
+            document.querySelector("#coordenadas").innerHTML = "X: " + evento.clientX + " Y: " + evento.clientY;
+        }
+
+        document.addEventListener("click", recogercoordenadas)
     </script>
+    
+
+    
 </body>
 </html>
