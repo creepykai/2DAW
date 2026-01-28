@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablero Kanban - Drag & Drop</title>
+    <style>
+        .tablero { display: flex; gap: 20px; padding: 20px; }
+        /* Las columnas son los destinos (dropzones) */
+        .columna { 
+            background: #f0f0f0; border: 2px solid #ccc; 
+            width: 200px; min-height: 300px; padding: 10px; 
+        }
+        /* Las tareas son los elementos arrastrables */
+        .tarea { 
+            background: white; border: 1px solid #999; 
+            margin: 10px 0; padding: 10px; cursor: move; 
+        }
+    </style>
+</head>
+<body>
+    <!--Crea un tablero Kanban simple con tres columnas: "Por hacer", "En progreso" y "Completadas".
+    Permite arrastrar y soltar tareas entre las columnas para gestionar su estado.-->
+    <div class="tablero">
+        <div class="columna" id="por-hacer">
+            <h3>Por hacer</h3>
+            <div class="tarea" draggable="true" id="t1">Tarea 1</div>
+            <div class="tarea" draggable="true" id="t2">Tarea 2</div>
+        </div>
+
+        <div class="columna" id="en-progreso">
+            <h3>En progreso</h3>
+            <div class="tarea" draggable="true" id="t3">Tarea 3</div>
+        </div>
+
+        <div class="columna" id="completadas">
+            <h3>Completadas</h3>
+            <div class="tarea" draggable="true" id="t4">Tarea 4</div>
+        </div>
+    </div>
+
+    <script>
+        // 1. SELECCIÓN DE ELEMENTOS
+        const tareas = document.querySelectorAll(".tarea");
+        const columnas = document.querySelectorAll(".columna");
+
+        // 2. FUNCIÓN: AL EMPEZAR A ARRASTRAR (ORIGEN)
+        function inicioArrastre(e) {
+            // Guardamos el ID de la tarea que estamos moviendo
+            e.dataTransfer.setData("text/plain", e.target.id);
+        }
+
+        // 3. FUNCIÓN: PERMITIR SOLTAR (DESTINO)
+        function permitirSoltar(e) {
+            e.preventDefault(); // Imprescindible para habilitar el drop
+        }
+
+        // 4. FUNCIÓN: AL SOLTAR (DESTINO)
+        function soltarTarea(e) {
+            e.preventDefault();
+            
+            // Recuperamos el ID que enviamos
+            const idTarea = e.dataTransfer.getData("text/plain");
+            const elementoMover = document.getElementById(idTarea);
+
+            // IMPORTANTE: Buscamos la columna más cercana (por si soltamos sobre un título o tarea)
+            const columnaDestino = e.target.closest(".columna");
+            
+            if (columnaDestino) {
+                columnaDestino.appendChild(elementoMover);
+            }
+        }
+
+        // 5. ASIGNACIÓN DE EVENTOS
+        tareas.forEach(tarea => {
+            tarea.addEventListener("dragstart", inicioArrastre);
+        });
+
+        columnas.forEach(columna => {
+            columna.addEventListener("dragover", permitirSoltar);
+            columna.addEventListener("drop", soltarTarea);
+        });
+    </script>
+</body>
+</html>

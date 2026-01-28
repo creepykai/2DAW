@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen Paso a Paso - Eventos</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>Formas de manejar eventos</h1>
+    <p>Forma 1: atributo HTML</p>
+    <button onclick="document.body.style.backgroundColor = 'lightblue'">Click me</button>
+
+    <p>Forma 2: Con propiedad onclick</p>
+    <button id="boton">Click me</button>
+    <script>
+        document.getElementById("boton").onclick = function() {
+            document.body.style.backgroundColor = "lightgreen";
+        };
+    </script>
+
+    <p>Forma 3: Con addEventListener</p>
+    <button id="boton2">Click me</button>
+    <script>
+        document.getElementById("boton2").addEventListener("click", function() {
+            document.body.style.backgroundColor = "lightcoral";
+        });
+    </script>
+
+    <p>Forma 4: Con addEventListener y función externa</p>
+    <button id="boton3">Click me</button>
+    <script>
+        function cambiarColor() {
+            document.body.style.backgroundColor = "lightblue";
+        }
+        document.getElementById("boton3").addEventListener("click", cambiarColor);
+    </script>
+    
+</body>
+</html>

@@ -8,9 +8,10 @@
 <body>
     <!--2.	Sin menú contextual: Crea un programa que no permita que se abra el menú contextual sobre ningún elemento de la web.-->
     <script>
-        document.addEventListener("contextmenu", function(e){
-            e.preventDefault();
-        });
+        function deshabilitarMenu(evento){
+            evento.preventDefault();
+        }
+        document.addEventListener("contextmenu", deshabilitarMenu);
     </script>
 </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Formularios</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <form name = "formulario" id="formulario" action="#" method="post">
+        <input type="text" name="elemento1" id="elemento1" value="prueba" required>
+        <input type="number" name="elemento2" id="elemento2" value="5" min="0" max="10" required>
+        <div>
+            <input type="radio" name="elemento4" id="elemento4" value="opcion1" required>
+            <input type="radio" name="elemento4" id="elemento5" value="opcion2" required>
+            <input type="radio" name="elemento4" id="elemento6" value="opcion3" required>
+            <input type="radio" name="elemento4" id="elemento7" value="opcion4" required>
+            <select id="elemento8" name="elemento8" required>
+                <option value="opcion1">Opcion 1</option>
+                <option value="opcion2">Opcion 2</option>
+                <option value="opcion3">Opcion 3</option>
+                <option value="opcion4">Opcion 4</option>
+            </select>
+        </div>
+        <button id="botonEnvio" type="submit">Enviar</button>
+        
+    </form>
+    <script>
+        let form = document.getElementById("formulario");
+        form.addEventListener("submit", function(evento){
+            evento.preventDefault(); // Evita que la página se recargue
+            console.log("Formulario enviado");
+
+            //input type text
+            let elem = document.getElementById("elemento1");
+            console.log(elem.value);
+            console.log(elem.type);
+
+            //input type text number
+            let elem2 = document.getElementById("elemento2");
+            console.log(elem2.min);
+            console.log(elem2.type);
+
+            //input type radio
+            let elem4 = document.getElementsByName("elemento4");
+            for(let i = 0; i < elem4.length; i++){
+                console.log(elem4[i].checked);
+            }
+
+            //select
+            let lista = document.getElementById("elemento8");
+            let indiceSeleccionado = lista.selectedIndex;
+            let textoSeleccionado = lista.options[indiceSeleccionado].text;
+            let valorSeleccionado = lista.options[indiceSeleccionado].value;
+            console.log("Texto seleccionado: " + textoSeleccionado);
+            console.log("Valor seleccionado: " + valorSeleccionado);
+        });
+     </script>
+</body>
+</html>

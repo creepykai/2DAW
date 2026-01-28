@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen - Reorganizar Tareas</title>
+    <style>
+        #listaTareas { list-style: none; padding: 20px; background: #eee; width: 300px; }
+        li { 
+            background: white; margin: 5px; padding: 10px; 
+            border: 1px solid #ccc; cursor: move; 
+        }
+    </style>
+</head>
+<body>
+    <!--Implementar un sistema dinámico de ordenamiento de una lista de tareas, utilizando la 
+    funcionalidad de drag and drop. Crear una lista de tareas que permita arrastrar y soltar 
+    los elementos para reorganizarlos según la prioridad deseada.-->
+
+    <ul id="listaTareas">
+        <li draggable="true" id="tarea1">Tarea A: Estudiar Eventos</li>
+        <li draggable="true" id="tarea2">Tarea B: Validar Formulario</li>
+        <li draggable="true" id="tarea3">Tarea C: Practicar Drag & Drop</li>
+    </ul>
+
+    <script>
+        // 1. Capturamos el contenedor (usaremos delegación de eventos)
+        const lista = document.querySelector("#listaTareas");
+
+        // 2. FUNCIÓN AL EMPEZAR EL ARRASTRE
+        function gestionarInicio(e) {
+            // Guardamos el ID del elemento que se mueve
+            e.dataTransfer.setData("text/plain", e.target.id);
+        }
+
+        // 3. FUNCIÓN PARA PERMITIR EL DROP
+        function permitirSoltar(e) {
+            // Obligatorio para anular el comportamiento por defecto del navegador
+            e.preventDefault();
+        }
+
+        // 4. FUNCIÓN AL SOLTAR EL ELEMENTO
+        function gestionarDrop(e) {
+            e.preventDefault();
+            
+            // Recuperamos el ID guardado
+            const idRecuperado = e.dataTransfer.getData("text/plain");
+            const elementoArrastrado = document.getElementById(idRecuperado);
+
+            // LÓGICA CORRECTA: 
+            // Si soltamos sobre otro LI, lo insertamos justo antes
+            if (e.target.tagName === "LI") {
+                lista.insertBefore(elementoArrastrado, e.target);
+            } else {
+                // Si soltamos en el fondo del UL, lo mandamos al final
+                lista.appendChild(elementoArrastrado);
+            }
+        }
+
+        // 5. ESCUCHADORES (Asignados al padre para mayor eficiencia)
+        lista.addEventListener("dragstart", gestionarInicio);
+        lista.addEventListener("dragover", permitirSoltar);
+        lista.addEventListener("drop", gestionarDrop);
+
+    </script>
+</body>
+</html>

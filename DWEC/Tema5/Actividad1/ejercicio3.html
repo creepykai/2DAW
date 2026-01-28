@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #green{
+        #cajaVerde{
             background-color: greenyellow;
             width: 10px;
-            height: 10px;
+            height: 40px;
         }
-        #red{
+        #cajaRoja{
             background-color: red;
             width: 10px;
-            height: 10px;
+            height: 40px;
         }
     </style>
 </head>
@@ -24,36 +24,32 @@
     termina cuando una de las cajas llega a 500px de ancho. En ese momento deben desactivarse los eventos de ambas teclas y mostrarse un 
     mensaje bajo las cajas que ponga “GANA VERDE” o “GANA ROJO”. Se trata de calcular con qué mano eres capaz de realizar más pulsaciones.-->
     
-    <p id="green"></p>
-    <p id="red"></p>
-    <p id="resultado"></p>
+    <div id="cajaVerde"></div>
+    <div id="cajaRoja"></div>
+    <div id="ganador"></div>
 
     <script>
-        const green = document.getElementById("green");
-        const red = document.getElementById("red");
-        const resultado = document.getElementById("resultado");
-        let wid_green = 0;
-        let wid_red = 0;
+        const cajaVerde = document.querySelector("#cajaVerde");
+        const cajaRoja = document.querySelector("#cajaRoja");
+        const ganador = document.querySelector("#ganador");
 
-        window.addEventListener('keydown', function(event){
-            if(green.style.width == '750px' || red.style.width == '750px'){
-                if (green.style.width == '750px'){
-                    resultado.innerHTML = "VERDE GANA"
-                } else {
-                    resultado.innerHTML = "ROJO GANA"
-                }
-            } else {
-                if (event.key == 'a' || event.key == 'A'){
-                    wid_green += 10
-                    green.style.width = wid_green + 'px';
-                    console.log(event)
-                    console.log(green.style)
-                } else if (event.key == 'ñ' || event.key == 'Ñ'){
-                    wid_red += 10
-                    red.style.width = wid_red + 'px';
-                }
+        function jugar(evento){
+            if(evento.key == "a"){
+                cajaVerde.style.width = parseInt(cajaVerde.style.width) + 5 + "px";
             }
-        })
+            if(evento.key == "ñ"){
+                cajaRoja.style.width = parseInt(cajaRoja.style.width) + 5 + "px";
+            }
+            if(parseInt(cajaVerde.style.width) >= 500){
+                ganador.innerHTML = "GANA VERDE";
+                document.removeEventListener("keydown", jugar);
+            }
+            if(parseInt(cajaRoja.style.width) >= 500){
+                ganador.innerHTML = "GANA ROJO";
+                document.removeEventListener("keydown", jugar);
+            }
+        }
+        document.addEventListener("keydown", jugar);
     </script>
 </body>
 </html>

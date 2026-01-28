@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen UT5 - Registro</title>
+    <style>
+        .error { color: red; font-size: 0.85em; margin-bottom: 10px; display: block; }
+        form div { margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <form id="registroForm">
+        <div>
+            <label>Nombre:</label><br>
+            <input type="text" id="nombre">
+            <span id="errorNombre" class="error"></span>
+        </div>
+
+        <div>
+            <label>Contraseña:</label><br>
+            <input type="password" id="pass">
+            <span id="errorPass" class="error"></span>
+        </div>
+
+        <div>
+            <label>Confirmar Contraseña:</label><br>
+            <input type="password" id="passConf">
+            <span id="errorPassConf" class="error"></span>
+        </div>
+
+        <div>
+            <label>Fecha de nacimiento:</label><br>
+            <input type="date" id="fecha">
+            <span id="errorFecha" class="error"></span>
+        </div>
+
+        <div>
+            <label>Género:</label><br>
+            <input type="radio" name="genero" value="masculino"> Masculino
+            <input type="radio" name="genero" value="femenino"> Femenino
+            <span id="errorGenero" class="error"></span>
+        </div>
+
+        <div>
+            <label>Mensaje:</label><br>
+            <textarea id="mensaje"></textarea>
+            <span id="errorMensaje" class="error"></span>
+        </div>
+
+        <div>
+            <label>Preferencias:</label><br>
+            <select id="preferencias">
+                <option value="">--Selecciona una opción--</option>
+                <option value="noticias">Noticias</option>
+                <option value="ofertas">Ofertas</option>
+                <option value="actualizaciones">Actualizaciones</option>
+            </select>
+            <span id="errorPrefs" class="error"></span>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox" id="terminos"> Acepto los términos y condiciones
+            </label>
+            <span id="errorTerminos" class="error"></span>
+        </div>
+
+        <button type="submit">Registrar</button>
+    </form>
+
+    <script>
+        const formulario = document.querySelector("#registroForm");
+
+        formulario.addEventListener("submit", function(e) {
+            let esValido = true;
+
+            // 1. Limpiar mensajes de error anteriores (usando forEach como en clase)
+            document.querySelectorAll(".error").forEach(span => span.textContent = "");
+
+            // 2. VALIDACIÓN NOMBRE
+            const nombre = document.querySelector("#nombre");
+            if (nombre.value === "") {
+                document.querySelector("#errorNombre").textContent = "El nombre es obligatorio";
+                esValido = false;
+            }
+
+            // 3. VALIDACIÓN CONTRASEÑA (Min 8 caracteres)
+            const pass = document.querySelector("#pass");
+            if (pass.value.length < 8) {
+                document.querySelector("#errorPass").textContent = "La contraseña debe tener al menos 8 caracteres";
+                esValido = false;
+            }
+
+            // 4. CONFIRMAR CONTRASEÑA
+            const passConf = document.querySelector("#passConf");
+            if (passConf.value !== pass.value || passConf.value === "") {
+                document.querySelector("#errorPassConf").textContent = "Las contraseñas no coinciden";
+                esValido = false;
+            }
+
+            // 5. FECHA DE NACIMIENTO
+            if (document.querySelector("#fecha").value === "") {
+                document.querySelector("#errorFecha").textContent = "La fecha es obligatoria";
+                esValido = false;
+            }
+
+            // 6. GÉNERO (Radio buttons)
+            // Forma correcta dada: buscar el seleccionado
+            const generoSeleccionado = document.querySelector('input[name="genero"]:checked');
+            if (!generoSeleccionado) {
+                document.querySelector("#errorGenero").textContent = "Selecciona un género";
+                esValido = false;
+            }
+
+            // 7. MENSAJE (Max 500 caracteres)
+            const mensaje = document.querySelector("#mensaje");
+            if (mensaje.value === "") {
+                document.querySelector("#errorMensaje").textContent = "El mensaje es obligatorio";
+                esValido = false;
+            } else if (mensaje.value.length > 500) {
+                document.querySelector("#errorMensaje").textContent = "Máximo 500 caracteres";
+                esValido = false;
+            }
+
+            // 8. PREFERENCIAS (Select box)
+            const prefs = document.querySelector("#preferencias");
+            if (prefs.value === "") {
+                document.querySelector("#errorPrefs").textContent = "Selecciona una preferencia";
+                esValido = false;
+            }
+
+            // 9. TÉRMINOS Y CONDICIONES (Checkbox)
+            const terminos = document.querySelector("#terminos");
+            if (!terminos.checked) {
+                document.querySelector("#errorTerminos").textContent = "Debes aceptar los términos";
+                esValido = false;
+            }
+
+            // --- FINAL: ¿ENVIAMOS O BLOQUEAMOS? ---
+            if (!esValido) {
+                e.preventDefault(); // Detenemos el envío si hay algún error
+            } else {
+                alert("Formulario validado correctamente. Enviando...");
+            }
+        });
+    </script>
+</body>
+</html>
