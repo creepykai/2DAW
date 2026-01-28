@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Animaciones en CSS - Gu&iacute;a Completa</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="animaciones-en-css---guía-completa">Animaciones en CSS - Guía Completa</h1>
+<h2 id="introducción">Introducción</h2>
+<p>Las animaciones CSS permiten crear efectos visuales dinámicos sin necesidad de JavaScript. Se basan en el concepto de transiciones pero son más potentes y flexibles, permitiendo múltiples estados intermedios.</p>
+<hr>
+<h2 id="transformaciones-css">Transformaciones CSS</h2>
+<h3 id="concepto-general">Concepto General</h3>
+<p>Las transformaciones permiten cambios de forma, tamaño y posición de un elemento. CSS admite transformaciones <strong>2D y 3D</strong>.</p>
+<h4 id="propiedades-principales">Propiedades Principales</h4>
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Formato</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transform</code></td>
+<td><code>función 1, función 2, ...</code></td>
+<td>Aplica una o varias funciones de transformación sobre un elemento</td>
+</tr>
+<tr>
+<td><code>transform-origin</code></td>
+<td><code>pos-x pos-y pos-z</code></td>
+<td>Cambia el punto de origen del elemento en una transformación</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="transformaciones-2d">Transformaciones 2D</h3>
+<h4 id="translate---traslación"><strong>translate() - Traslación</strong></h4>
+<p>Mueve un elemento de un lugar a otro.</p>
+<ul>
+<li>Valores positivos en X: movimiento a la derecha</li>
+<li>Valores negativos en X: movimiento a la izquierda</li>
+<li>Valores positivos en Y: movimiento hacia abajo</li>
+<li>Valores negativos en Y: movimiento hacia arriba</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>translate(x, y)</code></td>
+<td>Traslada horizontalmente (x) y verticalmente (y)</td>
+</tr>
+<tr>
+<td><code>translateX(x)</code></td>
+<td>Traslada solo horizontalmente</td>
+</tr>
+<tr>
+<td><code>translateY(y)</code></td>
+<td>Traslada solo verticalmente</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo:</strong></p>
+<pre><code class="language-css"><span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">50px</span>, <span class="hljs-number">100px</span>);
+}
+</code></pre>
+<hr>
+<h4 id="scale---escalado"><strong>scale() - Escalado</strong></h4>
+<p>Aumenta o reduce el tamaño de un elemento basándose en un factor de escala.</p>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scale(fx, fy)</code></td>
+<td>Reescala con factor horizontal (fx) y vertical (fy)</td>
+</tr>
+<tr>
+<td><code>scaleX(fx)</code></td>
+<td>Reescala solo horizontalmente</td>
+</tr>
+<tr>
+<td><code>scaleY(fy)</code></td>
+<td>Reescala solo verticalmente</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo:</strong></p>
+<pre><code class="language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>);  <span class="hljs-comment">/* Amplia al doble del tamaño original */</span>
+</code></pre>
+<hr>
+<h4 id="rotate---rotación"><strong>rotate() - Rotación</strong></h4>
+<p>Gira el elemento el número de grados indicado.</p>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rotate(deg)</code></td>
+<td>Rotación 2D en grados</td>
+</tr>
+<tr>
+<td><code>rotateX(xdeg)</code></td>
+<td>Rotación solo en el eje horizontal X</td>
+</tr>
+<tr>
+<td><code>rotateY(ydeg)</code></td>
+<td>Rotación solo en el eje vertical Y</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo:</strong></p>
+<pre><code class="language-css"><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">5deg</span>);  <span class="hljs-comment">/* Rotación de 5 grados */</span>
+</code></pre>
+<hr>
+<h4 id="skew---sesgo"><strong>skew() - Sesgo</strong></h4>
+<p>Inclina o sesga un elemento.</p>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skew(x, y)</code></td>
+<td>Sesga horizontalmente y verticalmente</td>
+</tr>
+<tr>
+<td><code>skewX(x)</code></td>
+<td>Sesga solo horizontalmente</td>
+</tr>
+<tr>
+<td><code>skewY(y)</code></td>
+<td>Sesga solo verticalmente</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="transformaciones-3d">Transformaciones 3D</h3>
+<p>Para trabajar en tres dimensiones, se utiliza el eje Z además de X e Y.</p>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>translateZ(z)</code></td>
+<td>Traslada en el eje de profundidad Z</td>
+</tr>
+<tr>
+<td><code>translate3d(x, y, z)</code></td>
+<td>Translación 3D aplicando parámetros a cada eje</td>
+</tr>
+<tr>
+<td><code>scaleZ(fz)</code></td>
+<td>Reescala con factor de profundidad</td>
+</tr>
+<tr>
+<td><code>scale3d(fx, fy, fz)</code></td>
+<td>Escalado 3D aplicando factores a cada eje</td>
+</tr>
+<tr>
+<td><code>rotateZ(zdeg)</code></td>
+<td>Rotación en el eje de profundidad Z</td>
+</tr>
+<tr>
+<td><code>rotate3d(x, y, z, deg)</code></td>
+<td>Rotación 3D aplicando grados a cada eje</td>
+</tr>
+<tr>
+<td><code>perspective(n)</code></td>
+<td>Establece una perspectiva 3D</td>
+</tr>
+<tr>
+<td><code>matrix3d(...)</code></td>
+<td>Matriz de transformación 3D (16 valores)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="transiciones-css">Transiciones CSS</h2>
+<h3 id="concepto">Concepto</h3>
+<p>Las transiciones crean un efecto suavizado entre un estado inicial y un estado final. Son más simples que las animaciones, ya que solo tienen dos estados.</p>
+<h3 id="propiedades-de-transición">Propiedades de Transición</h3>
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Valores</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transition-property</code></td>
+<td><code>nombre-propiedad</code> o <code>all</code></td>
+<td>Especifica qué propiedad será animada</td>
+</tr>
+<tr>
+<td><code>transition-duration</code></td>
+<td>Tiempo (ej:<code>2s</code>, <code>500ms</code>)</td>
+<td>Duración total de la transición</td>
+</tr>
+<tr>
+<td><code>transition-timing-function</code></td>
+<td><code>ease</code>, <code>linear</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code>, <code>cubic-bezier()</code></td>
+<td>Tipo de aceleración/desaceleración</td>
+</tr>
+<tr>
+<td><code>transition-delay</code></td>
+<td>Tiempo (ej:<code>1s</code>, <code>500ms</code>)</td>
+<td>Retraso antes de iniciar la transición</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="transition-property">transition-property</h3>
+<p>Especifica qué propiedad CSS será afectada por la transición. Se puede indicar una propiedad específica (<code>width</code>, <code>color</code>, etc.) o <code>all</code> para aplicar a todas.</p>
+<p><strong>Ejemplo:</strong></p>
+<pre><code class="language-css"><span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">background</span>: red;
+  <span class="hljs-attribute">transition</span>: width <span class="hljs-number">2s</span>, height <span class="hljs-number">4s</span>;
+}
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+}
+</code></pre>
+<hr>
+<h3 id="transition-duration">transition-duration</h3>
+<p>Define cuánto tiempo durará la transición desde inicio hasta finalización.</p>
+<p><strong>Recomendaciones:</strong></p>
+<ul>
+<li>Usar valores cortos para transiciones rápidas y elegantes</li>
+<li>Evitar duraciones demasiado largas (pueden causar parpadeos o resultar molestas)</li>
+</ul>
+<p><strong>Ejemplo:</strong></p>
+<pre><code class="language-css"><span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">background</span>: red;
+  <span class="hljs-attribute">transition-property</span>: width;
+  <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">5s</span>;
+}
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+}
+</code></pre>
+<hr>
+<h3 id="transition-timing-function">transition-timing-function</h3>
+<p>Controla la velocidad de la transición en diferentes momentos.</p>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Inicio</th>
+<th>Transcurso</th>
+<th>Final</th>
+<th>cubic-bezier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ease</code></td>
+<td>Lento</td>
+<td>Rápido</td>
+<td>Lento</td>
+<td><code>(0.25, 0.1, 0.25, 1)</code></td>
+</tr>
+<tr>
+<td><code>linear</code></td>
+<td>Normal</td>
+<td>Normal</td>
+<td>Normal</td>
+<td><code>(0, 0, 1, 1)</code></td>
+</tr>
+<tr>
+<td><code>ease-in</code></td>
+<td>Lento</td>
+<td>Normal</td>
+<td>Normal</td>
+<td><code>(0.42, 0, 1, 1)</code></td>
+</tr>
+<tr>
+<td><code>ease-out</code></td>
+<td>Normal</td>
+<td>Normal</td>
+<td>Lento</td>
+<td><code>(0, 0, 0.58, 1)</code></td>
+</tr>
+<tr>
+<td><code>ease-in-out</code></td>
+<td>Lento</td>
+<td>Normal</td>
+<td>Lento</td>
+<td><code>(0.42, 0, 0.58, 1)</code></td>
+</tr>
+<tr>
+<td><code>cubic-bezier(A, B, C, D)</code></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Transición personalizada</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Explicación de valores:</strong></p>
+<ul>
+<li><strong>linear</strong>: Velocidad constante</li>
+<li><strong>ease</strong>: Comienza suavemente, continúa rápido, termina suavemente</li>
+<li><strong>ease-in</strong>: Comienza lentamente, acelera hacia el final</li>
+<li><strong>ease-out</strong>: Comienza rápido, desacelera hacia el final</li>
+<li><strong>ease-in-out</strong>: Combinación de ease-in y ease-out</li>
+</ul>
+<p><strong>Nota:</strong> En <a href="http://www.cubic-bezier.com">www.cubic-bezier.com</a> se puede visualizar interactivamente la velocidad según los parámetros.</p>
+<hr>
+<h3 id="transition-delay">transition-delay</h3>
+<p>Retrasa el inicio de la transición los segundos especificados.</p>
+<p><strong>Ejemplo:</strong></p>
+<pre><code class="language-css"><span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">background</span>: red;
+  <span class="hljs-attribute">transition</span>: width <span class="hljs-number">3s</span>;
+  <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">1s</span>;  <span class="hljs-comment">/* Comienza después de 1 segundo */</span>
+}
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+}
+</code></pre>
+<hr>
+<h3 id="transition-propiedad-de-atajo">transition (Propiedad de Atajo)</h3>
+<p>Resume todas las propiedades de transición en una sola línea.</p>
+<p><strong>Sintaxis:</strong></p>
+<pre><code class="language-css"><span class="hljs-attribute">transition</span>: &lt;property&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt;;
+</code></pre>
+<p><strong>Ejemplo:</strong></p>
+<pre><code class="language-css"><span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#DDD</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#222</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#AAA</span>;
+  <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.2s</span> ease-in <span class="hljs-number">0s</span>;
+}
+
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#FFF</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#888</span>;
+}
+</code></pre>
+<hr>
+<h2 id="animaciones-css">Animaciones CSS</h2>
+<h3 id="concepto-1">Concepto</h3>
+<p>Las animaciones amplían el concepto de transiciones permitiendo múltiples estados intermedios. Se definen mediante fotogramas (keyframes) que especifican cómo debe cambiar el elemento en diferentes puntos de la animación.</p>
+<h3 id="componentes-necesarios">Componentes Necesarios</h3>
+<ol>
+<li><strong>@keyframes</strong>: Define los fotogramas de la animación</li>
+<li><strong>Propiedades CSS de animación</strong>: Controlan el comportamiento</li>
+</ol>
+<hr>
+<h3 id="propiedades-de-animación">Propiedades de Animación</h3>
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Valores por Defecto</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animation-name</code></td>
+<td>-</td>
+<td>Nombre del fotograma a utilizar</td>
+</tr>
+<tr>
+<td><code>animation-duration</code></td>
+<td><code>0</code></td>
+<td>Duración total de la animación</td>
+</tr>
+<tr>
+<td><code>animation-timing-function</code></td>
+<td><code>ease</code></td>
+<td>Velocidad de la animación</td>
+</tr>
+<tr>
+<td><code>animation-delay</code></td>
+<td><code>0</code></td>
+<td>Retraso antes de iniciar</td>
+</tr>
+<tr>
+<td><code>animation-iteration-count</code></td>
+<td><code>1</code></td>
+<td>Número de repeticiones (o <code>infinite</code>)</td>
+</tr>
+<tr>
+<td><code>animation-direction</code></td>
+<td><code>normal</code></td>
+<td>Orden de reproducción de fotogramas</td>
+</tr>
+<tr>
+<td><code>animation-fill-mode</code></td>
+<td><code>none</code></td>
+<td>Estilos aplicados antes/después</td>
+</tr>
+<tr>
+<td><code>animation-play-state</code></td>
+<td><code>running</code></td>
+<td><code>running</code> o <code>paused</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="animation-name">animation-name</h3>
+<p>Especifica el nombre del fotograma (@keyframes) a utilizar.</p>
+<hr>
+<h3 id="animation-duration">animation-duration</h3>
+<p>Define cuánto tiempo durará una iteración completa de la animación.</p>
+<hr>
+<h3 id="animation-timing-function">animation-timing-function</h3>
+<p>Controla la velocidad de la animación. Utiliza los mismos valores que las transiciones: <code>ease</code>, <code>linear</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code>, o <code>cubic-bezier()</code>.</p>
+<hr>
+<h3 id="animation-delay">animation-delay</h3>
+<p>Retrasa el inicio de la animación los segundos especificados.</p>
+<hr>
+<h3 id="animation-iteration-count">animation-iteration-count</h3>
+<p>Indica cuántas veces se repite la animación.</p>
+<ul>
+<li>Valor numérico: número específico de repeticiones (ej: <code>3</code>)</li>
+<li><code>infinite</code>: se repite continuamente</li>
+</ul>
+<hr>
+<h3 id="animation-direction">animation-direction</h3>
+<p>Define el orden en que se reproducen los fotogramas.</p>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>normal</code></td>
+<td>Fotogramas del principio al final</td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td>Fotogramas del final al principio</td>
+</tr>
+<tr>
+<td><code>alternate</code></td>
+<td>Iteraciones pares: normal, impares: inversa</td>
+</tr>
+<tr>
+<td><code>alternate-reverse</code></td>
+<td>Iteraciones impares: normal, pares: inversa</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="animation-fill-mode">animation-fill-mode</h3>
+<p>Especifica qué estilos mostrar cuando la animación ha finalizado.</p>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>none</code></td>
+<td>Sin estilos especiales antes/después</td>
+</tr>
+<tr>
+<td><code>backwards</code></td>
+<td>Muestra el estado inicial antes de empezar</td>
+</tr>
+<tr>
+<td><code>forwards</code></td>
+<td>Muestra el estado final después de terminar</td>
+</tr>
+<tr>
+<td><code>both</code></td>
+<td>Combinación de backwards y forwards</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="animation-play-state">animation-play-state</h3>
+<p>Controla si la animación está en reproducción o pausada.</p>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>running</code></td>
+<td>Reproduce la animación</td>
+</tr>
+<tr>
+<td><code>paused</code></td>
+<td>Pausa la animación</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="animation-propiedad-de-atajo">animation (Propiedad de Atajo)</h3>
+<p>Resume todas las propiedades de animación en una sola línea.</p>
+<p><strong>Sintaxis:</strong></p>
+<pre><code class="language-css"><span class="hljs-attribute">animation</span>: &lt;name&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt; &lt;iteration-count&gt; &lt;direction&gt; &lt;fill-mode&gt; &lt;play-state&gt;;
+</code></pre>
+<hr>
+<h2 id="definición-de-fotogramas-keyframes">Definición de Fotogramas (@keyframes)</h2>
+<h3 id="concepto-2">Concepto</h3>
+<p>La regla <code>@keyframes</code> define los estilos en diferentes puntos de la animación. Se puede usar selectores <code>from</code>/<code>to</code> o porcentajes <code>0%</code> a <code>100%</code>.</p>
+<h3 id="selectores-de-fotogramas">Selectores de Fotogramas</h3>
+<ul>
+<li><strong><code>from</code></strong>: Equivalente a <code>0%</code> (fotograma inicial)</li>
+<li><strong><code>to</code></strong>: Equivalente a <code>100%</code> (fotograma final)</li>
+<li><strong>Porcentajes</strong>: <code>0%</code>, <code>25%</code>, <code>50%</code>, <code>75%</code>, <code>100%</code>, etc.</li>
+</ul>
+<h3 id="ejemplos">Ejemplos</h3>
+<h4 id="ejemplo-1-movimiento-horizontal-simple">Ejemplo 1: Movimiento Horizontal Simple</h4>
+<pre><code class="language-css"><span class="hljs-keyword">@keyframes</span> animacion1 {
+  <span class="hljs-selector-tag">from</span> { <span class="hljs-attribute">left</span>: <span class="hljs-number">0px</span>; }      <span class="hljs-comment">/* Primer fotograma */</span>
+  <span class="hljs-selector-tag">to</span> { <span class="hljs-attribute">left</span>: <span class="hljs-number">500px</span>; }      <span class="hljs-comment">/* Último fotograma */</span>
+}
+
+<span class="hljs-selector-class">.anim</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#FFF</span>;
+  <span class="hljs-attribute">animation</span>: animacion1 <span class="hljs-number">2s</span> ease <span class="hljs-number">0</span> infinite;
+}
+</code></pre>
+<h4 id="ejemplo-2-movimiento-con-cambio-de-color">Ejemplo 2: Movimiento con Cambio de Color</h4>
+<pre><code class="language-css"><span class="hljs-keyword">@keyframes</span> animacion2 {
+  <span class="hljs-number">0%</span> { <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>; }                      <span class="hljs-comment">/* Primer fotograma */</span>
+  <span class="hljs-number">50%</span> { <span class="hljs-attribute">left</span>: <span class="hljs-number">500px</span>; <span class="hljs-attribute">background</span>: <span class="hljs-number">#FF0000</span>; }  <span class="hljs-comment">/* Segundo fotograma */</span>
+  <span class="hljs-number">100%</span> { <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>; }                    <span class="hljs-comment">/* Último fotograma */</span>
+}
+
+<span class="hljs-selector-class">.anim</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#FFF</span>;
+  <span class="hljs-attribute">animation</span>: animacion2 <span class="hljs-number">2s</span> ease <span class="hljs-number">0</span> infinite;
+}
+</code></pre>
+<h4 id="ejemplo-3-recorrido-en-forma-de-cuadrado">Ejemplo 3: Recorrido en Forma de Cuadrado</h4>
+<pre><code class="language-css"><span class="hljs-keyword">@keyframes</span> ejemplo {
+  <span class="hljs-number">0%</span>, <span class="hljs-number">100%</span> { <span class="hljs-attribute">background-color</span>: red; <span class="hljs-attribute">left</span>: <span class="hljs-number">0px</span>; <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>; }
+  <span class="hljs-number">25%</span> { <span class="hljs-attribute">background-color</span>: yellow; <span class="hljs-attribute">left</span>: <span class="hljs-number">200px</span>; <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>; }
+  <span class="hljs-number">50%</span> { <span class="hljs-attribute">background-color</span>: blue; <span class="hljs-attribute">left</span>: <span class="hljs-number">200px</span>; <span class="hljs-attribute">top</span>: <span class="hljs-number">200px</span>; }
+  <span class="hljs-number">75%</span> { <span class="hljs-attribute">background-color</span>: green; <span class="hljs-attribute">left</span>: <span class="hljs-number">0px</span>; <span class="hljs-attribute">top</span>: <span class="hljs-number">200px</span>; }
+}
+
+<span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">background-color</span>: red;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">animation-name</span>: ejemplo;
+  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">4s</span>;
+}
+</code></pre>
+<h3 id="nota-sobre-selectores-múltiples">Nota sobre Selectores Múltiples</h3>
+<p>Si varios fotogramas utilizan los mismos estilos, se pueden separar con comas:</p>
+<pre><code class="language-css"><span class="hljs-keyword">@keyframes</span> ejemplo {
+  <span class="hljs-number">0%</span>, <span class="hljs-number">100%</span> { <span class="hljs-comment">/* estilos comunes */</span> }
+  <span class="hljs-number">50%</span> { <span class="hljs-comment">/* estilos diferentes */</span> }
+}
+</code></pre>
+<hr>
+<h2 id="encadenamiento-de-animaciones">Encadenamiento de Animaciones</h2>
+<p>Es posible ejecutar múltiples animaciones secuencialmente. Se separan con comas y se establece un <code>animation-delay</code> a cada una para que comiencen en el momento deseado.</p>
+<h3 id="ejemplo-encadenamiento-de-animaciones">Ejemplo: Encadenamiento de Animaciones</h3>
+<pre><code class="language-css"><span class="hljs-selector-class">.animated</span> {
+  <span class="hljs-attribute">animation</span>: 
+    lookUp <span class="hljs-number">5s</span> linear <span class="hljs-number">0</span>,           <span class="hljs-comment">/* Comienza a los 0s */</span>
+    moveRight <span class="hljs-number">2.5s</span> linear <span class="hljs-number">5s</span>,     <span class="hljs-comment">/* Comienza a los 5s */</span>
+    moveLeft <span class="hljs-number">2s</span> linear <span class="hljs-number">7.5s</span>,      <span class="hljs-comment">/* Comienza a los 7.5s (5 + 2.5) */</span>
+    disappear <span class="hljs-number">2s</span> linear <span class="hljs-number">9.5s</span>;     <span class="hljs-comment">/* Comienza a los 9.5s (5 + 2.5 + 2) */</span>
+}
+</code></pre>
+<p><strong>Cálculo de tiempos:</strong></p>
+<ul>
+<li>Primera animación: comienza en 0s, dura 5s (termina en 5s)</li>
+<li>Segunda animación: comienza en 5s, dura 2.5s (termina en 7.5s)</li>
+<li>Tercera animación: comienza en 7.5s, dura 2s (termina en 9.5s)</li>
+<li>Cuarta animación: comienza en 9.5s, dura 2s (termina en 11.5s)</li>
+</ul>
+<hr>
+<h2 id="resumen-comparativo-transiciones-vs-animaciones">Resumen Comparativo: Transiciones vs Animaciones</h2>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Transiciones</th>
+<th>Animaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estados</td>
+<td>2 (inicial y final)</td>
+<td>Múltiples (keyframes)</td>
+</tr>
+<tr>
+<td>Complejidad</td>
+<td>Más simple</td>
+<td>Más flexible y potente</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>Requiere cambio de estado (hover, click, etc.)</td>
+<td>Inicia automáticamente o por código</td>
+</tr>
+<tr>
+<td>Control</td>
+<td>Básico</td>
+<td>Completo (iteration, direction, fill-mode, etc.)</td>
+</tr>
+<tr>
+<td>Uso ideal</td>
+<td>Cambios simples de propiedades</td>
+<td>Secuencias complejas de efectos</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="recomendaciones-prácticas">Recomendaciones Prácticas</h2>
+<ol>
+<li><strong>Duración</strong>: Mantener transiciones y animaciones cortas (0.2s a 2s) para mejor experiencia</li>
+<li><strong>Timing Function</strong>: Usar <code>ease</code> o <code>ease-in-out</code> para efectos más naturales</li>
+<li><strong>Performance</strong>: Animar propiedades como <code>transform</code> y <code>opacity</code> para mejor rendimiento</li>
+<li><strong>Accesibilidad</strong>: Considerar usuarios con preferencias de movimiento reducido</li>
+<li><strong>Encadenamiento</strong>: Usar delays para crear secuencias animadas profesionales</li>
+</ol>
+
+            
+            
+        </body>
+        </html>

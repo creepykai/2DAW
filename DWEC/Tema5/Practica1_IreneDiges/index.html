@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de memoria</title>
+    <style>
+        td img{
+            width: 150px;
+            height: 150px;
+            display: block; 
+            cursor: pointer;
+        }
+        td {
+            padding: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <p>Puntos: <span id="textoPuntos">0</span></p>
+    <table border="1">
+        <tr>
+            <td id="celda1"></td>
+            <td id="celda2"></td>
+            <td id="celda3"></td>
+            <td id="celda4"></td>
+        </tr>
+        <tr>
+            <td id="celda5"></td>
+            <td id="celda6"></td>
+            <td id="celda7"></td>
+            <td id="celda8"></td>
+        </tr>
+        <tr>
+            <td id="celda9"></td>
+            <td id="celda10"></td>
+            <td id="celda11"></td>
+            <td id="celda12"></td>
+        </tr>
+    </table>
+    <script>
+        let imagenes = ["imagenes/imagen1.jpg", "imagenes/imagen2.jpg", "imagenes/imagen3.jpg", "imagenes/imagen4.jpg", "imagenes/imagen5.jpg", "imagenes/imagen6.jpg"];
+        imagenes = imagenes.concat(imagenes);
+        imagenes.sort(() => Math.random() - 0.5);
+
+        let puntos = 0;
+        let cartaGirada = null;
+        let bloqueado = false; // Variable para que no se pueda clicar mientras esperan a girarse
+
+        for(let i = 1; i <= 12; i++){
+            let img = document.createElement("img");
+            img.src = "imagenes/tras.jpg"; 
+            document.getElementById("celda" + i).appendChild(img);
+
+            // Unimos todo en un solo evento click
+            img.addEventListener("click", function(){
+                // Si estamos esperando (bloqueado), si la carta ya está girada (es la misma) o si ya está resuelta
+                if(bloqueado || this === cartaGirada || this.src.includes(imagenes[i-1])) {
+                    return;
+                }
+
+                this.src = imagenes[i - 1]; 
+
+                if(cartaGirada){
+                    // Ya había una carta girada, comparamos
+                    if(cartaGirada.src === this.src){
+                        // ACIERTO
+                        puntos++;
+                        document.getElementById("textoPuntos").innerText = puntos;
+                        cartaGirada = null; // Reseteamos para el siguiente turno
+                    } else {
+                        // FALLO (Son diferentes)
+                        bloqueado = true; // Bloqueamos para que el usuario no pueda clicar otras cartas locamente
+                        
+                        // Guardamos las referencias a las dos cartas actuales
+                        let carta1 = cartaGirada;
+                        let carta2 = this;
+
+                        // Usamos setTimeout para esperar 1 segundo (1000ms)
+                        setTimeout(function(){
+                            carta1.src = "imagenes/tras.jpg";
+                            carta2.src = "imagenes/tras.jpg";
+                            bloqueado = false; // Desbloqueamos
+                            cartaGirada = null;
+                        }, 1000); 
+                    }
+                } else {
+                    // Es la primera carta del turno
+                    cartaGirada = this;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

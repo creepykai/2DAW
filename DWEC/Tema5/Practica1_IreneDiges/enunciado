@@ -1,0 +1,16 @@
+UT5. Práctica 1: Juego de memoria de cartas
+Vas a crear un juego que consiste en encontrar parejas en 12 cartas con 6 parejas de dibujos. El juego consistirá en lo siguiente: 
+
+•	La aplicación deberá tener una tabla con 3 filas y cuatro columnas de diferentes colores. 
+Además, habrá un cuadro de texto con el valor 0 pero no modificable.
+•	Cuando el usuario haga clic sobre una celda, se mostrará una imagen.
+•	Cuando el usuario haga clic sobre otra celda, se mostrará otra imagen.
+•	Si las dos imágenes son iguales, se quedarán descubiertas y se añadirá 1 al cuadro de texto.
+•	Si las dos imágenes son diferentes, se ocultarán mostrando nuevamente el color inicial.
+•	Cuando finalice se mostrará un mensaje “Enhorabuena, has terminado el juego”
+
+CRITERIOS DE EVALUACIÓN
+RA5. Desarrolla aplicaciones Web interactivas integrando mecanismos de manejo de eventos.
+
+a)	Se han reconocido las posibilidades del lenguaje de marcas relativas a la captura de los eventos producidos.
+b)	Se ha creado un código que capture y utilice eventos.

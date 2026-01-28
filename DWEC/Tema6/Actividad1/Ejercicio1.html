@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--1.	Crea una lista de la compra según la imagen que:
+•	Añada cualquier información escrita en la caja de texto cuando se pulse el botón enviar.
+•	En caso que la caja de texto esté vacía no se añadirá nada a la lista.
+•	Para eliminar elementos de la lista se hará con un doble clic.
+•	El código javascript se añadirá al cargar el documento. 
+-->
+    <h1>Lista de compra</h1>
+    <input type="text" id="item">
+    <button id="añadir">Añadir</button>
+    <div id="lista">
+        
+    </div>
+    <script>
+        document.getElementById("añadir").addEventListener("click", function () {
+            let item = document.getElementById("item").value;
+            if (item !== "") {
+                let lista = document.getElementById("lista");
+                let li = document.createElement("li");
+                li.textContent = item;
+                lista.appendChild(li);
+                document.getElementById("item").value = "";
+            }
+        });
+        document.getElementById("lista").addEventListener("dblclick", function (event) {
+            if (event.target.tagName === "LI") {
+                event.target.remove();
+            }
+        });
+    
+    </script>
+</body>
+</html>
