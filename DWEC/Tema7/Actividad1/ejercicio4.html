@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--4.	Crea una función multiplicar(a, b) que devuelva una promesa que resuelva la multiplicación de a * b después de 1 segundo.-->
+    <script>
+        const multiplicar = (a, b) => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(a * b);
+                }, 1000);
+            });
+        };
+
+        multiplicar(2,3)
+            .then(resultado => console.log(resultado))
+            .catch(error => console.log(error));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--3.	Crea una función esperar(ms) que devuelva una promesa que se resuelva después de X milisegundos.-->
+    <script>
+        const esperar = (ms) => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, ms);
+            });
+        };
+
+        esperar(2000)
+            .then(() => console.log("Han pasado 2 segundos"))
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>

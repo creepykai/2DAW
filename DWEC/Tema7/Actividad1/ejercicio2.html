@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--2.	Crea una promesa que se rechace después de 3 segundos con el mensaje "Error en la promesa" y maneja el error con catch().-->
+    <script>
+        const promesa = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("Error en la promesa");
+            }, 3000);
+        });
+
+        promesa
+            .then(mensaje => console.log(mensaje))
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>

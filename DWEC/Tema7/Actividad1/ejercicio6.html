@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--6.	Ejecuta 3 promesas en paralelo y muestra los resultados cuando todas se completen. (Promise.all)-->
+    <script>
+        const promesa1 = new Promise(resolve => {
+            setTimeout(() => {
+                resolve("Promesa 1 resuelta");
+            }, 1000);
+        });
+
+        const promesa2 = new Promise(resolve => {
+            setTimeout(() => {
+                resolve("Promesa 2 resuelta");
+            }, 2000);
+        });
+
+        const promesa3 = new Promise(resolve => {
+            setTimeout(() => {
+                resolve("Promesa 3 resuelta");
+            }, 3000);
+        });
+
+        Promise.all([promesa1, promesa2, promesa3])
+            .then(resultados => console.log(resultados))
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>

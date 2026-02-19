@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--1.	Crea una promesa que se resuelva después de 2 segundos con el mensaje " Promesa resuelta"-->
+    <script>
+        const promesa = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Promesa resuelta");
+            }, 2000);
+        });
+
+        promesa
+            .then(mensaje => console.log(mensaje))
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>
