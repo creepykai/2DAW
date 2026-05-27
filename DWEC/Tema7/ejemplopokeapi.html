@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocompletado de Pokemon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Buscador de Pokemon</div>
+    <input type="text" id="buscador" placeholder="Escribe un pokemon">
+    <select id="sugerencias" size="5"></select>
+
+    <div id="resultado">
+        <h2 id="nombrePokemon"></h2>
+        <img id="imagenPokemon">
+    </div>
+
+    <script>
+        const buscador = document.getElementById('buscador');
+        const sugerencias = document.getElementById('sugerencias');
+        const imagenPokemon = document.getElementById('imagenPokemon');
+        const nombrePokemon = document.getElementById('nombrePokemon');
+
+        let listaPokemon = [];
+
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=10000")
+            .then(response => response.json())
+            .then(data => {
+                listaPokemon = data.results;
+            })
+            .catch(error => console.error("Error al cargar la lista de pokemon:", error));
+
+        buscador.addEventListener('input', () => {
+            const texto = buscador.value.toLowerCase().trim();
+            sugerencias.innerHTML = '';
+
+            if (texto.length === 0) {
+                sugerencias.style.display = 'none';
+                return;
+            }
+
+            const filtrados = listaPokemon.filter(p => p.name.includes(texto)).slice(0, 10); 
+
+            if (filtrados.length > 0) {
+                sugerencias.style.display = 'block';
+                filtrados.forEach(pokemon => {
+                    const option = document.createElement('option');
+                    option.value = pokemon.url;
+                    option.textContent = pokemon.name;
+                    sugerencias.appendChild(option);
+                });
+            } else {
+                sugerencias.style.display = 'none';
+            }
+        });
+
+        sugerencias.addEventListener('change', () => {
+            const url = sugerencias.value;
+            if (sugerencias.selectedIndex === -1) return;
+            const optionSeleccionada = sugerencias.options[sugerencias.selectedIndex].text;
+
+            if (!url) return;
+
+            buscador.value = optionSeleccionada;
+            sugerencias.style.display = 'none';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    nombrePokemon.textContent = data.name.toUpperCase();
+                    imagenPokemon.src = data.sprites.front_default;
+                    imagenPokemon.alt = data.name;
+                    imagenPokemon.style.display = 'block';
+                })
+                .catch(error => console.error("Error al cargar los detalles del pokemon:", error));
+        });
+
+        sugerencias.addEventListener('click', () => {
+            sugerencias.dispatchEvent(new Event('change'));
+        });
+
+        document.addEventListener('click', (event) => {
+            if (event.target !== buscador && event.target !== sugerencias) {
+                sugerencias.style.display = 'none';
+            }
+        });
+
+        buscador.addEventListener('focus', () => {
+            if (sugerencias.options.length > 0 && buscador.value.trim().length > 0) {
+                sugerencias.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

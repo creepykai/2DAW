@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--3.	Crear una función reutilizable que haga peticiones fetch(url) y devuelva los datos en JSON-->
+    <script>
+        function obtenerDatos(url) {
+            return fetch(url)
+                .then(response => response.json())
+                .catch(error => console.log(error));
+        }
+        obtenerDatos("https://jsonplaceholder.typicode.com/users").then(data => console.log(data));
+    </script>
+</body>
+</html>

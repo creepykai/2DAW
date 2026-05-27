@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!--https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY-->
+    <script>
+       fetch("https://api.nasa.gov/planetary/apod?api_key=uxsegn2jz52CVPANEwOWah2l6wzrdIctlbEjDelv")
+       .then(response => response.json())
+       .then(data => {
+        const imagen = document.createElement("img");
+        imagen.src = data.url;
+        document.body.appendChild(imagen);
+       })
+       .catch(error => console.log(error));
+    </script>
+</body>
+</html>
